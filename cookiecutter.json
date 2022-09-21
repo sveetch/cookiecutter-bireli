@@ -17,6 +17,7 @@
     "_node_version": ">=18.0.0",
     "_npm_version": ">=8.0.0",
     "_bootstrap_version": "5.2.0",
+    "_webpack_version": "^5.50.0",
 
     "_copy_without_render": [
         "frontend/scss",

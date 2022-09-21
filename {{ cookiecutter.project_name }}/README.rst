@@ -1,6 +1,10 @@
 .. _Python: https://www.python.org/
 .. _Django: https://www.djangoproject.com/{% if cookiecutter.enable_drf|lower == 'true' %}
 .. _Django REST framework: https://www.django-rest-framework.org/{% endif %}
+.. _Node.js: https://nodejs.org/dist/latest-v16.x/docs/api/
+.. _NPM: https://docs.npmjs.com/
+.. _Bootstrap: https://getbootstrap.com/docs/
+.. _Webpack: https://webpack.js.org/
 
 {{ '=' * cookiecutter.project_title|length }}
 {{ cookiecutter.project_title }}
@@ -9,8 +13,8 @@
 {{ cookiecutter.project_short_description|wordwrap(80) }}
 
 
-Dependancies
-************
+Main stack components
+*********************
 
 * `Python`_ {{ cookiecutter._python_version }};
 * `Django`_ {{ cookiecutter._django_version }};{% if cookiecutter.enable_drf|lower == 'true' %}
@@ -18,6 +22,7 @@ Dependancies
 * `Node.js`_ {{ cookiecutter._node_version }};
 * `NPM`_ {{ cookiecutter._npm_version }};
 * `Bootstrap`_ {{ cookiecutter._bootstrap_version }};
+* `Webpack`_ {{ cookiecutter._webpack_version }};
 
 
 Install
