@@ -1,0 +1,64 @@
+///
+/// Block component.
+///
+/// This is a fluid container with default vertical inner spacing and color scheme.
+///
+/// Depends on:
+///
+/// - ../defaults
+/// - ../tools/colors
+/// - ../tools/spacing
+///
+
+/// Enable blocks classes creation when `blocks` module is imported.
+///
+/// @type Bool
+///
+$include-bb-blocks: $include-bb-classes !default;
+
+@if $include-bb-blocks {
+    .block {
+        &:not(.delegate) {
+            @include bb-apply-spaces(map-get($bb-spaces, "normal"));
+
+            @each $name, $definitions in $bb-spaces {
+                &.#{$name} {
+                    @include bb-apply-spaces($definitions, $axis: "vertical");
+                }
+            }
+        }
+
+        /// Delegate spacing to inner element
+        &.delegate > .inner {
+            @include bb-apply-spaces(map-get($bb-spaces, "normal"));
+
+            @each $name, $definitions in $bb-spaces {
+                &.#{$name} {
+                    @include bb-apply-spaces($definitions, $axis: "vertical");
+                }
+            }
+        }
+
+        /// Unpadded block or inner element
+        &:not(.delegate).unpadded,
+        &.delegate > .inner.unpadded {
+            padding: 0;
+        }
+
+        &:not(.#{$bb-schemes-neutral}) {
+            /// Default colors
+            @if $bb-schemes-default != null {
+                @include bb-scheme-colors(
+                    bb-scheme($bb-schemes-default)
+                );
+            }
+
+            /// Color variants
+            @each $name, $scheme in $bb-schemes {
+                &.#{$name} {
+                    @include bb-scheme-colors($scheme);
+                }
+            }
+        }
+    }
+}

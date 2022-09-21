@@ -1,0 +1,21 @@
+///
+// Media placeholder
+///
+
+/// Enable placeholders classes creation when `placeholders` module is imported.
+///
+/// @type Bool
+///
+$include-bb-placeholders: $include-bb-classes !default;
+
+@if $include-bb-placeholders {
+    // A Basic SVG placeholder, just stretch horizontally keeping its ratio (if SVG
+    // attributes does not contradict with special rules). This does not embed any
+    // image, you need to apply this class on an existing svg element.
+    .placeholder-svg {
+        width: 100%;
+        height: auto;
+        text-anchor: middle;
+        user-select: none;
+    }
+}

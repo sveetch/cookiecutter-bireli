@@ -1,0 +1,314 @@
+///
+/// Default values for required Bootbutt variables
+///
+/// These are the variables you may set in your Sass project settings with the right
+/// values to customize according to your needs.
+///
+
+/// Default value for variables which enable components creations like
+/// `$include-bb-grid`, `$include-bb-spaces`, etc..
+///
+/// Default is `true` so every component CSS stuff are created. If you want
+/// to disable some component set their own value to `false`.
+///
+/// @type Bool
+///
+$include-bb-classes: true !default;
+
+///
+/// This documentate model for available properties in a color scheme.
+///
+/// Either `font-color` or `background` are required, every other
+/// properties are optional.
+///
+/// `background` is the only required property and possibly also
+/// `font-color` if `background` is set to `transparent` or `inherit`.
+///
+/// `border` property is the recommended way to define borders but it defines
+/// the same values to every side. If you need to define different values for
+/// different sides, you will need to do it throught `border-color`,
+/// `border-width` and `border-style`.
+///
+/// Note that every properties can have a prefixed version like `hover-****`
+/// to use on hover event from container. This is especially used from some
+/// components such as boxes and buttons.
+///
+/// For consistent naming, we recommend to allways name your color scheme
+/// based on their background color, like `$white-scheme` for a scheme
+/// with a white background.
+///
+/// @name Color scheme model
+///
+/// @type Map
+///
+/// @prop {Color} background [null]
+///   Background to apply.
+///
+/// @prop {Color} font-color [null]
+///   Font color to apply.
+///
+/// @prop {Color} link-color [null]
+///   Enforce font color on link. This does not apply on links with `.button`
+///   class since buttons have their own definition apart.
+///
+/// @prop {Color} link-color-hover [null]
+///   Enforce font color on link hover event. Alike `link-color`, this does
+///   not apply on buttons.
+///
+/// @prop {Color} h1-color [null]
+///   Font color to apply on title level 1 (like `h1` or `.title-1`).
+///
+///   A `false` value should be understood by mixin as "Do not define any
+///   color for this title level" since default behavior is to use font-color
+///   when title level is `null`. This behavior is available for every title
+///   levels.
+///
+/// @prop {Color} h2-color [null]
+///   Font color to apply on title level 2 (like `h2` or `.title-2`).
+///
+/// @prop {Color} h3-color [null]
+///   Font color to apply on title level 3 (like `h3` or `.title-3`).
+///
+/// @prop {Color} h4-color [null]
+///   Font color to apply on title level 4 (like `h4` or `.title-4`).
+///
+/// @prop {Color} h5-color [null]
+///   Font color to apply on title level 5 (like `h5` or `.title-5`).
+///
+/// @prop {Color} h6-color [null]
+///   Font color to apply on title level 6 (like `h6` or `.title-6`).
+///
+/// @prop {Color} border [null]
+///   Border shortand properties to define every values for every sides.
+///
+/// @prop {Color} border-color [null]
+///   Border color to apply.
+///
+/// @prop {Number} border-width [null]
+///   Border width to apply.
+///
+/// @prop {String} border-style [null]
+///   Border style to apply.
+///
+///
+/// @example scss
+///   $white-scheme: (
+///       font-color: #000000,
+///       background: #ffffff,
+///   );
+///
+///   $black-scheme: (
+///       font-color: #ffffff,
+///       background: #000000,
+///       link-color: #ff0000,
+///       link-color-hover: #ff00ee,
+///       h1-color: #f0f0f0,
+///       h2-color: #e8e8e8,
+///       h3-color: #e7e7e7,
+///       h4-color: #e6e6e6,
+///       h5-color: #e5e5e5,
+///       h6-color: #e6e6e6,
+///       border: 1px solid #ff0000,
+///   );
+///
+$bb-model-scheme: () !default;
+
+/// Enabled color schemes for component classes creation (like `.block` or
+/// `.box`).
+///
+/// Each property is a named [`Color scheme model`](#models-variable-Color scheme model).
+///
+/// @type Map
+///
+/// @example scss
+///   $bb-schemes: (
+///       white: $white-color-scheme,
+///       black: $black-color-scheme,
+///   );
+///
+$bb-schemes: () !default;
+
+/// Default color scheme to use on objects which implement schemes.
+///
+/// Set it to null so a block without color scheme modifier will not have any applied
+/// scheme properties.
+///
+/// @type String
+///
+$bb-schemes-default: null !default;
+
+/// Fake scheme name to use as a class modifier to bypass any color scheme event the
+/// default one from `$bb-schemes-default`.
+///
+/// @type String
+///
+$bb-schemes-neutral: "neutral" !default;
+
+/// Default option values for scheme color mixin.
+///
+/// @type Map
+///
+///
+$bb-scheme-color-defaults: (
+    "links": true,
+    "headings": true,
+    "svgs": false,
+    "button-classname": ".btn",
+) !default;
+
+/// Enabled breakpoints for Bootbutt objects
+///
+/// They should relate to your framework available breakpoints. (Example uses the
+/// Bootstrap Grid breakpoints `$grid-breakpoints` which is a common global reference).
+///
+/// Each property is a breakpoint.
+///
+/// @type map
+///
+/// @example scss
+///   $bb-breakpoints: (
+///     xs: 0,
+///     sm: 576px,
+///     md: 768px,
+///     lg: 992px,
+///     xl: 1200px,
+///     xxl: 1400px
+///   );
+///
+$bb-breakpoints: () !default;
+
+/// Enabled responsive spaces
+///
+/// Each property is a map of a space size names with their enabled breakpoints
+/// (according to `$bb-breakpoints`).
+///
+/// @type map
+///
+/// @example scss
+///   $bb-space-tiny: (
+///       "xs": 0.5rem,
+///       "md": 0.75rem,
+///       "lg": 1rem,
+///       "xxl": 1.5rem,
+///   );
+///   $bb-space-short: (
+///       "xs": 1rem,
+///       "md": 1.25rem,
+///       "lg": 2rem,
+///       "xxl": 2.5rem,
+///   );
+///   $bb-space-normal: (
+///       "xs": 1.5rem,
+///       "md": 2rem,
+///       "lg": 3rem,
+///       "xxl": 4rem,
+///   );
+///   $bb-space-large: (
+///       "xs": 2rem,
+///       "md": 3rem,
+///       "lg": 4rem,
+///       "xxl": 5rem,
+///   );
+///   $bb-space-wide: (
+///       "xs": 3rem,
+///       "md": 4.5rem,
+///       "lg": 6rem,
+///       "xxl": 8rem,
+///   );
+///   $bb-spaces: (
+///       "tiny": $bb-space-tiny,
+///       "short": $bb-space-short,
+///       "normal": $bb-space-normal,
+///       "large": $bb-space-large,
+///       "wide": $bb-space-wide,
+///   );
+$bb-spaces: () !default;
+
+/// Breakpoint name to use for the base spacing rules
+///
+/// Commonly you always want to use the lowest breakpoint since the base rules should
+/// be for the lowest mobiles first. Default is to use "xs", the lowest Bootstrap
+/// breakpoint.
+///
+/// @type String
+///
+$bb-spaces-base-breakpoint: "xs" !default;
+
+/// Space name (from `$bb-spaces`) to consider as the base spacing.
+///
+/// Objects commonly implement it as the base (without modifier class) spacing.
+///
+/// @type String
+///
+$bb-spaces-base-name: "normal" !default;
+
+/// Default base document font size
+/// Value stand on Bootstrap assertion of 16px default value from browsers
+/// But this is not a threat since rem will finally adapt relatively to any
+/// default value. However for sanity we use a variable.
+///
+/// @type Number
+///
+$bb-rem-base-size: 16px !default;
+
+/// Define images directory used by `image-url()` function.
+///
+/// @type String
+///
+$bb-image-directory: "../images/" !default;
+
+/// Define fonts directory used by `font-url()` function.
+///
+/// @type String
+///
+$bb-font-directory: "../fonts/" !default;
+
+/// Map of font icons
+///
+/// @type Map
+///
+$icons: () !default;
+
+/// Enabled icon sizes for modifiers
+///
+/// @type Map
+///
+$bb-icon-sizes: () !default;
+
+/// Additional small sizes
+///
+/// @type Map
+///
+$bb-small-sizes: () !default;
+
+/// Enabled font families
+///
+/// @type Map
+///
+$bb-fonts: () !default;
+
+/// CTA settings
+/// Commonly you will just make them using the equivalent Bootstrap Button variable
+/// like `$btn-font-family` for `$bb-cta-font-family`.
+///
+/// @type String
+///
+$bb-cta-font-family: null !default;
+$bb-cta-font-weight: null !default;
+$bb-cta-line-height: null !default;
+$bb-cta-white-space: null !default;
+$bb-cta-padding-x: null !default;
+$bb-cta-padding-y: null !default;
+$bb-cta-font-size: null !default;
+$bb-cta-border-radius: null !default;
+$bb-cta-transition: null !default;
+$bb-cta-focus-box-shadow: null !default;
+$bb-cta-active-box-shadow: null !default;
+$bb-cta-padding-x-sm: null !default;
+$bb-cta-padding-y-sm: null !default;
+$bb-cta-font-size-sm: null !default;
+$bb-cta-border-radius-sm: null !default;
+$bb-cta-padding-x-lg: null !default;
+$bb-cta-padding-y-lg: null !default;
+$bb-cta-font-size-lg: null !default;
+$bb-cta-border-radius-lg: null !default;

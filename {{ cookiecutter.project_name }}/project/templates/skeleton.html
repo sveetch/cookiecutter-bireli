@@ -1,0 +1,63 @@
+{% load static i18n %}{% load render_bundle from webpack_loader %}<!DOCTYPE html>
+<html lang="{% if LANGUAGE_CODE %}{{ LANGUAGE_CODE }}{% else %}en{% endif %}" {% block html-attrs %}{% endblock html-attrs %}>
+    <head>
+        {% spaceless %}
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>{% block head_title %}{{ SITE.name }}{% endblock head_title %}</title>
+
+            {% block metas %}
+                {% block metas-robot %}
+                <meta name="robots" content="index, follow, all">
+                {% endblock metas-robot %}
+
+                {% block metas-generic %}
+                <meta name="description" content="{% block meta-description %}{% endblock meta-description %}">
+                <meta name="Keywords" content="{% block meta-keywords %}{% endblock meta-keywords %}">
+                {% endblock metas-generic %}
+
+                {% block metas-og %}
+                <meta property="og:title" content="{{ SITE.name }}">
+                <meta property="og:url" content="{{ SITE.web_url }}">
+                <meta property="og:type" content="website">
+                {% comment %}<meta property="og:image" content="{% static "images/logo.png" %}">{% endcomment %}
+                {% endblock metas-og %}
+            {% endblock metas %}
+
+            {% block header-manifest %}
+                {% include "partials/site_manifest.html" %}
+            {% endblock header-manifest %}
+
+            {% block header-marketing %}
+                {% if not debug %}
+                    {% include "partials/marketing_tags.html" with snippet="preload" only %}
+                {% endif %}
+            {% endblock header-marketing %}
+
+            {% block header-javascript %}{% endblock header-javascript %}
+
+            {% block base-link-resource %}
+                <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+            {% endblock base-link-resource %}
+
+            {% block extra-link-resource %}{% endblock extra-link-resource %}
+        {% endspaceless %}
+</head>
+<body{% block body-attrs %}{% endblock body-attrs %}>
+    {% spaceless %}
+        {% block body-content-container %}{% endblock body-content-container %}
+
+        {% block base-javascript %}
+            {% render_bundle 'main' 'js' %}
+        {% endblock base-javascript %}
+
+        {% block body-marketing %}
+            {% if not debug %}
+                {% include "partials/marketing_tags.html" with snippet="body" only %}
+            {% endif %}
+        {% endblock body-marketing %}
+
+        {% block extra-javascript %}{% endblock extra-javascript %}
+    {% endspaceless %}
+</body>
+</html>

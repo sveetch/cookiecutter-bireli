@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "{{ cookiecutter.project_name }}"
+version = "{{ cookiecutter.version }}"
+requires-python = ">=3.8"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+DJANGO_SETTINGS_MODULE = "project.settings.test"
+addopts = "-vv"
+testpaths = [
+    "tests",
+]
+python_files = [
+    "*.py",
+]
+pythonpath = [
+    ".",
+    "django-apps",
+]

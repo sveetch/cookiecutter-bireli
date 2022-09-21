@@ -1,0 +1,65 @@
+///
+/// Spot is feature class for round button/cta well adjusted.
+///
+/// Padding only use the button horizontal padding to ensure round format
+///
+/// Depends on:
+///
+/// - Bootstrap settings
+/// - ../tools/flexbox
+/// - ../defaults
+///
+
+/// Enable Spot classes creation when `spot` module is imported.
+///
+/// @type Bool
+///
+$include-bb-spot: $include-bb-classes !default;
+
+@if $include-bb-spot {
+    .btn {
+        &.spot {
+            display: inline-flex;
+            padding: $btn-padding-x;
+            justify-content: center;
+            align-items: center;
+            line-height: 1;
+            border-radius: 50rem;
+        }
+    }
+
+    .cta {
+        // Spot is a feature class for full round button well adjusted.
+        // Padding only use the button horizontal padding to ensure round format
+        &.spot {
+            display: flex;
+            padding: $btn-padding-x;
+            justify-content: center;
+            align-items: center;
+            line-height: 1;
+            border-radius: 50rem;
+            flex-wrap: wrap;
+            flex-direction: column;
+
+            // Ensure direct children flow
+            & > * {
+                @include bb-flex(0, 1, auto);
+            }
+        }
+    }
+
+    // Adapt to available button breakpoint sizes
+    .btn-lg,
+    .cta-lg {
+        &.spot {
+            padding: $btn-padding-x-lg;
+        }
+    }
+
+    .btn-sm,
+    .cta-sm {
+        &.spot {
+            padding: $btn-padding-x-sm;
+        }
+    }
+}

@@ -1,0 +1,212 @@
+///
+/// Styleguide manifest
+///
+/// This will build the CSS manifest used by styleguide application to collect
+/// variables from Bootstrap, Bootbutt and site.
+///
+@charset "UTF-8";
+
+// Start with Bootbutt default variables and functions
+@import "../bootbutt/tools/functions";
+@import "../bootbutt/defaults";
+
+// Load site settings before Bootstrap so it can adopts cascaded variables but after
+// after Bootbutt defaults and functions so we can use it in settings
+@import "../settings/site";
+
+// Import Bootstrap base before site settings
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+// Finish to build Bootstrap utilities and computed variables from site settings
+@import "../settings/bootstrap";
+// Icon map
+@import "bootstrap-icons/font/bootstrap-icons.scss";
+// Finish to build Bootbutt from site settings
+@import "../settings/bootbutt";
+
+// py-css-styleguide helpers
+@import "../tools/styleguide_helpers";
+
+
+// Enable every available reference
+.styleguide-metas-references {
+    --auto: "true";
+}
+
+
+// 1. Typography
+// -------------
+
+// Bootbutt: Common text markup
+.styleguide-reference-bt_text_markup {
+    --structure: "list";
+    --items: "b strong i em";
+}
+
+// Bootbutt: Enabled font families
+.styleguide-reference-bb_fonts {
+    --structure: "list";
+    --items: "#{get-names($bb-fonts)}";
+}
+
+// Bootstrap: Enabled font weights
+.styleguide-reference-bt_font_weights {
+    --structure: "flat";
+    --keys: "#{get-names(map-get(map-get($utilities, "font-weight"), "values"))}";
+    --values: "#{get-values(map-get(map-get($utilities, "font-weight"), "values"))}";
+}
+// Bootstrap: Enabled font styles
+.styleguide-reference-bt_font_style {
+    --structure: "list";
+    --items: "#{map-get(map-get($utilities, "font-style"), "values")}";
+}
+
+// Bootstrap: Available font sizes
+.styleguide-reference-bt_font_sizes {
+    --structure: "flat";
+    --keys: "#{get-names($font-sizes)}";
+    --values: "#{get-values($font-sizes)}";
+}
+
+// Bootstrap: Display heading font sizes
+.styleguide-reference-bt_display_font_sizes {
+    --structure: "flat";
+    --keys: "#{get-names($display-font-sizes)}";
+    --values: "#{get-values($display-font-sizes)}";
+}
+
+// Bootstrap: Small font sizes
+.styleguide-reference-bt_small_sizes {
+    --structure: "flat";
+    --keys: "#{get-names($bb-small-sizes)}";
+    --values: "#{get-values($bb-small-sizes)}";
+}
+
+
+// 2. Colors
+// ---------
+
+// Bootstrap: Color palette
+.styleguide-reference-bt_palette{
+    --structure: "flat";
+    --splitter: "json-list";
+    --keys: '#{get-names-to-json($colors)}';
+    --values: '#{get-values-to-json($colors)}';
+}
+
+// Bootstrap: Theme colors
+.styleguide-reference-bt_theme {
+    --structure: "flat";
+    --keys: "#{get-names($theme-colors)}";
+    --values: "#{get-values($theme-colors)}";
+}
+
+
+// 2. Schemes
+// ----------
+
+// Bootbutt: Color schemes
+.styleguide-reference-bb_schemes {
+    --structure: "list";
+    --items: "#{get-names($bb-schemes)}";
+}
+.styleguide-reference-bb_schemes_default {
+    --structure: "string";
+    --value: "#{$bb-schemes-default}";
+}
+.styleguide-reference-bb_schemes_neutral {
+    --structure: "string";
+    --value: "#{$bb-schemes-neutral}";
+}
+
+
+// 3. Spacing
+// ----------
+
+// Bootstrap: Spacer sizes
+.styleguide-reference-bt_spacers {
+    --structure: "flat";
+    --keys: "#{get-names($spacers)}";
+    --values: "#{get-values($spacers)}";
+}
+
+// Bootstrap: Space names
+.styleguide-reference-bt_spaces {
+    --structure: "list";
+    --items: "#{get-names($bb-spaces)}";
+}
+
+// Bootstrap: Base space name
+.styleguide-reference-bt_base_space {
+    --structure: "string";
+    --value: "#{$bb-spaces-base-name}";
+}
+
+
+// 4. Grid
+// -------
+
+// Bootstrap: Container widths
+.styleguide-reference-bt_container_max_widths {
+    --structure: "flat";
+    --keys: "#{get-names($container-max-widths)}";
+    --values: "#{get-values($container-max-widths)}";
+}
+
+// Bootstrap: Grid breakpoint sizes
+.styleguide-reference-bt_grid_breakpoints {
+    --structure: "flat";
+    --keys: "#{get-names($grid-breakpoints)}";
+    --values: "#{get-values($grid-breakpoints)}";
+}
+
+// Bootstrap: Grid parameters
+.styleguide-reference-bt_grid_columns {
+    --structure: "string";
+    --value: "#{$grid-columns}";
+}
+.styleguide-reference-bt_grid_gutter_width {
+    --structure: "string";
+    --value: "#{$grid-gutter-width}";
+}
+.styleguide-reference-bt_grid_row_columns {
+    --structure: "string";
+    --value: "#{$grid-row-columns}";
+}
+.styleguide-reference-bt_grid_gutters {
+    --structure: "flat";
+    --keys: "#{get-names($gutters)}";
+    --values: "#{get-values($gutters)}";
+}
+
+
+// 5. Buttons
+// ----------
+
+// Bootstrap: Button sizes
+// NOTE: Hardcoded size names since Bootstrap does not generate them from a map
+.styleguide-reference-bt_button_sizes {
+    --structure: "list";
+    --items: "sm lg";
+}
+
+
+// 6. Icons
+// --------
+
+// Site: List of available glyph names
+.styleguide-reference-st_icon_glyphs {
+    --structure: "list";
+    --items: "#{get-names($icons)}";
+}
+
+// Bootbutt: List of available glyph size modifiers
+.styleguide-reference-bb_icon_sizes {
+    --structure: "flat";
+    --keys: "#{get-names($bb-icon-sizes)}";
+    --values: "#{get-values($bb-icon-sizes)}";
+}

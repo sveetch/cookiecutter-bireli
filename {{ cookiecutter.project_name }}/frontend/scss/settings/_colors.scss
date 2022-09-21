@@ -1,0 +1,44 @@
+///
+/// Site colors settings
+///
+
+///
+// Color variables
+// NOTE: This is the only place where Hex colors are allowed
+///
+/* stylelint-disable color-no-hex */
+$white: #ffffff;
+$black: #000000;
+/* stylelint-enable color-no-hex */
+
+///
+// Colors map
+///
+$site-colors: (
+    "black": $black,
+    "white": $white,
+);
+
+///
+// Theme colors to merge in Bootstrap theme colors
+///
+$site-theme: $site-colors;
+
+///
+// Site color themes to merge in Bootstrap theme colors
+///
+$bb-schemes: (
+    "black": (
+        "font-color": $white,
+        "background": $black,
+    ),
+    "white": (
+        "font-color": $black,
+        "background": $white,
+    ),
+);
+
+///
+// Default scheme to apply on objects which implement schemes
+///
+$bb-schemes-default: null;

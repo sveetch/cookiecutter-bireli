@@ -1,0 +1,75 @@
+///
+/// Webfont for icons
+///
+/// This assumes the icon font have been built from Icomoon service.
+///
+/// Depends on:
+///
+/// - ../defaults
+/// - ../tools/functions
+/// - ../tools/icons
+///
+
+/// Enable icons classes creation when `icons` module is imported.
+///
+/// @type Bool
+///
+$include-bb-icons: $include-bb-classes !default;
+
+@if $include-bb-icons {
+    // Font directory url path is relative to the CSS file
+    @font-face {
+        font-family: icomoon;
+        src: font-url("icons/icomoon.woff2") format("woff2"), font-url("icons/icomoon.woff") format("woff"), font-url("icons/icomoon.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    // Basic icon element prepend content with an icon from a class
+    // like ".icon-close"
+    [class^="icon-"],
+    [class*=" icon-"] {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+        &::before {
+            @include bb-icon;
+        }
+    }
+
+    // Insert icon at left inside a Bootstrap button
+    .btn[class^="icon-"],
+    .btn[class*=" icon-"] {
+        font-family: inherit;
+
+        &::before {
+            // Computed to 11px with 1rem (16px) font size
+            margin-right: 0.55em;
+        }
+    }
+
+    .cta[class^="icon-"],
+    .cta[class*=" icon-"] {
+        font-family: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    // Icon Sizes
+    @each $name, $value in $bb-icon-sizes {
+        .icon-#{$name}:not(.btn):not(.cta) {
+            font-size: $value;
+        }
+        .btn.icon-#{$name},
+        .cta.icon-#{$name} {
+            &::before {
+                font-size: $value;
+            }
+        }
+    }
+
+    // Import icon map part
+    @include bb-include-icons;
+}

@@ -1,0 +1,10 @@
+# Base application requirements
+
+# Django stack
+Django>=4.0
+django-configurations>=2.3.2
+
+# Layout integration and assets
+django-webpack-loader>=1.6.0,<2.0.0
+py-css-styleguide>=0.8.2
+emencia-django-staticpages>=0.5.1

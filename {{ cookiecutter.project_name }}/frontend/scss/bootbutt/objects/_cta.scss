@@ -1,0 +1,132 @@
+///
+/// Call To Action (CTA)
+///
+/// Adopt spacing, size and color variants from Button but without default border and
+/// enforce block flow
+///
+/// Depends on:
+///
+/// - Bootstrap settings
+/// - Bootstrap mixins
+/// - ../defaults
+///
+
+/// Enable CTA classes creation when `cta` module is imported.
+///
+/// @type Bool
+///
+$include-bb-cta: $include-bb-classes !default;
+
+// CTA settings adopt the Button ones. Note than paddings only use the horizontal
+// value (the vertical one is to short)
+$bb-cta-font-family: $btn-font-family !default;
+$bb-cta-font-weight: $btn-font-weight !default;
+$bb-cta-line-height: 1.1 !default;
+$bb-cta-white-space: $btn-white-space !default;
+$bb-cta-padding-x: $btn-padding-x !default;
+$bb-cta-padding-y: $btn-padding-x !default;
+$bb-cta-font-size: $btn-font-size !default;
+$bb-cta-border-radius: $btn-border-radius !default;
+$bb-cta-transition: $btn-transition !default;
+$bb-cta-focus-box-shadow: $btn-focus-box-shadow !default;
+$bb-cta-active-box-shadow: $btn-active-box-shadow !default;
+$bb-cta-padding-x-sm: $btn-padding-x-sm !default;
+$bb-cta-padding-y-sm: $btn-padding-x-sm !default;
+$bb-cta-font-size-sm: $btn-font-size-sm !default;
+$bb-cta-border-radius-sm: $btn-border-radius-sm !default;
+$bb-cta-padding-x-lg: $btn-padding-x-lg !default;
+$bb-cta-padding-y-lg: $btn-padding-x-lg !default;
+$bb-cta-font-size-lg: $btn-font-size-lg !default;
+$bb-cta-border-radius-lg: $btn-border-radius-lg !default;
+
+@if $include-bb-cta {
+    .cta {
+        display: block;
+        font-family: $bb-cta-font-family;
+        font-weight: $bb-cta-font-weight;
+        line-height: $bb-cta-line-height;
+        color: $body-color;
+        text-align: center;
+        text-decoration: if($link-decoration == none, null, none);
+        white-space: $bb-cta-white-space;
+        vertical-align: middle;
+        cursor: if($enable-button-pointers, pointer, null);
+        user-select: none;
+        background-color: transparent;
+
+        @include button-size($bb-cta-padding-y, $bb-cta-padding-x, $bb-cta-font-size, $bb-cta-border-radius);
+        @include transition($bb-cta-transition);
+
+        // Ensure direct children act as blocks
+        & > * {
+            display: block;
+        }
+
+        &:hover {
+            color: $body-color;
+            text-decoration: if($link-hover-decoration == underline, none, null);
+        }
+
+        &:focus,
+        .btn-check:focus + & {
+            outline: 0;
+            box-shadow: $bb-cta-focus-box-shadow;
+        }
+
+        &.active,
+        &:active,
+        .btn-check:active + &,
+        .btn-check:checked + & {
+            @include box-shadow($bb-cta-active-box-shadow);
+
+            &:focus {
+                @include box-shadow($bb-cta-focus-box-shadow, $bb-cta-active-box-shadow);
+            }
+        }
+
+        // Adapt to available button breakpoint sizes
+        &.cta-lg {
+            &.spot {
+                padding: $bb-cta-padding-y-lg $bb-cta-padding-x-lg;
+            }
+        }
+
+        &.cta-sm {
+            &.spot {
+                padding: $bb-cta-padding-y-sm $bb-cta-padding-x-sm;
+            }
+        }
+    }
+
+    // Apply color variants
+    @each $color, $value in $theme-colors {
+        .cta-#{$color} {
+            @include button-variant($value, $value);
+        }
+    }
+
+    @each $color, $value in $theme-colors {
+        .cta-outline-#{$color} {
+            @include button-outline-variant($value);
+        }
+    }
+
+    /// Button Sizes
+    .cta-lg {
+        @include button-size(
+            $bb-cta-padding-y-lg,
+            $bb-cta-padding-x-lg,
+            $bb-cta-font-size-lg,
+            $bb-cta-border-radius-lg
+        );
+    }
+
+    .cta-sm {
+        @include button-size(
+            $bb-cta-padding-y-sm,
+            $bb-cta-padding-x-sm,
+            $bb-cta-font-size-sm,
+            $bb-cta-border-radius-sm
+        );
+    }
+}

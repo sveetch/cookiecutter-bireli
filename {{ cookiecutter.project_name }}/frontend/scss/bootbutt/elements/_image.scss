@@ -1,0 +1,22 @@
+///
+/// Generic image `<img>` element rules
+///
+/// Depends on:
+///
+/// - Site settings for some variables
+///
+
+/// Enable image element rules creation when `images` module is imported.
+///
+/// @type Bool
+///
+$include-bb-image: $include-bb-classes !default;
+
+@if $include-bb-image {
+    // Ensure proper responsive behavior on larger image by default
+    img {
+        display: inline-block;
+        max-width: 100%;
+        height: auto;
+    }
+}

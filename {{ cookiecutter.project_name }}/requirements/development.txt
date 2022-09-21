@@ -1,0 +1,8 @@
+# Specific requirements for development environment, inherit from base
+-r ./base.txt
+flake8
+pytest>=7.0
+pytest-django>=4.5.2
+factory-boy
+pyquery
+tox

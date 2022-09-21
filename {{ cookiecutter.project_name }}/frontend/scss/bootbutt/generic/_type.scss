@@ -1,0 +1,31 @@
+///
+/// Generic types classes
+///
+/// Depends on:
+///
+/// - Site settings for some variables
+///
+
+/// Enable icons classes creation when `icons` module is imported.
+///
+/// @type Bool
+///
+$include-bb-type: $include-bb-classes !default;
+
+@if $include-bb-type {
+    // Build font family class utilities. Each font family class will be like
+    // '.font-NAME'
+    @each $name, $value in $bb-fonts {
+        .font-#{$name} {
+            font-family: $value !important;
+        }
+    }
+
+    // Build small sizes class utilities. Each size class will be like
+    // '.small-NAME'
+    @each $name, $value in $bb-small-sizes {
+        .sm-#{$name} {
+            font-size: $value !important;
+        }
+    }
+}

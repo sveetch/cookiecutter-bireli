@@ -1,0 +1,26 @@
+{
+    "author_name": "Your name",
+    "author_email": "Your email",
+    "author_username": "dummy",
+
+    "project_title": "Project name",
+    "project_name": "{{ cookiecutter.project_title.lower() | slugify  }}",
+    "project_short_description": "A Django project.",
+
+    "enable_drf": false,
+
+    "version": "0.1.0",
+
+    "_copy_without_render": [
+        "frontend/scss",
+        "frontend/js",
+        "frontend/.stylelintrc.json",
+        "frontend/.stylelintignore",
+        "project/locale",
+        "project/static",
+        "project/static-sources",
+        "project/templates",
+        "requirements",
+        "tests"
+    ]
+}

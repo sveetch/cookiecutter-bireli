@@ -1,0 +1,131 @@
+///
+/// Spacing utilities.
+///
+/// Depends on:
+///
+/// - ../defaults
+/// - ./functions
+///
+
+///
+/// Include a Bootstrap spacer size for a property with optional responsive behaviors.
+///
+/// @arg {String} $prop [null]
+///   CSS property name to include.
+///
+/// @arg {String} $name [null]
+///   Spacer name (as its key index in '$spacers' map from Bootstrap variables)
+///   for default property value.
+///
+/// @arg {List} $breakpoints [()]
+///   Map of breakpoints values where key name is the breakpoint name and key
+///   value is the property value to define. For each given breakpoint, a value
+///   will be defined to override the default one.
+///
+@mixin responsive-spacer($prop, $name, $breakpoints: ()) {
+    #{$prop}: map-get($spacers, $name) !important;
+
+    @each $breakpoint, $name in $breakpoints {
+        @include media-breakpoint-up($breakpoint) {
+            #{$prop}: map-get($spacers, $name) !important;
+        }
+    }
+}
+
+///
+/// Includes properties to apply vertical/horizontal spacing on an
+/// element for various breakpoints.
+///
+/// TODO: We should have an axis option to apply on both
+///
+/// @arg {Map} $definitions [null]
+///   space sizes map which define at least the keyword name from '$default'.
+///
+/// @arg {String} $axis [vertical]
+///   axis to apply spaces, can ben either 'horizontal' or 'vertical'.
+///
+/// @arg {String} $base [$bb-spaces-base-breakpoint]
+///   Breakpoint name to use as the default spacing rules. It won't be included inside
+///   a media query since it is the default style rules, this is commonly the lowest
+///   breakpoint (then the other breakpoints make overriding from media queries).
+///
+/// @arg {List} $sides [("start", "end")]
+///   Sides to apply spacing depending from $axis, 'start' means 'top' or
+///   'left' and 'end' means 'right' or 'bottom'. Both sides are enabled by
+///   default.
+///
+/// @arg {String} $prop [padding]
+///   Property name to define, default is 'padding' but it can be 'margin' also.
+///
+/// @arg {Bool} $important [false]
+///   If set to `true`, property values will include `!important` mark.
+///
+/// @arg {Map} $breakpoints [$bb-breakpoints]
+///   Breakpoint definitions map to use with space definitions.
+///
+/// @example scss
+///   $sample-sizes: (
+///       "xs": 0.5rem,
+///       "sm": 0.75rem,
+///       "md": 1rem,
+///       "lg": 1.5rem,
+///       "xl": 2.5rem,
+///       "xxl": 4rem,
+///   );
+///
+///   div{
+///       @include bb-apply-spaces($sample-sizes);
+///   }
+///
+///
+@mixin bb-apply-spaces(
+    $definitions,
+    $axis: "vertical",
+    $base: $bb-spaces-base-breakpoint,
+    $sides: ("start", "end"),
+    $prop: "padding",
+    $important: false,
+    $breakpoints: $bb-breakpoints
+) {
+    $space-start: top;
+    $space-end: bottom;
+
+    @if $axis == "horizontal" {
+        $space-start: left;
+        $space-end: right;
+    }
+
+    $important-mark: if($important, !important, null);
+
+    @if $definitions {
+        @if map-get($definitions, $base) == null {
+            @error "Given space definition must contain at least the '#{$base}' key";
+        }
+
+        // Default size comes from definition item with name specified in '$base'
+        // argument
+        @if index($sides, "start") {
+            #{$prop}-#{$space-start}: map-get($definitions, $base) $important-mark;
+        }
+
+        @if index($sides, "end") {
+            #{$prop}-#{$space-end}: map-get($definitions, $base) $important-mark;
+        }
+
+        // Breakpoints
+        @each $name, $size in $definitions {
+            // Ignore default size, also dont try to use an unknowed breakpoint
+            @if $name != $base and map-get($breakpoints, $name) {
+                @include media-breakpoint-up($name, $breakpoints) {
+                    @if index($sides, "start") {
+                        #{$prop}-#{$space-start}: $size $important-mark;
+                    }
+
+                    @if index($sides, "end") {
+                        #{$prop}-#{$space-end}: $size $important-mark;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+[flake8]
+max-line-length = 88
+exclude =
+    .git,
+    .venv,
+    dist,
+    etc,
+    var,
+    locale,
+    static,
+    static-sources,
+    templates,
+    __pycache__,
+    .pytest_cache,
+    node_modules,
+    */migrations/*,
