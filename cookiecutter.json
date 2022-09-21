@@ -11,6 +11,7 @@
 
     "version": "0.1.0",
 
+    "_bireli_version": "0.1.0",
     "_python_version": ">=3.8",
     "_django_version": ">=4.0",
     "_drf_version": ">=3.13.1",
