@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "{{ cookiecutter.project_name }}"
 version = "{{ cookiecutter.version }}"
-requires-python = ">=3.8"
+requires-python = "{{ cookiecutter._python_version }}"
 
 [tool.pytest.ini_options]
 minversion = "7.0"

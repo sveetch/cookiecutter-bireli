@@ -76,3 +76,14 @@ You can pre define some options in your
 `cookiecutter user configuration <https://cookiecutter.readthedocs.io/en/stable/advanced/user_config.html>`_
 to avoid to input them each time you use this cookie. This is especially
 recommended for the author and username ones.
+
+.. note::
+
+    To avoid managing main components versions through multiple files and miss some
+    inconsistencies, these versions are stored through private variables in cookiecutter
+    template configuration file. These variables are strings that must be valid
+    requirement versions for Python package, except for the frontend components that
+    must be valid versions for NPM.
+
+    However this is only used when generating a new project so you only have to bother
+    about this if your are contributing to this template repository.

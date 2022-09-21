@@ -11,6 +11,13 @@
 
     "version": "0.1.0",
 
+    "_python_version": ">=3.8",
+    "_django_version": ">=4.0",
+    "_drf_version": ">=3.13.1",
+    "_node_version": ">=18.0.0",
+    "_npm_version": ">=8.0.0",
+    "_bootstrap_version": "5.2.0",
+
     "_copy_without_render": [
         "frontend/scss",
         "frontend/js",
@@ -20,7 +27,6 @@
         "project/static",
         "project/static-sources",
         "project/templates",
-        "requirements",
         "tests"
     ]
 }

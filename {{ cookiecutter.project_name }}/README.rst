@@ -8,12 +8,17 @@
 
 {{ cookiecutter.project_short_description|wordwrap(80) }}
 
+
 Dependancies
 ************
 
-* `Python`_>=3.8;
-* `Django`_>=4.0;{% if cookiecutter.enable_drf|lower == 'true' %}
-* `Django REST framework`_>=3.13.1;{% endif %}
+* `Python`_ {{ cookiecutter._python_version }};
+* `Django`_ {{ cookiecutter._django_version }};{% if cookiecutter.enable_drf|lower == 'true' %}
+* `Django REST framework`_ {{ cookiecutter._drf_version }};{% endif %}
+* `Node.js`_ {{ cookiecutter._node_version }};
+* `NPM`_ {{ cookiecutter._npm_version }};
+* `Bootstrap`_ {{ cookiecutter._bootstrap_version }};
+
 
 Install
 *******
@@ -26,9 +31,18 @@ Then: ::
 
     make frontend
 
+Finally you will need a super user to login into admin: ::
+
+    make superuser
+
 Usage
 *****
 
 ::
 
     make run
+
+There is a lot of useful Makefile commands to manage your project, read the Makefile
+help: ::
+
+    make help

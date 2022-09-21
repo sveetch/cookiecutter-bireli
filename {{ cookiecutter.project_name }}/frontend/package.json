@@ -19,7 +19,7 @@
         "@popperjs/core": "^2.9.3",
         "autoprefixer": "^10.3.0",
         "babel-loader": "^8.2.2",
-        "bootstrap": "5.2.0",
+        "bootstrap": "{{ cookiecutter._bootstrap_version }}",
         "bootstrap-icons": "^1.9.1",
         "jquery": "^3.6.0",
         "lodash": "^4.17.21"
@@ -35,8 +35,8 @@
         "webpack-cli": "^4.7.2"
     },
     "engines": {
-        "node": ">= 18.0.0",
-        "npm": ">= 8.0.0"
+        "node": "{{ cookiecutter._node_version }}",
+        "npm": "{{ cookiecutter._npm_version }}"
     },
     "browserslist": [
         ">= 0.5%",

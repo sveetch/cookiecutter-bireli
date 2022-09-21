@@ -1,7 +1,7 @@
 # Base application requirements
 
 # Django stack
-Django>=4.0
+Django{{ cookiecutter._django_version }}
 django-configurations>=2.3.2
 
 # Layout integration and assets
