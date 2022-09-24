@@ -7,9 +7,15 @@ Commonly you won't never edit theses modules and will prefer to make your specif
 changes in environment settings.
 
 """
-from .webpack import WebpackModSettings
+from .icomoon import IcomoonSettings
+from .staticpages import StaticpageSettings
+from .styleguide import StyleguideSettings
+from .webpack import WebpackSettings
 
 
 __all__ = [
-    "WebpackModSettings",
+    "IcomoonSettings",
+    "StaticpageSettings",
+    "StyleguideSettings",
+    "WebpackSettings",
 ]

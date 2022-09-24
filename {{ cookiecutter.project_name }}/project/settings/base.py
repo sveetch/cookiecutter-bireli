@@ -15,7 +15,9 @@ from pathlib import Path
 
 from configurations import Configuration, values
 
-from .apps import WebpackModSettings
+from .apps import (
+    IcomoonSettings, StaticpageSettings, StyleguideSettings, WebpackSettings,
+)
 
 
 def gettext(s):
@@ -294,7 +296,7 @@ class DjangoTemplate:
 
 
 class ComposedProjectSettings(
-    WebpackModSettings,
+    IcomoonSettings, StyleguideSettings, StaticpageSettings, WebpackSettings,
     DjangoLanguage, DjangoDatabase, DjangoTemplate, DjangoStaticMedia, DjangoPaths,
     DjangoBase,
     Configuration

@@ -7,7 +7,7 @@ Django Webpack loader settings
 from configurations import values
 
 
-class WebpackModSettings:
+class WebpackSettings:
     """
     Django Webpack plugin settings
 
