@@ -1,40 +1,29 @@
 """
-====================================
-Settings for development environment
-====================================
-
-Intended to be used with ``make run`` for local development.
+=======================
+Development environment
+=======================
 
 """
-from project.settings.base import *  # noqa: F403
-
-DEBUG = True
-
-# Https is disabled on development environment
-HTTPS_ENABLED = False
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": VAR_PATH / "db" / "db.sqlite3",  # noqa: F405
-    }
-}
-
-# In development, not any email is really sent to a SMTP server,
-# instead they are just outputted to your terminal console where
-# Django runserver is running.
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+from .base import ComposedProjectSettings
 
 
-"""
-Django Webpack settings
-"""
-# Disable cache to avoid reloading Django instance to get new bundle builds
-WEBPACK_LOADER["DEFAULT"]["CACHE"] = False  # noqa: F405
+class Development(ComposedProjectSettings):
+    """
+    Settings for development environment.
 
+    Intended to be used with ``make run`` for local development.
+    """
+    DEBUG = True
 
-# Import optionnal local settings for local overriding
-try:
-    from .local import *  # noqa: F401,F403
-except ImportError:
-    pass
+    # Https is disabled on development environment
+    HTTPS_ENABLED = False
+
+    # Don't send any email for real, just push them to the shell output
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+    @classmethod
+    def post_setup(cls):
+        super().post_setup()
+
+        # Disable webpack cache
+        cls.WEBPACK_LOADER["DEFAULT"]["CACHE"] = False

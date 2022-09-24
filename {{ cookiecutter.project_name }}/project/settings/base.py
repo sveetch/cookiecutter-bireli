@@ -1,192 +1,308 @@
 """
-=====================
-Base project settings
-=====================
+=============
+Base settings
+=============
 
-It is not to be used directly but by the way of an environment settings (development,
-production, etc..).
+Commonly you won't never edit this file and will prefer to make your specific changes
+in environment settings.
 
-Base settings almost target environment that will be deployed like production.
-Do not add development or test settings here as they can lead to security issues.
+This module regroup the builtin Django component classes, Django base class (for
+everything from Django builtin that is too simple to require its own class) and the
+main composer class.
+
 """
 from pathlib import Path
 
+from configurations import Configuration, values
+
+from .apps import WebpackModSettings
+
 
 def gettext(s):
+    """
+    A dummy function just to surround some string required to be translated, Django
+    and gettext recognize it as a valid mark to discover translatable strings.
+    """
     return s
 
 
-# Dummy key for development, you need to fill a real secret key in your production
-# environment
-SECRET_KEY = "***TOPSECRET***"
+class DjangoBase:
+    """
+    Base Django settings.
 
-# Root of project repository
-BASE_DIR = Path(__file__).parents[2]
+    This is the first executed classes so don't expect to rely on other
+    settings here with setup method, all the settings need to be independant.
 
-# Django project
-PROJECT_PATH = BASE_DIR / "project"
-VAR_PATH = BASE_DIR / "var"
+    This is for the common settings that are simple enough to not require their own
+    classes.
 
-DEBUG = False
+    Opposed to the general structuring way, ``MIDDLEWARE`` and ``INSTALLED_APPS`` are
+    defined here with all the common components you may expect from a barebone Django,
+    this ensure a strong stability for all Django builtins and application classes.
 
-# Https is always enabled on default
-HTTPS_ENABLED = True
+    Application classes and environment classes still needs to alter these two settings
+    in their own classes, not here.
+    """
+    # Debug mode is disabled by default to avoid security issues from an oversight
+    DEBUG = values.BooleanValue(
+        False,
+        environ_name="DEBUG",
+    )
 
-ADMINS = (
-    # ("Admin", "PUT_ADMIN_EMAIL_HERE"),
-)
+    # Default Site object
+    SITE_ID = values.PositiveIntegerValue(
+        1,
+        environ_name="SITE_ID",
+    )
 
-MANAGERS = ADMINS
+    # Dummy key, you need to fill a real secret key in your deployed environments
+    SECRET_KEY = values.Value(
+        "***TOPSECRET***",
+        environ_name="SECRET_KEY",
+    )
 
-DATABASES = {}
+    # Https is always enabled on default
+    HTTPS_ENABLED = True
 
-# Hosts/domain names that are valid for this site; required if DEBUG is False
-# See https://docs.djangoproject.com/en/3.2/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["*"]
+    ADMINS = (
+        # ("Admin", "PUT_ADMIN_EMAIL_HERE"),
+    )
 
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# In a Windows environment this must be set to your system time zone.
-TIME_ZONE = "America/Chicago"
-# TIME_ZONE = 'Europe/Paris' # French timezone
+    MANAGERS = ADMINS
 
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = "en"
+    # Hosts/domain names that are valid for this site; required if DEBUG is False
+    ALLOWED_HOSTS = ["*"]
 
-LANGUAGES = (
-    ("en", gettext("English")),
-    # ("de", gettext("Deutsch")),
-    # ("es", gettext("Español")),
-    # ("fr", gettext("French")),
-    # ("it", gettext("Italiano")),
-    # ("ja", gettext("日本語")),
-    # ('zh', gettext('官话')),
-)
+    MIDDLEWARE = [
+        "django.middleware.security.SecurityMiddleware",
+        "django.contrib.sessions.middleware.SessionMiddleware",
+        "django.middleware.locale.LocaleMiddleware",
+        "django.middleware.common.CommonMiddleware",
+        "django.middleware.csrf.CsrfViewMiddleware",
+        "django.contrib.auth.middleware.AuthenticationMiddleware",
+        "django.contrib.messages.middleware.MessageMiddleware",
+        "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    ]
 
-# A tuple of directories where Django looks for translation files
-LOCALE_PATHS = [
-    PROJECT_PATH / "locale",
-]
+    ROOT_URLCONF = "project.urls"
 
-SITE_ID = 1
+    # Python dotted path to the WSGI application used by Django"s runserver.
+    WSGI_APPLICATION = "project.wsgi.application"
 
-# If you set this to False, Django will make some optimizations so as not
-# to load the internationalization machinery.
-USE_I18N = True
+    INSTALLED_APPS = [
+        "django.contrib.admin",
+        "django.contrib.auth",
+        "django.contrib.contenttypes",
+        "django.contrib.sessions",
+        "django.contrib.messages",
+        "django.contrib.sites",
+        "django.contrib.staticfiles",
+        "django.forms",
+    ]
 
-# If you set this to False, Django will not format dates, numbers and
-# calendars according to the current locale.
-USE_L10N = True
+    LOGIN_REDIRECT_URL = "/"
+    LOGOUT_REDIRECT_URL = "/"
 
-# If you set this to False, Django will not use timezone-aware datetimes.
-USE_TZ = True
-
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/var/www/example.com/media/"
-MEDIA_ROOT = VAR_PATH / "media"
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash.
-# Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = "/media/"
-
-# Absolute path to the directory static files should be collected to.
-# Don"t put anything in this directory yourself; store your static files
-# in apps "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/var/www/example.com/static/"
-STATIC_ROOT = VAR_PATH / "static"
-
-# URL prefix for static files.
-# Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = "/static/"
-
-# Additional locations of static files
-STATICFILES_DIRS = [
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don"t forget to use absolute paths, not relative paths.
-    PROJECT_PATH / "static-sources",
-]
+    @property
+    def ENVIRONMENT(self):
+        """
+        Environment name in which the application is launched.
+        """
+        return self.__class__.__name__.lower()
 
 
-MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.locale.LocaleMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
-]
+class DjangoPaths:
+    """
+    Settings for essential path object related to the project structure.
 
-ROOT_URLCONF = "project.urls"
+    It should allways be in the first component classes to be executed since almost all
+    component classes may rely on it directly or not.
+    """
+    # Root of project repository
+    BASE_DIR = Path(__file__).parents[2]
 
-# Python dotted path to the WSGI application used by Django"s runserver.
-WSGI_APPLICATION = "project.wsgi.application"
+    # Django project
+    PROJECT_PATH = BASE_DIR / "project"
 
-TEMPLATES = [
-    {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [
-            PROJECT_PATH / "templates",
-        ],
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "debug": False,
-            "context_processors": [
-                "django.contrib.auth.context_processors.auth",
-                "django.template.context_processors.debug",
-                "django.template.context_processors.i18n",
-                "django.template.context_processors.request",
-                "django.template.context_processors.media",
-                "django.template.context_processors.static",
-                "django.template.context_processors.tz",
-                "django.contrib.messages.context_processors.messages",
-                # Basic processor to insert some common global variables
-                "project_utils.context_processors.site_metas",
-            ],
-        },
-    },
-]
+    # Variable content directory, mostly use for local db and media storage in
+    # deployed environments
+    VAR_PATH = BASE_DIR / "var"
 
-INSTALLED_APPS = [
-    # Django batteries
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.sites",
-    "django.contrib.staticfiles",
-    "django.forms",
-    # Layout integration and assets
-    "webpack_loader",
-]
 
-LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "/"
+class DjangoDatabase:
+    """
+    The database settings.
+    """
+    MIGRATION_MODULES = {}
 
-# Ensure we can override applications widgets templates from project template
-# directory, require also "django.forms" in INSTALLED_APPS
-FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
+    @classmethod
+    def setup(cls):
+        super().setup()
 
-"""
-Django Webpack plugin settings
+        # Every item for default db from DATABASES can be edited from environment
+        # variables
+        cls.DATABASES = {
+            "default": {
+                "ENGINE": values.Value(
+                    "django.db.backends.sqlite3",
+                    environ_name="DB_ENGINE",
+                    environ_prefix=None,
+                ),
+                "NAME": values.Value(
+                    cls.VAR_PATH / "db" / "db.sqlite3", environ_name="DB_NAME",
+                    environ_prefix=None
+                ),
+                "USER": values.Value(None, environ_name="DB_USER", environ_prefix=None),
+                "PASSWORD": values.Value(
+                    None, environ_name="DB_PASSWORD", environ_prefix=None
+                ),
+                "HOST": values.Value(None, environ_name="DB_HOST", environ_prefix=None),
+                "PORT": values.PositiveIntegerValue(
+                    None, environ_name="DB_PORT", environ_prefix=None
+                ),
+            }
+        }
 
-Cache is enabled by default since deployed instances are always reloaded and we don't
-build frontend again until next deployment. However local development will have to
-disable it else django-webpack will use the first encountered bundle hash until next
-instance reload.
-"""
-WEBPACK_LOADER = {
-    "DEFAULT": {
-        "CACHE": True,
-        "STATS_FILE": PROJECT_PATH / "static-sources" / "webpack-stats.json",
-        "POLL_INTERVAL": 0.1,
-        "IGNORE": [r".+\.hot-update.js", r".+\.map"],
-        # "LOADER_CLASS": "academy.custom_webpack_loader.AcademyWebpackLoader",
-    }
-}
+
+class DjangoLanguage:
+    """
+    Everything related to I18N, I10N and Timezone.
+    """
+    # Local time zone for this installation. Choices can be found here:
+    # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
+    TIME_ZONE = values.Value(
+        "America/Chicago",
+        environ_name="TIME_ZONE",
+    )
+    # TIME_ZONE = 'Europe/Paris' # French timezone
+
+    # Language code for this installation. All choices can be found here:
+    # http://www.i18nguy.com/unicode/language-identifiers.html
+    LANGUAGE_CODE = values.Value(
+        "en",
+        environ_name="LANGUAGE_CODE",
+    )
+
+    LANGUAGES = (
+        ("en", gettext("English")),
+        # ("de", gettext("Deutsch")),
+        # ("es", gettext("Español")),
+        # ("fr", gettext("French")),
+        # ("it", gettext("Italiano")),
+        # ("ja", gettext("日本語")),
+        # ('zh', gettext('官话')),
+    )
+
+    # If you set this to False, Django will make some optimizations so as not
+    # to load the internationalization machinery.
+    USE_I18N = values.BooleanValue(
+        True,
+        environ_name="USE_I18N",
+    )
+
+    # If you set this to False, Django will not format dates, numbers and
+    # calendars according to the current locale.
+    # DEPRECATED
+    USE_L10N = True
+
+    # If you set this to False, Django will not use timezone-aware datetimes.
+    # DEPRECATED
+    USE_TZ = True
+
+    @classmethod
+    def setup(cls):
+        super().setup()
+
+        # A tuple of directories where Django looks for translation files
+        cls.LOCALE_PATHS = [
+            cls.PROJECT_PATH / "locale",
+        ]
+
+
+class DjangoStaticMedia:
+    """
+    Settings related to static files and media files.
+    """
+    # URL that handles the media served from MEDIA_ROOT. Make sure to use a
+    # trailing slash.
+    # Examples: "http://example.com/media/", "http://media.example.com/"
+    MEDIA_URL = "/media/"
+
+    # URL prefix for static files.
+    # Example: "http://example.com/static/", "http://static.example.com/"
+    STATIC_URL = "/static/"
+
+    @classmethod
+    def setup(cls):
+        super().setup()
+
+        # Absolute filesystem path to the directory that will hold user-uploaded files.
+        # Example: "/var/www/example.com/media/"
+        cls.MEDIA_ROOT = cls.VAR_PATH / "media"
+
+        # Absolute path to the directory static files should be collected to.
+        # Don"t put anything in this directory yourself; store your static files
+        # in apps "static/" subdirectories and in STATICFILES_DIRS.
+        # Example: "/var/www/example.com/static/"
+        cls.STATIC_ROOT = cls.VAR_PATH / "static"
+
+        # Additional locations of static files
+        cls.STATICFILES_DIRS = [
+            # Put strings here, like "/home/html/static" or "C:/www/django/static".
+            # Always use forward slashes, even on Windows.
+            # Don"t forget to use absolute paths, not relative paths.
+            cls.PROJECT_PATH / "static-sources",
+        ]
+
+
+class DjangoTemplate:
+    """
+    Settings for Django template (using the Django template backend).
+    """
+    # Ensure we can override applications widgets templates from project template
+    # directory, require also "django.forms" in INSTALLED_APPS
+    FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
+
+    @classmethod
+    def setup(cls):
+        super().setup()
+
+        cls.TEMPLATES = [
+            {
+                "BACKEND": "django.template.backends.django.DjangoTemplates",
+                "DIRS": [
+                    cls.PROJECT_PATH / "templates",
+                ],
+                "APP_DIRS": True,
+                "OPTIONS": {
+                    "debug": False,
+                    "context_processors": [
+                        "django.contrib.auth.context_processors.auth",
+                        "django.template.context_processors.debug",
+                        "django.template.context_processors.i18n",
+                        "django.template.context_processors.request",
+                        "django.template.context_processors.media",
+                        "django.template.context_processors.static",
+                        "django.template.context_processors.tz",
+                        "django.contrib.messages.context_processors.messages",
+                        # Basic processor to insert some common global variables
+                        "project_utils.context_processors.site_metas",
+                    ],
+                },
+            },
+        ]
+
+
+class ComposedProjectSettings(
+    WebpackModSettings,
+    DjangoLanguage, DjangoDatabase, DjangoTemplate, DjangoStaticMedia, DjangoPaths,
+    DjangoBase,
+    Configuration
+):
+    """
+    Project settings composition.
+
+    Here you may composed the project settings for needed Django components and
+    applications.
+    """
+    pass

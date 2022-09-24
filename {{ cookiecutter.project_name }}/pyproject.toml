@@ -9,7 +9,8 @@ requires-python = "{{ cookiecutter._python_version }}"
 
 [tool.pytest.ini_options]
 minversion = "7.0"
-DJANGO_SETTINGS_MODULE = "project.settings.test"
+DJANGO_SETTINGS_MODULE = "project.settings"
+DJANGO_CONFIGURATION = "Test"
 addopts = "-vv"
 testpaths = [
     "tests",
