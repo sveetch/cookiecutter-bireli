@@ -1,4 +1,4 @@
-rom django.urls import reverse
+from django.urls import reverse
 
 
 def test_static_index(db, client):
