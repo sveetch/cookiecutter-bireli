@@ -1,0 +1,48 @@
+<div class="colors-sample container-xl mb-5">
+    <h2 class="section-title sg-anchor" id="colors">Colors</h2>
+    <div class="palette row align-items-start g-3 py-3">
+        <h3 class="part-title sg-anchor" id="colors-palette">Palette</h3>
+        <p class="lead col-12">Available color names usable as Sass variables.</p>
+        {% for k,v in styleguide.bt_palette.items %}
+            <div class="col-12 col-md-6 col-lg-3 col-xl-2">
+                <div class="card">
+                    <div class="palette-color card-img-top" style="background: {{ v }}">
+                        <span>${{ k }}</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title" title="{{ v }}">{{ v }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <hr class="part-divider">
+    <div class="palette row align-items-start g-3 py-3">
+        <h3 class="part-title sg-anchor" id="colors-theme">Theme</h3>
+        <p class="lead col-12">Available theme colors usable as Sass variables and class modifiers on Bootstrap components.</p>
+        {% for k,v in styleguide.bt_theme.items %}
+            <div class="col-12 col-md-6 col-lg-3 col-xl-2">
+                <div class="card">
+                    <div class="palette-color card-img-top" style="background: {{ v }}">
+                        <span class="font-monospace">${{ k }}</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title" title="{{ v }}">{{ v }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <hr class="part-divider">
+    <div class="row align-items-start g-3 py-3">
+        <h3 class="part-title sg-anchor" id="colors-text-colors">Text colors</h3>
+        <p class="lead col-12">Available theme colors for texts usable as class helpers.</p>
+        {% for k,v in styleguide.bt_theme.items %}
+            <div class="col-12 col-lg-6 demo-content">
+                <p class="text-{{ k }}">
+                    <b class="class-name">text-{{ k }}</b> {% lorem 3 w random %}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+</div>

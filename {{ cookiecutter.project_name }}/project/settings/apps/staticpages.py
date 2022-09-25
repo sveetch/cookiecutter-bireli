@@ -22,6 +22,9 @@ class StaticpageSettings:
     # "/foo/bar/mypage/")
     STATICPAGES_DEFAULT_URLPATH = "prototypes"
 
+    # URL name which qualify a staticpage as an index page.
+    STATICPAGES_INDEX_NAME = 'index'
+
     # Enabled staticpages configuration
     STATICPAGES = [
         "index",

@@ -1,0 +1,241 @@
+{% with sample_icon=styleguide.st_icon_glyphs.0 %}
+    <div class="buttons-sample container-xl mb-5">
+        <h2 class="section-title sg-anchor" id="buttons">Buttons</h2>
+        <div class="row align-items-start g-3 py-3">
+            <h3 class="part-title sg-anchor" id="buttons-theme">Theme</h3>
+            <p class="lead col-12">Available button theme colors usable as class helpers.</p>
+            <div class="col-12 col-lg-3 demo-content">
+                <button type="button" class="btn">Default</button>
+            </div>
+            <div class="col-12 col-lg-3 demo-content">
+                <button type="button" class="btn btn-link">Link</button>
+            </div>
+            {% for k,v in styleguide.bt_theme.items %}
+                <div class="col-12 col-lg-3 demo-content">
+                    <button type="button" class="btn btn-{{ k }}">btn-{{ k }}</button>
+                </div>
+            {% endfor %}
+        </div>
+        <hr class="part-divider">
+        <div class="row align-items-start g-3 py-3">
+            <h3 class="part-title sg-anchor" id="buttons-sizes">Sizes</h3>
+            <p class="lead col-12">Available button sizes usable as class helpers.</p>
+            <div class="col-12 col-lg-3 demo-content">
+                <button type="button" class="btn btn-primary">Default</button>
+            </div>
+            {% for k in styleguide.bt_button_sizes %}
+                <div class="col-12 col-lg-3 demo-content">
+                    <button type="button" class="btn btn-primary btn-{{ k }}">btn-{{ k }}</button>
+                </div>
+            {% endfor %}
+        </div>
+        <hr class="part-divider">
+        <div class="row align-items-start g-3 py-3">
+            <h3 class="part-title sg-anchor" id="buttons-spot">Spot</h3>
+            <p class="lead col-12">A button variant to get a correct round button with a single class helper.</p>
+            <div class="col-12 col-lg-3 demo-content">
+                <a href="#" class="btn btn-primary">
+                    <span class="visually-hidden">Accessible text</span>
+                    <i class="{{ sample_icon }}" aria-hidden="true"></i>
+                </a>
+                &nbsp;
+                <a href="#" class="btn btn-primary spot">
+                    <span class="visually-hidden">Accessible text</span>
+                    <i class="{{ sample_icon }}" aria-hidden="true"></i>
+                </a>
+                {% for k in styleguide.bt_button_sizes %}
+                    &nbsp;
+                    <a href="#" class="btn btn-primary btn-{{ k }} spot">
+                        <span class="visually-hidden">Accessible text</span>
+                        <i class="{{ sample_icon }}" aria-hidden="true"></i>
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="col-12 col-lg-3 demo-content">
+                <button type="button" class="btn btn-primary spot">spot</button>
+            </div>
+            <div class="col-12 col-lg-3 demo-content">
+                <a href="#" class="btn btn-primary spot">
+                    <span class="visually-hidden">Accessible text</span>
+                    <i class="{{ sample_icon }}" aria-hidden="true"></i> spot
+                </a>
+            </div>
+            <div class="col-12 col-lg-3 demo-content">
+                <button type="button" class="btn btn-primary spot {{ sample_icon }}">spot</button>
+            </div>
+        </div>
+        <hr class="part-divider">
+        <div class="row align-items-start g-3 py-3">
+            <h3 class="part-title sg-anchor" id="buttons-toolbar">Toolbar</h3>
+            <p class="lead">
+                Alike the Bootstrap component "Button group" but do not stack horizontally and include an optional group divider.
+            </p>
+            <p>
+                Unlike the "Button group", you can't define button feature from group container, you need to explicitely do it on each button.
+            </p>
+            <p>
+                Default divider color is black, use a border color utility class (like <code>border-white</code>) to change it.
+            </p>
+            <p>
+                Use optional breakpoint classes (<code>break-md</code>, <code>break-lg</code>, etc..) to define when the groups vertically stack.
+            </p>
+            <div class="col-12 col-lg-6 demo-content">
+                <div class="button-toolbar break-md"
+                     role="toolbar"
+                     aria-label="A button toolbar">
+                    <div class="group" role="group" aria-label="First group">
+                        <a href="#" class="btn btn-primary">1.1</a>
+                        <a href="#" class="btn btn-primary">1.2</a>
+                    </div>
+                    <div class="group" role="group" aria-label="Second group">
+                        <a href="#" class="btn btn-primary">2.1</a>
+                        <a href="#" class="btn btn-primary">2.2</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 demo-content">
+                <div class="button-toolbar break-md"
+                     role="toolbar"
+                     aria-label="A button toolbar">
+                    <div class="group divider" role="group" aria-label="First group">
+                        <a href="#" class="btn btn-primary spot">
+                            <span class="visually-hidden">Accessible text</span>
+                            <i class="{{ sample_icon }}" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="btn btn-primary spot">
+                            <span class="visually-hidden">Accessible text</span>
+                            <i class="{{ sample_icon }}" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="group" role="group" aria-label="Second group">
+                        <button class="btn btn-primary spot btn-lg {{ sample_icon }}">
+                            Text
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 demo-content">
+                <div class="button-toolbar break-md"
+                     role="toolbar"
+                     aria-label="A button toolbar">
+                    <div class="group divider" role="group" aria-label="First group">
+                        <a href="#" class="btn btn-primary spot">
+                            <span class="visually-hidden">Accessible text</span>
+                            <i class="{{ sample_icon }}" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="btn btn-primary spot">
+                            <span class="visually-hidden">Accessible text</span>
+                            <i class="{{ sample_icon }}" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="btn btn-primary">
+                            <span class="visually-hidden">Accessible text</span>
+                            <i class="{{ sample_icon }}" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="group" role="group" aria-label="Second group">
+                        <button class="btn btn-primary btn-lg {{ sample_icon }}">
+                            Text
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 demo-content">
+                <div class="button-toolbar break-md"
+                     role="toolbar"
+                     aria-label="A button toolbar">
+                    <div class="group divider" role="group" aria-label="First group">
+                        <a href="#" class="btn btn-primary">
+                            <span class="visually-hidden">Accessible text</span>
+                            <i class="{{ sample_icon }}" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="btn btn-primary">
+                            <span class="visually-hidden">Accessible text</span>
+                            <i class="{{ sample_icon }}" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="btn btn-primary">
+                            <span class="visually-hidden">Accessible text</span>
+                            <i class="{{ sample_icon }}" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="group" role="group" aria-label="Second group">
+                        <button class="btn btn-primary spot btn-lg {{ sample_icon }}">
+                            Text
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 demo-content">
+                <div class="button-toolbar break-md"
+                     role="toolbar"
+                     aria-label="A button toolbar">
+                    <div class="group divider border-danger"
+                         role="group"
+                         aria-label="First group">
+                        <a href="#" class="btn spot btn-outline-primary">
+                            <span class="visually-hidden">Accessible text</span>
+                            <i class="{{ sample_icon }}" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="btn spot btn-outline-primary">
+                            <span class="visually-hidden">Accessible text</span>
+                            <i class="{{ sample_icon }}" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="group" role="group" aria-label="Second group">
+                        <button class="btn btn-primary btn-lg {{ sample_icon }}">
+                            Text
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="part-divider">
+        <div class="row align-items-start g-3 py-3">
+            <h3 class="part-title sg-anchor" id="buttons-cta">
+                CTA
+            </h3>
+            <p class="lead col-12">
+                Adopt spacing, size and color variants from Button but without default
+                border and enforce block flow.
+            </p>
+            <div class="col-12 col-lg-3 demo-content">
+                <a href="#" class="cta cta-primary">
+                    Default
+                </a>
+            </div>
+            {% for k in styleguide.bt_button_sizes %}
+                <div class="col-12 col-lg-3 demo-content">
+                    <a href="#" class="cta cta-{{ k }} cta-primary">
+                        cta-{{ k }}
+                    </a>
+                </div>
+            {% endfor %}
+            <div class="col-12 col-lg-3 demo-content">
+                <a href="#" class="cta cta-primary">
+                    cta-primary
+                </a>
+            </div>
+            <div class="col-12 col-lg-3 demo-content">
+                <a href="#" class="cta cta-primary">
+                    <i class="{{ sample_icon }} icon-wide" aria-hidden="true"></i>
+                    cta-primary
+                </a>
+            </div>
+            <div class="col-12 col-lg-3 demo-content">
+                <a href="#" class="cta cta-outline-primary">
+                    <i class="{{ sample_icon }} icon-wide" aria-hidden="true"></i>
+                    cta-outline-primary
+                </a>
+            </div>
+            <div class="col-12 col-lg-3 demo-content">
+                <a href="#" class="cta spot cta-primary {{ sample_icon }} icon-wide">
+                    spot
+                </a>
+            </div>
+            <div class="col-12 col-lg-3 demo-content">
+                <a href="#" class="cta spot cta-primary">
+                    <i class="{{ sample_icon }} icon-wide" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endwith %}

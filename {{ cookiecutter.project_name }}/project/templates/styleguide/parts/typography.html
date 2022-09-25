@@ -1,0 +1,162 @@
+<div class="container-xl mb-5">
+    <h2 class="section-title sg-anchor" id="typography">Typography</h2>
+    <div class="py-3">
+        <h3 class="part-title sg-anchor" id="typography-font-families">Font families</h3>
+        <p class="lead">Enabled font families usable as Sass variables or class helpers.</p>
+        {% for name in styleguide.bb_fonts %}
+            <div class="sg-spec-item">
+                <div class="sg-spec-tabs">
+                    <span class="sg-spec-tab tag">any</span>
+                    <span class="sg-spec-tab classes">font-{{ name }}</span>
+                    <span class="sg-spec-tab sass">$font-family-{{ name }}</span>
+                </div>
+                <div class="sg-spec-content neutral font-{{ name }}">{% include "styleguide/parts/inline_markup.html" %}</div>
+            </div>
+        {% endfor %}
+    </div>
+    <hr class="part-divider">
+    <div class="py-3">
+        <h3 class="part-title sg-anchor" id="typography-heading-sizes">Heading sizes</h3>
+        <p class="lead">Heading and paragraph elements and their class helpers.</p>
+        {% for name in "123456"|make_list %}
+            <div class="sg-spec-item">
+                <div class="sg-spec-tabs">
+                    <span class="sg-spec-tab tag">h{{ name }}</span>
+                    <span class="sg-spec-tab classes">h{{ name }}</span>
+                    <span class="sg-spec-tab sass">$h{{ name }}-font-size</span>
+                </div>
+                <div class="sg-spec-content">
+                    <p class="h{{ name }}">{% lorem 4 w random %}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <hr class="part-divider">
+    <div class="py-3">
+        <h3 class="part-title sg-anchor" id="typography-font-sizes">Text elements sizes</h3>
+        <p class="lead">Heading and paragraph elements and their class helpers.</p>
+        {% comment %}
+        NOTE: This is a bit tricky since elements sizes merge header and small
+        variables but they do not share the same class names format
+        {% endcomment %}
+        {% for name in styleguide.bt_font_sizes %}
+            {% if name == "1" or name == "2" or name == "3" or name == "4" or name == "5" or name == "6" %}
+                <div class="sg-spec-item">
+                    <div class="sg-spec-tabs">
+                        <span class="sg-spec-tab tag">any</span>
+                        <span class="sg-spec-tab classes">fs-{{ name }}</span>
+                        <span class="sg-spec-tab sass">$h{{ name }}-font-size</span>
+                    </div>
+                    <div class="sg-spec-content">
+                        <p class="fs-{{ name }}">{% lorem 4 w random %}</p>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        {% for name in styleguide.bt_small_sizes %}
+            <div class="sg-spec-item">
+                <div class="sg-spec-tabs">
+                    <span class="sg-spec-tab tag">any</span>
+                    <span class="sg-spec-tab classes">fs-{{ name|add:"6" }}</span>
+                    <span class="sg-spec-tab sass">$small{{ name }}-font-size</span>
+                </div>
+                <div class="sg-spec-content">
+                    <p class="fs-{{ name|add:"6" }}">{% lorem 4 w random %}</p>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="sg-spec-item">
+            <div class="sg-spec-tabs">
+                <span class="sg-spec-tab tag">p</span>
+                <span class="sg-spec-tab sass">$font-size-base</span>
+            </div>
+            <div class="sg-spec-content">
+                <p>{% lorem 4 w random %}</p>
+            </div>
+        </div>
+        <div class="sg-spec-item">
+            <div class="sg-spec-tabs">
+                <span class="sg-spec-tab tag">any</span>
+                <span class="sg-spec-tab classes">lead</span>
+                <span class="sg-spec-tab sass">$lead-font-size</span>
+            </div>
+            <div class="sg-spec-content">
+                <p class="lead">
+                    {% lorem 4 w random %}
+                </p>
+            </div>
+        </div>
+    </div>
+    <hr class="part-divider">
+    <div class="py-3">
+        <h3 class="part-title sg-anchor" id="typography-display-headings">
+            Display sizes
+        </h3>
+        <p class="lead">
+            Augmented font sizes to use for extra big contents, usable as class modifiers.
+        </p>
+        {% for name in "123456"|make_list %}
+            <div class="sg-spec-item">
+                <div class="sg-spec-tabs">
+                    <span class="sg-spec-tab tag">any</span>
+                    <span class="sg-spec-tab classes">display-{{ name }}</span>
+                    <span class="sg-spec-tab sass">map-get($display-font-sizes, {{ name }})</span>
+                </div>
+                <div class="sg-spec-content">
+                    <p class="display-{{ name }}">
+                        {% lorem 3 w random %}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <hr class="part-divider">
+    <div class="py-3">
+        <h3 class="part-title sg-anchor" id="typography-font-weights">
+            Font weights and italics
+        </h3>
+        <p class="lead">
+            Enabled font weights and styles usable as Sass variables, class helpers or HTML elements.
+        </p>
+        {% for name in styleguide.bt_font_weights %}
+            <div class="sg-spec-item">
+                <div class="sg-spec-tabs">
+                    <span class="sg-spec-tab tag">any</span>
+                    <span class="sg-spec-tab classes">fw-{{ name }}</span>
+                    <span class="sg-spec-tab sass">$fw-{{ name }}</span>
+                </div>
+                <div class="sg-spec-content">
+                    <p class="fw-{{ name }}">
+                        {% lorem 8 w random %}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+        {% for name in styleguide.bt_font_style %}
+            <div class="sg-spec-item">
+                <div class="sg-spec-tabs">
+                    <span class="sg-spec-tab tag">any</span>
+                    <span class="sg-spec-tab classes">fst-{{ name }}</span>
+                    <span class="sg-spec-tab sass">$fst-{{ name }}</span>
+                </div>
+                <div class="sg-spec-content">
+                    <p class="fst-{{ name }}">
+                        {% lorem 8 w random %}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+        {% for name in styleguide.bt_text_markup %}
+            <div class="sg-spec-item">
+                <div class="sg-spec-tabs">
+                    <span class="sg-spec-tab tag">{{ name }}</span>
+                </div>
+                <div class="sg-spec-content">
+                    <p>
+                        <{{ name }}>{% lorem 8 w random %}</{{ name }}>
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

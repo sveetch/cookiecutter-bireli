@@ -1,0 +1,87 @@
+<div class="container-xl mb-5">
+    <h2 class="section-title sg-anchor" id="icons">Icons</h2>
+    <div class="glyph-palette row align-items-start g-3 p-2">
+        <h3 class="part-title sg-anchor" id="icons-glyphs">Glyphs</h3>
+        <p class="lead col-12">Available icon glyphs usable as class helpers or Sass variables.</p>
+        {% for k in styleguide.st_icon_glyphs %}
+            <div class="col-12 col-md-6 col-lg-3 col-xl-2">
+                <div class="card">
+                    <div class="visual big card-img-top">
+                        <i class="{{ k }}"></i>
+                    </div>
+                    <div class="card-body demo-content">
+                        <p class="card-title font-monospace">{{ k }}</p>
+                        <p class="font-monospace">${{ k }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <hr class="part-divider">
+    {% with sample_icon=styleguide.st_icon_glyphs.0 %}
+        <div class="glyph-palette row align-items-start g-3 p-2">
+            <h3 class="part-title sg-anchor" id="icons-sizes">Sizes</h3>
+            <p class="lead col-12">Available icon sizes usable as class helpers.</p>
+            {% for k,v in styleguide.bb_icon_sizes.items %}
+                <div class="col-12 col-md-6 col-lg-3 col-xl-2">
+                    <div class="card">
+                        <div class="visual card-img-top">
+                            <i class="{{ sample_icon }} icon-{{ k }}"></i>
+                        </div>
+                        <div class="card-body demo-content">
+                            <p class="card-title font-monospace">icon-{{ k }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <hr class="part-divider">
+        <div class="glyph-palette row align-items-start g-3 p-2">
+            <h3 class="part-title sg-anchor" id="icons-usages">Usage</h3>
+            <p class="lead col-12">Basic usage demonstration in various elements.</p>
+            <div class="col-12 col-md-6 col-lg-3 col-xl-2">
+                <div class="card">
+                    <div class="visual card-img-top">
+                        <i class="{{ sample_icon }}" aria-hidden="true"></i>
+                    </div>
+                    <div class="card-body demo-content">
+                        <p class="card-title">Alone</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 col-xl-2">
+                <div class="card">
+                    <div class="visual card-img-top">
+                        Lorem <i class="{{ sample_icon }}" aria-hidden="true"></i> ipsum salace.
+                    </div>
+                    <div class="card-body demo-content">
+                        <p class="card-title">In a paragraph</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 col-xl-2">
+                <div class="card">
+                    <div class="visual card-img-top">
+                        <button class="btn btn-primary {{ sample_icon }}">Foobar</button>
+                    </div>
+                    <div class="card-body demo-content">
+                        <p class="card-title">In a text button</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 col-xl-2">
+                <div class="card">
+                    <div class="visual card-img-top">
+                        <button class="btn btn-primary">
+                            <span class="visually-hidden">Accessible text</span>
+                            <i class="{{ sample_icon }}" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="card-body demo-content">
+                        <p class="card-title">In a button</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endwith %}

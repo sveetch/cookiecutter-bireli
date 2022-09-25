@@ -1,0 +1,62 @@
+<div class="container-xl mb-5">
+    <h2 class="section-title sg-anchor" id="blocks">Blocks</h2>
+    <p class="lead">Basic usage demonstration with all class modifiers for spacing and color schemes.</p>
+</div>
+<div id="sg-blocks">
+    <hr>
+    <div class="block">
+        <div class="container-xl">
+            <p class="h1">Default block</p>
+            {% include "styleguide/parts/inline_markup.html" %}
+            {% lorem 2 p random %}
+        </div>
+    </div>
+    <hr>
+    <div class="block unpadded">
+        <div class="container-xl">
+            <p class="h1">unpadded</p>
+            {% include "styleguide/parts/inline_markup.html" %}
+            {% lorem 2 p random %}
+        </div>
+    </div>
+    {% for k in styleguide.bt_spaces %}
+        <hr>
+        <div class="block {{ k }}">
+            <div class="container-xl">
+                <p class="h1">{{ k }}</p>
+                {% include "styleguide/parts/inline_markup.html" %}
+                {% lorem 2 p random %}
+            </div>
+        </div>
+    {% endfor %}
+    {% if styleguide.bb_schemes_neutral %}
+        <hr>
+        <div class="block {{ styleguide.bb_schemes_neutral }}">
+            <div class="container-xl">
+                <p class="h1">{{ styleguide.bb_schemes_neutral }}</p>
+                <p class="h2">Heading level 2</p>
+                <p class="h3">Heading level 3</p>
+                <p class="h4">Heading level 4</p>
+                <p class="h5">Heading level 5</p>
+                <p class="h6">Heading level 6</p>
+                {% include "styleguide/parts/inline_markup.html" %}
+                {% lorem 1 p random %}
+            </div>
+        </div>
+    {% endif %}
+    {% for k in styleguide.bb_schemes %}
+        <hr>
+        <div class="block {{ k }}">
+            <div class="container-xl">
+                <p class="h1">{{ k }}</p>
+                <p class="h2">Heading level 2</p>
+                <p class="h3">Heading level 3</p>
+                <p class="h4">Heading level 4</p>
+                <p class="h5">Heading level 5</p>
+                <p class="h6">Heading level 6</p>
+                {% include "styleguide/parts/inline_markup.html" %}
+                {% lorem 1 p random %}
+            </div>
+        </div>
+    {% endfor %}
+</div>

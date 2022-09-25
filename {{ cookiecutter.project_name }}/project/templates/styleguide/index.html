@@ -1,0 +1,96 @@
+{% extends "styleguide/base.html" %}
+{% block content %}
+    {% if styleguide.status == "failed" %}
+        <div class="container-xl">
+            <div class="alert alert-warning" role="alert">
+                <h2 class="sg-neutral-font">Error</h2>
+                <p>{{ styleguide.loading_error|safe }}</p>
+            </div>
+        </div>
+    {% else %}
+        <div id="sg-render">
+            {% comment %}NOTE: Uncomment this to display the JSON Manifest{% endcomment %}
+            {% comment %}<div class="container-xl"><h2 class="section-title sg-anchor" id="debug">Manifest JSON</h2><pre>{{ styleguide.to_json|safe }}</pre></div>{% endcomment %}
+            <div class="container-xl">
+                <p class="text-end">
+                    <span class="badge bg-dark">{{ styleguide.status }}</span>
+                    <span class="badge bg-light text-dark">Built on {{ styleguide.metas.created }}</span>
+                </p>
+            </div>
+            {% include "styleguide/parts/typography.html" %}
+            {% include "styleguide/parts/colors.html" %}
+            {% include "styleguide/parts/icons.html" %}
+            {% include "styleguide/parts/buttons.html" %}
+            {% include "styleguide/parts/grid.html" %}
+            {% include "styleguide/parts/blocks.html" %}
+        </div>
+    {% endif %}
+{% endblock content %}
+{% block extra-javascript %}
+    <script>
+(function () {
+    'use strict'
+
+    //
+    // Create menu item link item with optional submenu for children links
+    //
+    function createMenuItem(key, heading) {
+        // Create menu item
+        let $menu_item = document.createElement("li");
+        let $item_link = document.createElement("a");
+        $item_link.setAttribute("href", "#" + key);
+        $item_link.className = "menu-item";
+        $item_link.textContent = heading["name"];
+
+        // Create item link in menu item
+        $menu_item.appendChild($item_link);
+
+        // Create submenu if item has children
+        if (Object.keys(heading["children"]).length > 1) {
+            let $submenu = document.createElement("ul");
+            $submenu.className = "sg-menu";
+            // Get all submenu children items
+            for (var prop in heading["children"]) {
+                $submenu.appendChild(
+                    createMenuItem(prop, heading["children"][prop])
+                );
+            }
+            $menu_item.appendChild($submenu);
+        }
+
+        return $menu_item;
+    }
+
+    // Create a tree of anchors to build the navigation.
+    // This only works on anchor with "sg-anchor" class and on two levels
+    // maximum. First level is always a single word and second level starts with its
+    // parent id then a "-" separator then the word(s).
+    let anchorMap = {};
+    document.querySelectorAll('#sg-content .sg-anchor').forEach(function (heading) {
+        let parts = heading.id.split('-');
+
+        // If heading has more than one part, search through root headings to find
+        // parent and add heading to its parent children.
+        if (parts.length > 1 && Object.keys(anchorMap).indexOf(parts[0]) > -1) {
+            anchorMap[parts[0]]["children"][heading.id] = {
+                "name": heading.textContent,
+                "children": {},
+            };
+        // Else assume it's a root
+        } else {
+            anchorMap[heading.id] = {
+                "name": heading.textContent,
+                "children": {},
+            };
+        }
+    });
+
+    let $styleguide_main_menu = document.getElementById('sg-menu-main');
+    for (var prop in anchorMap) {
+        $styleguide_main_menu.appendChild(
+            createMenuItem(prop, anchorMap[prop])
+        );
+    }
+})()
+    </script>
+{% endblock extra-javascript %}

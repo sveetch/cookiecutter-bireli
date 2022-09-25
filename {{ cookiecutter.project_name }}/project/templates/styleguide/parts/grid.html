@@ -1,0 +1,11 @@
+<div class="grid-sample container-xl mb-5">
+    <h2 class="section-title sg-anchor" id="grid">Grid</h2>
+    <p class="lead">Basic demonstration of available grid column sizes.</p>
+    <div class="row align-items-start g-3 p-2">
+        {% for _ in ''|center:styleguide.bt_grid_columns %}
+            <div class="col-{{ forloop.counter }}">
+                <div class="px-2 py-1 border bg-light cell-class font-monospace">col-{{ forloop.counter }}</div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
