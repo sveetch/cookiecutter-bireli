@@ -1,3 +1,4 @@
 # Base
 Django{{ cookiecutter._django_version }}
 django-configurations{{ cookiecutter._django_configurations_version }}
+project-composer{{ cookiecutter._project_composer_version }}

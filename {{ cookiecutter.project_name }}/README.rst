@@ -10,6 +10,8 @@
 {{ cookiecutter.project_title }}
 {{ '=' * cookiecutter.project_title|length }}
 
+*Generated from cookiecutter-bireli=={{ cookiecutter._bireli_version }}*
+
 {{ cookiecutter.project_short_description|wordwrap(80) }}
 
 
