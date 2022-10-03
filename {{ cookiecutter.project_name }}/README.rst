@@ -3,6 +3,7 @@
 .. _Node.js: https://nodejs.org/dist/latest-v16.x/docs/api/
 .. _NPM: https://docs.npmjs.com/
 .. _Bootstrap: https://getbootstrap.com/docs/
+.. _project-composer: https://github.com/sveetch/project-composer
 .. _Webpack: https://webpack.js.org/
 .. _django-configurations: https://django-configurations.readthedocs.io/
 
@@ -20,7 +21,7 @@ Main stack components
 
 * `Python`_ {{ cookiecutter._python_version }};
 * `Django`_ {{ cookiecutter._django_version }};
-* `Project composer`_ {{ cookiecutter._project_composer_version }};
+* `project-composer`_ {{ cookiecutter._project_composer_version }};
 * `django-configurations`_ {{ cookiecutter._django_configurations_version }};
 * `Node.js`_ {{ cookiecutter._node_version }};
 * `NPM`_ {{ cookiecutter._npm_version }};
