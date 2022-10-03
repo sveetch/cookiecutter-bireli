@@ -1,0 +1,10 @@
+{
+    "name": "{{ cookiecutter.project_name }} composition manifest",
+    "apps": [
+        "django_builtins",
+        "webpack",
+        "staticpages",
+        "styleguide",
+        "icomoon",
+    ]
+}

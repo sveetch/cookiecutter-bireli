@@ -20,3 +20,5 @@ def _extract_version(package_name):
 
 
 __version__ = _extract_version("{{ cookiecutter.project_name }}")
+
+__generator__ = "bireli=={{ cookiecutter._bireli_version }}"

@@ -6,6 +6,7 @@ import os
 import sys
 from pathlib import Path
 
+
 if __name__ == "__main__":
     # Append django-apps to sys.path so apps in this directory are detected
     sys.path.append(

@@ -1,0 +1,1 @@
+emencia-django-staticpages>=0.5.1,<1.0.0
