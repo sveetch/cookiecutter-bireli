@@ -4,6 +4,7 @@
 .. _NPM: https://docs.npmjs.com/
 .. _Bootstrap: https://getbootstrap.com/docs/
 .. _Webpack: https://webpack.js.org/
+.. _django-configurations: https://django-configurations.readthedocs.io/
 
 {{ '=' * cookiecutter.project_title|length }}
 {{ cookiecutter.project_title }}
@@ -18,6 +19,7 @@ Main stack components
 * `Python`_ {{ cookiecutter._python_version }};
 * `Django`_ {{ cookiecutter._django_version }};
 * `Project composer`_ {{ cookiecutter._project_composer_version }};
+* `django-configurations`_ {{ cookiecutter._django_configurations_version }};
 * `Node.js`_ {{ cookiecutter._node_version }};
 * `NPM`_ {{ cookiecutter._npm_version }};
 * `Bootstrap`_ {{ cookiecutter._bootstrap_version }};

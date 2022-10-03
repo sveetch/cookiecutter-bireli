@@ -1,3 +1,3 @@
 # Base
 Django{{ cookiecutter._django_version }}
-django-configurations>=2.3.2{% if cookiecutter.enable_drf|lower == 'true' %}
+django-configurations{{ cookiecutter._django_configurations_version }}

@@ -1,13 +1,7 @@
 {
-    "author_name": "Your name",
-    "author_email": "Your email",
-    "author_username": "dummy",
-
     "project_title": "Project name",
     "project_name": "{{ cookiecutter.project_title.lower() | slugify  }}",
     "project_short_description": "A Django project.",
-
-    "enable_drf": false,
 
     "version": "0.1.0",
 
@@ -15,6 +9,7 @@
     "_python_version": ">=3.8",
     "_django_version": ">=4.0",
     "_project_composer_version": "==0.2.0",
+    "_django_configurations_version": ">=2.3.2",
     "_node_version": ">=18.0.0",
     "_npm_version": ">=8.0.0",
     "_bootstrap_version": "5.2.0",
