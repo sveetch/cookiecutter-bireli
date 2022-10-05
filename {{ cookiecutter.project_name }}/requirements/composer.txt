@@ -1,0 +1,2 @@
+# project-compose dependency to build requirements
+project-composer{{ cookiecutter._project_composer_version }}

@@ -5,7 +5,7 @@ PYTHON_INTERPRETER=python3
 PYTHON_BIN=$(VENV_BIN)/python
 
 PIP=$(VENV_BIN)/pip
-TOX=$(VENV_BIN)/tox
+PROJECT_COMPOSER=$(VENV_BIN)/project_composer
 DJANGO_MANAGE=$(VENV_BIN)/python manage.py
 FLAKE=$(VENV_BIN)/flake8
 PYTEST=$(VENV_BIN)/pytest
@@ -21,6 +21,8 @@ FORMATRESET:=$(shell tput sgr0)
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
+	@echo
+	@echo "  requirements                  -- to build base requirements file for enabled applications from composition manifest"
 	@echo
 	@echo "  install-backend               -- to install backend requirements with Virtualenv and Pip"
 	@echo "  install-frontend              -- to install frontend requirements with Npm"
@@ -109,6 +111,14 @@ venv:
 	$(PIP) install --upgrade setuptools
 .PHONY: venv
 
+requirements:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Build base requirements file <---$(FORMATRESET)\n"
+	@echo ""
+	$(PIP) install -r requirements/composer.txt
+	$(PROJECT_COMPOSER) --mode requirements --appsdir "composition.apps" -v 5 --syspath . --base requirements/base_template.txt --dump requirements/base.txt
+.PHONY: requirements
+
 create-var-dirs:
 	@mkdir -p var/db
 	@mkdir -p var/media
@@ -140,7 +150,7 @@ install-frontend:
 	${MAKE} icon-font
 .PHONY: install-frontend
 
-install: venv create-var-dirs install-backend migrate install-frontend
+install: venv create-var-dirs requirements install-backend migrate install-frontend
 .PHONY: install
 
 check-migrations:
@@ -248,13 +258,6 @@ freeze-dependencies:
 	@echo ""
 	$(PIP) freeze --all --local > requirements/requirements_freeze.txt
 .PHONY: freeze-dependencies
-
-tox:
-	@echo ""
-	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Launch tests with Tox environments <---$(FORMATRESET)\n"
-	@echo ""
-	$(TOX)
-.PHONY: tox
 
 quality: test-initial flake check-migrations
 	@echo ""
