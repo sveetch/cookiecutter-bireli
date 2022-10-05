@@ -1,11 +1,9 @@
-from django.urls import path, include
-
 from staticpages.loader import StaticpagesLoader
 
-from composer import EnabledComposableApplication
+from project_composer.marker import EnabledApplicationMarker
 
 
-class StaticpageUrls(EnabledComposableApplication):
+class StaticpageUrls(EnabledApplicationMarker):
     """
     Staticpage application URLs mounter
     """

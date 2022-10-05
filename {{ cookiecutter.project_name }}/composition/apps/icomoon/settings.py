@@ -4,14 +4,10 @@ Django Icomoon settings
 =======================
 
 """
-from pathlib import Path
-
-from configurations import values
-
-from composer import EnabledComposableApplication
+from project_composer.marker import EnabledApplicationMarker
 
 
-class IcomoonSettings(EnabledComposableApplication):
+class IcomoonSettings(EnabledApplicationMarker):
     """
     Icomoon font icon manager
     """

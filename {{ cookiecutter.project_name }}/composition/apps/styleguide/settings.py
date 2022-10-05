@@ -8,10 +8,10 @@ from pathlib import Path
 
 from configurations import values
 
-from composer import EnabledComposableApplication
+from project_composer.marker import EnabledApplicationMarker
 
 
-class StyleguideSettings(EnabledComposableApplication):
+class StyleguideSettings(EnabledApplicationMarker):
     """
     Site layout styleguide
     """

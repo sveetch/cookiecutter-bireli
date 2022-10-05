@@ -6,10 +6,10 @@ Django Webpack loader settings
 """
 from configurations import values
 
-from composer import EnabledComposableApplication
+from project_composer.marker import EnabledApplicationMarker
 
 
-class WebpackSettings(EnabledComposableApplication):
+class WebpackSettings(EnabledApplicationMarker):
     """
     Django Webpack plugin settings
 

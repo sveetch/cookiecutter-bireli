@@ -10,7 +10,7 @@ from pathlib import Path
 
 from configurations import values
 
-from composer import EnabledComposableApplication
+from project_composer.marker import EnabledApplicationMarker
 
 
 def gettext(s):
@@ -21,7 +21,7 @@ def gettext(s):
     return s
 
 
-class DjangoPaths(EnabledComposableApplication):
+class DjangoPaths(EnabledApplicationMarker):
     """
     Settings for essential path object related to the project structure.
 
@@ -39,7 +39,7 @@ class DjangoPaths(EnabledComposableApplication):
     VAR_PATH = BASE_DIR / "var"
 
 
-class DjangoBase(EnabledComposableApplication):
+class DjangoBase(EnabledApplicationMarker):
     """
     Base Django settings.
 
@@ -124,7 +124,7 @@ class DjangoBase(EnabledComposableApplication):
         return self.__class__.__name__.lower()
 
 
-class DjangoDatabase(EnabledComposableApplication):
+class DjangoDatabase(EnabledApplicationMarker):
     """
     The database settings.
     """
@@ -159,7 +159,7 @@ class DjangoDatabase(EnabledComposableApplication):
         }
 
 
-class DjangoLanguage(EnabledComposableApplication):
+class DjangoLanguage(EnabledApplicationMarker):
     """
     Everything related to I18N, I10N and Timezone.
     """
@@ -214,7 +214,7 @@ class DjangoLanguage(EnabledComposableApplication):
         ]
 
 
-class DjangoStaticMedia(EnabledComposableApplication):
+class DjangoStaticMedia(EnabledApplicationMarker):
     """
     Settings related to static files and media files.
     """
@@ -250,7 +250,7 @@ class DjangoStaticMedia(EnabledComposableApplication):
         ]
 
 
-class DjangoTemplate(EnabledComposableApplication):
+class DjangoTemplate(EnabledApplicationMarker):
     """
     Settings for Django template engine.
     """

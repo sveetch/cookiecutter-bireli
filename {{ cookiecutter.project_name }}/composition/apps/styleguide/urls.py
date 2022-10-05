@@ -1,9 +1,9 @@
 from django.urls import path, include
 
-from composer import EnabledComposableApplication
+from project_composer.marker import EnabledApplicationMarker
 
 
-class StyleguideUrls(EnabledComposableApplication):
+class StyleguideUrls(EnabledApplicationMarker):
     """
     Styleguide application URLs mounter
     """

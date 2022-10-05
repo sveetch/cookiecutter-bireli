@@ -4,12 +4,10 @@ emencia-django-staticpages settings
 ===================================
 
 """
-from configurations import values
-
-from composer import EnabledComposableApplication
+from project_composer.marker import EnabledApplicationMarker
 
 
-class StaticpageSettings(EnabledComposableApplication):
+class StaticpageSettings(EnabledApplicationMarker):
     """
     Static pages
     """

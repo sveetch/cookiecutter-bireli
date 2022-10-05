@@ -4,10 +4,10 @@ Test environment
 ================
 
 """
-from .development import ComposedProjectSettings
+from .development import Development
 
 
-class Test(ComposedProjectSettings):
+class Test(Development):
     """
     Settings for test environment.
 
