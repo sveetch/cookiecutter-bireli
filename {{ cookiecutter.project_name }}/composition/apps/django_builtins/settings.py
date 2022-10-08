@@ -116,6 +116,10 @@ class DjangoBase(EnabledApplicationMarker):
     LOGIN_REDIRECT_URL = "/"
     LOGOUT_REDIRECT_URL = "/"
 
+    # To silent warning about application "AppConfig" which does not set
+    # 'default_auto_field'
+    DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
     @property
     def ENVIRONMENT(self):
         """
@@ -194,6 +198,11 @@ class DjangoLanguage(EnabledApplicationMarker):
         True,
         environ_name="USE_I18N",
     )
+
+    # Not a real Django settings, just a marker for other applications that implement
+    # i18n urls to know if they can use it or not. For all that, applications may not
+    # necessarily use it
+    ENABLE_I18N_URLS = True
 
     # If you set this to False, Django will not format dates, numbers and
     # calendars according to the current locale.

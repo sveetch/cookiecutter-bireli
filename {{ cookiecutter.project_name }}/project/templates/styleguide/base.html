@@ -1,19 +1,19 @@
 {% extends "skeleton.html" %}
 {% load static %}
 
-{% block head_title %}Styleguide - {{ block.super }}{% endblock head_title %}
+{% block html-attrs %} id="sg-document"{% endblock html-attrs %}
+
+{% block header-title %}Styleguide - {{ block.super }}{% endblock header-title %}
 
 {% block metas-robot %}
 <meta name="robots" content="noindex, nofollow">
 {% endblock metas-robot %}
 
-{% block html-attrs %} id="sg-document"{% endblock html-attrs %}
-
-{% block extra-link-resource %}
+{% block header-resource-extra %}
     <link rel="stylesheet" href="{% static "css/styleguide/layout.css" %}">
-{% endblock extra-link-resource %}
+{% endblock header-resource-extra %}
 
-{% block body-content-container %}
+{% block body-container %}
     <div id="sg-layout">
         <div id="sg-menu">
             <a href="./" class="brand">
@@ -23,7 +23,7 @@
             </ul>
         </div>
         <div id="sg-content">
-            {% block content %}{% endblock content %}
+            {% block body-content %}{% endblock body-content %}
         </div>
     </div>
-{% endblock body-content-container %}
+{% endblock body-container %}

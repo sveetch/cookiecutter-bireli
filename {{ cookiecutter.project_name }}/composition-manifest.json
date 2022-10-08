@@ -3,8 +3,11 @@
     "apps": [
         "django_builtins",
         "webpack",
+        "ckeditor",
+        "django_filer",
         "staticpages",
         "styleguide",
-        "icomoon"
+        "icomoon",
+        "djangocms"
     ]
 }

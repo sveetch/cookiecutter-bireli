@@ -66,13 +66,9 @@ alias in your ``.bash_aliases``: ::
 Options
 -------
 
-You can define author full name, email, github username, pypi username,
-version start, package name and package short description.
+You can define version start, project name and project short description.
 
-Some of these have a default value filled from a previous value, obviously
-you can edit it to your own needs.
-
-You can pre define some options in your
+You may pre define some options in your
 `cookiecutter user configuration <https://cookiecutter.readthedocs.io/en/stable/advanced/user_config.html>`_
 to avoid to input them each time you use this cookie. This is especially
 recommended for the author and username ones.

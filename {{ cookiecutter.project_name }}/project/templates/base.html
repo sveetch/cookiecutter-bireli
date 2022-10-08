@@ -1,7 +1,6 @@
 {% extends "skeleton.html" %}
-{% load static i18n %}
-
-{% block body-content-container %}
+{% load static i18n menu_tags %}
+{% block body-container %}
     <div id="page-body" class="d-grid gap-3 p-3">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
@@ -13,25 +12,26 @@
 
                 <div class="collapse navbar-collapse" id="main-navbar-toggler">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    {% if request.user and request.user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url "admin:index" %}" target="_blank">{% trans "Admin" %}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url "admin:logout" %}">{% trans "Logout" %}</a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url "admin:login" %}">{% trans "Login" %}</a>
-                        </li>
-                    {% endif %}
+                        {% show_menu 1 100 100 100 "menus/flat.html" %}
+                        {% if request.user and request.user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url "admin:index" %}" target="_blank">{% trans "Admin" %}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url "admin:logout" %}">{% trans "Logout" %}</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url "admin:login" %}">{% trans "Login" %}</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
         </nav>
 
         <div id="page-content" class="container-xxl">
-            {% block content %}Base{% endblock %}
+            {% block body-content %}Base{% endblock body-content %}
         </div>
     </div>
-{% endblock body-content-container %}
+{% endblock body-container %}

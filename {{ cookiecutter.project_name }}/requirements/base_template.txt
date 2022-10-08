@@ -1,3 +1,4 @@
 # Base
+Pillow>=9.0
 Django{{ cookiecutter._django_version }}
 django-configurations{{ cookiecutter._django_configurations_version }}

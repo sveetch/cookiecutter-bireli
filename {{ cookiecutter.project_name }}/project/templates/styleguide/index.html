@@ -1,5 +1,5 @@
 {% extends "styleguide/base.html" %}
-{% block content %}
+{% block body-content %}
     {% if styleguide.status == "failed" %}
         <div class="container-xl">
             <div class="alert alert-warning" role="alert">
@@ -25,8 +25,8 @@
             {% include "styleguide/parts/blocks.html" %}
         </div>
     {% endif %}
-{% endblock content %}
-{% block extra-javascript %}
+{% endblock body-content %}
+{% block body-javascript-extra %}
     <script>
 (function () {
     'use strict'
@@ -93,4 +93,4 @@
     }
 })()
     </script>
-{% endblock extra-javascript %}
+{% endblock body-javascript-extra %}

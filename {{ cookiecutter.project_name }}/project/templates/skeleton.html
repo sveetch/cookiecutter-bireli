@@ -1,10 +1,10 @@
-{% load static i18n %}{% load render_bundle from webpack_loader %}<!DOCTYPE html>
+{% load static i18n cms_tags menu_tags sekizai_tags %}{% load render_bundle from webpack_loader %}<!DOCTYPE html>
 <html lang="{% if LANGUAGE_CODE %}{{ LANGUAGE_CODE }}{% else %}en{% endif %}" {% block html-attrs %}{% endblock html-attrs %}>
     <head>
         {% spaceless %}
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>{% block head_title %}{{ SITE.name }}{% endblock head_title %}</title>
+            <title>{% block header-title %}{{ SITE.name }}{% endblock header-title %}</title>
 
             {% block metas %}
                 {% block metas-robot %}
@@ -36,20 +36,24 @@
 
             {% block header-javascript %}{% endblock header-javascript %}
 
-            {% block base-link-resource %}
-                <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-            {% endblock base-link-resource %}
+            {% block header-resource %}
+                <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+            {% endblock header-resource %}
 
-            {% block extra-link-resource %}{% endblock extra-link-resource %}
+            {% block header-resource-extra %}{% endblock header-resource-extra %}
         {% endspaceless %}
+        {% render_block "css" %}
 </head>
-<body{% block body-attrs %}{% endblock body-attrs %}>
+<body{% block body-attrs %}{% endblock body-attrs %}>{% cms_toolbar %}
     {% spaceless %}
-        {% block body-content-container %}{% endblock body-content-container %}
+        {% block body-container %}{% endblock body-container %}
+    {% endspaceless %}
 
-        {% block base-javascript %}
-            {% render_bundle 'main' 'js' %}
-        {% endblock base-javascript %}
+    {% render_block "js" %}
+    {% spaceless %}
+        {% block body-javascript %}
+            {% render_bundle "main" "js" %}
+        {% endblock body-javascript %}
 
         {% block body-marketing %}
             {% if not debug %}
@@ -57,7 +61,7 @@
             {% endif %}
         {% endblock body-marketing %}
 
-        {% block extra-javascript %}{% endblock extra-javascript %}
+        {% block body-javascript-extra %}{% endblock body-javascript-extra %}
     {% endspaceless %}
 </body>
 </html>
