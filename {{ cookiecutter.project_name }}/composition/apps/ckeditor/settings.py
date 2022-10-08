@@ -21,7 +21,7 @@ class CkeditorSettings(EnabledApplicationMarker):
     # Avoid to change it unless you are aware of incompatibilities between ckeditor
     # apps
     CKEDITOR_SHARED_CONF = {
-        "language": "{{ language }}",
+        "language": "{% raw %}{{ language }}{% endraw %}",
         "skin": "moono-lisa",
         "toolbarCanCollapse": False,
         "contentsCss": "/static/css/ckeditor.css",
