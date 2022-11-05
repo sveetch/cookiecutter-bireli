@@ -29,7 +29,7 @@ class DjangoPaths(EnabledApplicationMarker):
     component classes may rely on it directly or not.
     """
     # Root of project repository
-    BASE_DIR = Path(__file__).parents[3]
+    BASE_DIR = Path(__file__).parents[2]
 
     # Django project
     PROJECT_PATH = BASE_DIR / "project"

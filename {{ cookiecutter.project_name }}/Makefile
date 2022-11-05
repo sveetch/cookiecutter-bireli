@@ -116,7 +116,7 @@ requirements:
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Build base requirements file <---$(FORMATRESET)\n"
 	@echo ""
 	$(PIP) install -r requirements/composer.txt
-	$(PROJECT_COMPOSER) --mode requirements --appsdir "composition.apps" -v 5 --syspath . --base requirements/base_template.txt --dump requirements/base.txt
+	$(PROJECT_COMPOSER) -v 5 requirements --dump requirements/base.txt
 .PHONY: requirements
 
 create-var-dirs:

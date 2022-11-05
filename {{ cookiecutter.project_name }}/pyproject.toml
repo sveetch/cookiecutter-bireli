@@ -22,3 +22,24 @@ pythonpath = [
     ".",
     "django-apps",
 ]
+
+[tool.project_composer]
+collection = [
+    "django_builtins",
+    "djangocms",
+    "django_filer",
+    "ckeditor",
+    "icomoon",
+    "staticpages",
+    "styleguide",
+    "webpack",
+]
+repository = "composition_repository"
+syspaths = [
+    ".",
+]
+
+[tool.project_composer.requirements]
+template = "requirements/base_template.txt"
+application_label = "# {name}\n"
+application_divider = "\n"

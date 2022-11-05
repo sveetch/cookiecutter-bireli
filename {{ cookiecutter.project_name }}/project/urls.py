@@ -15,7 +15,8 @@ from django.urls import path
 from django.views.generic import TemplateView
 
 from project_composer.collector import ApplicationUrlCollector
-from project_composer.compose import ComposeDjangoUrls
+from project_composer.compose import Composer
+from project_composer.processors import DjangoUrlsProcessor
 
 
 # The very base of urls for the very basic stuff
@@ -29,15 +30,19 @@ urlpatterns = [
 ]
 
 
-# Compose urls from enabled applications
-_composer = ComposeDjangoUrls(
-    Path("./composition-manifest.json").resolve(),
-    "composition.apps"
+# Initialize composer with the manifest and the message processor
+_composer = Composer(Path("./pyproject.toml").resolve(),
+    processors=[DjangoUrlsProcessor],
 )
 
+# Resolve dependency order
+_composer.resolve_collection(lazy=False)
 
-# Add the base django-configuration class as the base inheritance
-_COMPOSED_CLASSES = _composer.export() + [ApplicationUrlCollector]
+# Search for all enabled message classes
+_classes = _composer.call_processor("DjangoUrlsProcessor", "export")
+
+# Add the base messager as the base inheritance
+_COMPOSED_CLASSES = _classes + [ApplicationUrlCollector]
 
 
 # Build Urls class from composed urls
