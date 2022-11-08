@@ -12,38 +12,23 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path
-from django.views.generic import TemplateView
 
 from project_composer.collector import ApplicationUrlCollector
-from project_composer.compose import Composer
-from project_composer.processors import DjangoUrlsProcessor
+
+from project import _composer
 
 
 # The very base of urls for the very basic stuff
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path(
-        "",
-        TemplateView.as_view(template_name="index.html"),
-        name="index",
-    ),
 ]
 
-
-# Initialize composer with the manifest and the message processor
-_composer = Composer(Path("./pyproject.toml").resolve(),
-    processors=[DjangoUrlsProcessor],
-)
-
-# Resolve dependency order
-_composer.resolve_collection(lazy=False)
 
 # Search for all enabled message classes
 _classes = _composer.call_processor("DjangoUrlsProcessor", "export")
 
 # Add the base messager as the base inheritance
 _COMPOSED_CLASSES = _classes + [ApplicationUrlCollector]
-
 
 # Build Urls class from composed urls
 ComposedProjectUrls = type(

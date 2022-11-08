@@ -8,17 +8,8 @@ from pathlib import Path
 
 from configurations import Configuration
 
-from project_composer.compose import Composer
-from project_composer.processors import DjangoSettingsProcessor
+from project import _composer
 
-
-# Initialize composer with the manifest and the message processor
-_composer = Composer(Path("./pyproject.toml").resolve(),
-    processors=[DjangoSettingsProcessor],
-)
-
-# Resolve dependency order
-_composer.resolve_collection(lazy=False)
 
 # Search for all enabled message classes
 _classes = _composer.call_processor("DjangoSettingsProcessor", "export")
