@@ -289,8 +289,6 @@ class DjangoTemplate(EnabledApplicationMarker):
                         "django.template.context_processors.static",
                         "django.template.context_processors.tz",
                         "django.contrib.messages.context_processors.messages",
-                        # Basic processor to insert some common global variables
-                        "project_utils.context_processors.site_metas",
                     ],
                 },
             },

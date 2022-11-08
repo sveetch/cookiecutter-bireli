@@ -37,6 +37,7 @@ collection = [
     "staticpages",
     "styleguide",
     "webpack",
+    "project_utils",
 ]
 repository = "composition_repository"
 syspaths = [
