@@ -30,3 +30,10 @@ class Test(Development):
         cls.DATABASES["default"]["TEST"] = {
             "NAME": cls.VAR_PATH / "db" / "tests.sqlite3",
         }
+
+        # Add page test templates if cms is enabled
+        if hasattr(cls, "CMS_TEMPLATES"):
+            cls.CMS_TEMPLATES += [
+                (k, v)
+                for k, v in cls.TEST_PAGE_TEMPLATES.items()
+            ]

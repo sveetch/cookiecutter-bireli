@@ -25,6 +25,7 @@ pythonpath = [
 filterwarnings = [
     "ignore::django.utils.deprecation.RemovedInDjango41Warning",
     "ignore::django.utils.deprecation.RemovedInDjango50Warning",
+    #"ignore::DeprecationWarning",
 ]
 
 [tool.project_composer]

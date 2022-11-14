@@ -11,6 +11,12 @@ class ProjectUtilsSettings(EnabledApplicationMarker):
     """
     Project utilities
     """
+
+    # Available CMS page templates for tests purposes only
+    TEST_PAGE_TEMPLATES = {
+        "test-basic": "tests/pages/basic.html",
+    }
+
     @classmethod
     def setup(cls):
         super().setup()
