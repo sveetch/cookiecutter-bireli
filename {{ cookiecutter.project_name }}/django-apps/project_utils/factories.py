@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.contrib.auth.hashers import make_password
 from django.utils.text import slugify
 
 import factory
@@ -122,12 +121,13 @@ class PageFactory(factory.django.DjangoModelFactory):
     @classmethod
     def _after_postgeneration(cls, instance, create, results=None):
         """
-        This hook method is called last when generating an instance from a factory. The super
-        method saves the instance one last time after all the "post_generation" hooks have played.
+        This hook method is called last when generating an instance from a factory. The
+        super method saves the instance one last time after all the "post_generation"
+        hooks have played.
 
-        This is the moment to finally publish the pages. If we published the pages before this
-        final "save", they would be set back to a pending state and would not be in a clean
-        published state.
+        This is the moment to finally publish the pages. If we published the pages
+        before this final "save", they would be set back to a pending state and would
+        not be in a clean published state.
         """
         super()._after_postgeneration(instance, create, results=results)
         instance.rescan_placeholders()

@@ -90,6 +90,9 @@ This can be improved by splitting DemoMaker into application parts managed by
 project-composer.
 
 """
+import json
+from pathlib import Path
+
 from django.conf import settings
 from django.core.validators import slug_re
 
@@ -265,7 +268,7 @@ class DemoMaker:
         page = PageFactory(**payload)
         created.append(page)
 
-        level =+ 1
+        level += 1
         for child in data.get("children", []):
             self.page_creation(child, parent=page, level=level)
 
@@ -282,8 +285,12 @@ class DemoMaker:
         self.global_author = structure.get("global_author")
         self.default_template = structure.get("default_template")
 
+        site = None
+        users = None
+        pages = None
+
         if structure.get("site"):
-            self.site_update(structure["site"])
+            site = self.site_update(structure["site"])
 
         if structure.get("users"):
             users = self.user_creation(structure["users"])
@@ -299,4 +306,23 @@ class DemoMaker:
             pages = self.page_creation(structure["pages"])
             self.log.info("* Created {} page(s)".format(len(pages)))
 
-        return
+        return {
+            "site": site,
+            "users": users,
+            "pages": pages,
+        }
+
+    def load(self, path):
+        """
+        Load data structure from a JSON file as given in argument and create its
+        objects.
+
+        Arguments:
+            path (string or pathlib.Path): Path to the JSON file to load.
+
+        Returns:
+            dict: Dictionnary of created objets as returned by ``DemoMaker.create()``.
+        """
+        return self.create(
+            json.loads(Path(path).read_text())
+        )

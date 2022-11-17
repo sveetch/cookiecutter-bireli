@@ -85,7 +85,7 @@ class CkeditorSettings(EnabledApplicationMarker):
                 ["RemoveFormat"],
                 # Disable Maximize because currently cause issue with admin-styles
                 # fixed header
-                #["Maximize"],
+                # ["Maximize"],
                 "/",
                 ["Bold", "Italic", "Underline", "-", "Subscript", "Superscript"],
                 ["JustifyLeft", "JustifyCenter", "JustifyRight"],
@@ -93,8 +93,8 @@ class CkeditorSettings(EnabledApplicationMarker):
                 ["Link", "Unlink"],
                 ["Image", "Youtube", "Vimeo", "-", "NumberedList", "BulletedList",
                     "-", "Table", "-", "CreateDiv", "HorizontalRule"],
-                #["Iframe"],
-                #["Templates"],
+                # ["Iframe"],
+                # ["Templates"],
                 ["Source"],
             ],
         })

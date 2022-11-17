@@ -3,6 +3,8 @@
 Environments settings
 =====================
 
+TODO: Move this to the cookie docs and adjust it since some things have changed.
+
 We use ``django-configurations`` to structure settings with a class per component and
 environment.
 
@@ -40,5 +42,5 @@ For a clean execution structure, Django component classes and Application classe
 use the ``setup`` and only the environment classes use the ``post_setup``.
 
 """
-from .development import Development
-from .test import Test
+from .development import Development  # noqa: F401
+from .test import Test  # noqa: F401

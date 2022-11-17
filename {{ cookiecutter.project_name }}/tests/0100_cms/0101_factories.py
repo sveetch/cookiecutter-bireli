@@ -26,7 +26,7 @@ def test_cms_factory_page_root(db, client):
     assert page.get_title() == "Foo"
     assert page.get_slug() == "foo"
     assert page.reverse_id == "foofoo"
-    assert page.is_published(settings.LANGUAGE_CODE) == True
+    assert page.is_published(settings.LANGUAGE_CODE) is True
 
     # New root page is reachable
     response = client.get(page.get_absolute_url(settings.LANGUAGE_CODE), follow=True)
@@ -47,8 +47,8 @@ def test_cms_factory_page_basic(db, client):
 
     assert page.get_title() == "Foo"
     assert page.get_slug() == "foo"
-    assert page.reverse_id == None
-    assert page.is_published(settings.LANGUAGE_CODE) == False
+    assert page.reverse_id is None
+    assert page.is_published(settings.LANGUAGE_CODE) is False
 
     # New page is not reachable since it is not published by default from factory
     response = client.get(page.get_absolute_url(settings.LANGUAGE_CODE), follow=True)

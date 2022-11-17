@@ -29,7 +29,8 @@ __generator__ = "cookiecutter-bireli=={{ cookiecutter._bireli_version }}"
 
 # Initialize composer with the manifest and the message processor
 print("🚀 Initialize composer")
-_composer = Composer(Path("./pyproject.toml").resolve(),
+_composer = Composer(
+    Path("./pyproject.toml").resolve(),
     processors=[
         DjangoSettingsProcessor,
         DjangoUrlsProcessor,

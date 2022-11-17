@@ -4,8 +4,6 @@ Base settings
 =============
 
 """
-from pathlib import Path
-
 from configurations import Configuration
 
 from project import _composer

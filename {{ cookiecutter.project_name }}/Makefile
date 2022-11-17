@@ -233,7 +233,7 @@ flake:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Flake <---$(FORMATRESET)\n"
 	@echo ""
-	$(FLAKE) --statistics --show-source $(DJANGOPROJECT_DIR) django-apps tests
+	$(FLAKE) --statistics --show-source $(DJANGOPROJECT_DIR) django-apps tests composition_repository
 .PHONY: flake
 
 test:

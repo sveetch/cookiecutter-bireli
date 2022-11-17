@@ -4,7 +4,7 @@ import json
 from django.conf import settings
 from django.core.management.base import CommandError, BaseCommand
 
-from cms.api import Page, create_page
+from cms.api import Page
 
 
 class Command(BaseCommand):

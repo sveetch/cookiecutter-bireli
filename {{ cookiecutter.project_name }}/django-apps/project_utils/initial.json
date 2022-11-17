@@ -1,0 +1,41 @@
+{
+    "global_author": "emencia",
+    "default_template": "pages/single_column.html",
+    "site": {
+        "name": "Demo",
+        "domain": "demo.emencia.net"
+    },
+    "users": {
+        "emencia": {
+            "status": "superuser",
+            "first_name": "Admin",
+            "last_name": "Staff",
+            "email": "contact@emencia.com",
+            "password": "django324"
+        }
+    },
+    "pages": {
+        "key": "homepage",
+        "name": "Demo homepage",
+        "children": [
+            {
+                "key": "annexes",
+                "name": "Annexes",
+                "children": [
+                    {
+                        "key": "contact",
+                        "name": "Contact"
+                    },
+                    {
+                        "key": "legal-notice",
+                        "name": "Legal notice"
+                    },
+                    {
+                        "key": "privacy_policy",
+                        "name": "Privacy policy"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,8 +1,10 @@
+"""
+NOTE: Since the initials datas may change from a project to another, those tests try
+to make the less assumptions possible on initial datas.
+"""
 import logging
 
 import pytest
-
-from django.conf import settings
 
 from cms.api import Page
 from cms.utils import get_current_site
@@ -235,3 +237,23 @@ def test_cms_demomaker_success(caplog, db):
     assert Page.objects.count() == 8
     assert Page.objects.public().count() == 4
     assert Page.objects.get_home().get_title() == "Demo homepage"
+
+
+def test_cms_demomaker_fixture(caplog, db, load_initials):
+    """
+    The Pytest fixture should load the initial data.
+
+    We just check some content have been created with success but without to check the
+    contents themselves.
+
+    This assumes there is at least a created user and page, nothing more so the
+    initials data may be changed.
+
+    NOTE: This won't be safe for project without CMS.
+    """
+    caplog.set_level(logging.DEBUG, logger="project-utils")
+
+    User = safe_get_user_model()
+    assert User.objects.count() > 0
+
+    assert Page.objects.count() > 0

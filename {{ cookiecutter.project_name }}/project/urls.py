@@ -3,10 +3,7 @@
 Base Project URL configuration
 ==============================
 
-
 """
-from pathlib import Path
-
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin

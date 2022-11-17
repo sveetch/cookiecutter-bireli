@@ -32,7 +32,7 @@ class CmsBaseSettings(EnabledApplicationMarker):
 
     # Uncomment this to enable per-object user permission
     # See http://docs.django-cms.org/en/latest/topics/permissions.html
-    #CMS_PERMISSION = True
+    # CMS_PERMISSION = True
 
     @classmethod
     def post_setup(cls):
@@ -101,7 +101,7 @@ class CmsCkeditorSettings(EnabledApplicationMarker):
             "toolbar": "CMS",
             "toolbar_CMS": [
                 ["Undo", "Redo"],
-                #["cmsplugins", "-", "ShowBlocks"],
+                # ["cmsplugins", "-", "ShowBlocks"],
                 ["ShowBlocks"],
                 ["Format", "Styles"],
                 ["RemoveFormat"],
@@ -110,14 +110,18 @@ class CmsCkeditorSettings(EnabledApplicationMarker):
                 ["Bold", "Italic", "Underline", "-", "Subscript", "Superscript"],
                 ["JustifyLeft", "JustifyCenter", "JustifyRight"],
                 ["Link", "Unlink"],
-                ["Image", "Youtube", "Vimeo", "-", "NumberedList", "BulletedList",
-                "-", "Table", "-", "CreateDiv", "HorizontalRule"],
-                #["Iframe"],
-                #["Templates"],
+                [
+                    "Image", "Youtube", "Vimeo", "-", "NumberedList", "BulletedList",
+                    "-", "Table", "-", "CreateDiv", "HorizontalRule"
+                ],
+                # ["Iframe"],
+                # ["Templates"],
                 ["Source"],
             ],
         })
 
         # Share the same config for djangocms_text_ckeditor field and derived
         # CKEditor widgets/fields from plugins
-        cls.CKEDITOR_SETTINGS["toolbar_HTMLField"] = cls.CKEDITOR_SETTINGS["toolbar_CMS"]
+        cls.CKEDITOR_SETTINGS["toolbar_HTMLField"] = (
+            cls.CKEDITOR_SETTINGS["toolbar_CMS"]
+        )
