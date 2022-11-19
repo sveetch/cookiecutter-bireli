@@ -86,7 +86,7 @@ Flexbility note
 Currently this is hardly coupled to Django site, Django auth and CMS. This is not
 really flexible and will be broken if CMS is not enabled.
 
-This can be improved by splitting DemoMaker into application parts managed by
+This could be improved by splitting InitialDataLoader into application parts managed by
 project-composer.
 
 """
@@ -98,12 +98,12 @@ from django.core.validators import slug_re
 
 from cms.utils import get_current_site
 
-from .exceptions import DemoMakerException
+from .exceptions import InitialDataLoaderException
 from .factories import PageFactory, UserFactory
 from .logging import BaseOutput
 
 
-class DemoMaker:
+class InitialDataLoader:
     """
     Helper class that will create implemented objects from a given structure.
 
@@ -127,11 +127,68 @@ class DemoMaker:
         """
         if not self.global_author:
             msg = "No 'global_author' have been given despite it is required."
-            raise DemoMakerException(msg)
+            raise InitialDataLoaderException(msg)
 
         if isinstance(self.global_author, str):
             msg = "Unable to find created user for global author username '{}'."
-            raise DemoMakerException(msg.format(self.global_author))
+            raise InitialDataLoaderException(msg.format(self.global_author))
+
+        return True
+
+    def _recursive_get_pages(self, pages, collected=[]):
+        """
+        Collect a flat list of page tree.
+
+        Note than all page items won't have the children item since the collection
+        is definitively flat. Obviously the collection drop all the tree hierarchy
+        informations (the 'children' key).
+
+        Arguments:
+            pages (list): The tree list of page to recursively dig for pages.
+
+        Keyword Arguments:
+            collected (list):
+        """
+        for page in pages:
+            collected.append({k: v for k, v in page.items() if k != "children"})
+
+            if page.get("children"):
+                self._recursive_get_pages(page.get("children"), collected=collected)
+
+    def validate_page_tree(self, pages):
+        """
+        Recursively validate page tree structure.
+
+        Arguments:
+            pages (list): The tree list of page to recursively dig for pages.
+
+        Returns:
+            boolean:
+        """
+
+        flatten_tree = []
+        self._recursive_get_pages(pages, collected=flatten_tree)
+
+        homepages = [
+            item
+            for item in flatten_tree
+            if item.get("is_homepage") is True
+        ]
+
+        if len(homepages) == 0:
+            msg = (
+                "At least one homepage is required, given structure got none."
+            )
+            raise InitialDataLoaderException(msg.format(len(homepages)))
+        elif len(homepages) > 1:
+            msg = (
+                "Only a single page with 'is_homepage' is allowed but given structure "
+                "got {} pages with this option enabled."
+            )
+            raise InitialDataLoaderException(msg.format(len(homepages)))
+
+        for item in flatten_tree:
+            self.validate_page_data(item)
 
         return True
 
@@ -144,18 +201,18 @@ class DemoMaker:
         """
         if not data.get("key"):
             msg = "A page must define a non empty 'key' item."
-            raise DemoMakerException(msg)
+            raise InitialDataLoaderException(msg)
 
         if not slug_re.match(data["key"]):
             msg = (
                 "The 'key' item must be a valid identifier consisting of letters, "
                 "numbers, underscores or hyphens. Given one is invalid: {}"
             )
-            raise DemoMakerException(msg.format(data["key"]))
+            raise InitialDataLoaderException(msg.format(data["key"]))
 
         if not data.get("name"):
             msg = "A page must define a non empty 'name' item."
-            raise DemoMakerException(msg)
+            raise InitialDataLoaderException(msg)
 
         return True
 
@@ -172,14 +229,14 @@ class DemoMaker:
         """
         if not can_be_empty and not template:
             msg = "A template path cannot be empty."
-            raise DemoMakerException(msg)
+            raise InitialDataLoaderException(msg)
 
         if template not in [k for k, v in settings.CMS_TEMPLATES]:
             msg = (
                 "Given template path is not registered from "
                 "'settings.CMS_TEMPLATES': {}"
             )
-            raise DemoMakerException(msg.format(template))
+            raise InitialDataLoaderException(msg.format(template))
 
         return True
 
@@ -241,8 +298,6 @@ class DemoMaker:
                 root page.
             created (list): List where to append all created page objects.
         """
-        self.validate_page_data(data)
-
         key = data["key"]
         self.log.info("- Creating page: {name}".format(
             name=key,
@@ -255,7 +310,7 @@ class DemoMaker:
             "user": self.global_author,
             "parent": parent,
             "reverse_id": key,
-            "set_homepage": True if level == 0 else False,
+            "set_homepage": True if data.get("is_homepage") else False,
             "should_publish": True,
             "in_navigation": True,
             "title__language": settings.LANGUAGE_CODE,
@@ -270,7 +325,7 @@ class DemoMaker:
 
         level += 1
         for child in data.get("children", []):
-            self.page_creation(child, parent=page, level=level)
+            self.page_creation(child, parent=page, level=level, created=created)
 
         return created
 
@@ -302,8 +357,16 @@ class DemoMaker:
             self.validate_global_author()
 
         if structure.get("pages"):
+            # Validate the default template
             self.validate_page_template(self.default_template)
-            pages = self.page_creation(structure["pages"])
+
+            # Validate the whole tree
+            self.validate_page_tree(structure["pages"])
+
+            # Create pages
+            pages = []
+            for item in structure["pages"]:
+                self.page_creation(item, created=pages)
             self.log.info("* Created {} page(s)".format(len(pages)))
 
         return {
@@ -321,7 +384,8 @@ class DemoMaker:
             path (string or pathlib.Path): Path to the JSON file to load.
 
         Returns:
-            dict: Dictionnary of created objets as returned by ``DemoMaker.create()``.
+            dict: Dictionnary of created objets as returned
+            by ``InitialDataLoader.create()``.
         """
         return self.create(
             json.loads(Path(path).read_text())

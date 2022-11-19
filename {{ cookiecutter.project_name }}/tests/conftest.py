@@ -12,7 +12,7 @@ from pathlib import Path
 
 import pytest
 
-from project_utils import helpers
+from project_utils import initial_loader
 
 
 class FixturesSettingsTestMixin(object):
@@ -90,8 +90,8 @@ def load_initials(db):
     """
     Create objects from project initial structure data.
     """
-    maker = helpers.DemoMaker()
+    maker = initial_loader.InitialDataLoader()
 
     return maker.load(
-        Path(helpers.__file__).parent / "initial.json"
+        Path(initial_loader.__file__).parent / "initial.json"
     )

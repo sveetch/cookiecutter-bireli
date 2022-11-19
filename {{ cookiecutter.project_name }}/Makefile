@@ -41,6 +41,7 @@ help:
 	@echo "  check-migrations              -- to check for pending application migrations (do not write anything)"
 	@echo "  migrate                       -- to apply demo database migrations"
 	@echo "  superuser                     -- to create a superuser for Django admin"
+	@echo "  initial-data                  -- to load initial data"
 	@echo
 	@echo "  css                           -- to build CSS with default environnement"
 	@echo "  watch-css                     -- to launch watcher CSS with default environnement"
@@ -173,6 +174,13 @@ superuser:
 	@echo ""
 	$(DJANGO_MANAGE) createsuperuser
 .PHONY: superuser
+
+initial-data:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Loading initial data <---$(FORMATRESET)\n"
+	@echo ""
+	$(DJANGO_MANAGE) emencia_initial django-apps/project_utils/initial.json
+.PHONY: initial-data
 
 run:
 	@echo ""

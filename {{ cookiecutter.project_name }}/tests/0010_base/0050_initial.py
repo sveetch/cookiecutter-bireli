@@ -9,8 +9,8 @@ import pytest
 from cms.api import Page
 from cms.utils import get_current_site
 
-from project_utils.exceptions import DemoMakerException
-from project_utils.helpers import DemoMaker
+from project_utils.exceptions import InitialDataLoaderException
+from project_utils.initial_loader import InitialDataLoader
 from project_utils.user import safe_get_user_model
 
 
@@ -20,7 +20,7 @@ def test_cms_demomaker_blank(caplog, db):
     """
     caplog.set_level(logging.DEBUG, logger="project-utils")
 
-    maker = DemoMaker()
+    maker = InitialDataLoader()
     maker.create({})
 
     User = safe_get_user_model()
@@ -37,10 +37,11 @@ def test_cms_demomaker_blank(caplog, db):
             "users": {
                 "guest": {},
             },
-            "pages": {
+            "pages": [{
                 "key": "homepage",
                 "name": "Demo homepage",
-            },
+                "is_homepage": True,
+            }],
         },
         "A template path cannot be empty.",
     ),
@@ -52,10 +53,11 @@ def test_cms_demomaker_blank(caplog, db):
             "users": {
                 "guest": {},
             },
-            "pages": {
+            "pages": [{
                 "key": "homepage",
                 "name": "Demo homepage",
-            },
+                "is_homepage": True,
+            }],
         },
         (
             "Given template path is not registered from 'settings.CMS_TEMPLATES': "
@@ -69,10 +71,11 @@ def test_cms_demomaker_blank(caplog, db):
             "users": {
                 "guest": {},
             },
-            "pages": {
+            "pages": [{
                 "key": "homepage",
                 "name": "Demo homepage",
-            },
+                "is_homepage": True,
+            }],
         },
         "No 'global_author' have been given despite it is required."
     ),
@@ -84,10 +87,11 @@ def test_cms_demomaker_blank(caplog, db):
             "users": {
                 "guest": {},
             },
-            "pages": {
+            "pages": [{
                 "key": "homepage",
                 "name": "Demo homepage",
-            },
+                "is_homepage": True,
+            }],
         },
         "Unable to find created user for global author username 'nope'."
     ),
@@ -99,9 +103,10 @@ def test_cms_demomaker_blank(caplog, db):
             "users": {
                 "guest": {},
             },
-            "pages": {
+            "pages": [{
                 "name": "Demo homepage",
-            },
+                "is_homepage": True,
+            }],
         },
         "A page must define a non empty 'key' item."
     ),
@@ -113,10 +118,11 @@ def test_cms_demomaker_blank(caplog, db):
             "users": {
                 "guest": {},
             },
-            "pages": {
+            "pages": [{
                 "key": "L'été",
                 "name": "Demo homepage",
-            },
+                "is_homepage": True,
+            }],
         },
         (
             "The 'key' item must be a valid identifier consisting of letters, "
@@ -131,9 +137,10 @@ def test_cms_demomaker_blank(caplog, db):
             "users": {
                 "guest": {},
             },
-            "pages": {
+            "pages": [{
                 "key": "homepage",
-            },
+                "is_homepage": True,
+            }],
         },
         "A page must define a non empty 'name' item."
     ),
@@ -145,28 +152,72 @@ def test_cms_demomaker_blank(caplog, db):
             "users": {
                 "guest": {},
             },
-            "pages": {
+            "pages": [{
                 "key": "homepage",
                 "name": "Demo homepage",
                 "template": "foo.html",
-            },
+                "is_homepage": True,
+            }],
         },
         (
             "Given template path is not registered from 'settings.CMS_TEMPLATES': "
             "foo.html"
         ),
     ),
+    # Missing homepage declaration
+    (
+        {
+            "global_author": "guest",
+            "default_template": "pages/single_column.html",
+            "users": {
+                "guest": {},
+            },
+            "pages": [{
+                "key": "homepage",
+                "name": "Demo homepage",
+            }],
+        },
+        (
+            "At least one homepage is required, given structure got none."
+        ),
+    ),
+    # Multiple homepage declarations
+    (
+        {
+            "global_author": "guest",
+            "default_template": "pages/single_column.html",
+            "users": {
+                "guest": {},
+            },
+            "pages": [
+                {
+                    "key": "homepage",
+                    "name": "Demo homepage",
+                    "is_homepage": True,
+                    "children": [{
+                        "key": "foo",
+                        "name": "Foo",
+                        "is_homepage": True,
+                    }]
+                }
+            ],
+        },
+        (
+            "Only a single page with 'is_homepage' is allowed but given structure "
+            "got 2 pages with this option enabled."
+        ),
+    ),
 ])
 def test_cms_demomaker_validatons(caplog, db, structure, expected):
     """
-    DemoMake should raise an exception 'DemoMakerException' for invalid structure
-    values.
+    DemoMake should raise an exception 'InitialDataLoaderException' for invalid
+    structure values.
     """
     caplog.set_level(logging.DEBUG, logger="project-utils")
 
-    maker = DemoMaker()
+    maker = InitialDataLoader()
 
-    with pytest.raises(DemoMakerException) as exc_info:
+    with pytest.raises(InitialDataLoaderException) as exc_info:
         maker.create(structure)
 
     assert exc_info.value.args[0] == expected
@@ -174,11 +225,11 @@ def test_cms_demomaker_validatons(caplog, db, structure, expected):
 
 def test_cms_demomaker_success(caplog, db):
     """
-    DemoMaker should correctly create all objects from given structure.
+    InitialDataLoader should correctly create all objects from given structure.
     """
     caplog.set_level(logging.DEBUG, logger="project-utils")
 
-    maker = DemoMaker()
+    maker = InitialDataLoader()
     maker.create({
         "global_author": "admin",
         "default_template": "pages/single_column.html",
@@ -199,28 +250,31 @@ def test_cms_demomaker_success(caplog, db):
                 "password": "ok",
             },
         },
-        "pages": {
-            "key": "homepage",
-            "name": "Demo homepage",
-            "template": None,
-            "children": [
-                {
-                    "key": "foo",
-                    "name": "Foo",
-                    "children": [
-                        {
-                            "key": "bar",
-                            "name": "Bar",
-                            "children": []
-                        },
-                    ]
-                },
-                {
-                    "key": "plop_plop-plop",
-                    "name": "Plop",
-                },
-            ],
-        },
+        "pages": [
+            {
+                "key": "homepage",
+                "name": "Demo homepage",
+                "is_homepage": True,
+                "template": None,
+                "children": [
+                    {
+                        "key": "foo",
+                        "name": "Foo",
+                        "children": [
+                            {
+                                "key": "bar",
+                                "name": "Bar",
+                                "children": []
+                            },
+                        ]
+                    },
+                ],
+            },
+            {
+                "key": "plop_plop-plop",
+                "name": "Plop",
+            },
+        ]
     })
 
     site = get_current_site()

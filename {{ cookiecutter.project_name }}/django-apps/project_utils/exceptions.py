@@ -6,8 +6,8 @@ class ProjectUtilsException(Exception):
     pass
 
 
-class DemoMakerException(ProjectUtilsException):
+class InitialDataLoaderException(ProjectUtilsException):
     """
-    Custom explicit exception from a DemoMaker process.
+    Custom explicit exception from a InitialDataLoader process.
     """
     pass
