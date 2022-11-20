@@ -31,14 +31,16 @@ filterwarnings = [
 [tool.project_composer]
 collection = [
     "django_builtins",
-    "djangocms",
     "django_filer",
     "ckeditor",
-    "icomoon",
-    "staticpages",
-    "styleguide",
     "webpack",
     "project_utils",
+    "recaptcha",
+    "icomoon",
+    "fobi",
+    "staticpages",
+    "styleguide",
+    "djangocms",
 ]
 repository = "composition_repository"
 syspaths = [

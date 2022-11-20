@@ -120,6 +120,9 @@ class DjangoBase(EnabledApplicationMarker):
     # 'default_auto_field'
     DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
+    # Django system check to disable
+    SILENCED_SYSTEM_CHECKS = []
+
     @property
     def ENVIRONMENT(self):
         """

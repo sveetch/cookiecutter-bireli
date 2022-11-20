@@ -27,3 +27,8 @@ class Development(ComposedProjectSettings):
 
         # Disable webpack cache
         cls.WEBPACK_LOADER["DEFAULT"]["CACHE"] = False
+
+        cls.SILENCED_SYSTEM_CHECKS += [
+            # Disable error about Recaptcha API development keys
+            'captcha.recaptcha_test_key_error'
+        ]
