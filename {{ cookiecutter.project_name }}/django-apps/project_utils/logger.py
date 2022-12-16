@@ -1,7 +1,7 @@
 """
-=================
-Output interfaces
-=================
+=========================
+Logging output interfaces
+=========================
 
 """
 import logging

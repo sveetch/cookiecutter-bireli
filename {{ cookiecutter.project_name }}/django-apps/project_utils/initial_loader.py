@@ -100,7 +100,7 @@ from cms.utils import get_current_site
 
 from .exceptions import InitialDataLoaderException
 from .factories import PageFactory, UserFactory
-from .logging import BaseOutput
+from .logger import BaseOutput
 
 
 class InitialDataLoader:
@@ -112,7 +112,7 @@ class InitialDataLoader:
 
     Keyword Arguments:
         output_interface (class): Class to manage logging output. It must implement
-            an interface like ``project_utils.logging.BaseOutput``. Default is to use
+            an interface like ``project_utils.logger.BaseOutput``. Default is to use
             ``BaseOutput`` which use Python logging.
 
     Attributes:

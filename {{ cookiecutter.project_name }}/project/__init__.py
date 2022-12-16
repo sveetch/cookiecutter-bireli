@@ -5,7 +5,9 @@ from setuptools.config.pyprojecttoml import read_configuration
 import pkg_resources
 
 from project_composer.compose import Composer
-from project_composer.processors import DjangoSettingsProcessor, DjangoUrlsProcessor
+from project_composer.contrib.django.processors import (
+    DjangoSettingsProcessor, DjangoUrlsProcessor
+)
 
 
 def _extract_version(package_name):

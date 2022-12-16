@@ -6,7 +6,7 @@ PYTHON_BIN=$(VENV_BIN)/python
 
 PIP=$(VENV_BIN)/pip
 PROJECT_COMPOSER=$(VENV_BIN)/project_composer
-DJANGO_MANAGE=$(VENV_BIN)/python manage.py
+DJANGO_MANAGE=$(PYTHON_BIN) manage.py
 FLAKE=$(VENV_BIN)/flake8
 PYTEST=$(VENV_BIN)/pytest
 
@@ -37,8 +37,9 @@ help:
 	@echo "  clean-frontend-build          -- to clean frontend built files"
 	@echo "  clean-pycache                 -- to remove all __pycache__, this is recursive from current directory"
 	@echo
-	@echo "  run                           -- to run Django development server"
+	@echo "  check-django                  -- to run Django System check framework"
 	@echo "  check-migrations              -- to check for pending application migrations (do not write anything)"
+	@echo "  run                           -- to run Django development server"
 	@echo "  migrate                       -- to apply demo database migrations"
 	@echo "  superuser                     -- to create a superuser for Django admin"
 	@echo "  initial-data                  -- to load initial data"
@@ -153,6 +154,20 @@ install-frontend:
 
 install: venv create-var-dirs requirements install-backend migrate install-frontend
 .PHONY: install
+
+check-composer:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Running Project composer check <---$(FORMATRESET)\n"
+	@echo ""
+	$(PYTHON_BIN) ./django-apps/project_utils/composer_check.py
+.PHONY: check-django
+
+check-django:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Running Django System check framework <---$(FORMATRESET)\n"
+	@echo ""
+	$(DJANGO_MANAGE) check
+.PHONY: check-django
 
 check-migrations:
 	@echo ""

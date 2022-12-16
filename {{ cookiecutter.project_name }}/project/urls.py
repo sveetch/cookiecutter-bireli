@@ -10,7 +10,8 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path
 
-from project_composer.collector import ApplicationUrlCollector
+from project_composer.contrib.django.collector import ApplicationUrlCollector
+from project_composer.contrib.django.helpers import project_urls
 
 from project import _composer
 
@@ -21,23 +22,8 @@ urlpatterns = [
 ]
 
 
-# Search for all enabled message classes
-_classes = _composer.call_processor("DjangoUrlsProcessor", "export")
-
-# Add the base messager as the base inheritance
-_COMPOSED_CLASSES = _classes + [ApplicationUrlCollector]
-
-# Build Urls class from composed urls
-ComposedProjectUrls = type(
-    "ComposedProjectUrls",
-    tuple(_COMPOSED_CLASSES),
-    {}
-)
-
-
 # Mount collected applications urls
-mounter = ComposedProjectUrls(settings)
-urlpatterns = mounter.collect(urlpatterns)
+urlpatterns += project_urls(_composer, settings, base_classes=[ApplicationUrlCollector])
 
 
 # Finally the common static/media routes for development server

@@ -5,10 +5,10 @@
 
     "version": "0.1.0",
 
-    "_bireli_version": "0.3.0-pre.1",
+    "_bireli_version": "0.3.0",
     "_python_version": ">=3.8",
     "_django_version": ">=4.0,<4.1",
-    "_project_composer_version": ">=0.6.0,<0.7.0",
+    "_project_composer_version": ">=0.7.0,<0.8.0",
     "_django_configurations_version": ">=2.3.2",
     "_node_version": ">=18.0.0",
     "_npm_version": ">=8.0.0",
