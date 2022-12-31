@@ -17,7 +17,7 @@ class StyleguideSettings(EnabledApplicationMarker):
     """
     # Enable JSON dump auto save when CSS manifest has been successfully loaded
     STYLEGUIDE_SAVE_DUMP = values.BooleanValue(
-        True,
+        False,
         environ_name="STYLEGUIDE_SAVE_DUMP",
         environ_prefix=None
     )

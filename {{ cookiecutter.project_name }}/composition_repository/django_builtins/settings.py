@@ -57,34 +57,30 @@ class DjangoBase(EnabledApplicationMarker):
     in their own classes, not here.
     """
     # Debug mode is disabled by default to avoid security issues from an oversight
-    DEBUG = values.BooleanValue(
-        False,
-        environ_name="DEBUG",
-    )
+    DEBUG = values.BooleanValue(False, environ_name="DJANGO_DEBUG")
 
     # Default Site object
-    SITE_ID = values.PositiveIntegerValue(
-        1,
-        environ_name="SITE_ID",
-    )
+    SITE_ID = values.PositiveIntegerValue(1, environ_name="DJANGO_SITE_ID")
 
     # Dummy key, you need to fill a real secret key in your deployed environments
-    SECRET_KEY = values.Value(
-        "***TOPSECRET***",
-        environ_name="SECRET_KEY",
-    )
+    SECRET_KEY = values.Value("***TOPSECRET***", environ_name="DJANGO_SECRET_KEY")
 
     # Https is always enabled on default
-    HTTPS_ENABLED = True
+    HTTPS_ENABLED = values.BooleanValue(True, environ_name="DJANGO_HTTPS_ENABLED")
 
-    ADMINS = (
-        # ("Admin", "PUT_ADMIN_EMAIL_HERE"),
+    # Admin (name, email) for Django notifications
+    ADMINS = values.SingleNestedTupleValue(
+        (),
+        seq_separator=";",
+        separator=", ",
+        environ_name="DJANGO_ADMINS"
     )
 
     MANAGERS = ADMINS
 
     # Hosts/domain names that are valid for this site; required if DEBUG is False
-    ALLOWED_HOSTS = ["*"]
+    ALLOWED_HOSTS = values.ListValue(["*"], separator=",",
+                                     environ_name="DJANGO_ALLOWED_HOSTS")
 
     MIDDLEWARE = [
         "django.middleware.security.SecurityMiddleware",
@@ -121,7 +117,21 @@ class DjangoBase(EnabledApplicationMarker):
     DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
     # Django system check to disable
-    SILENCED_SYSTEM_CHECKS = []
+    SILENCED_SYSTEM_CHECKS = values.ListValue(
+        [],
+        separator=",",
+        environ_name="DJANGO_SILENCED_SYSTEM_CHECKS"
+    )
+
+    # SMTP configuration
+    EMAIL_BACKEND = values.Value("django.core.mail.backends.smtp.EmailBackend",
+                                 environ_name="DJANGO_EMAIL_BACKEND")
+    EMAIL_HOST = values.Value(None, environ_name="DJANGO_EMAIL_HOST")
+    EMAIL_PORT = values.PositiveIntegerValue(None, environ_name="DJANGO_EMAIL_PORT")
+
+    # Email sender for various applications
+    DEFAULT_FROM_EMAIL = values.Value("webmaster@localhost",
+                                      environ_name="DJANGO_DEFAULT_FROM_EMAIL")
 
     @property
     def ENVIRONMENT(self):
@@ -147,23 +157,46 @@ class DjangoDatabase(EnabledApplicationMarker):
             "default": {
                 "ENGINE": values.Value(
                     "django.db.backends.sqlite3",
-                    environ_name="DB_ENGINE",
+                    environ_name="DJANGO_DB_ENGINE",
                     environ_prefix=None,
                 ),
                 "NAME": values.Value(
-                    cls.VAR_PATH / "db" / "db.sqlite3", environ_name="DB_NAME",
+                    cls.VAR_PATH / "db" / "db.sqlite3",
+                    environ_name="DJANGO_DB_NAME",
                     environ_prefix=None
                 ),
-                "USER": values.Value(None, environ_name="DB_USER", environ_prefix=None),
+                "USER": values.Value(
+                    None,
+                    environ_name="DJANGO_DB_USER",
+                    environ_prefix=None
+                ),
                 "PASSWORD": values.Value(
-                    None, environ_name="DB_PASSWORD", environ_prefix=None
+                    None,
+                    environ_name="DJANGO_DB_PASSWORD",
+                    environ_prefix=None
                 ),
-                "HOST": values.Value(None, environ_name="DB_HOST", environ_prefix=None),
+                "HOST": values.Value(
+                    None,
+                    environ_name="DJANGO_DB_HOST",
+                    environ_prefix=None
+                ),
                 "PORT": values.PositiveIntegerValue(
-                    None, environ_name="DB_PORT", environ_prefix=None
+                    None,
+                    environ_name="DJANGO_DB_PORT",
+                    environ_prefix=None
                 ),
+                "OPTIONS": {},
             }
         }
+
+        # Additional options
+        db_sslmode_var = values.Value(
+            None,
+            environ_name="DJANGO_DB_SSLMODE",
+            environ_prefix=None
+        )
+        if db_sslmode_var:
+            cls.DATABASES["default"]["OPTIONS"]["sslmode"] = db_sslmode_var
 
 
 class DjangoLanguage(EnabledApplicationMarker):
@@ -174,15 +207,14 @@ class DjangoLanguage(EnabledApplicationMarker):
     # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
     TIME_ZONE = values.Value(
         "America/Chicago",
-        environ_name="TIME_ZONE",
+        environ_name="DJANGO_TIME_ZONE",
     )
-    # TIME_ZONE = 'Europe/Paris' # French timezone
 
     # Language code for this installation. All choices can be found here:
     # http://www.i18nguy.com/unicode/language-identifiers.html
     LANGUAGE_CODE = values.Value(
         "en",
-        environ_name="LANGUAGE_CODE",
+        environ_name="DJANGO_LANGUAGE_CODE",
     )
 
     LANGUAGES = (
@@ -192,14 +224,14 @@ class DjangoLanguage(EnabledApplicationMarker):
         # ("fr", gettext("French")),
         # ("it", gettext("Italiano")),
         # ("ja", gettext("日本語")),
-        # ('zh', gettext('官话')),
+        # ("zh", gettext("官话")),
     )
 
     # If you set this to False, Django will make some optimizations so as not
     # to load the internationalization machinery.
     USE_I18N = values.BooleanValue(
         True,
-        environ_name="USE_I18N",
+        environ_name="DJANGO_USE_I18N",
     )
 
     # Not a real Django settings, just a marker for other applications that implement

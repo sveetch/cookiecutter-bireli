@@ -4,6 +4,8 @@ Test environment
 ================
 
 """
+from configurations import values
+
 from .development import Development
 
 
@@ -25,11 +27,12 @@ class Test(Development):
     def post_setup(cls):
         super().post_setup()
 
-        # Patch database setting to use an independent database
-        cls.DATABASES["default"]["NAME"] = ":memory:"
-        cls.DATABASES["default"]["TEST"] = {
-            "NAME": cls.VAR_PATH / "db" / "tests.sqlite3",
-        }
+        # Patch database setting to use database in memory instead of file
+        cls.DATABASES["default"]["NAME"] = values.Value(
+            ":memory:",
+            environ_name="DJANGO_DB_NAME",
+            environ_prefix=None
+        )
 
         # Add page test templates if cms is enabled
         if hasattr(cls, "CMS_TEMPLATES"):

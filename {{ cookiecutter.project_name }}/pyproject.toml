@@ -31,6 +31,7 @@ filterwarnings = [
 [tool.project_composer]
 collection = [
     "django_builtins",
+    "sendfile",
     "django_filer",
     "ckeditor",
     "webpack",
