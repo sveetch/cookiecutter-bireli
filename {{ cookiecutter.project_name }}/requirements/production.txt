@@ -1,2 +1,4 @@
 # Specific requirements for production environment, inherit from base
 -r ./base.txt
+psycopg2
+uwsgi

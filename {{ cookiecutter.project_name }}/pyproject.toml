@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "{{ cookiecutter.project_name }}"
-version = "{{ cookiecutter.version }}"
+version = "{{ cookiecutter.__version }}"
 requires-python = "{{ cookiecutter._python_version }}"
 
 [tool.pytest.ini_options]
@@ -52,3 +52,16 @@ syspaths = [
 template = "requirements/base_template.txt"
 application_label = "# {name}\n"
 application_divider = "\n"
+
+{% if cookiecutter.versioning == "bumpver" %}[bumpver]
+current_version = "{{ cookiecutter.__version }}"
+version_pattern = "YY.0W.INC0"
+commit_message = "[NEW] Setup bump version {old_version} -> {new_version} !ignore"
+commit = true
+tag = true
+
+[bumpver.file_patterns]
+"pyproject.toml" = [
+    'current_version = "{version}"',
+    'version = "{version}"'
+]{% endif %}
