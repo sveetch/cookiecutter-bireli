@@ -1,0 +1,140 @@
+.. _virtualenv: http://www.virtualenv.org/
+.. _pip: http://www.pip-installer.org
+
+.. _intro_project_install:
+
+===============
+Project install
+===============
+
+.. Note::
+   This document is about default procedure for a freshly created project. Some
+   projects may have been changed by developers to involve less or more requirements,
+   tasks and configurations.
+
+   Commonly a project should documentate everything for their specific needs but it is
+   out of scope of Bireli documentation.
+
+System requirements
+*******************
+
+A project will requires `Python`, `pip`_, `virtualenv`_, *GNU make* and a recent
+*Node.js* already install and some system packages for installing and running.
+
+Lists below are the required basic development system packages and some other optional
+ones.
+
+
+Basic requirements
+------------------
+
+* Git;
+* Python3;
+* ``python-dev``;
+* ``python-virtualenv``;
+* ``gettext``;
+* ``gcc``;
+* ``make``;
+* ``libjpeg``;
+* ``zlib``;
+* ``libfreetype``;
+
+.. Warning::
+   Package names may differ depending your system.
+
+On Linux distribution
+    You will install them from your common package manager like ``apt`` for Debian
+    based distributions: ::
+
+        apt install python-dev python-virtualenv gettext gcc make libjpeg zlib libfreetype
+
+On macOS
+    Recommended way is to use ``brew`` utility for system packages, some names
+    can vary.
+
+On Windows
+    **Not supported**, you probably can install some needed stuff but with some
+    works on your own.
+
+
+Optional requirements
+---------------------
+
+These ones are common extra requirements that some projects may use. You don't need
+to take care of them for now.
+
+For Postgresql client driver (psycopg2)
+    * ``libpq``;
+
+For Mysql client driver
+    * ``libmysqlclient-dev``;
+
+For M2Crypto
+    * ``swig``;
+
+For Graphviz
+    * ``graphviz``;
+    * ``libgraphviz-dev``;
+    * ``graphviz-dev``;
+
+
+Local deployment
+****************
+
+A created project can be installed using a simple Makefile task: ::
+
+    make install
+
+Then create a new superuser to be able to reach the admin: ::
+
+    make superuser
+
+When finished your project is ready to run.
+
+
+Initial data
+************
+
+A new installed project is empty from any content, however a task exists to create some
+initial data for main components: ::
+
+    make initial-data
+
+
+Upgrades
+********
+
+Later if a project introduces a new package or newer packages versions, you may use
+the following commands to upgrade your local install.
+
+To upgrade backend install: ::
+
+    make install-backend
+
+To upgrade frontend install: ::
+
+    make install-frontend
+
+.. Warning::
+   Don't use the task ``install`` to upgrade your install, it has been made for a fresh
+   new install and include some other tasks that are longer to run and that could also
+   lost some of your changes.
+
+
+Cleaning
+********
+
+If you need to reset your local install you may use the following command: ::
+
+    make clean
+
+However this will remove everything even your local data. If you just need to clean
+some parts of your install, see Makefile help for all the specific cleaning tasks.
+
+
+Production deployment
+*********************
+
+This is out of scope of Bireli because there is just too many ways to deploy a project,
+you will have to add this layer on yourself into your project.
+

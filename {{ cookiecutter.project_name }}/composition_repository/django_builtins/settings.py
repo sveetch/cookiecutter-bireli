@@ -218,13 +218,13 @@ class DjangoLanguage(EnabledApplicationMarker):
     )
 
     LANGUAGES = (
-        ("en", gettext("English")),
-        # ("de", gettext("Deutsch")),
-        # ("es", gettext("Español")),
-        # ("fr", gettext("French")),
-        # ("it", gettext("Italiano")),
-        # ("ja", gettext("日本語")),
-        # ("zh", gettext("官话")),
+        ("en", "English"),
+        # ("de", "Deutsch"),
+        # ("es", "Español"),
+        # ("fr", "French"),
+        # ("it", "Italiano"),
+        # ("ja", "日本語"),
+        # ("zh", "官话"),
     )
 
     # If you set this to False, Django will make some optimizations so as not

@@ -16,8 +16,8 @@
 cookiecutter-bireli
 ===================
 
-Yet another `Cookiecutter`_ template to produce a repository to start
-a Django site project.
+Yet another `Cookiecutter`_ template to produce a repository to start a Django site
+project.
 
 It emphases on simple package with quality and modern stack.
 

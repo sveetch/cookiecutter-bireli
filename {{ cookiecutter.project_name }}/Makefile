@@ -55,6 +55,9 @@ help:
 	@echo "  frontend                      -- to build frontend assets from sources (CSS and JS) with default environnement"
 	@echo "  frontend-prod                 -- to build frontend assets from sources (CSS and JS) with production environnement"
 	@echo
+	@echo "  po                            -- to update every PO files from composition apps, django apps and project code and templates for enabled languages"
+	@echo "  mo                            -- to build MO files from existing project PO files"
+	@echo
 	@echo "  flake                         -- to launch Flake8 checking"
 	@echo "  test                          -- to launch base test suite using Pytest"
 	@echo "  test-initial                  -- to launch tests with pytest and re-initialized database (for after new application or model changes)"
@@ -63,7 +66,7 @@ help:
 
 clean-pycache:
 	@echo ""
-	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Clear Python cache <---$(FORMATRESET)\n"
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Cleaning Python cache <---$(FORMATRESET)\n"
 	@echo ""
 	rm -Rf .pytest_cache
 	find . -type d -name "__pycache__"|xargs rm -Rf
@@ -178,14 +181,14 @@ check-migrations:
 
 migrate:
 	@echo ""
-	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Apply pending migrations <---$(FORMATRESET)\n"
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Applying pending migrations <---$(FORMATRESET)\n"
 	@echo ""
 	$(DJANGO_MANAGE) migrate
 .PHONY: migrate
 
 superuser:
 	@echo ""
-	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Create new superuser <---$(FORMATRESET)\n"
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Creating new superuser <---$(FORMATRESET)\n"
 	@echo ""
 	$(DJANGO_MANAGE) createsuperuser
 .PHONY: superuser
@@ -206,7 +209,7 @@ run:
 
 css:
 	@echo ""
-	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Build CSS for development environment <---$(FORMATRESET)\n"
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Building CSS for development environment <---$(FORMATRESET)\n"
 	@echo ""
 	cd $(FRONTEND_DIR) && npm run-script css
 .PHONY: css
@@ -220,14 +223,14 @@ watch-sass:
 
 css-prod:
 	@echo ""
-	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Build CSS for production environment <---$(FORMATRESET)\n"
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Building CSS for production environment <---$(FORMATRESET)\n"
 	@echo ""
 	cd $(FRONTEND_DIR) && npm run-script css-prod
 .PHONY: css-prod
 
 js:
 	@echo ""
-	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Build distributed Javascript for development environment <---$(FORMATRESET)\n"
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Building distributed Javascript for development environment <---$(FORMATRESET)\n"
 	@echo ""
 	cd $(FRONTEND_DIR) && npm run js
 .PHONY: js
@@ -241,7 +244,7 @@ watch-js:
 
 js-prod:
 	@echo ""
-	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Build distributed Javascript for production environment <---$(FORMATRESET)\n"
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Building distributed Javascript for production environment <---$(FORMATRESET)\n"
 	@echo ""
 	cd $(FRONTEND_DIR) && npm run js-prod
 .PHONY: js-prod
@@ -251,6 +254,20 @@ frontend: css js
 
 frontend-prod: css-prod js-prod
 .PHONY: frontend-prod
+
+po:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Updating project PO files <---$(FORMATRESET)\n"
+	@echo ""
+	$(DJANGO_MANAGE) makemessages -a --keep-pot --no-obsolete
+.PHONY: po
+
+mo:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Building project MO files <---$(FORMATRESET)\n"
+	@echo ""
+	$(DJANGO_MANAGE) compilemessages --verbosity 3 --ignore='.venv' --ignore='frontend/node_modules' --ignore='tests' --ignore='var' --ignore='.git' --ignore='.pytest_cache' --ignore='chart'
+.PHONY: mo
 
 flake:
 	@echo ""
