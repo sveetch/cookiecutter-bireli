@@ -4,6 +4,13 @@
 History
 =======
 
+Version 0.3.3 - Unreleased
+--------------------------
+
+* Disabled ``check-migrations`` task from ``quality`` task until CMS plugins have been
+  updated for proper Django>=4.0 support, see issue #21 for details;
+
+
 Version 0.3.2 - 2023/01/30
 --------------------------
 

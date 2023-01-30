@@ -299,7 +299,7 @@ freeze-dependencies:
 	$(PIP) freeze --all --local > requirements/requirements_freeze.txt
 .PHONY: freeze-dependencies
 
-quality: test-initial flake check-migrations
+quality: test-initial flake
 	@echo ""
 	@echo "♥ ♥ Everything should be fine ♥ ♥"
 	@echo ""
