@@ -16,71 +16,30 @@
 cookiecutter-bireli
 ===================
 
-Yet another `Cookiecutter`_ template to produce a repository to start a Django site
+This is a Django project template with `Cookiecutter`_ to produce a ready to start
 project.
 
-It emphases on simple package with quality and modern stack.
+It emphases on quality, modularity and modern stable stack.
 
 
-Package content
-***************
-
-A Django package with everything to start:
+Features
+********
 
 * Development in a Python virtual environment with `virtualenv`_ and `pip`_;
+* Project include a ``pyproject.toml`` to store (almost) all backend tools
+  configurations;
 * Promote Test Driven Development with `Pytest`_;
-* Latest Django versions support;
-* Modern frontend with Bootstrap5 and Node.js;
+* Latest stable stack support;
+* Frontend assets built with Node.js and managed with Webpack;
+* Default shipped layout with Bootstrap5;
+* Backend application architecture is modular through `Project composer`_;
 * Settings are managed with `django-configurations`_;
-* Adopted ``pyproject.toml`` to store backend tools configurations;
+* Internationalization and localization enabled;
+* Include a set of main applications (CMS, blog, form builder, etc..) pre-configured;
 * A Makefile with every useful commands.
 
-
-Usage
+Links
 *****
 
-Just invoke the `Cookiecutter`_ template to create a new project: ::
-
-    cookiecutter https://github.com/sveetch/cookiecutter-bireli.git
-
-
-Package requirements
---------------------
-
-To use it from repository url you just need `Cookiecutter`_ version >=2.1.0.
-
-.. note::
-
-    Cookiecutter 2.x is a major version with a lot of changes so you may not be able to
-    use this cookie template with Cookiecutter 1.x.
-
-
-Once project is created, you can install it locally with ``make install``.
-
-However you can install this cookie locally (to avoid doing request each time
-you use it), you will need virtualenv, clone it where you want and use its
-``make install`` command. Once installed you can create shortcut with a bash
-alias in your ``.bash_aliases``: ::
-
-    alias cookdjango='/home/your/install/cookiecutter-bireli/.venv/bin/cookiecutter /home/your/install/cookiecutter-bireli'
-
-Options
--------
-
-You can define version start, project name and project short description.
-
-You may pre define some options in your
-`cookiecutter user configuration <https://cookiecutter.readthedocs.io/en/stable/advanced/user_config.html>`_
-to avoid to input them each time you use this cookie. This is especially
-recommended for the author and username ones.
-
-.. note::
-
-    To avoid managing main components versions through multiple files and miss some
-    inconsistencies, these versions are stored through private variables in cookiecutter
-    template configuration file. These variables are strings that must be valid
-    requirement versions for Python package, except for the frontend components that
-    must be valid versions for NPM.
-
-    However this is only used when generating a new project so you only have to bother
-    about this if your are contributing to this template repository.
+* Read the documentation on `Read the docs <https://cookiecutter-bireli.readthedocs.io/>`_;
+* Clone it on its `Github repository <https://github.com/sveetch/cookiecutter-bireli>`_;

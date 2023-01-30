@@ -85,6 +85,10 @@ A created project can be installed using a simple Makefile task: ::
 
     make install
 
+Now you need to build the frontend assets: ::
+
+    make frontend
+
 Then create a new superuser to be able to reach the admin: ::
 
     make superuser
