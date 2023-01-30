@@ -11,28 +11,6 @@ Project usage
 Projects are made to run within a virtual environnement from `virtualenv`_.
 
 
-Composition
-***********
-
-Bireli strongly stands on `Project composer`_ to structure its main parts, this means
-settings, urls and requirements.
-
-You will need to properly understand `Project composer`_ before to be able to properly
-work on a project.
-
-To resume the purpose of composition is to assemble main parts from *bricks*, each
-*brick* is dedicated to a single scope like a CMS application, a library when its usage
-is shared through many other bricks or a project module.
-
-.. Note::
-
-    You should understand the *brick* concept when looking into available application
-    bricks from the project directory ``composition_repository/``.
-
-The *Workflow* document from `Project composer`_  documentation contains a diagram
-exemple of resumed workflow within a Django project.
-
-
 Makefile tasks
 **************
 

@@ -39,4 +39,5 @@ to avoid to input them each time you use this cookie.
 Result
 ------
 
-Once project is created, you can install it locally with ``make install``.
+Once project is created, you can go to its directory and install it locally with
+``make install``.

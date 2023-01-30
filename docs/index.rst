@@ -25,6 +25,11 @@ project.
 
 It emphases on quality, modularity and modern stable stack.
 
+.. Warning::
+
+    This documentation is currently a draft, some things are missing or on the way
+    to be re-worded.
+
 
 Features
 ********
