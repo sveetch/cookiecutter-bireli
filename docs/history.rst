@@ -4,7 +4,7 @@
 History
 =======
 
-Version 0.3.2 - Unreleased
+Version 0.3.2 - 2023/01/30
 --------------------------
 
 * Started this history changelog;
