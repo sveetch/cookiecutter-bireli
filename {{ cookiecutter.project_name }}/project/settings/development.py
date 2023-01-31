@@ -1,9 +1,3 @@
-"""
-=======================
-Development environment
-=======================
-
-"""
 from configurations import values
 
 from .base import ComposedProjectSettings
