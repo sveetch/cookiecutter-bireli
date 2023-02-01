@@ -15,6 +15,7 @@ Version 0.3.3 - Unreleased
   Development settings have been copied to the Test settings;
 * Fixed Composer check command which wrongly used resolver in lazy mode (leading to
   wrong order in output);
+* Added feature for the optional local environment settings file ``localsettings.py``;
 
 
 Version 0.3.2 - 2023/01/30

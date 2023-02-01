@@ -26,6 +26,12 @@ available on your system. Then type: ::
     cd cookiecutter-bireli
     make install
 
+
+.. Warning::
+
+    You will need to keep your install up to date yourself opposed to the
+    direct repository usage which always try to use the latest version.
+
 Once installed you can create shortcut with a bash alias in your ``.bash_aliases``: ::
 
     alias cookdjango='/home/your/install/cookiecutter-bireli/.venv/bin/cookiecutter /home/your/install/cookiecutter-bireli'
@@ -33,6 +39,7 @@ Once installed you can create shortcut with a bash alias in your ``.bash_aliases
 So you will just have to execute following command to create a new project: ::
 
     cookdjango
+
 
 
 Contribution

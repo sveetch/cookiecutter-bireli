@@ -2,14 +2,14 @@
 
 .. _intro_project_creation:
 
-================
-Project creation
-================
+====================
+Create a new project
+====================
 
 .. Warning::
 
-    You don't need this just to use a project, this is only for developers that need
-    to create some fresh new projects.
+    You don't need this just to use a Bireli project, this is only for developers that
+    need to create some fresh new projects.
 
 To create a new project you just need to install `Cookiecutter`_ version >=2.1.0.
 
@@ -21,9 +21,6 @@ You may then use it with this template repository URL: ::
 
     To speed up project creation you may install this cookie on your system, read
     :ref:`install_development` to know how.
-
-    However you will need to keep your install up to date yourself opposed to the
-    direct repository usage which will always try to use the latest version.
 
 
 Options
@@ -39,5 +36,8 @@ to avoid to input them each time you use this cookie.
 Result
 ------
 
-Once project is created, you can go to its directory and install it locally with
+Once project is created, you can go into its directory and install it locally with
 ``make install``.
+
+Cookiecutter will create a new directory named after your project name where you enter
+in to install it and start to use.

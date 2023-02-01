@@ -20,7 +20,7 @@
 Bireli
 ======
 
-This is a Django project template with `Cookiecutter`_ to produce a ready to start
+Bireli is a Django project template with `Cookiecutter`_ to produce a ready to start
 project.
 
 It emphases on quality, modularity and modern stable stack.
@@ -69,9 +69,9 @@ Summary
 .. toctree::
    :maxdepth: 3
 
-   project-install.rst
-   project-usage.rst
-   project-overview.rst
    project-creation.rst
+   project-install.rst
+   makefile.rst
+   project-overview.rst
    development.rst
    history.rst

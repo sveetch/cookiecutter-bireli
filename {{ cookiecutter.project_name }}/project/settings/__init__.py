@@ -45,3 +45,9 @@ use the ``setup`` and only the environment classes use the ``post_setup``.
 from .development import Development  # noqa: F401
 from .test import Test  # noqa: F401
 from .production import Production  # noqa: F401
+
+# Try to get optional local environment settings file
+try:
+    from .localsettings import LocalEnv  # noqa: F401
+except ImportError:
+    pass

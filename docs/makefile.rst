@@ -2,22 +2,20 @@
 .. _pip: http://www.pip-installer.org
 .. _Project composer: https://project-composer.readthedocs.io/en/latest/
 
-.. _intro_project_usage:
+.. _intro_makefile:
 
-=============
-Project usage
-=============
+========
+Makefile
+========
 
-Projects are made to run within a virtual environnement from `virtualenv`_.
-
-
-Makefile tasks
-**************
-
-Once a project is installed, you will use the Makefile to achieve all the common tasks,
-use its help to know about every available task: ::
+A project contains a Makefile to achieve all the common tasks, use its help to know
+about every available task: ::
 
     make help
+
+
+Tasks
+*****
 
 The following list is a summary of important tasks, use them like ``make TASKNAME``.
 
