@@ -13,6 +13,7 @@ PYTEST=$(VENV_BIN)/pytest
 DJANGOPROJECT_DIR=project
 STATICFILES_DIR=$(DJANGOPROJECT_DIR)/static-sources
 FRONTEND_DIR=frontend
+PROJECT_APPS=ls -I '__pycache__' -I '*.py' django-apps
 
 # Formatting variables, FORMATRESET is always to be used last to close formatting
 FORMATBLUE:=$(shell tput setab 4)
@@ -176,7 +177,7 @@ check-migrations:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Checking for pending project applications models migrations <---$(FORMATRESET)\n"
 	@echo ""
-	$(DJANGO_MANAGE) makemigrations --check --dry-run -v 3
+	$(DJANGO_MANAGE) makemigrations --check --dry-run -v 3 `$(PROJECT_APPS)`
 .PHONY: check-migrations
 
 migrate:
@@ -299,7 +300,7 @@ freeze-dependencies:
 	$(PIP) freeze --all --local > requirements/requirements_freeze.txt
 .PHONY: freeze-dependencies
 
-quality: test-initial flake
+quality: test-initial flake check-migrations
 	@echo ""
 	@echo "♥ ♥ Everything should be fine ♥ ♥"
 	@echo ""

@@ -7,10 +7,12 @@ History
 Version 0.3.3 - Unreleased
 --------------------------
 
-* Disabled ``check-migrations`` task from ``quality`` task until CMS plugins have been
-  updated for proper Django>=4.0 support, see issue #21 for details;
+* Changed ``check-migrations`` task so it does not scan anymore for packaged app
+  migrations, only the project ones from ``django-apps``. This is to overcome issues
+  CMS plugin apps that don't have yet a proper Django>=4.0 support, see
+  `issue #21 <https://github.com/sveetch/cookiecutter-bireli/issues/21>`_ for details;
 * Test environment settings no longer inherit from Development, instead some of
-  Development have been copied to the Test settings;
+  Development settings have been copied to the Test settings;
 * Fixed Composer check command which wrongly used resolver in lazy mode (leading to
   wrong order in output);
 
