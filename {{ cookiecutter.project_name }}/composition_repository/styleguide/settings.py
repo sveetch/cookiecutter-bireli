@@ -19,12 +19,11 @@ class StyleguideSettings(EnabledApplicationMarker):
     STYLEGUIDE_SAVE_DUMP = values.BooleanValue(
         False,
         environ_name="STYLEGUIDE_SAVE_DUMP",
-        environ_prefix=None
     )
 
     @classmethod
     def setup(cls):
-        super().setup()
+        super(StyleguideSettings, cls).setup()
 
         cls.INSTALLED_APPS.extend([
             "styleguide",

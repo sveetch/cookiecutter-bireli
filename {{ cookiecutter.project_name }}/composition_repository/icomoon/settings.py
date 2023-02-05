@@ -15,7 +15,7 @@ class IcomoonSettings(EnabledApplicationMarker):
 
     @classmethod
     def setup(cls):
-        super().setup()
+        super(IcomoonSettings, cls).setup()
 
         cls.INSTALLED_APPS.extend([
             "icomoon",

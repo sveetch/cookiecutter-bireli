@@ -17,6 +17,11 @@ Version 0.3.3 - Unreleased
   wrong order in output);
 * Added feature for the optional local environment settings file ``localsettings.py``;
 * Fixed environments settings to correctly define the path to their Dotenv file;
+* Fixed application settings and their ``.env`` sample. Now every setting that can be
+  overwritten from Dotenv will use the default prefix ``DJANGO_`` such as a setting
+  ``FOO`` is expected to be named ``DJANGO_FOO`` in Dotenv file;
+* Fixed every applications settings files to explictely define ``super()`` arguments
+  since it use ``cls`` and not ``self`` in setup methods;
 
 
 Version 0.3.2 - 2023/01/30

@@ -36,7 +36,7 @@ class CmsBaseSettings(EnabledApplicationMarker):
 
     @classmethod
     def post_setup(cls):
-        super().post_setup()
+        super(CmsBaseSettings, cls).post_setup()
 
         # Admin style needs to be before "django.contrib.admin" which we assume it's
         # always first in list
@@ -76,7 +76,7 @@ class CmsCkeditorSettings(EnabledApplicationMarker):
     """
     @classmethod
     def post_setup(cls):
-        super().post_setup()
+        super(CmsCkeditorSettings, cls).post_setup()
 
         # Then we push the common cms stack
         cls.INSTALLED_APPS.extend([

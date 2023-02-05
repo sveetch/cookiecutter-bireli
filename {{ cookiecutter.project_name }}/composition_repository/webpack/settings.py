@@ -20,7 +20,7 @@ class WebpackSettings(EnabledApplicationMarker):
     """
     @classmethod
     def setup(cls):
-        super().setup()
+        super(WebpackSettings, cls).setup()
 
         cls.INSTALLED_APPS.extend([
             "webpack_loader",
@@ -31,7 +31,6 @@ class WebpackSettings(EnabledApplicationMarker):
                 "CACHE": values.BooleanValue(
                     True,
                     environ_name="WEBPACK_CACHE",
-                    environ_prefix=None
                 ),
                 "STATS_FILE": (
                     cls.PROJECT_PATH / "static-sources" / "webpack-stats.json"

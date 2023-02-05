@@ -19,7 +19,7 @@ class ProjectUtilsSettings(EnabledApplicationMarker):
 
     @classmethod
     def setup(cls):
-        super().setup()
+        super(ProjectUtilsSettings, cls).setup()
 
         cls.INSTALLED_APPS.extend([
             "project_utils",

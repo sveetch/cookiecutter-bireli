@@ -44,7 +44,7 @@ class FobiSettings(EnabledApplicationMarker):
 
     @classmethod
     def setup(cls):
-        super().setup()
+        super(FobiSettings, cls).setup()
 
         cls.INSTALLED_APPS.extend([
             # Core

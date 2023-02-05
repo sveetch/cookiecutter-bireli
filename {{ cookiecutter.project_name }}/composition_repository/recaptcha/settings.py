@@ -15,14 +15,8 @@ class RecaptchaSettings(EnabledApplicationMarker):
     """
     # These are API keys for localhost usage only, you must fill them right in
     # integration and production settings
-    RECAPTCHA_PUBLIC_KEY = values.Value(
-        "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
-        environ_name="RECAPTCHA_PUBLIC_KEY",
-    )
-    RECAPTCHA_PRIVATE_KEY = values.Value(
-        "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
-        environ_name="RECAPTCHA_PRIVATE_KEY",
-    )
+    RECAPTCHA_PUBLIC_KEY = values.Value("6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI")
+    RECAPTCHA_PRIVATE_KEY = values.Value("6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe")
 
     # Use new system 'NoCaptcha ReCaptcha'
     NOCAPTCHA = True
@@ -32,7 +26,7 @@ class RecaptchaSettings(EnabledApplicationMarker):
 
     @classmethod
     def setup(cls):
-        super().setup()
+        super(RecaptchaSettings, cls).setup()
 
         cls.INSTALLED_APPS.extend([
             "captcha",

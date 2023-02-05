@@ -6,7 +6,7 @@
 
     "__version": "{% if cookiecutter.versioning == 'natural' %}0.1.0{% else %}{% now 'local', '%y.%W.0' %}{% endif %}",
 
-    "_bireli_version": "0.3.3-pre.7",
+    "_bireli_version": "0.3.3-pre.8",
     "_python_version": ">=3.8",
     "_django_version": ">=4.0,<4.1",
     "_project_composer_version": ">=0.7.0,<0.8.0",

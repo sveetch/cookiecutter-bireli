@@ -14,7 +14,7 @@ class DjangoFilerSettings(EnabledApplicationMarker):
 
     @classmethod
     def setup(cls):
-        super().setup()
+        super(DjangoFilerSettings, cls).setup()
 
         cls.INSTALLED_APPS.extend([
             "easy_thumbnails",

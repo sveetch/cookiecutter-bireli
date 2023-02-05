@@ -13,7 +13,7 @@ class Development(ComposedProjectSettings):
 
     # Don't send any email for real, just push them to the shell output
     EMAIL_BACKEND = values.Value("django.core.mail.backends.console.EmailBackend",
-                                 environ_name="DJANGO_EMAIL_BACKEND")
+                                 environ_name="EMAIL_BACKEND")
 
     @classmethod
     def pre_setup(cls):
@@ -30,14 +30,12 @@ class Development(ComposedProjectSettings):
         cls.WEBPACK_LOADER["DEFAULT"]["CACHE"] = values.BooleanValue(
             False,
             environ_name="WEBPACK_CACHE",
-            environ_prefix=None
         )
 
         # Ensure the styleguide is updated during development
         cls.STYLEGUIDE_SAVE_DUMP = values.BooleanValue(
             True,
             environ_name="STYLEGUIDE_SAVE_DUMP",
-            environ_prefix=None
         )
 
         # Force disabling error about Recaptcha API development keys

@@ -32,7 +32,7 @@ class StaticpageSettings(EnabledApplicationMarker):
 
     @classmethod
     def setup(cls):
-        super().setup()
+        super(StaticpageSettings, cls).setup()
 
         cls.INSTALLED_APPS.extend([
             "staticpages.apps.staticpagesConfig",

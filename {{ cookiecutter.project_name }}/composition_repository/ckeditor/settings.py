@@ -63,7 +63,7 @@ class CkeditorSettings(EnabledApplicationMarker):
 
     @classmethod
     def setup(cls):
-        super().setup()
+        super(CkeditorSettings, cls).setup()
 
         cls.INSTALLED_APPS.extend([
             "ckeditor",
