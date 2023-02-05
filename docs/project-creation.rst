@@ -36,8 +36,6 @@ to avoid to input them each time you use this cookie.
 Result
 ------
 
-Once project is created, you can go into its directory and install it locally with
-``make install``.
-
-Cookiecutter will create a new directory named after your project name where you enter
-in to install it and start to use.
+Cookiecutter will create a new directory named after your project name. You can enter
+into its directory and install it locally with ``make install`` (see
+:ref:`intro_project_install` for details).

@@ -72,6 +72,8 @@ Summary
    project-creation.rst
    project-install.rst
    makefile.rst
-   project-overview.rst
+   project-architecture.rst
+   project-backend.rst
+   project-frontend.rst
    development.rst
    history.rst
