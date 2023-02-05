@@ -16,11 +16,15 @@ class Development(ComposedProjectSettings):
                                  environ_name="DJANGO_EMAIL_BACKEND")
 
     @classmethod
-    def post_setup(cls):
-        super().post_setup()
-
+    def pre_setup(cls):
         # Expected path for optional Dotenv file
         cls.DOTENV = cls.BASE_DIR / ".env"
+
+        super(Development, cls).pre_setup()
+
+    @classmethod
+    def post_setup(cls):
+        super(Development, cls).post_setup()
 
         # Disable webpack cache
         cls.WEBPACK_LOADER["DEFAULT"]["CACHE"] = values.BooleanValue(

@@ -24,21 +24,28 @@ class Test(ComposedProjectSettings):
         return self.VAR_PATH / "media-tests"
 
     @classmethod
+    def pre_setup(cls):
+        # Expected path for optional Dotenv file
+        cls.DOTENV = cls.BASE_DIR / ".env"
+
+        super(Test, cls).pre_setup()
+
+    @classmethod
     def post_setup(cls):
-        super().post_setup()
+        super(Test, cls).post_setup()
 
         # Disable webpack cache
         cls.WEBPACK_LOADER["DEFAULT"]["CACHE"] = values.BooleanValue(
             False,
             environ_name="WEBPACK_CACHE",
-            environ_prefix=None
+            environ_prefix=None,
         )
 
         # Patch database setting to use database in memory instead of file
         cls.DATABASES["default"]["NAME"] = values.Value(
             ":memory:",
             environ_name="DJANGO_DB_NAME",
-            environ_prefix=None
+            environ_prefix=None,
         )
 
         # Add page test templates if cms is enabled

@@ -16,6 +16,7 @@ Version 0.3.3 - Unreleased
 * Fixed Composer check command which wrongly used resolver in lazy mode (leading to
   wrong order in output);
 * Added feature for the optional local environment settings file ``localsettings.py``;
+* Fixed environments settings to correctly define the path to their Dotenv file;
 
 
 Version 0.3.2 - 2023/01/30
