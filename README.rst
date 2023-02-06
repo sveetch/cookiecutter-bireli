@@ -1,22 +1,24 @@
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _Python: https://www.python.org
 .. _virtualenv: https://virtualenv.pypa.io
 .. _pip: https://pip.pypa.io
+.. _Django: https://www.djangoproject.com/
 .. _Pytest: http://pytest.org
 .. _Napoleon: https://sphinxcontrib-napoleon.readthedocs.org
 .. _Flake8: http://flake8.readthedocs.org
 .. _Sphinx: http://www.sphinx-doc.org
 .. _tox: http://tox.readthedocs.io
 .. _livereload: https://livereload.readthedocs.io
-.. _Read the Docs: https://readthedocs.org/
 .. _reStructuredText: https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
-.. _django-configurations: https://github.com/jazzband/django-configurations
+.. _django-configurations: https://django-configurations.readthedocs.io/en/stable/
+.. _Project composer: https://project-composer.readthedocs.io/en/latest/
+.. _Cookiecutter: https://cookiecutter.readthedocs.io/en/stable/
 
-===================
-cookiecutter-bireli
-===================
 
-This is a Django project template with `Cookiecutter`_ to produce a ready to start
+======
+Bireli
+======
+
+Bireli is a Django project template with `Cookiecutter`_ to produce a ready to start
 project.
 
 It emphases on quality, modularity and modern stable stack.

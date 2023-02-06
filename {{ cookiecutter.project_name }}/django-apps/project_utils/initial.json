@@ -1,17 +1,17 @@
 {
-    "global_author": "emencia",
+    "global_author": "admin",
     "default_template": "pages/single_column.html",
     "site": {
         "name": "Demo",
-        "domain": "demo.emencia.net"
+        "domain": "demo.mysite.net"
     },
     "users": {
-        "emencia": {
+        "admin": {
             "status": "superuser",
             "first_name": "Admin",
             "last_name": "Staff",
-            "email": "contact@emencia.com",
-            "password": "django324"
+            "email": "contact@mysite.com",
+            "password": "ok"
         }
     },
     "pages": [

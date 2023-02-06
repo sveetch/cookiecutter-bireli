@@ -24,13 +24,6 @@ class Test(ComposedProjectSettings):
         return self.VAR_PATH / "media-tests"
 
     @classmethod
-    def pre_setup(cls):
-        # Expected path for optional Dotenv file
-        cls.DOTENV = cls.BASE_DIR / ".env"
-
-        super(Test, cls).pre_setup()
-
-    @classmethod
     def post_setup(cls):
         super(Test, cls).post_setup()
 

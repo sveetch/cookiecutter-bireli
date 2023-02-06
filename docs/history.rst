@@ -16,7 +16,8 @@ Version 0.3.3 - Unreleased
 * Fixed Composer check command which wrongly used resolver in lazy mode (leading to
   wrong order in output);
 * Added feature for the optional local environment settings file ``localsettings.py``;
-* Fixed environments settings to correctly define the path to their Dotenv file;
+* Moved ``DOTENV`` setting to ``DjangoPaths`` and make it conditional (to avoid
+  confusing exception about Django apps and models) to Dotenv file existence;
 * Fixed application settings and their ``.env`` sample. Now every setting that can be
   overwritten from Dotenv will use the default prefix ``DJANGO_`` such as a setting
   ``FOO`` is expected to be named ``DJANGO_FOO`` in Dotenv file;

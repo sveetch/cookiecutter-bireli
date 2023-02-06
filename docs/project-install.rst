@@ -89,10 +89,6 @@ Now you need to build the frontend assets: ::
 
     make frontend
 
-Then create a new superuser to be able to reach the admin: ::
-
-    make superuser
-
 When finished your project is ready to run.
 
 
@@ -103,6 +99,11 @@ A new installed project is empty from any content, however a task exists to crea
 initial data for main components: ::
 
     make initial-data
+
+If you don't want any initial data, you will need at least a super to be able to reach
+the admin: ::
+
+    make superuser
 
 
 Upgrades

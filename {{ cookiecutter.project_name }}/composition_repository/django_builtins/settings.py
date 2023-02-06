@@ -38,6 +38,11 @@ class DjangoPaths(EnabledApplicationMarker):
     # deployed environments
     VAR_PATH = BASE_DIR / "var"
 
+    # Set the Dotenv file path only if it exists
+    _dotenv_path = BASE_DIR / ".env"
+    if _dotenv_path.exists():
+        DOTENV = _dotenv_path
+
 
 class DjangoBase(EnabledApplicationMarker):
     """

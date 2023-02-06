@@ -16,13 +16,6 @@ class Development(ComposedProjectSettings):
                                  environ_name="EMAIL_BACKEND")
 
     @classmethod
-    def pre_setup(cls):
-        # Expected path for optional Dotenv file
-        cls.DOTENV = cls.BASE_DIR / ".env"
-
-        super(Development, cls).pre_setup()
-
-    @classmethod
     def post_setup(cls):
         super(Development, cls).post_setup()
 
