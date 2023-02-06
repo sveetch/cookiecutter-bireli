@@ -4,7 +4,7 @@
 History
 =======
 
-Version 0.3.3 - Unreleased
+Version 0.3.3 - 2023/02/06
 --------------------------
 
 * Changed ``check-migrations`` task so it does not scan anymore for packaged app
