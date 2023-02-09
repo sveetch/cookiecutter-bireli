@@ -16,7 +16,7 @@ if __name__ == "__main__":
     # Set the settings module to use where lives the environment settings classes
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project.settings")
 
-    # Try to use the local environment settings if file exists from base directory
+    # Try to use the local environment settings if file exists
     if (BASE_DIR / "project" / "settings" / "localsettings.py").exists():
         os.environ.setdefault("DJANGO_CONFIGURATION", "LocalEnv")
     # Else set the default development environment settings

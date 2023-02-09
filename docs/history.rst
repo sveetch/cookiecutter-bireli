@@ -23,6 +23,8 @@ Version 0.3.3 - 2023/02/06
   ``FOO`` is expected to be named ``DJANGO_FOO`` in Dotenv file;
 * Fixed every applications settings files to explictely define ``super()`` arguments
   since it use ``cls`` and not ``self`` in setup methods;
+* Removed usage of deprecated *setuptools private API* from project/__init__.py to get
+  the project version. Instead it uses ``tomli`` to parse the project TOML file;
 
 
 Version 0.3.2 - 2023/01/30

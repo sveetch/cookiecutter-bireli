@@ -1,6 +1,7 @@
 # Environment related
 .venv
-project/settings/localsettings.py
+/.env
+/localsettings.py
 
 # Packaging
 build

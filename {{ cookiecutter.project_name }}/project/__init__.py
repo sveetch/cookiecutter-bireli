@@ -1,8 +1,6 @@
 from pathlib import Path
 
-from setuptools.config.pyprojecttoml import read_configuration
-
-import pkg_resources
+import tomli
 
 from project_composer.compose import Composer
 from project_composer.contrib.django.processors import (
@@ -10,21 +8,19 @@ from project_composer.contrib.django.processors import (
 )
 
 
-def _extract_version(package_name):
+BASE_DIR = Path(__file__).parents[1].resolve()
+
+
+def _extract_version():
     """
-    Get package version from installed distribution or configuration file if not
-    installed
+    Get package version from project TOML file
     """
-    try:
-        return pkg_resources.get_distribution(package_name).version
-    except pkg_resources.DistributionNotFound:
-        _project_dir = Path(__file__).parents[1].resolve()
-        _conf = read_configuration(str(_project_dir / "pyproject.toml"))
+    _conf = tomli.loads((BASE_DIR / "pyproject.toml").read_text())
 
     return _conf["project"]["version"]
 
 
-__version__ = _extract_version("{{ cookiecutter.project_name }}")
+__version__ = _extract_version()
 
 __generator__ = "cookiecutter-bireli=={{ cookiecutter._bireli_version }}"
 
