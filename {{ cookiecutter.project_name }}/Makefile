@@ -41,6 +41,7 @@ help:
 	@echo "  check-django                  -- to run Django System check framework"
 	@echo "  check-migrations              -- to check for pending application migrations (do not write anything)"
 	@echo "  run                           -- to run Django development server"
+	@echo "  migrations                    -- to create all pending application migrations files"
 	@echo "  migrate                       -- to apply demo database migrations"
 	@echo "  superuser                     -- to create a superuser for Django admin"
 	@echo "  initial-data                  -- to load initial data"
@@ -179,6 +180,13 @@ check-migrations:
 	@echo ""
 	$(DJANGO_MANAGE) makemigrations --check --dry-run -v 3 `$(PROJECT_APPS)`
 .PHONY: check-migrations
+
+migrations:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Creating pending applications models migrations <---$(FORMATRESET)\n"
+	@echo ""
+	$(DJANGO_MANAGE) makemigrations -v 3 `$(PROJECT_APPS)`
+.PHONY: migrations
 
 migrate:
 	@echo ""
