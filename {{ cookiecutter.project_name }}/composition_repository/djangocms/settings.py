@@ -9,14 +9,6 @@ import copy
 from project_composer.marker import EnabledApplicationMarker
 
 
-class DisabledApplicationMarker:
-    """
-    Dummy class that is just used to explicitely mark a class as disabled but
-    technically it does not imply any behavior.
-    """
-    pass
-
-
 class CmsBaseSettings(EnabledApplicationMarker):
     """
     DjangoCMS core and simple base plugins

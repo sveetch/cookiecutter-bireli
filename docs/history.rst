@@ -11,6 +11,7 @@ Version 0.3.4 - Unreleased
   the project version. Instead it uses ``tomli`` to parse the project TOML file;
 * Added ``migrations`` task to create all pending migrations from project applications;
 * Added a common ``pagination.html`` template;
+* Continued to improve documentation;
 
 
 Version 0.3.3 - 2023/02/06

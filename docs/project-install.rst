@@ -19,7 +19,7 @@ System requirements
 *******************
 
 A project will requires `Python`, `pip`_, `virtualenv`_, *GNU make* and a recent
-*Node.js* already install and some system packages for installing and running.
+*Node.js* already installed and some system packages for installing and running.
 
 Lists below are the required basic development system packages and some other optional
 ones.
@@ -100,7 +100,7 @@ initial data for main components: ::
 
     make initial-data
 
-If you don't want any initial data, you will need at least a super to be able to reach
+If you don't want any initial data, you will need at least a super user to reach
 the admin: ::
 
     make superuser

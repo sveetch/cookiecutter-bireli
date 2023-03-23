@@ -13,7 +13,7 @@ Create a new project
 
 To create a new project you just need to install `Cookiecutter`_ version >=2.1.0.
 
-You may then use it with this template repository URL: ::
+You may then use it from its repository URL: ::
 
     cookiecutter https://github.com/sveetch/cookiecutter-bireli.git
 

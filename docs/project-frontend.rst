@@ -13,8 +13,8 @@ Frontend
 Asset management
 ----------------
 
-Frontend assets are managed with `Webpack`_ and Django is
-aware of them through `django-webpack-loader`_ so it can load them from templates.
+Frontend assets are managed with `Webpack`_ and Django is aware of them through
+`django-webpack-loader`_ so you can load them from templates.
 
 
 Webdesign integration
@@ -23,7 +23,7 @@ Webdesign integration
 Layout stylesheets (CSS) are built from `Sass`_ sources.
 
 It is not allowed to use inline styles in templates and no *scoped* style from
-Javascript interfaces. The only source of truth for layout stylesheets is the Sass
+Javascript interfaces. The only source of truth for layout stylesheets are the Sass
 sources.
 
 The build from Sass to CSS is performed from the frontend stack with `node-sass`_. We

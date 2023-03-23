@@ -87,14 +87,13 @@ frontend/
     * Asset management is configured in ``webpack.config.js``;
 
 project/
-    This holds the Django project configuration, built assets.
+    This holds the Django project configuration and built assets.
 
     * ``settings/`` store all the environment settings;
     * ``static-sources`` will contains all built static to serve. It is not to mistake
-      with ``static`` that is virtual directory which is only used in production so
+      with ``static`` that is virtual directory that is only used in production so
       don't put anything there.
-    * ``templates/`` store all the project and applications templates because we do not
-      want to scatter templates amongst applications;
+    * ``templates/`` store all the project and applications templates;
     * ``urls.py`` mount all the applications urls modules;
 
 requirements/

@@ -3,14 +3,14 @@
     "default_template": "pages/single_column.html",
     "site": {
         "name": "Demo",
-        "domain": "demo.mysite.net"
+        "domain": "localhost:8001"
     },
     "users": {
         "admin": {
             "status": "superuser",
             "first_name": "Admin",
             "last_name": "Staff",
-            "email": "contact@mysite.com",
+            "email": "contact@localhost",
             "password": "ok"
         }
     },
