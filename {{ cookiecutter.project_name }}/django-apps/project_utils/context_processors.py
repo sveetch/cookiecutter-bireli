@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.contrib.sites.models import Site
 
+from project import __version__
+
 
 def get_site_metas(with_static=False, with_media=False, is_secure=False,
                    extra={}):
@@ -15,6 +17,7 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False,
 
     Default metas returned :
 
+    * PROJECT_RELEASE: Current project release version;
     * SITE.name: Current *Site* entry name;
     * SITE.domain: Current *Site* entry domain;
     * SITE.web_url: The Current *Site* entry domain prefixed with the http
@@ -29,24 +32,25 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False,
     site_current = Site.objects.get_current()
 
     if is_secure:
-        scheme = 'https'
+        scheme = "https"
     else:
-        scheme = 'http'
+        scheme = "http"
 
     metas = {
-        'SITE': {
-            'name': site_current.name,
-            'domain': site_current.domain,
-            'web_url': '{}://{}'.format(scheme, site_current.domain),
-            'scheme': scheme,
-        }
+        "SITE": {
+            "name": site_current.name,
+            "domain": site_current.domain,
+            "web_url": "{}://{}".format(scheme, site_current.domain),
+            "scheme": scheme,
+        },
+        "PROJECT_RELEASE": __version__,
     }
 
     if with_media:
-        metas['MEDIA_URL'] = getattr(settings, 'MEDIA_URL', '')
+        metas["MEDIA_URL"] = getattr(settings, "MEDIA_URL", "")
 
     if with_static:
-        metas['STATIC_URL'] = getattr(settings, 'STATIC_URL', '')
+        metas["STATIC_URL"] = getattr(settings, "STATIC_URL", "")
 
     metas.update(extra)
     return metas

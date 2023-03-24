@@ -13,6 +13,8 @@ Version 0.3.4 - Unreleased
 * Added a common ``pagination.html`` template;
 * Continued to improve documentation;
 * Fixed ``urls.py`` from composer application which loaded url in the wrong order;
+* Improved context process ``site_metas`` to include the project release version and
+  included the version in skeleton into meta tag ``generator``;
 
 
 Version 0.3.3 - 2023/02/06
