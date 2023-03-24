@@ -13,4 +13,4 @@ class StaticpageUrls(EnabledApplicationMarker):
         """
         urlpatterns = super().load_urlpatterns(urlpatterns)
 
-        return urlpatterns + StaticpagesLoader().build_urls()
+        return StaticpagesLoader().build_urls() + urlpatterns

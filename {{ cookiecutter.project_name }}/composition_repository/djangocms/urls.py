@@ -15,10 +15,10 @@ class CmsBaseUrls(EnabledApplicationMarker):
         urlpatterns = super().load_urlpatterns(urlpatterns)
 
         if self.settings.ENABLE_I18N_URLS:
-            return urlpatterns + i18n_patterns(
+            return i18n_patterns(
                 path("", include("cms.urls")),
-            )
+            ) + urlpatterns
         else:
-            return urlpatterns + [
+            return [
                 path("", include("cms.urls")),
-            ]
+            ] + urlpatterns

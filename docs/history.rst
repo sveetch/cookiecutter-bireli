@@ -7,11 +7,12 @@ History
 Version 0.3.4 - Unreleased
 --------------------------
 
-* Removed usage of deprecated *setuptools private API* from project/__init__.py to get
-  the project version. Instead it uses ``tomli`` to parse the project TOML file;
+* Removed usage of deprecated *setuptools private API* from ``project/__init__.py`` to
+  get the project version. Instead it uses ``tomli`` to parse the project TOML file;
 * Added ``migrations`` task to create all pending migrations from project applications;
 * Added a common ``pagination.html`` template;
 * Continued to improve documentation;
+* Fixed ``urls.py`` from composer application which loaded url in the wrong order;
 
 
 Version 0.3.3 - 2023/02/06

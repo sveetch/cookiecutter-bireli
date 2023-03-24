@@ -13,7 +13,7 @@ class StyleguideUrls(EnabledApplicationMarker):
         """
         urlpatterns = super().load_urlpatterns(urlpatterns)
 
-        return urlpatterns + [
+        return [
             path(
                 "styleguide/",
                 include(
@@ -21,4 +21,4 @@ class StyleguideUrls(EnabledApplicationMarker):
                     namespace="styleguide"
                 ),
             ),
-        ]
+        ] + urlpatterns

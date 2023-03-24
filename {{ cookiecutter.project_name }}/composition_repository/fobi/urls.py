@@ -15,7 +15,7 @@ class FobiUrls(EnabledApplicationMarker):
         """
         urlpatterns = super().load_urlpatterns(urlpatterns)
 
-        return urlpatterns + [
+        return [
             # View URLs
             path(
                 "fobi/",
@@ -38,4 +38,4 @@ class FobiUrls(EnabledApplicationMarker):
                 "fobi/plugins/form-handlers/db-store/",
                 include("fobi.contrib.plugins.form_handlers.db_store.urls")
             ),
-        ]
+        ] + urlpatterns

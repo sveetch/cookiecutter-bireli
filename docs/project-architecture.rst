@@ -116,3 +116,9 @@ tests/
 pyproject.toml
     The project backend manifest contains the Project composer manifest, versionning
     and many development tool configurations.
+
+
+Project applications
+********************
+
+TODO: How to use ? Precisely how to import ?
