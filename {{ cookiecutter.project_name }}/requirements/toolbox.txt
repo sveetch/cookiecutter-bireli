@@ -1,0 +1,3 @@
+# A set of common tools to use in local development only
+cookiecutter>=2.0,<3.0
+pipdeptree

@@ -1,0 +1,5 @@
+# A set of quality tools to use in local development only
+black
+autopep8
+djlint
+isort

@@ -45,6 +45,7 @@ help:
 	@echo "  migrate                       -- to apply demo database migrations"
 	@echo "  superuser                     -- to create a superuser for Django admin"
 	@echo "  initial-data                  -- to load initial data"
+	@echo "  new-app                       -- to create a new project application"
 	@echo
 	@echo "  css                           -- to build CSS with default environnement"
 	@echo "  watch-css                     -- to launch watcher CSS with default environnement"
@@ -146,7 +147,7 @@ install-backend:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Installing backend requirements <---$(FORMATRESET)\n"
 	@echo ""
-	$(PIP) install -r requirements/development.txt
+	$(PIP) install -r requirements/development.txt -r requirements/codestyle.txt -r requirements/toolbox.txt
 .PHONY: install-backend
 
 install-frontend:
@@ -208,6 +209,13 @@ initial-data:
 	@echo ""
 	$(DJANGO_MANAGE) emencia_initial django-apps/project_utils/initial.json
 .PHONY: initial-data
+
+new-app:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Creating a new application <---$(FORMATRESET)\n"
+	@echo ""
+	$(DJANGO_MANAGE) startapp
+.PHONY: new-app
 
 run:
 	@echo ""

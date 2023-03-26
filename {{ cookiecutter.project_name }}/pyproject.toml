@@ -28,6 +28,9 @@ filterwarnings = [
     #"ignore::DeprecationWarning",
 ]
 
+[tool.bireli]
+app_template = "https://github.com/sveetch/cookiecutter-bireli-newapp.git#{{ cookiecutter._bireli_newapp_version }}"
+
 [tool.project_composer]
 collection = [
     "django_builtins",

@@ -23,7 +23,7 @@ def gettext(s):
 
 class DjangoPaths(EnabledApplicationMarker):
     """
-    Settings for essential path object related to the project structure.
+    Settings for essential path objects related to the project structure.
 
     It should allways be in the first component classes to be executed since almost all
     component classes may rely on it directly or not.
