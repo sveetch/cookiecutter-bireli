@@ -16,6 +16,10 @@ Asset management
 Frontend assets are managed with `Webpack`_ and Django is aware of them through
 `django-webpack-loader`_ so you can load them from templates.
 
+Compiled CSS from Sass sources are not managed from Webpack since there is currently no
+Sass compiler that are properly usable. So these CSS files are just loaded as simple
+static files.
+
 
 Webdesign integration
 ---------------------
@@ -36,4 +40,15 @@ components.
 Javascript interface
 --------------------
 
-TODO
+Default Javascript sources shipped in a project are basic and just load the Bootstrap
+components. Code sources are to be done for ES6 and jQuery is still available.
+
+Logo and favicon
+----------------
+
+A project is generated with a default logo and favicon that you should change to fit
+to your project brand design.
+
+Note than favicon is configured using a site manifest to cover multiple devices
+behaviors, you may build a new full site manifest from online tool like
+`Favicon Generator <https://realfavicongenerator.net/>`_ (recommended).

@@ -191,7 +191,8 @@ else:
             application_title = self.get_title_value(options)
             application_name = slugify(application_title.lower())
             application_module = application_name.replace('-', '_')
-            application_class = application_name.replace('-', ' ').title().replace(' ', '')
+            application_class = application_name.replace('-', ' ').title()
+            application_class = application_class.replace(' ', '')
 
             self.stdout.write("- Application title: {}".format(application_title))
             self.stdout.write("- Built name: {}".format(application_name))

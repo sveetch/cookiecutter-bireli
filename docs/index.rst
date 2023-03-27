@@ -25,10 +25,10 @@ project.
 
 It emphases on quality, modularity and modern stable stack.
 
-.. Warning::
+.. Hint::
 
-    This documentation is currently a draft, some things are missing or on the way
-    to be re-worded.
+    This documentation is an ongoin work, not everything have been covered yet and it
+    will continue to evolve.
 
 
 Features

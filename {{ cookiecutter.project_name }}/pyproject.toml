@@ -68,3 +68,24 @@ tag = true
     'current_version = "{version}"',
     'version = "{version}"'
 ]{% endif %}
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+extend-exclude = "/(.venv|tests|frontend|dist|migrations|project/static|project/static-sources|project/templates)/"
+skip-magic-trailing-comma = true
+
+[tool.autopep8]
+max_line_length = 88
+in-place = true
+recursive = true
+aggressive = 1
+exclude = ".venv,*/tests/,frontend,dist,*/migrations/,project/mods_enabled/,project/static/,project/static-sources/,project/templates/"
+
+[tool.djlint]
+profile = "django"
+require_pragma = false
+use_gitignore = true
+indent = 4
+max_line_length = 120
+ignore = "H006,H017,H021,H030,H031,T002"

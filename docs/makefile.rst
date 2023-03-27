@@ -42,6 +42,12 @@ clean
 
     This use all the available clean tasks, see Makefile help to know about them.
 
+check
+    To run all following check tasks in an accurate order to ensure debugging level.
+
+check-composer
+    To run Composer checking on its configuration and display an helpful report.
+
 check-django
     To run Django System check framework. This is the most simple way to check about
     your project health but it won't go deeper like tests can do.
@@ -70,6 +76,10 @@ superuser
 initial-data
     To load initial data for enabled applications. You should not run it twice on the
     same database.
+
+new-app
+   To create a new project application properly structured and configured using
+   template `bireli-newapp <https://github.com/sveetch/cookiecutter-bireli-newapp>`_;
 
 css
     To build CSS for development environnement, this means without any optimization.

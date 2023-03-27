@@ -15,6 +15,17 @@ Version 0.3.4 - Unreleased
 * Fixed ``urls.py`` from composer application which loaded url in the wrong order;
 * Improved context process ``site_metas`` to include the project release version and
   included the version in skeleton into meta tag ``generator``;
+* Disabled fobi form template with Bootstrap5 to turn back to the simple theme since we
+  cannot implement the Bootstrap5 form errors with fobi;
+* Override ``startapp`` command with a new one which use
+  `bireli-newapp <https://github.com/sveetch/cookiecutter-bireli-newapp>`_;
+* Added more useful dev requirements files:
+
+  * ``codestyle`` to apply and maintain codestyle quality;
+  * ``toolbox`` for some debugging;
+
+* Added Bireli logo as default project logo and favicon;
+* Continued to improve documentation;
 
 
 Version 0.3.3 - 2023/02/06

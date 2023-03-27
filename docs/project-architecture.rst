@@ -48,26 +48,26 @@ directories but for a better explanation we will only focus on important parts.
 ::
 
     .
-    ├── composition_repository
-    │   ├── django_builtins
-    │   └── sample_app
-    ├── django-apps
-    │   ├── project_utils
-    │   └── sample_app
-    ├── frontend
-    │   ├── js
+    ├── composition_repository/
+    │   ├── django_builtins/
+    │   └── sample_app/
+    ├── django-apps/
+    │   ├── project_utils/
+    │   └── sample_app/
+    ├── frontend/
+    │   ├── js/
+    │   ├── scss/
     │   ├── package.json
-    │   ├── scss
     │   └── webpack.config.js
     ├── Makefile
-    ├── project
-    │   ├── settings
-    │   ├── static-sources
-    │   ├── templates
+    ├── project/
+    │   ├── settings/
+    │   ├── static-sources/
+    │   ├── templates/
     │   └── urls.py
     ├── pyproject.toml
-    ├── requirements
-    └── tests
+    ├── requirements/
+    └── tests/
 
 composition_repository/
     This is the directory which holds the applications configurations that will compose
@@ -97,16 +97,7 @@ project/
     * ``urls.py`` mount all the applications urls modules;
 
 requirements/
-    This holds all the requirements files for backend for various environment.
-
-    * ``composer.txt`` is for the composer requirement itself which is appart from the
-      backend base requirements;
-    * ``base_template.txt`` is a template for the composer to generate again the base
-      requirements file;
-    * ``base.txt`` is the base requirements file. Don't write anything in it since it
-      generated from composer, all you changes will be lost definitively;
-    * All other requirements files are used to add some requirements for various
-      environment parts;
+    This holds all :ref:`project_backend_env_requirements`.
 
 tests/
     This is where to write all backend tests including project tests and all
@@ -116,9 +107,3 @@ tests/
 pyproject.toml
     The project backend manifest contains the Project composer manifest, versionning
     and many development tool configurations.
-
-
-Project applications
-********************
-
-TODO: How to use ? Precisely how to import ?
