@@ -38,8 +38,11 @@ help:
 	@echo "  clean-frontend-build          -- to clean frontend built files"
 	@echo "  clean-pycache                 -- to remove all __pycache__, this is recursive from current directory"
 	@echo
+	@echo "  check                         -- to run all check tasks"
+	@echo "  check-composer                -- to run Composer checking"
 	@echo "  check-django                  -- to run Django System check framework"
 	@echo "  check-migrations              -- to check for pending application migrations (do not write anything)"
+	@echo
 	@echo "  run                           -- to run Django development server"
 	@echo "  migrations                    -- to create all pending application migrations files"
 	@echo "  migrate                       -- to apply demo database migrations"
@@ -166,7 +169,7 @@ check-composer:
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Running Project composer check <---$(FORMATRESET)\n"
 	@echo ""
 	$(PYTHON_BIN) ./django-apps/project_utils/composer_check.py
-.PHONY: check-django
+.PHONY: check-composer
 
 check-django:
 	@echo ""
@@ -181,6 +184,9 @@ check-migrations:
 	@echo ""
 	$(DJANGO_MANAGE) makemigrations --check --dry-run -v 3 `$(PROJECT_APPS)`
 .PHONY: check-migrations
+
+check: check-composer check-django check-migrations
+.PHONY: check
 
 migrations:
 	@echo ""
