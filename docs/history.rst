@@ -7,6 +7,7 @@ History
 Version 0.3.4 - Unreleased
 --------------------------
 
+* **Upgraded to Python>=3.10**;
 * Removed usage of deprecated *setuptools private API* from ``project/__init__.py`` to
   get the project version. Instead it uses ``tomli`` to parse the project TOML file;
 * Added ``migrations`` task to create all pending migrations from project applications;
