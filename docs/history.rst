@@ -4,7 +4,7 @@
 History
 =======
 
-Version 0.3.4 - Unreleased
+Version 0.3.4 - 2023/03/28
 --------------------------
 
 * **Upgraded to Python>=3.10**;
