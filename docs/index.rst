@@ -48,13 +48,16 @@ Features
 * A Makefile with every useful commands.
 
 
-Project dependancies
-********************
+Dependencies
+************
 
-A new created project is configured to install main dependancies with the following
-versions:
+All involved dependencies
 
-.. bireli-stack::
+.. bireli-full-stack::
+
+.. Note::
+    ``Bireli`` and ``Bireli-newapp`` are not involved in a project once it has been
+    created.
 
 Links
 *****

@@ -28,8 +28,11 @@ ones.
 Basic requirements
 ------------------
 
+.. Warning::
+   Package names may differ depending your system.
+
 * Git;
-* Python3;
+* Python :bireli-stack-item:`python`;
 * ``python-dev``;
 * ``python-virtualenv``;
 * ``gettext``;
@@ -39,8 +42,10 @@ Basic requirements
 * ``zlib``;
 * ``libfreetype``;
 
-.. Warning::
-   Package names may differ depending your system.
+.. Hint::
+   If your system does not have the right Python version as the default one, you should
+   use something like `pyenv <https://github.com/pyenv/pyenv>`_ to install it and
+   then use ``pyenv local`` to set the correct project Python version to use.
 
 On Linux distribution
     You will install them from your common package manager like ``apt`` for Debian
@@ -99,6 +104,8 @@ A new installed project is empty from any content, however a task exists to crea
 initial data for main components: ::
 
     make initial-data
+
+This will creates a user with username ``admin`` and password ``ok``.
 
 If you don't want any initial data, you will need at least a super user to reach
 the admin: ::

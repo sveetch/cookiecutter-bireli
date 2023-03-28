@@ -9,6 +9,12 @@
 Backend
 =======
 
+Backend base dependencies
+*************************
+
+.. bireli-backend-stack::
+
+
 Database
 ********
 

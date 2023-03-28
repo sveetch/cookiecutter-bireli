@@ -10,6 +10,12 @@
 Frontend
 ========
 
+Frontend base dependencies
+**************************
+
+.. bireli-frontend-stack::
+
+
 Asset management
 ----------------
 

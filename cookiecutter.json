@@ -17,6 +17,20 @@
     "_bootstrap_version": "5.2.0",
     "_webpack_version": "^5.50.0",
 
+    "_backend_stack": [
+        "python",
+        "django",
+        "project_composer",
+        "django_configurations"
+    ],
+
+    "_frontend_stack": [
+        "node",
+        "npm",
+        "bootstrap",
+        "webpack"
+    ],
+
     "_copy_without_render": [
         "frontend/scss",
         "frontend/js",

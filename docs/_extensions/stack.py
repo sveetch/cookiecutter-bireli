@@ -36,6 +36,20 @@ class BireliStack(Directive):
     ``_version`` removed.
 
     """
+    __cookiecontext_cache = None
+
+    def _get_cookiecutter_context(self):
+        """
+        Get or use cached loaded cookiecutter context
+        """
+        if not self.__cookiecontext_cache:
+            self.__cookiecontext_cache = json.loads(SOURCE.read_text())
+
+        return self.__cookiecontext_cache
+
+    def _format_stack_title(self, value):
+        return value.replace("_", "-").capitalize()
+
     def _get_stack_content(self):
         """
         JSON source parser to retrieve elligible versions to collect and format.
@@ -45,14 +59,15 @@ class BireliStack(Directive):
         """
         content = []
 
-        cookie_options = json.loads(SOURCE.read_text())
+        cookie_options = self._get_cookiecutter_context()
+
         for name, value in cookie_options.items():
             if (
                 not name.startswith("__") and
                 name.startswith("_") and
                 name.endswith("_version")
             ):
-                label = name[1:-len("_version")].replace("_", "-").capitalize()
+                label = self._format_stack_title(name[1:-len("_version")])
                 content.append((label, value))
 
         return content
@@ -76,8 +91,76 @@ class BireliStack(Directive):
         return [version_list]
 
 
+class BireliBackendStack(BireliStack):
+    def _get_stack_content(self):
+        """
+        Filter out all stack item that are not listed from context variable
+        ``_backend_stack``.
+
+        Returns:
+            list: List of tuples for retrieved and formatted versions.
+        """
+        content = super()._get_stack_content()
+
+        cookie_options = self._get_cookiecutter_context()
+
+        backend_names = [
+            self._format_stack_title(item)
+            for item in cookie_options.get("_backend_stack", [])
+         ]
+
+        return [
+            (label, value)
+            for label, value in content
+            if label in backend_names
+        ]
+
+
+class BireliFrontendStack(BireliStack):
+    def _get_stack_content(self):
+        """
+        Filter out all stack item that are not listed from context variable
+        ``_frontend_stack``.
+
+        Returns:
+            list: List of tuples for retrieved and formatted versions.
+        """
+        content = super()._get_stack_content()
+
+        cookie_options = self._get_cookiecutter_context()
+
+        backend_names = [
+            self._format_stack_title(item)
+            for item in cookie_options.get("_frontend_stack", [])
+         ]
+
+        return [
+            (label, value)
+            for label, value in content
+            if label in backend_names
+        ]
+
+
+def bireli_stackitem_role(name, rawtext, text, lineno, inliner, options={},
+                          content=[]):
+    """
+    Return item value from Bireli stack from cookiecutter context.
+    """
+    cookiecontext = json.loads(SOURCE.read_text())
+
+    label = text
+    value = cookiecontext.get("_{}_version".format(text), "Undefined")
+    rendered = nodes.Text(value)
+
+    ref = nodes.reference(rawtext, rendered, refuri=None)
+    return [nodes.literal('', '', rendered)], []
+
+
 def setup(app):
-    app.add_directive("bireli-stack", BireliStack)
+    app.add_role("bireli-stack-item", bireli_stackitem_role)
+    app.add_directive("bireli-full-stack", BireliStack)
+    app.add_directive("bireli-backend-stack", BireliBackendStack)
+    app.add_directive("bireli-frontend-stack", BireliFrontendStack)
 
     return {
         'version': '0.1',
