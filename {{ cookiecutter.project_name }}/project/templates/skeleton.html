@@ -4,6 +4,7 @@
         {% spaceless %}
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="generator" content="{{ PROJECT_RELEASE }}">
             <title>{% block header-title %}{{ SITE.name }}{% endblock header-title %}</title>
 
             {% block metas %}
@@ -14,7 +15,6 @@
                 {% block metas-generic %}
                 <meta name="description" content="{% block meta-description %}{% endblock meta-description %}">
                 <meta name="Keywords" content="{% block meta-keywords %}{% endblock meta-keywords %}">
-                <meta name="generator" content="{{ PROJECT_RELEASE }}">
                 {% endblock metas-generic %}
 
                 {% block metas-og %}

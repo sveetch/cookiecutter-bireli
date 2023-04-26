@@ -1,9 +1,3 @@
-"""
-==================================
-DjangoCMS and its plugins settings
-==================================
-
-"""
 import copy
 
 from project_composer.marker import EnabledApplicationMarker
@@ -25,6 +19,11 @@ class CmsBaseSettings(EnabledApplicationMarker):
     # Uncomment this to enable per-object user permission
     # See http://docs.django-cms.org/en/latest/topics/permissions.html
     # CMS_PERMISSION = True
+
+    # Available CMS page templates for tests purposes only
+    TEST_PAGE_TEMPLATES = {
+        "test-basic": "tests/pages/basic.html",
+    }
 
     @classmethod
     def post_setup(cls):
