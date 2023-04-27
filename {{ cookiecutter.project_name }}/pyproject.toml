@@ -33,7 +33,9 @@ app_template = "https://github.com/sveetch/cookiecutter-bireli-newapp.git#{{ coo
 
 [tool.project_composer]
 collection = [
+    "dal",
     "django_builtins",
+    "smart_media",
     "sendfile",
     "django_filer",
     "ckeditor",
@@ -44,7 +46,10 @@ collection = [
     "fobi",
     "staticpages",
     "styleguide",
+    "taggit",
+    "lotus",
     "djangocms",
+    "cmsplugin_blocks",
 ]
 repository = "composition_repository"
 syspaths = [

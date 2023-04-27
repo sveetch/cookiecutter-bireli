@@ -1,0 +1,2 @@
+sorl-thumbnail>=12.9.0
+django-smart-media

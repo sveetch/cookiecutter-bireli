@@ -1,10 +1,5 @@
 """
-==========================
-Django components settings
-==========================
-
 This module regroup only the builtin Django components classes.
-
 """
 from pathlib import Path
 
@@ -126,6 +121,15 @@ class DjangoBase(EnabledApplicationMarker):
         [],
         separator=",",
         environ_name="SILENCED_SYSTEM_CHECKS"
+    )
+
+    DEFAULT_FROM_EMAIL = values.Value(
+        "no-reply@emencia.com",
+        environ_name="DEFAULT_FROM_EMAIL",
+    )
+    DEFAULT_TO_EMAIL = values.Value(
+        "contact@emencia.com",
+        environ_name="DEFAULT_TO_EMAIL",
     )
 
     # SMTP configuration

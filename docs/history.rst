@@ -7,7 +7,10 @@ History
 Version 0.3.5 - Unreleased
 --------------------------
 
-TODO
+* Added Lotus;
+* Added Cmsplugin-blocks;
+* Added Taggit;
+* Added DAL;
 
 
 Version 0.3.4 - 2023/03/28

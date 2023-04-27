@@ -12,8 +12,10 @@ class Development(ComposedProjectSettings):
     DEBUG = True
 
     # Don't send any email for real, just push them to the shell output
-    EMAIL_BACKEND = values.Value("django.core.mail.backends.console.EmailBackend",
-                                 environ_name="EMAIL_BACKEND")
+    EMAIL_BACKEND = values.Value(
+        "django.core.mail.backends.console.EmailBackend",
+        environ_name="EMAIL_BACKEND"
+    )
 
     @classmethod
     def post_setup(cls):

@@ -26,8 +26,8 @@ class CmsBaseSettings(EnabledApplicationMarker):
     }
 
     @classmethod
-    def post_setup(cls):
-        super(CmsBaseSettings, cls).post_setup()
+    def setup(cls):
+        super(CmsBaseSettings, cls).setup()
 
         # Admin style needs to be before "django.contrib.admin" which we assume it's
         # always first in list
@@ -66,8 +66,8 @@ class CmsCkeditorSettings(EnabledApplicationMarker):
     not an optional plugin.
     """
     @classmethod
-    def post_setup(cls):
-        super(CmsCkeditorSettings, cls).post_setup()
+    def setup(cls):
+        super(CmsCkeditorSettings, cls).setup()
 
         # Then we push the common cms stack
         cls.INSTALLED_APPS.extend([
@@ -102,7 +102,7 @@ class CmsCkeditorSettings(EnabledApplicationMarker):
                 ["JustifyLeft", "JustifyCenter", "JustifyRight"],
                 ["Link", "Unlink"],
                 [
-                    "Image", "Youtube", "Vimeo", "-", "NumberedList", "BulletedList",
+                    "Image", "-", "NumberedList", "BulletedList",
                     "-", "Table", "-", "CreateDiv", "HorizontalRule"
                 ],
                 # ["Iframe"],

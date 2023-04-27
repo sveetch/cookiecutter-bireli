@@ -24,6 +24,10 @@ class Test(ComposedProjectSettings):
         return self.VAR_PATH / "media-tests"
 
     @classmethod
+    def setup(cls):
+        super().setup()
+
+    @classmethod
     def post_setup(cls):
         super(Test, cls).post_setup()
 

@@ -1,9 +1,3 @@
-"""
-========================
-Django CKEditor settings
-========================
-
-"""
 import copy
 
 from project_composer.marker import EnabledApplicationMarker
@@ -11,7 +5,7 @@ from project_composer.marker import EnabledApplicationMarker
 
 class CkeditorSettings(EnabledApplicationMarker):
     """
-    WYSIWYG HTML editor integration for Django
+    CKEditor, WYSIWYG HTML editor integration for Django
     """
 
     # This won't work with django-filer, only filebrowser
@@ -27,23 +21,12 @@ class CkeditorSettings(EnabledApplicationMarker):
         "contentsCss": "/static/css/ckeditor.css",
         # Enabled showblocks as default behavior
         "startupOutlineBlocks": True,
-        # Enable some plugins
-        "extraPlugins": "youtube,vimeo,codemirror",
         # Disable element filter to enable full HTML5, also this will let
         # append any code, even bad syntax and malicious code, so be careful
         "removePlugins": "stylesheetparser",
         "allowedContent": True,
         # Image plugin options
         "image_prefillDimensions": False,
-        # Youtube plugin options
-        "youtube_related": False,
-        "youtube_responsive": True,
-        "youtube_disabled_fields": [
-            "chkOlderCode",
-            "chkNoEmbed",
-        ],
-        # Vimeo plugin options
-        "vimeo_responsive": True,
         # Justify text using CSS framework utility classes
         "justifyClasses": [
             "text-start",
@@ -54,16 +37,16 @@ class CkeditorSettings(EnabledApplicationMarker):
         # template (if any)
         "templates_replaceContent": False,
         # URL to reach Filebrowser browser screen
-        "filebrowserBrowseUrl": "/admin/filebrowser/browse?pop=3",
+        # "filebrowserBrowseUrl": "/admin/filebrowser/browse?pop=3",
         # URLs for Javascripts that define content templates
-        "templates_files": [
-            "/ckeditor/editor_site_templates.js"
-        ],
+        # "templates_files": [
+        #     "/ckeditor/editor_site_templates.js"
+        # ],
     }
 
     @classmethod
     def setup(cls):
-        super(CkeditorSettings, cls).setup()
+        super().setup()
 
         cls.INSTALLED_APPS.extend([
             "ckeditor",
@@ -91,7 +74,7 @@ class CkeditorSettings(EnabledApplicationMarker):
                 ["JustifyLeft", "JustifyCenter", "JustifyRight"],
                 ["TextColor"],
                 ["Link", "Unlink"],
-                ["Image", "Youtube", "Vimeo", "-", "NumberedList", "BulletedList",
+                ["Image", "-", "NumberedList", "BulletedList",
                     "-", "Table", "-", "CreateDiv", "HorizontalRule"],
                 # ["Iframe"],
                 # ["Templates"],
