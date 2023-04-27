@@ -7,10 +7,15 @@ History
 Version 0.3.5 - Unreleased
 --------------------------
 
-* Added Lotus;
-* Added Cmsplugin-blocks;
-* Added Taggit;
-* Added DAL;
+* Added new applications in composer repository:
+
+  * Added Lotus;
+  * Added Cmsplugin-blocks;
+  * Added Taggit;
+  * Added DAL;
+
+* Added a CMS toolbar for a shortcut link to Lotus articles, categories, Fobi,
+  Taggit tags and Snippets;
 
 
 Version 0.3.4 - 2023/03/28
