@@ -9,6 +9,8 @@ PROJECT_COMPOSER=$(VENV_BIN)/project_composer
 DJANGO_MANAGE=$(PYTHON_BIN) manage.py
 FLAKE=$(VENV_BIN)/flake8
 PYTEST=$(VENV_BIN)/pytest
+DJLINT=$(VENV_BIN)/djlint
+BLACK=$(VENV_BIN)/black
 
 DJANGOPROJECT_DIR=project
 STATICFILES_DIR=$(DJANGOPROJECT_DIR)/static-sources
@@ -65,8 +67,19 @@ help:
 	@echo "  mo                            -- to build MO files from existing project PO files"
 	@echo
 	@echo "  flake                         -- to launch Flake8 checking"
+	@echo "  black-check                   -- to launch Black checking"
+	@echo "  black-write                   -- to apply Black reformating"
+	@echo "  lint-templates                -- to run djLint on templates sources"
+	@echo "  lint-scss                     -- to run Stylelint on Sass sources"
+	@echo "  lint-frontend                 -- to run all linters on frontend sources"
 	@echo "  test                          -- to launch base test suite using Pytest"
 	@echo "  test-initial                  -- to launch tests with pytest and re-initialized database (for after new application or model changes)"
+	@echo
+	@echo "  check-templates               -- to check djLint reformatting before to fix it"
+	@echo "  fix-templates                 -- to automatically reformat templates with djLint"
+	@echo "  fix-scss                      -- to automatically reformat Sass sources with Stylelint"
+	@echo "  fix-frontend                  -- to launch all frontend reformatting tasks"
+	@echo
 	@echo "  quality                       -- to launch Flake8 checking and every tests suites"
 	@echo
 
@@ -299,6 +312,44 @@ flake:
 	$(FLAKE) --statistics --show-source $(DJANGOPROJECT_DIR) django-apps tests composition_repository
 .PHONY: flake
 
+black-check:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Running Black checking <---$(FORMATRESET)\n"
+	@echo ""
+	$(BLACK) --check $(DJANGOPROJECT_DIR) django-apps tests composition_repository
+.PHONY: black-check
+
+black-write:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Apply Black reformating <---$(FORMATRESET)\n"
+	@echo ""
+	$(BLACK) --verbose $(DJANGOPROJECT_DIR) django-apps tests composition_repository
+.PHONY: black-write
+
+lint-templates:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Running djLint linting on templates sources <---$(FORMATRESET)\n"
+	@echo ""
+	$(DJLINT) project/templates/
+.PHONY: lint-templates
+
+check-templates:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Checking djLint formatting on templates sources <---$(FORMATRESET)\n"
+	@echo ""
+	$(DJLINT) --check project/templates/
+.PHONY: check-templates
+
+lint-scss:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Running Stylelint on Sass sources <---$(FORMATRESET)\n"
+	@echo ""
+	cd frontend && npx stylelint --ignore-path .stylelintignore "scss/**/*.scss"
+.PHONY: lint-scss
+
+lint-frontend: lint-templates lint-scss
+.PHONY: lint-frontend
+
 test:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Tests <---$(FORMATRESET)\n"
@@ -314,6 +365,26 @@ test-initial:
 	$(PYTEST) -vv --reuse-db --create-db tests/
 	rm -Rf var/media-tests/
 .PHONY: test-initial
+
+fix-templates:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Running djLint formatting on templates sources <---$(FORMATRESET)\n"
+	@echo ""
+	$(DJLINT) --warn --quiet --reformat project/templates/
+.PHONY: fix-templates
+
+fix-scss:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> (WIP) Running Stylelint formatting on Sass sources <---$(FORMATRESET)\n"
+	@echo ""
+	cd frontend && npx stylelint --ignore-path .stylelintignore --fix "scss/**/*.scss"
+.PHONY: fix-scss
+
+fix-frontend: fix-scss fix-templates
+	@echo ""
+	@echo "✓ ✓ Frontend should be correctly formatted ✓ ✓"
+	@echo ""
+.PHONY: fix-frontend
 
 freeze-dependencies:
 	@echo ""
