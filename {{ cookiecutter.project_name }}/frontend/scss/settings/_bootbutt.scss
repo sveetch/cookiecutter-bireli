@@ -5,9 +5,7 @@
 ///
 
 $include-bb-icons: false;
-
 $bb-font-directory: "/static/fonts/";
-
 $bb-breakpoints: $grid-breakpoints;
 
 // Enabled font families (usable from utility with `.font-FAMILYNAME`)
@@ -38,7 +36,6 @@ $bb-icon-sizes: (
     "large": 3em,
     "wide": 4em,
 );
-
 
 // Buckle space variables and map
 $bb-space-tiny: (

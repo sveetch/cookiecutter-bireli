@@ -1,14 +1,12 @@
 {% extends "base.html" %}
 {% load cms_tags %}
-
-{% block header-title %}{% page_attribute "page_title" %} - {{ block.super }}{% endblock header-title %}
-
+{# djlint:off #}{% block header-title %}{% page_attribute "page_title" %} - {{ block.super }}{% endblock header-title %}{# djlint:on #}
 {% block metas-generic %}
-<meta name="description" content="{% page_attribute meta_description %}">
-<meta name="Keywords" content="{% page_attribute meta_keywords %}">
+    <meta name="description" content="{% page_attribute meta_description %}">
+    <meta name="Keywords" content="{% page_attribute meta_keywords %}">
 {% endblock metas-generic %}
-
 {% block header-resource-extra %}
     {{ block.super }}
-    <link rel="canonical" href="{{ SITE.web_url }}{{ request.current_page.get_absolute_url }}">
+    <link rel="canonical"
+          href="{{ SITE.web_url }}{{ request.current_page.get_absolute_url }}">
 {% endblock header-resource-extra %}

@@ -1,15 +1,16 @@
 {% extends "base.html" %}
-
-{% block header-title %}Prototypes - {{ block.super }}{% endblock header-title %}
-
+{# djlint:off #}{% block header-title %}Prototypes - {{ block.super }}{% endblock header-title %}{# djlint:on #}
 {% block body-content %}
-<div class="block">
-    <div class="container-xl">
-        <h1>Prototypes</h1>
-
-        <ul>{% for url_pattern,template_name,url_name in page_map %}
-            <li><a href="{% url url_name %}">{{ template_name }}</a></li>
-        {% endfor %}</ul>
+    <div class="block">
+        <div class="container-xl">
+            <h1>Prototypes</h1>
+            <ul>
+                {% for url_pattern,template_name,url_name in page_map %}
+                    <li>
+                        <a href="{% url url_name %}">{{ template_name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
-</div>
 {% endblock body-content %}

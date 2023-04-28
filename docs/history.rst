@@ -16,6 +16,9 @@ Version 0.3.5 - Unreleased
 
 * Added a CMS toolbar for a shortcut link to Lotus articles, categories, Fobi,
   Taggit tags and Snippets;
+* Added tasks for Black, Stylelint and djLint;
+* Fixed issues from Stylelint on Sass sources;
+* Fixed issues from djLint on templates;
 
 
 Version 0.3.4 - 2023/03/28

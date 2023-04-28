@@ -5,16 +5,21 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/{{ LANGUAGE_CODE }}/">{{ SITE.name }}</a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar-toggler" aria-controls="main-navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#main-navbar-toggler"
+                        aria-controls="main-navbar-toggler"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="main-navbar-toggler">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         {% show_menu 1 100 100 100 "menus/flat.html" %}
                         <li class="nav-item">
-                            <a class="nav-link{% if lotus_stage == "articles" %} active{% endif %}" href="{% url "lotus:article-index" %}">{% trans "Articles" %}</a>
+                            <a class="nav-link{% if lotus_stage == "articles" %} active{% endif %}"
+                               href="{% url "lotus:article-index" %}">{% trans "Articles" %}</a>
                         </li>
                         {% if request.user and request.user.is_authenticated %}
                             <li class="nav-item">
@@ -32,9 +37,10 @@
                 </div>
             </div>
         </nav>
-
         <div id="page-content" class="container-xxl">
-            {% block body-content %}Base{% endblock body-content %}
+            {% block body-content %}
+                Base
+            {% endblock body-content %}
         </div>
     </div>
 {% endblock body-container %}

@@ -35,8 +35,12 @@
 
 // Finish to build Bootstrap utilities and computed variables from site settings
 @import "./settings/bootstrap";
+
 // Icon map
+/* stylelint-disable */
 @import "bootstrap-icons/font/bootstrap-icons.scss";
+/* stylelint-enable */
+
 // Finish to build Bootbutt from site settings
 @import "./settings/bootbutt";
 
@@ -81,10 +85,12 @@
 
 // Generic rules
 @import "./bootbutt/generic/type";
+
 // @import "./generic/...";
 
 // Bare and unclassed HTML elements
 @import "./bootbutt/elements/image";
+
 // @import "./elements/...";
 
 // Layout objects
@@ -93,6 +99,7 @@
 @import "./bootbutt/objects/blocks";
 @import "./bootbutt/objects/cta";
 @import "./bootbutt/objects/spot";
+
 // @import "./objects/...";
 
 // Page components to be last

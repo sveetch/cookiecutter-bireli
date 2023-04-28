@@ -25,8 +25,12 @@
 
 // Finish to build Bootstrap utilities and computed variables from site settings
 @import "../settings/bootstrap";
+
 // Icon map
+/* stylelint-disable */
 @import "bootstrap-icons/font/bootstrap-icons.scss";
+/* stylelint-enable */
+
 // Finish to build Bootbutt from site settings
 @import "../settings/bootbutt";
 
