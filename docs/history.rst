@@ -4,7 +4,7 @@
 History
 =======
 
-Version 0.3.5 - Unreleased
+Version 0.3.5 - 2023/04/28
 --------------------------
 
 * Added new applications in composer repository:
