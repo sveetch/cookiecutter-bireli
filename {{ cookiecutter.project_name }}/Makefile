@@ -390,7 +390,7 @@ freeze-dependencies:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Freeze dependencies versions <---$(FORMATRESET)\n"
 	@echo ""
-	$(PIP) freeze --all --local > requirements/requirements_freeze.txt
+	$(PIP) freeze --all --local > requirements/frozen.txt
 .PHONY: freeze-dependencies
 
 quality: test-initial flake check-migrations
