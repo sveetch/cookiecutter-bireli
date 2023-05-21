@@ -39,6 +39,7 @@ Basic requirements
 * ``gcc``;
 * ``make``;
 * ``libjpeg``;
+* ``libcairo2``;
 * ``zlib``;
 * ``libfreetype``;
 
@@ -51,7 +52,7 @@ On Linux distribution
     You will install them from your common package manager like ``apt`` for Debian
     based distributions: ::
 
-        apt install python-dev python-virtualenv gettext gcc make libjpeg zlib libfreetype
+        apt install python-dev python-virtualenv gettext gcc make libjpeg libcairo2 zlib libfreetype
 
 On macOS
     Recommended way is to use ``brew`` utility for system packages, some names

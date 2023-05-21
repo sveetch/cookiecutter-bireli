@@ -4,6 +4,22 @@
 History
 =======
 
+Version 0.3.6 - Unreleased
+--------------------------
+
+* Upgraded ``cmsplugin-blocks`` to ``==1.1.0`` (fix critical bug that lost media
+  during page publication);
+* Added 404 and 500 templates;
+* Fixed test settings to use ``setup()`` method instead of property to override
+  ``MEDIA_ROOT``;
+* Cleaned ``site_manifest.html`` template;
+* Fixed ``freeze`` Makefile task to export to ``requirements/frozen.txt`` instead
+  of ``requirements/requirements_freeze.txt``;
+* Added *Basic requirements* new line about ``libcairo2`` in install documentation
+  since it is a new requirement involved from library chain
+  *django-filer < easy-thumbnail < reportlab*;
+
+
 Version 0.3.5 - 2023/04/28
 --------------------------
 
