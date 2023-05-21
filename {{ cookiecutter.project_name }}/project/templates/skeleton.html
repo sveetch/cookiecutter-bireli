@@ -36,7 +36,7 @@
         {% block header-javascript %}
         {% endblock header-javascript %}
         {% block header-resource %}
-            <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+            <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}?{{ PROJECT_RELEASE_BASE64 }}">
         {% endblock header-resource %}
         {% block header-resource-extra %}
         {% endblock header-resource-extra %}

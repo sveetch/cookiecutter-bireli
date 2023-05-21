@@ -18,6 +18,9 @@ Version 0.3.6 - Unreleased
 * Added *Basic requirements* new line about ``libcairo2`` in install documentation
   since it is a new requirement involved from library chain
   *django-filer < easy-thumbnail < reportlab*;
+* Versionned main stylesheet using project version encoded in base64 for URL safety, it
+  will be enough to prevent cache on production. However in development it won't really
+  change anything since project version does not change often;
 
 
 Version 0.3.5 - 2023/04/28

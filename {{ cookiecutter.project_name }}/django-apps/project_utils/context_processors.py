@@ -1,3 +1,5 @@
+import base64
+
 from django.conf import settings
 from django.contrib.sites.models import Site
 
@@ -44,6 +46,9 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False,
             "scheme": scheme,
         },
         "PROJECT_RELEASE": __version__,
+        "PROJECT_RELEASE_BASE64": base64.urlsafe_b64encode(
+            __version__.encode("utf-8")
+        ).decode("utf-8"),
     }
 
     if with_media:
