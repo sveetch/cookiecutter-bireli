@@ -1,0 +1,19 @@
+{% extends "skeleton.html" %}
+{% load i18n %}
+{% block header-title %}{% trans "Error 404" %} - {{ block.super }}{% endblock header-title %}
+{% block header-marketing %}{% endblock header-marketing %}
+{% block body-marketing %}{% endblock body-marketing %}
+{% block body-container %}
+<div id="page-body" class="d-grid gap-3 p-3">
+    <div class="block wide">
+        <div class="container-xl text-center">
+            <h1 class="display-3">{% trans "Error 404" %}</h1>
+            <p class="h2 my-5">{% trans "The resource you tried to reach does not exist." %}</p>
+
+            <div class="my-3">
+                <p><a class="btn btn-primary btn-lg" href="/">{% trans "Back to homepage" %}</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body-container %}

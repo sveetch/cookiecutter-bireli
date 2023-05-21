@@ -9,6 +9,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path
+from django.views.generic import TemplateView
 
 from project_composer.contrib.django.collector import ApplicationUrlCollector
 from project_composer.contrib.django.helpers import project_urls
@@ -20,6 +21,13 @@ from project import _composer
 urlpatterns = [
     path("admin/", admin.site.urls),
 ]
+
+
+if settings.DEBUG:
+    urlpatterns.extend([
+        path("500/", TemplateView.as_view(template_name="500.html")),
+        path("404/", TemplateView.as_view(template_name="404.html")),
+    ])
 
 
 # Mount collected applications urls
