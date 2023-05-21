@@ -15,17 +15,11 @@ class Test(ComposedProjectSettings):
     EMAIL_BACKEND = values.Value("django.core.mail.backends.console.EmailBackend",
                                  environ_name="DJANGO_EMAIL_BACKEND")
 
-    @property
-    def MEDIA_ROOT(self):
-        """
-        Media directory dedicated to tests to avoid polluting other environment
-        media directory
-        """
-        return self.VAR_PATH / "media-tests"
-
     @classmethod
     def setup(cls):
         super().setup()
+
+        cls.MEDIA_ROOT = cls.VAR_PATH / "media-tests"
 
     @classmethod
     def post_setup(cls):
