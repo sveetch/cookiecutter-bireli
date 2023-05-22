@@ -15,6 +15,7 @@ Project install
    Commonly a project should documentate everything for their specific needs but it is
    out of scope of Bireli documentation.
 
+
 System requirements
 *******************
 
@@ -112,6 +113,19 @@ If you don't want any initial data, you will need at least a super user to reach
 the admin: ::
 
     make superuser
+
+
+Quickstart
+**********
+
+Once you already installed a Bireli project, you should have all needed requirements
+and you may just quickly do everything in a single command: ::
+
+    make install frontend initial-data
+
+Or: ::
+
+    make install frontend superuser
 
 
 Upgrades

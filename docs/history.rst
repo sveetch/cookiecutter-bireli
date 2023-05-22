@@ -4,7 +4,7 @@
 History
 =======
 
-Version 0.3.6 - Unreleased
+Version 0.3.6 - 2023/05/22
 --------------------------
 
 * Upgraded ``cmsplugin-blocks`` to ``==1.1.0`` (fix critical bug that lost media
