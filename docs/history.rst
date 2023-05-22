@@ -21,6 +21,10 @@ Version 0.3.6 - Unreleased
 * Versionned main stylesheet using project version encoded in base64 for URL safety, it
   will be enough to prevent cache on production. However in development it won't really
   change anything since project version does not change often;
+* Restored a proper CKEditor configuration with missing plugins CodeMirror, Youtube and
+  Vimeo. Actually these plugins will be duplicated for ``django-ckeditor`` and
+  ``djangocms-text-ckeditor`` because cookiecutter does not support symbolic link yet
+  but a post hook will be done to resolve this;
 
 
 Version 0.3.5 - 2023/04/28

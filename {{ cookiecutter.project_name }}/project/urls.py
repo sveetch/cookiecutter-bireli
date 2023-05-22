@@ -23,6 +23,7 @@ urlpatterns = [
 ]
 
 
+# Views to debug some HTTP error templates
 if settings.DEBUG:
     urlpatterns.extend([
         path("500/", TemplateView.as_view(template_name="500.html")),

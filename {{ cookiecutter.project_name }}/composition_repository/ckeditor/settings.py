@@ -21,12 +21,23 @@ class CkeditorSettings(EnabledApplicationMarker):
         "contentsCss": "/static/css/ckeditor.css",
         # Enabled showblocks as default behavior
         "startupOutlineBlocks": True,
+        # Enable some plugins
+        'extraPlugins': 'youtube,vimeo,codemirror',
         # Disable element filter to enable full HTML5, also this will let
         # append any code, even bad syntax and malicious code, so be careful
         "removePlugins": "stylesheetparser",
         "allowedContent": True,
         # Image plugin options
         "image_prefillDimensions": False,
+        # Youtube plugin options
+        'youtube_related': False,
+        'youtube_responsive': True,
+        'youtube_disabled_fields': [
+            'chkOlderCode',
+            'chkNoEmbed',
+        ],
+        # Vimeo plugin options
+        'vimeo_responsive': True,
         # Justify text using CSS framework utility classes
         "justifyClasses": [
             "text-start",
@@ -70,12 +81,19 @@ class CkeditorSettings(EnabledApplicationMarker):
                 # fixed header
                 # ["Maximize"],
                 "/",
-                ["Bold", "Italic", "Underline", "-", "Subscript", "Superscript"],
+                [
+                    "Bold", "Italic", "Underline", "-",
+                    "Subscript", "Superscript",
+                ],
                 ["JustifyLeft", "JustifyCenter", "JustifyRight"],
                 ["TextColor"],
                 ["Link", "Unlink"],
-                ["Image", "-", "NumberedList", "BulletedList",
-                    "-", "Table", "-", "CreateDiv", "HorizontalRule"],
+                [
+                    'Image', 'Youtube', 'Vimeo', '-',
+                    'NumberedList', 'BulletedList', "-",
+                    "Table", "-",
+                    "CreateDiv", "HorizontalRule",
+                ],
                 # ["Iframe"],
                 # ["Templates"],
                 ["Source"],

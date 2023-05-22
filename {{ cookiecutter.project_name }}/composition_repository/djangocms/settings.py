@@ -98,12 +98,17 @@ class CmsCkeditorSettings(EnabledApplicationMarker):
                 ["RemoveFormat"],
                 ["Maximize"],
                 "/",
-                ["Bold", "Italic", "Underline", "-", "Subscript", "Superscript"],
+                [
+                    "Bold", "Italic", "Underline", "-",
+                    "Subscript", "Superscript"
+                ],
                 ["JustifyLeft", "JustifyCenter", "JustifyRight"],
                 ["Link", "Unlink"],
                 [
-                    "Image", "-", "NumberedList", "BulletedList",
-                    "-", "Table", "-", "CreateDiv", "HorizontalRule"
+                    'Image', 'Youtube', 'Vimeo', '-',
+                    'NumberedList', 'BulletedList', "-",
+                    "Table", "-",
+                    "CreateDiv", "HorizontalRule",
                 ],
                 # ["Iframe"],
                 # ["Templates"],

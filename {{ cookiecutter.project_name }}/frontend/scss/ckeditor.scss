@@ -1,0 +1,200 @@
+/*
+CSS for CKEditor content
+
+Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+
+Taken from the original ckeditor/content.css and adapted.
+
+Note that this does not includes the whole Bootstrap Scss because it could trouble
+the CKeditor internal layout.
+
+*/
+@charset "UTF-8";
+
+// Start with Bootbutt default variables and functions
+@import "./bootbutt/defaults";
+@import "./bootbutt/tools/functions";
+
+// Load site settings before Bootstrap so it can adopts cascaded variables but
+// after Bootbutt defaults and functions so we can use them in settings
+@import "./settings/site";
+
+// Bootstrap functions and mixins
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+// Bootbutt functions and mixins
+@import "./bootbutt/tools/colors";
+@import "./bootbutt/tools/icons";
+@import "./bootbutt/tools/flexbox";
+@import "./bootbutt/tools/spacing";
+
+// Bootstrap helpers
+@import "bootstrap/scss/helpers";
+
+
+body{
+    /* Font */
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 12px;
+
+    /* Text color */
+    color: #333333;
+
+    /* Remove the background color to make it transparent */
+    background-color: #ffffff;
+
+    margin: rem-calc(20px);
+}
+
+blockquote{
+    font-style: italic;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    padding: 2px 0;
+    border-style: solid;
+    border-color: #cccccc;
+    border-width: 0;
+}
+
+.cke_contents_ltr blockquote{
+    padding-left: 20px;
+    padding-right: 8px;
+    border-left-width: 5px;
+}
+
+.cke_contents_rtl blockquote{
+    padding-left: 8px;
+    padding-right: 20px;
+    border-right-width: 5px;
+}
+
+a{
+    color: #0782c1;
+}
+
+ol,ul,dl{
+    /* IE7: reset rtl list margin. (#7334) */
+    *margin-right: 0px;
+    /* preserved spaces for list items with text direction other than the list. (#6249,#8049) */
+    padding: 0 40px;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
+    line-height: 1.2em;
+}
+
+hr{
+    border: 0px;
+    border-top: 1px solid #cccccc;
+}
+
+img{
+    max-width: 100%;
+}
+
+img.right {
+    border: 1px solid #cccccc;
+    float: right;
+    margin-left: 15px;
+    padding: 5px;
+}
+
+img.left {
+    border: 1px solid #cccccc;
+    float: left;
+    margin-right: 15px;
+    padding: 5px;
+}
+
+img:hover {
+    opacity: 0.9;
+    filter: alpha(opacity = 90);
+}
+
+/* Here comes styles addons and overwrites */
+$bodyPadding: rem-calc(10px);
+
+.cke_editable{
+    max-width: 100%;
+    font-size: rem-calc(13px);
+    line-height: 1.5rem;
+
+    .nontabular-table {
+        vertical-align: top;
+    }
+
+    .table-fiftyfifty td {
+        width: 50%;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: 400;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+
+    h3 {
+        font-size: 21px;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+}
+
+// Copy the Bootstrap text alignment utilities classes
+.text-start{
+    text-align: left;
+}
+
+.text-end{
+    text-align: right;
+}
+
+.text-center{
+    text-align: center;
+}
+
+// Fix the ratio element width
+.ratio {
+    padding-left: 0 !important;
+}
+
+// Centered image as a block
+img.centered{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// Expand image to its container width
+img.expanded{
+    width: 100%;
+    height: auto;
+}
+
+
+//
+// Icomoon widget
+//
+.icomoon-widget{
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    background: #e8e8e8;
+}
