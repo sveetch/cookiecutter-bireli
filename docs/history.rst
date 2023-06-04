@@ -11,6 +11,8 @@ Version 0.3.7 - Unreleased
   project will use other languages so the project can start as a single language only
   site or not. Started possible default language to a minimal list. Default language
   will also determine project timezone;
+* Improved context processor ``project_utils.context_processors.get_site_metas`` to
+  store project informations (like release version) in ``PROJECT``;
 
 
 Version 0.3.6 - 2023/05/22

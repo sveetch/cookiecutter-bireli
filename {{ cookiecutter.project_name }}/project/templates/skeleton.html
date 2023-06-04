@@ -6,7 +6,7 @@
     {% spaceless %}
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="generator" content="{{ PROJECT_RELEASE }}">
+        <meta name="generator" content="{{ PROJECT.release }}">
         {# djlint:off #}<title>{% block header-title %}{{ SITE.name }}{% endblock header-title %}</title>{# djlint:on #}
         {% block metas %}
             {% block metas-robot %}
@@ -36,7 +36,7 @@
         {% block header-javascript %}
         {% endblock header-javascript %}
         {% block header-resource %}
-            <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}?{{ PROJECT_RELEASE_BASE64 }}">
+            <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}?{{ PROJECT.release_base64 }}">
         {% endblock header-resource %}
         {% block header-resource-extra %}
         {% endblock header-resource-extra %}

@@ -1,5 +1,7 @@
 """
-This module regroup only the builtin Django components classes.
+This module regroups the builtin Django components classes.
+
+Order of classes does matter.
 """
 from pathlib import Path
 

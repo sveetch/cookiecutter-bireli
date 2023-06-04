@@ -9,27 +9,43 @@ from project import __version__
 def get_site_metas(with_static=False, with_media=False, is_secure=False,
                    extra={}):
     """
-    Return metas from the current *Site* and settings
-
-    Added Site metas will be callable in templates like this
-    ``SITE.name``
+    Return meta informations from project and the current Site object.
 
     This can be used in code out of a Django requests (like in management
-    commands) or in a context processor to get the *Site* urls.
+    commands) or in a context processor to get the Site url.
 
-    Default metas returned :
+    Return informations (typed as they would be used from a template):
 
-    * PROJECT_RELEASE: Current project release version;
-    * SITE.name: Current *Site* entry name;
-    * SITE.domain: Current *Site* entry domain;
-    * SITE.web_url: The Current *Site* entry domain prefixed with the http
-      protocol like ``http://mydomain.com``. If HTTPS is enabled 'https' will
-      be used instead of 'http';
-    * SITE.scheme: Either return ``https`` or ``http`` depending ``is_secure``
-      argument is true or not;
+    SITE.name
+        Current *Site* entry name.
+    SITE.domain
+        Current *Site* entry domain.
+    SITE.web_url
+        The Current *Site* entry domain prefixed with the http protocol like
+        ``http://mydomain.com``. If HTTPS is enabled 'https' will be used instead of
+        'http'.
+    SITE.scheme
+        Either return ``https`` or ``http`` depending ``is_secure`` argument is true
+        or not.
+    PROJECT.release
+        Current project release version.
+    PROJECT.release_base64
+        Current project release version encoded in base64.
 
-    Optionally it can also return ``STATIC_URL`` and ``MEDIA_URL`` if needed
-    (like out of Django requests).
+    Optionally it can have also ``STATIC_URL`` and ``MEDIA_URL`` variable if enabled
+    from arguments.
+
+    Keyword Arguments:
+        with_static (boolean): If True adds ``STATIC_URL`` to returned dict. Default
+            is False.
+        with_media (boolean): If True adds ``MEDIA_URL`` to returned dict. Default
+            is False.
+        is_secure (boolean): If True the site url will be in ``https``. Default
+            is False.
+        extra (dict): Additional variables to add.
+
+    Returns:
+        dict: Meta informations.
     """
     site_current = Site.objects.get_current()
 
@@ -45,10 +61,13 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False,
             "web_url": "{}://{}".format(scheme, site_current.domain),
             "scheme": scheme,
         },
-        "PROJECT_RELEASE": __version__,
-        "PROJECT_RELEASE_BASE64": base64.urlsafe_b64encode(
-            __version__.encode("utf-8")
-        ).decode("utf-8"),
+        "PROJECT": {
+            "release": __version__,
+            "release_base64": base64.urlsafe_b64encode(
+                __version__.encode("utf-8")
+            ).decode("utf-8"),
+            "enable_i18n_urls": getattr(settings, "ENABLE_I18N_URLS", False),
+        },
     }
 
     if with_media:
@@ -63,6 +82,12 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False,
 
 def site_metas(request):
     """
-    Context processor to add the current Site metas to the context
+    Context processor to add the current Site metas to the context.
+
+    Args:
+        request (object): A Django Request object.
+
+    Returns:
+        dict: Meta informations to add to template context.
     """
     return get_site_metas(is_secure=request.is_secure())
