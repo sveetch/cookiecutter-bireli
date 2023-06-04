@@ -15,6 +15,7 @@ Version 0.3.7 - Unreleased
   store project informations (like release version) in ``PROJECT``;
 * Added missing url and template for HTTP 403 response;
 * Changed skeleton template for a little bit of space optimization;
+* Upgraded to ``lotus==0.5.2.1`` to include fix about pending migration;
 
 
 Version 0.3.6 - 2023/05/22
