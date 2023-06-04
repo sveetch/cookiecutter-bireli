@@ -1,4 +1,3 @@
-from django.conf import settings
 import factory
 
 from cms.api import Page
@@ -6,7 +5,7 @@ from cms.api import Page
 from project_utils.factories import PageFactory
 
 
-def test_cms_factory_page_root(db, client):
+def test_cms_factory_page_root(db, settings, client):
     """
     PageFactory should correctly create a root page as expected from given arguments.
     """
@@ -34,7 +33,7 @@ def test_cms_factory_page_root(db, client):
     assert response.status_code == 200
 
 
-def test_cms_factory_page_basic(db, client):
+def test_cms_factory_page_basic(db, settings, client):
     """
     PageFactory should correctly create a basic page as expected from given arguments.
     """
@@ -56,7 +55,7 @@ def test_cms_factory_page_basic(db, client):
     assert response.status_code == 404
 
 
-def test_cms_factory_page_auto_reverseid(db, client):
+def test_cms_factory_page_auto_reverseid(db, settings, client):
     """
     Giving "True" to reverse_id post generator will automatically adopt the slug value
     as the reverse id.

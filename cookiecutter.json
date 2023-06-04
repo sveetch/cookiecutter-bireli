@@ -3,10 +3,12 @@
     "project_name": "{{ cookiecutter.project_title.lower() | slugify }}",
     "project_short_description": "A Django project.",
     "versioning": ["natural", "bumpver"],
+    "language": ["de", "en", "es", "fr", "it", "ja", "zh"],
+    "multiple_languages": true,
 
     "__version": "{% if cookiecutter.versioning == 'natural' %}0.1.0{% else %}{% now 'local', '%y.%W.0' %}{% endif %}",
 
-    "_bireli_version": "0.3.6",
+    "_bireli_version": "0.3.7-pre.1",
     "_bireli_newapp_version": "0.1.1",
     "_python_version": ">=3.10",
     "_django_version": ">=4.0,<4.1",
@@ -16,6 +18,37 @@
     "_npm_version": ">=8.0.0",
     "_bootstrap_version": "5.2.0",
     "_webpack_version": "^5.50.0",
+
+    "_languages": {
+        "en": {
+            "name": "English",
+            "timezone": "America/Chicago"
+        },
+        "de": {
+            "name": "Deutsch",
+            "timezone": "Europe/Berlin"
+        },
+        "es": {
+            "name": "Español",
+            "timezone": "Europe/Madrid"
+        },
+        "fr": {
+            "name": "French",
+            "timezone": "Europe/Paris"
+        },
+        "it": {
+            "name": "Italiano",
+            "timezone": "Europe/Rome"
+        },
+        "ja": {
+            "name": "日本語",
+            "timezone": "Asia/Tokyo"
+        },
+        "zh": {
+            "name": "官话",
+            "timezone": "Asia/Shanghai"
+        }
+    },
 
     "_backend_stack": [
         "python",

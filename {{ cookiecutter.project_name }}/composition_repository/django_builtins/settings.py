@@ -85,7 +85,7 @@ class DjangoBase(EnabledApplicationMarker):
     MIDDLEWARE = [
         "django.middleware.security.SecurityMiddleware",
         "django.contrib.sessions.middleware.SessionMiddleware",
-        "django.middleware.locale.LocaleMiddleware",
+        {% if cookiecutter.multiple_languages|lower != 'true' %}# {% endif %}"django.middleware.locale.LocaleMiddleware",
         "django.middleware.common.CommonMiddleware",
         "django.middleware.csrf.CsrfViewMiddleware",
         "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -209,25 +209,21 @@ class DjangoLanguage(EnabledApplicationMarker):
     # Local time zone for this installation. Choices can be found here:
     # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
     TIME_ZONE = values.Value(
-        "America/Chicago",
+        "{{ cookiecutter._languages[cookiecutter.language].timezone }}",
         environ_name="TIME_ZONE",
     )
 
     # Language code for this installation. All choices can be found here:
     # http://www.i18nguy.com/unicode/language-identifiers.html
     LANGUAGE_CODE = values.Value(
-        "en",
+        "{{ cookiecutter.language }}",
         environ_name="LANGUAGE_CODE",
     )
 
     LANGUAGES = (
-        ("en", "English"),
-        # ("de", "Deutsch"),
-        # ("es", "Español"),
-        # ("fr", "French"),
-        # ("it", "Italiano"),
-        # ("ja", "日本語"),
-        # ("zh", "官话"),
+        {%- for key, value in cookiecutter._languages|dictsort %}
+        {% if cookiecutter.multiple_languages|lower != 'true' and cookiecutter.language != key %}# {% endif %}("{{ key }}", "{{ value.name }}"),
+        {%- endfor %}
     )
 
     # If you set this to False, Django will make some optimizations so as not
@@ -237,10 +233,10 @@ class DjangoLanguage(EnabledApplicationMarker):
         environ_name="USE_I18N",
     )
 
-    # Not a real Django settings, just a marker for other applications that implement
-    # i18n urls to know if they can use it or not. For all that, applications may not
-    # necessarily use it
-    ENABLE_I18N_URLS = True
+    # Not a real Django builtin, just a common marker for other applications that needs
+    # to know if i18n urls have to be used or not. Applications may not necessarily use
+    # it, actually this is only used in some ``urls.py``
+    ENABLE_I18N_URLS = {% if cookiecutter.multiple_languages|lower == 'true' %}True{% else %}False{% endif %}
 
     # If you set this to False, Django will not format dates, numbers and
     # calendars according to the current locale.

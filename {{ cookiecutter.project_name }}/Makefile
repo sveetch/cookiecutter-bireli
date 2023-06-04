@@ -302,7 +302,7 @@ mo:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Building project MO files <---$(FORMATRESET)\n"
 	@echo ""
-	$(DJANGO_MANAGE) compilemessages --verbosity 3 --ignore='.venv' --ignore='frontend/node_modules' --ignore='tests' --ignore='var' --ignore='.git' --ignore='.pytest_cache' --ignore='chart'
+	$(DJANGO_MANAGE) compilemessages --verbosity 3 --ignore='.venv' --ignore='frontend/node_modules' --ignore='tests' --ignore='var' --ignore='.git' --ignore='.pytest_cache' --ignore='chart' --ignore='requirements'
 .PHONY: mo
 
 flake:

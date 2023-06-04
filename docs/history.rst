@@ -4,6 +4,15 @@
 History
 =======
 
+Version 0.3.7 - Unreleased
+--------------------------
+
+* Added two new options to ``cookiecutter.json`` to ask for default language and if
+  project will use other languages so the project can start as a single language only
+  site or not. Started possible default language to a minimal list. Default language
+  will also determine project timezone;
+
+
 Version 0.3.6 - 2023/05/22
 --------------------------
 
