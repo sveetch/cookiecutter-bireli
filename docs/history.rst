@@ -13,6 +13,8 @@ Version 0.3.7 - Unreleased
   will also determine project timezone;
 * Improved context processor ``project_utils.context_processors.get_site_metas`` to
   store project informations (like release version) in ``PROJECT``;
+* Added missing url and template for HTTP 403 response;
+* Changed skeleton template for a little bit of space optimization;
 
 
 Version 0.3.6 - 2023/05/22

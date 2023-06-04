@@ -1,6 +1,6 @@
-{% load static i18n cms_tags menu_tags sekizai_tags %}
+{% spaceless %}{% load static i18n cms_tags menu_tags sekizai_tags %}
 {% load render_bundle from webpack_loader %}
-<!DOCTYPE html>
+{% endspaceless %}<!DOCTYPE html>
 {# djlint:off #}<html lang="{% if LANGUAGE_CODE %}{{ LANGUAGE_CODE }}{% else %}en{% endif %}" {% block html-attrs %}{% endblock html-attrs %}>{# djlint:on #}
 <head>
     {% spaceless %}
@@ -40,17 +40,14 @@
         {% endblock header-resource %}
         {% block header-resource-extra %}
         {% endblock header-resource-extra %}
-    {% endspaceless %}
-    {% render_block "css" %}
+    {% endspaceless %}{% render_block "css" %}
 </head>
-<body {% block body-attrs %}{% endblock body-attrs %}>
-    {% cms_toolbar %}
+<body {% block body-attrs %}{% endblock body-attrs %}>{% spaceless %}
+    {% endspaceless %}{% cms_toolbar %}
     {% spaceless %}
         {% block body-container %}
         {% endblock body-container %}
-    {% endspaceless %}
-    {% render_block "js" %}
-    {% spaceless %}
+    {% endspaceless %}{% render_block "js" %}{% spaceless %}
         {% block body-javascript %}
             {% render_bundle "main" "js" %}
         {% endblock body-javascript %}
