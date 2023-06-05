@@ -16,6 +16,9 @@ Version 0.3.7 - Unreleased
 * Added missing url and template for HTTP 403 response;
 * Changed skeleton template for a little bit of space optimization;
 * Upgraded to ``lotus==0.5.2.1`` to include fix about pending migration;
+* Changed skeleton template for a little bit of space optimization;
+* Added new applications "crispy" in composer repository to enable
+  ``django-crispy-forms`` with Bootstrap5 theme;
 
 
 Version 0.3.6 - 2023/05/22

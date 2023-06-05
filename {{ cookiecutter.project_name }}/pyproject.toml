@@ -39,6 +39,7 @@ collection = [
     "sendfile",
     "django_filer",
     "ckeditor",
+    "crispy",
     "webpack",
     "project_utils",
     "recaptcha",
