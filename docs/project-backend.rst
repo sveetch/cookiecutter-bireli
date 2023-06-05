@@ -253,6 +253,70 @@ not use everything and so does not install everything.
     environment.
 
 .. Note::
-   Project does not include configuration needed by extra requirements,
-   especially the Django ones. You will need to enable and configure them through your
-   :ref:`project_backend_local_settings`.
+   Project does not include extra requirements configurations. You will need to enable
+   and configure them through your :ref:`project_backend_local_settings`.
+
+
+.. _project_backend_i18n:
+
+Internationalization and localization
+*************************************
+
+This is mostly driven by settings and URLs. Bireli as already set everything (following
+option choices when creating project), this means:
+
+Default language
+    The default language used to write contents (templates, text in code and content
+    in applications that implement it).
+
+    It is used even in single language site but does not really have consequences,
+    except for text translation from PO catalog files (at least used in Django admin).
+
+    Be aware that application contents store the language it has been written with, so
+    if you change default language on a single language site, you may not see your
+    content anymore (but they should not be lost).
+
+    Default language value is defined in ``settings.LANGUAGE_CODE`` from
+    ``django_builtins`` module in composition repository.
+
+Available languages
+    All other languages that are available for translation and application contents. At
+    least it must contains the default language, this will leads to a single language
+    site.
+
+    If you enable more language it turns project to a multiple language site,
+    this is only about translations and application contents then you will need to
+    enable i18n urls also (see next parts).
+
+    Available languages are defined in ``settings.LANGUAGES`` from
+    ``django_builtins`` module in composition repository.
+
+Timezone
+    The default assumed timezone that will be used to determine date and time formatting
+    in default language and also used to write date and time in content applications.
+
+    It has already been set by Bireli according to the default language option but you
+    may change it further to a more accurate one if needed.
+
+    Timezone value is defined in ``settings.TIME_ZONE`` from ``django_builtins`` module
+    in composition repository.
+
+Usage of i18n URLs
+    This determines if your application urls will be prefixed with language like ``/en/``
+    or not.
+
+    Commonly if you have a single language site, you don't need it and it is disabled
+    and a multiple language site enables it.
+
+    For Django it is just materialized with usage of ``i18n_patterns()`` and
+    middleware ``django.middleware.locale.LocaleMiddleware`` enabled. If they are both
+    unused, project is a single language site.
+
+    Note that application from composition repository should implement a switch to use
+    i18n urls or not, depending from an internal setting ``settings.ENABLE_I18N_URLS``
+    from ``django_builtins`` so you should only have to set this setting to True,
+    however you have to enable middleware ``LocaleMiddleware`` yourself. Obviously this
+    behavior is only suitable with applications that implement i18n.
+
+Finally, knowing these parts, you should be able to easily switch project configuration
+to turn it to a single language site or a multiple language site.

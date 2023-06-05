@@ -16,36 +16,8 @@
 .. cookiecutter-bireli documentation master file, created by David Thenon
 
 
-======
-Bireli
-======
+.. include:: ../README.rst
 
-Bireli is a Django project template with `Cookiecutter`_ to produce a ready to start
-project.
-
-It emphases on quality, modularity and modern stable stack.
-
-.. Hint::
-
-    This documentation is an ongoin work, not everything have been covered yet and it
-    will continue to evolve.
-
-
-Features
-********
-
-* Development in a Python virtual environment with `virtualenv`_ and `pip`_;
-* Project include a ``pyproject.toml`` to store (almost) all backend tools
-  configurations;
-* Promote Test Driven Development with `Pytest`_;
-* Latest stable stack support;
-* Frontend assets built with Node.js and managed with Webpack;
-* Default shipped layout with Bootstrap5;
-* Backend application architecture is modular through `Project composer`_;
-* Settings are managed with `django-configurations`_;
-* Internationalization and localization enabled;
-* Include a set of main applications (CMS, blog, form builder, etc..) pre-configured;
-* A Makefile with every useful commands.
 
 
 Dependencies
@@ -56,14 +28,8 @@ All involved dependencies
 .. bireli-full-stack::
 
 .. Note::
-    ``Bireli`` and ``Bireli-newapp`` are not involved in a project once it has been
-    created.
-
-Links
-*****
-
-* Read the documentation on `Read the docs <https://cookiecutter-bireli.readthedocs.io/>`_;
-* Clone it on its `Github repository <https://github.com/sveetch/cookiecutter-bireli>`_;
+    ``bireli`` and ``bireli-newapp`` are not involved anymore in a project once it has
+    been created.
 
 
 Summary
