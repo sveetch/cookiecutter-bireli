@@ -4,7 +4,7 @@
 History
 =======
 
-Version 0.3.7 - Unreleased
+Version 0.3.7 - 2023/06/06
 --------------------------
 
 * Added two new options to ``cookiecutter.json`` to ask for default language and if
