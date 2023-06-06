@@ -20,6 +20,12 @@ class EmenciaToolbar(CMSToolbar):
             "Applications"
         )
 
+        if "fobi" in settings.INSTALLED_APPS:
+            menu.add_sideframe_item(
+                name="Fobi forms management",
+                url=reverse("fobi.dashboard"),
+            )
+
         if "lotus" in settings.INSTALLED_APPS:
             menu.add_sideframe_item(
                 name="Lotus articles",
@@ -40,12 +46,6 @@ class EmenciaToolbar(CMSToolbar):
             menu.add_sideframe_item(
                 name="Snippet management",
                 url=reverse("admin:djangocms_snippet_snippet_changelist"),
-            )
-
-        if "taggit" in settings.INSTALLED_APPS:
-            menu.add_sideframe_item(
-                name="Tags management",
-                url=reverse("admin:taggit_tag_changelist"),
             )
 
 
