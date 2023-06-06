@@ -4,7 +4,7 @@
     <div id="page-body" class="d-grid gap-3 p-3">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/{{ LANGUAGE_CODE }}/">{{ SITE.name }}</a>
+                <a class="navbar-brand" href="{% if PROJECT.enable_i18n_urls %}/{{ LANGUAGE_CODE }}/{% else %}/{% endif %}">{{ SITE.name }}</a>
                 <button class="navbar-toggler"
                         type="button"
                         data-bs-toggle="collapse"
