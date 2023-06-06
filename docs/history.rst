@@ -9,16 +9,21 @@ Version 0.3.7 - Unreleased
 
 * Added two new options to ``cookiecutter.json`` to ask for default language and if
   project will use other languages so the project can start as a single language only
-  site or not. Started possible default language to a minimal list. Default language
-  will also determine project timezone;
+  site or not. Started available languages list to a minimal list. Also the default
+  language will also determine project timezone;
+* Added missing url and template for HTTP 403 response;
+* Added new application ``crispy`` in composer repository to enable
+  ``django-crispy-forms`` with Bootstrap5 theme;
+* Upgraded to ``lotus==0.5.2.1`` to include fix about pending migration;
+* Upgraded to ``fobi==0.19.8`` and removed temporary ``LoginRequiredDashboardView``
+  view since original Fobi dashboard view has been fixed;
 * Improved context processor ``project_utils.context_processors.get_site_metas`` to
   store project informations (like release version) in ``PROJECT``;
-* Added missing url and template for HTTP 403 response;
-* Changed skeleton template for a little bit of space optimization;
-* Upgraded to ``lotus==0.5.2.1`` to include fix about pending migration;
-* Changed skeleton template for a little bit of space optimization;
-* Added new applications "crispy" in composer repository to enable
-  ``django-crispy-forms`` with Bootstrap5 theme;
+* Changed ``skeleton.html`` template for a little bit of space optimization;
+* Changed ``base.html`` template to build homepage url depending
+  ``settings.ENABLE_I18N_URLS``;
+* Fixed CMS toolbar to remove duplicate "Tags management" item and add missing "Fobi"
+  item;
 
 
 Version 0.3.6 - 2023/05/22

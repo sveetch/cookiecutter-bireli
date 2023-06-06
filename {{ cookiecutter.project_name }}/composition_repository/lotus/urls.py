@@ -11,6 +11,11 @@ class LotusUrls(EnabledApplicationMarker):
     def load_urlpatterns(self, urlpatterns):
         """
         Mount application urls
+
+        Todo:
+
+        Lotus currently require to be mounted in 'i18n_patterns' since it require
+        language code and stands on LocaleMiddleware only.
         """
         urlpatterns = super().load_urlpatterns(urlpatterns)
 

@@ -31,6 +31,8 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False,
         Current project release version.
     PROJECT.release_base64
         Current project release version encoded in base64.
+    PROJECT.enable_i18n_urls
+        Determine if project enable i18n urls or not.
 
     Optionally it can have also ``STATIC_URL`` and ``MEDIA_URL`` variable if enabled
     from arguments.

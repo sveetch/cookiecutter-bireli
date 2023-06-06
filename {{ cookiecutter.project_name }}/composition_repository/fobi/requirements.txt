@@ -1,1 +1,1 @@
-django-fobi==0.19.4
+django-fobi==0.19.8

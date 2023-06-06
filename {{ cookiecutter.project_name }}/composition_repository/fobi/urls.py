@@ -1,8 +1,6 @@
-from django.urls import path, re_path, include
+from django.urls import path, include
 
 from project_composer.marker import EnabledApplicationMarker
-
-from project_utils.views import LoginRequiredDashboardView
 
 
 class FobiUrls(EnabledApplicationMarker):
@@ -20,13 +18,6 @@ class FobiUrls(EnabledApplicationMarker):
             path(
                 "fobi/",
                 include("fobi.urls.class_based.view")
-            ),
-            # TODO: Temporary overrides the dashboard to use patched view for login
-            # required
-            re_path(
-                r"^fobi/$",
-                view=LoginRequiredDashboardView.as_view(),
-                name="fobi.dashboard",
             ),
             # Edit URLs
             path(
