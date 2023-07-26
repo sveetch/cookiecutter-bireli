@@ -4,6 +4,12 @@
 History
 =======
 
+Version 0.3.8 - Unreleased
+--------------------------
+
+* Added all documents to fullfil Github Community Standards;
+
+
 Version 0.3.7 - 2023/06/06
 --------------------------
 
