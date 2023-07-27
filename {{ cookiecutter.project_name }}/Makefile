@@ -13,9 +13,10 @@ DJLINT=$(VENV_BIN)/djlint
 BLACK=$(VENV_BIN)/black
 
 DJANGOPROJECT_DIR=project
+DJANGOAPPS_DIR=django-apps
 STATICFILES_DIR=$(DJANGOPROJECT_DIR)/static-sources
 FRONTEND_DIR=frontend
-PROJECT_APPS=ls -I '__pycache__' -I '*.py' django-apps
+PROJECT_APPS=$(PYTHON_BIN) $(DJANGOAPPS_DIR)/project_utils/ls-djangoapps.py $(DJANGOAPPS_DIR)/
 
 # Formatting variables, FORMATRESET is always to be used last to close formatting
 FORMATBLUE:=$(shell tput setab 4)
@@ -41,6 +42,7 @@ help:
 	@echo "  clean-pycache                 -- to remove all __pycache__, this is recursive from current directory"
 	@echo
 	@echo "  check                         -- to run all check tasks"
+	@echo "  check-apps                    -- to discover elligible Django application modules from directory: $(DJANGOAPPS_DIR)"
 	@echo "  check-composer                -- to run Composer checking"
 	@echo "  check-django                  -- to run Django System check framework"
 	@echo "  check-migrations              -- to check for pending application migrations (do not write anything)"
@@ -91,6 +93,13 @@ clean-pycache:
 	find . -type d -name "__pycache__"|xargs rm -Rf
 	find . -name "*\.pyc"|xargs rm -f
 .PHONY: clean-pycache
+
+apps:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> apps <---$(FORMATRESET)\n"
+	@echo ""
+	echo `$(PROJECT_APPS)`;
+.PHONY: apps
 
 clean-var:
 	@echo ""
@@ -177,11 +186,18 @@ install-frontend:
 install: venv create-var-dirs requirements install-backend migrate install-frontend
 .PHONY: install
 
+check-apps:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Discovering app directories <---$(FORMATRESET)\n"
+	@echo ""
+	@$(PROJECT_APPS)
+.PHONY: check-apps
+
 check-composer:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Running Project composer check <---$(FORMATRESET)\n"
 	@echo ""
-	$(PYTHON_BIN) ./django-apps/project_utils/composer_check.py
+	$(PYTHON_BIN) ./$(DJANGOAPPS_DIR)/project_utils/composer_check.py
 .PHONY: check-composer
 
 check-django:
@@ -191,7 +207,7 @@ check-django:
 	$(DJANGO_MANAGE) check
 .PHONY: check-django
 
-check-migrations:
+check-migrations: check-apps
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Checking for pending project applications models migrations <---$(FORMATRESET)\n"
 	@echo ""
@@ -201,7 +217,7 @@ check-migrations:
 check: check-composer check-django check-migrations
 .PHONY: check
 
-migrations:
+migrations: check-apps
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Creating pending applications models migrations <---$(FORMATRESET)\n"
 	@echo ""
@@ -226,7 +242,7 @@ initial-data:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Loading initial data <---$(FORMATRESET)\n"
 	@echo ""
-	$(DJANGO_MANAGE) emencia_initial django-apps/project_utils/initial.json
+	$(DJANGO_MANAGE) emencia_initial $(DJANGOAPPS_DIR)/project_utils/initial.json
 .PHONY: initial-data
 
 new-app:
@@ -309,21 +325,21 @@ flake:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Flake <---$(FORMATRESET)\n"
 	@echo ""
-	$(FLAKE) --statistics --show-source $(DJANGOPROJECT_DIR) django-apps tests composition_repository
+	$(FLAKE) --statistics --show-source $(DJANGOPROJECT_DIR) $(DJANGOAPPS_DIR) tests composition_repository
 .PHONY: flake
 
 black-check:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Running Black checking <---$(FORMATRESET)\n"
 	@echo ""
-	$(BLACK) --check $(DJANGOPROJECT_DIR) django-apps tests composition_repository
+	$(BLACK) --check $(DJANGOPROJECT_DIR) $(DJANGOAPPS_DIR) tests composition_repository
 .PHONY: black-check
 
 black-write:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Apply Black reformating <---$(FORMATRESET)\n"
 	@echo ""
-	$(BLACK) --verbose $(DJANGOPROJECT_DIR) django-apps tests composition_repository
+	$(BLACK) --verbose $(DJANGOPROJECT_DIR) $(DJANGOAPPS_DIR) tests composition_repository
 .PHONY: black-write
 
 lint-templates:

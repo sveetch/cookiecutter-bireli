@@ -8,6 +8,9 @@ Version 0.3.8 - Unreleased
 --------------------------
 
 * Added all documents to fullfil Github Community Standards;
+* Improved how elligible Django application modules are discovered in Makefile tasks
+  that need it. This should fix issue with some system that don't have a complete
+  support of all ``ls`` arguments so it has been written in a full Python script;
 
 
 Version 0.3.7 - 2023/06/06
