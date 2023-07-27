@@ -1,1 +1,1 @@
-django-filer>=2.2.3
+django-filer>=3

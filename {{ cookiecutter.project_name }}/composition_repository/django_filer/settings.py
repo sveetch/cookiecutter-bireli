@@ -19,5 +19,4 @@ class DjangoFilerSettings(EnabledApplicationMarker):
         cls.INSTALLED_APPS.extend([
             "easy_thumbnails",
             "filer",
-            "mptt",
         ])
