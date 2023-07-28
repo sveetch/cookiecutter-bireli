@@ -13,6 +13,7 @@ Version 0.3.8 - Unreleased
   support of all ``ls`` arguments so it has been written in a full Python script;
 * Upgraded to ``django-filer>=3`` and remove its dependancy to ``mptt`` that are no
   longer needed;
+* Upgraded to ``lotus==0.6.0``;
 
 
 Version 0.3.7 - 2023/06/06
