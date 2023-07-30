@@ -108,13 +108,6 @@ if __name__ == "__main__":
     # is an OrderedDict we can't evaluate as a Python object
     COOKIE_CONTEXT = json.loads("""{{ cookiecutter|tojson }}""")
 
-    manager = PostGenerationHookManager()
-
-    # NOTE: Temporary keep a trace of shipped context in generated project
-    # output_cookiecutter_path = Path("./output_cookiecutter.json")
-    # output_cookiecutter_path.write_text("""{{ cookiecutter|tojson(4) }}""")
+    manager = PostGenerationHookManager(Path(".").resolve())
 
     manager.symlink_sources(COOKIE_CONTEXT["_apply_symlink_to"])
-
-    # print()
-    # raise NotImplementedError()
