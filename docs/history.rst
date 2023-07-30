@@ -15,6 +15,8 @@ Version 0.3.8 - Unreleased
   longer needed;
 * Upgraded to ``lotus==0.6.0``;
 * Added quality for template itself with Flake8 and Pytest configurations;
+* Added Post generation hook with a task to create symlinks from
+  ``cookiecutter._apply_symlink_to``;
 
 
 Version 0.3.7 - 2023/06/06
