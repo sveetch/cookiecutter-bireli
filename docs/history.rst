@@ -7,6 +7,7 @@ History
 Version 0.3.8 - Unreleased
 --------------------------
 
+* Upgraded to a new colorful logo for Bireli;
 * Added all documents to fullfil Github Community Standards;
 * Improved how elligible Django application modules are discovered in Makefile tasks
   that need it. This should fix issue with some system that don't have a complete
