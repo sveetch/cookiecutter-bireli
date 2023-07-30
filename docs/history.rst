@@ -14,6 +14,7 @@ Version 0.3.8 - Unreleased
 * Upgraded to ``django-filer>=3`` and remove its dependancy to ``mptt`` that are no
   longer needed;
 * Upgraded to ``lotus==0.6.0``;
+* Added quality for template itself with Flake8 and Pytest configurations;
 
 
 Version 0.3.7 - 2023/06/06

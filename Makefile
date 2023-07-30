@@ -1,8 +1,11 @@
 PYTHON_INTERPRETER=python3
 VENV_PATH=.venv
+
 PYTHON_BIN=$(VENV_PATH)/bin/python
 PIP_BIN=$(VENV_PATH)/bin/pip
 COOKIECUTTER_BIN=$(VENV_PATH)/bin/cookiecutter
+PYTEST_BIN=$(VENV_PATH)/bin/pytest
+FLAKE_BIN=$(VENV_PATH)/bin/flake8
 SPHINX_RELOAD=$(PYTHON_BIN) sphinx_reload.py
 
 # Formatting variables, FORMATRESET is always to be used last to close formatting
@@ -25,6 +28,10 @@ help:
 	@echo
 	@echo "  docs                          -- to build documentation"
 	@echo "  livedocs                      -- to run livereload server to rebuild documentation on source changes"
+	@echo
+	@echo "  tests                         -- to run tests for Bireli internals"
+	@echo "  flake8                        -- to check codestyle from Bireli internals"
+	@echo "  template-flake8               -- to check codestyle from project template (it is expected to fail because of Jinja syntax in some files)"
 	@echo
 
 clean-pycache:
@@ -100,3 +107,24 @@ livedocs:
 	@echo ""
 	$(SPHINX_RELOAD)
 .PHONY: livedocs
+
+tests:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Testing template internals <---$(FORMATRESET)\n"
+	@echo ""
+	$(PYTEST_BIN) -vv tests/
+.PHONY: tests
+
+flake8:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Checking codestyle from Bireli internals <---$(FORMATRESET)\n"
+	@echo ""
+	@$(FLAKE_BIN) --statistics --show-source hooks
+.PHONY: flake8
+
+template-flake8:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Checking codestyle from project template <---$(FORMATRESET)\n"
+	@echo ""
+	@$(FLAKE_BIN) --statistics --show-source \{\{\ cookiecutter.project_name\ \}\}
+.PHONY: template-flake8
