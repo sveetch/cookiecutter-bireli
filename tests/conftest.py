@@ -33,6 +33,8 @@ class FixturesSettingsTestMixin(object):
             (self.root_path / "cookiecutter.json").read_text()
         )
 
+        self.cookiecutter_template = self.root_path / "{{ cookiecutter.project_name }}"
+
     def format(self, content):
         """
         Format given string to include some values related to this application.
@@ -83,4 +85,3 @@ def postgen_manager():
     Return a function to initialize manager
     """
     return post_gen_project.PostGenerationHookManager
-

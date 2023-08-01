@@ -24,6 +24,7 @@ Version 0.3.8 - Unreleased
 * Added quality for template itself with Flake8 and Pytest configurations;
 * Added Post generation hook with a task to create symlinks from
   ``cookiecutter._apply_symlink_to``;
+* Added basic building test coverage with Cookiecutter;
 
 
 Version 0.3.7 - 2023/06/06

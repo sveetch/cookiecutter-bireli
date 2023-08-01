@@ -32,6 +32,8 @@ help:
 	@echo "  tests                         -- to run tests for Bireli internals"
 	@echo "  flake8                        -- to check codestyle from Bireli internals"
 	@echo "  template-flake8               -- to check codestyle from project template (it is expected to fail because of Jinja syntax in some files)"
+	@echo "  freeze                        -- to write a frozen.txt file with installed requirement versions"
+	@echo "  quality                       -- to launch Flake8, tests, documentation building to check quality then freeze requirements"
 	@echo
 
 clean-pycache:
@@ -119,7 +121,7 @@ flake8:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Checking codestyle from Bireli internals <---$(FORMATRESET)\n"
 	@echo ""
-	@$(FLAKE_BIN) --statistics --show-source hooks
+	@$(FLAKE_BIN) --statistics --show-source hooks tests
 .PHONY: flake8
 
 template-flake8:
@@ -128,3 +130,13 @@ template-flake8:
 	@echo ""
 	@$(FLAKE_BIN) --statistics --show-source \{\{\ cookiecutter.project_name\ \}\}
 .PHONY: template-flake8
+
+freeze:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Freezing backend dependencies versions <---$(FORMATRESET)\n"
+	@echo ""
+	$(PIP_BIN) freeze --local --exclude packaging > frozen.txt
+.PHONY: freeze
+
+quality: flake8 tests docs freeze
+.PHONY: quality

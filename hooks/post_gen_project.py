@@ -1,14 +1,3 @@
-"""
-TODO:
-
-- [x] Finish symlink_sources()
-- [ ] Install test structure to test hook_toolbox
-- [ ] Add cookiecutter option to initialize created project as a Git repository with
-      initial commit, will need a private cookiecutter var for the "git add" command
-      value
-- [ ] Docs
-
-"""
 import json
 import os
 import shutil
@@ -101,9 +90,6 @@ class PostGenerationHookManager:
 
 
 if __name__ == "__main__":
-    print()
-    print("🍻 Post generation hook")
-
     # Capture cookiecutter context and deserialize it using Json since naturally this
     # is an OrderedDict we can't evaluate as a Python object
     COOKIE_CONTEXT = json.loads("""{{ cookiecutter|tojson }}""")
