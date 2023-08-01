@@ -6,7 +6,7 @@ PIP_BIN=$(VENV_PATH)/bin/pip
 COOKIECUTTER_BIN=$(VENV_PATH)/bin/cookiecutter
 PYTEST_BIN=$(VENV_PATH)/bin/pytest
 FLAKE_BIN=$(VENV_PATH)/bin/flake8
-SPHINX_RELOAD=$(PYTHON_BIN) sphinx_reload.py
+SPHINX_RELOAD_BIN=$(PYTHON_BIN) docs/sphinx_reload.py
 
 # Formatting variables, FORMATRESET is always to be used last to close formatting
 FORMATBLUE:=$(shell tput setab 4)
@@ -105,7 +105,7 @@ livedocs:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Watching documentation sources <---$(FORMATRESET)\n"
 	@echo ""
-	$(SPHINX_RELOAD)
+	$(SPHINX_RELOAD_BIN)
 .PHONY: livedocs
 
 tests:

@@ -45,3 +45,9 @@ Links
 
 * Read the documentation on `Read the docs <https://cookiecutter-bireli.readthedocs.io/>`_;
 * Clone it on its `Github repository <https://github.com/sveetch/cookiecutter-bireli>`_;
+
+
+Credits
+*******
+
+Logo vector and icon by `SVG Repo <https://www.svgrepo.com>`_.

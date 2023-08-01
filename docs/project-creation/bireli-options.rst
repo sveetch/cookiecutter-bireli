@@ -1,30 +1,10 @@
 .. _Cookiecutter: https://cookiecutter.readthedocs.io/en/stable/
 
-.. _intro_project_creation:
+.. _intro_bireli_options:
 
-====================
-Create a new project
-====================
-
-.. Warning::
-
-    You don't need this just to use a Bireli project, this is only for developers that
-    need to create some fresh new projects.
-
-To create a new project you just need to install `Cookiecutter`_ version >=2.1.0.
-
-You may then use it from its repository URL: ::
-
-    cookiecutter https://github.com/sveetch/cookiecutter-bireli.git
-
-.. Note::
-
-    To speed up project creation you may install this cookie on your system, read
-    :ref:`install_development` to know how.
-
-
-Options
--------
+==============
+Bireli options
+==============
 
 Once invoked, cookiecutter will prompt your for some informations about your project.
 
@@ -55,7 +35,7 @@ the ``.cookiecutterrc`` file so you just have to fill "project_title" and maybe
 
 
 About project Internationalization and localization
-...................................................
+***************************************************
 
 Default behavior for a created project is to be a multiple languages site set with
 default language as selected from ``language`` option.
@@ -70,7 +50,7 @@ language site further from settings, see :ref:`project_backend_i18n`.
 
 
 Result
-------
+******
 
 Cookiecutter will create a new directory named after your project name. You can enter
 into its directory and install it locally with ``make install`` (see
