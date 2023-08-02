@@ -4,7 +4,7 @@
 History
 =======
 
-Version 0.3.8 - Unreleased
+Version 0.3.8 - 2023/08/01
 --------------------------
 
 * Improved documentation:
