@@ -1,12 +1,9 @@
 Bireli contributing guide
 =========================
 
-Thank you for investing your time in contributing to our project! Any
-contribution you make will be reflected on
-`docs.github.com <https://docs.github.com/en>`_.
+Thank you for investing your time in contributing to our project!.
 
-Read our **Code of Conduct** to keep our community approachable
-and respectable.
+Read our **Code of Conduct** to keep our community approachable and respectable.
 
 In this guide you will get an overview of the contribution workflow from opening an
 issue, creating a PR, reviewing, and merging the PR.
@@ -18,8 +15,8 @@ specific section of this guide quickly.
 New contributor guide
 *********************
 
-To get an overview of the project, read the **README**. Here are some
-resources to help you get started with open source contributions on Github:
+Here are some resources to help you get started with open source contributions on
+Github:
 
 *  `Finding ways to contribute to open source on
    GitHub <https://docs.github.com/en/get-started/exploring-projects-on-github/finding-ways-to-contribute-to-open-source-on-github>`_
@@ -36,7 +33,7 @@ Getting started
 
 To know how to start developing on this project, see
 `Bireli full documentation <https://cookiecutter-bireli.readthedocs.io/>`_ and
-especially the *Development* part.
+especially the *Bireli Development* parts.
 
 Issues
 ------
@@ -67,8 +64,8 @@ Asking for changes
 ------------------
 
 We think a template projet can not implement every features or use cases
-to ensure cohesion accessibility, so it is something with strong
-opinions that may not fit to your needs.
+to ensure cohesion accessibility, so Bireli will follow opinions that may not fit to
+your needs.
 
 We will try to answer properly to all your feature proposals if they
 follow our code of conduct, our issues templates and if you take time to
@@ -78,7 +75,7 @@ It is likely we refuse features that have a very tiny limited use cases,
 that we can’t maintain (like because it needs too much ressources) or
 attach Bireli to a proprietary service or technology.
 
-Finally, time ressources to work on this project is limited so don’t
+Finally, our time ressources to work on this project is limited so don’t
 expect quick resolution, even more if you don’t take time to help us to
 help you.
 
@@ -91,8 +88,8 @@ Pull Request on Github.
 
 Your work have to fill all quality requirements.
 
-Commit messages are important, we do not want too much noise in Git
-history, so:
+Commit messages are important because we want to avoid too much "noise" in Git history,
+so:
 
 -  Respect our commit message format;
 -  Try to limit commit message to a single line and not too long (120
@@ -113,14 +110,4 @@ Where possible ``ACTION`` is:
 
 -  ``NEW``: A new feature or release have been introduced;
 -  ``FIX``: Fixed an issue;
--  ``CHG``: Commonly, every change that are not a new feature or a fix;
-
-Cookiecuter.json
-----------------
-
-To avoid managing main components versions through multiple files and miss some
-inconsistencies, main component versions are stored through private variables in
-cookiecutter template configuration file ``cookiecutter.json``.
-
-These variables are strings that must be valid requirement versions for Python
-package, except for the frontend components that must be valid versions for NPM.
+-  ``CHG``: Commonly this is for every changes that are not a new feature or a fix;
