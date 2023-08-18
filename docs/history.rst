@@ -4,6 +4,12 @@
 History
 =======
 
+Version 0.3.9 - Unreleased
+--------------------------
+
+* Updated ``.readthedocs.yml`` file to follow service deprecations changes;
+
+
 Version 0.3.8 - 2023/08/01
 --------------------------
 
