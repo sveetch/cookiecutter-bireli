@@ -4,6 +4,14 @@
 History
 =======
 
+Version 0.3.10 - Unreleased
+---------------------------
+
+* Added sample image crafter utilities for tests in ``project_utils.imaging``;
+* Pinned django-recaptcha to ``<4.0.0`` since 4.x version has incompatible changes but
+  Fobi is not ready yet;
+
+
 Version 0.3.9 - 2023/08/18
 --------------------------
 
