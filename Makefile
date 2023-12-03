@@ -2,10 +2,11 @@ PYTHON_INTERPRETER=python3
 VENV_PATH=.venv
 
 PYTHON_BIN=$(VENV_PATH)/bin/python
-PIP_BIN=$(VENV_PATH)/bin/pip
 COOKIECUTTER_BIN=$(VENV_PATH)/bin/cookiecutter
-PYTEST_BIN=$(VENV_PATH)/bin/pytest
 FLAKE_BIN=$(VENV_PATH)/bin/flake8
+PIP_BIN=$(VENV_PATH)/bin/pip
+PYTEST_BIN=$(VENV_PATH)/bin/pytest
+MAKEFILE_PARSER_BIN=$(PYTHON_BIN) docs/makefile_parser.py
 SPHINX_RELOAD_BIN=$(PYTHON_BIN) docs/sphinx_reload.py
 TOX=$(VENV_PATH)/bin/tox
 
@@ -102,6 +103,7 @@ docs:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Building documentation <---$(FORMATRESET)\n"
 	@echo ""
+	$(MAKEFILE_PARSER_BIN) "{{ cookiecutter.project_name }}/Makefile" --format rst --destination docs/_static/makefile_help.rst
 	cd docs && make html
 .PHONY: docs
 

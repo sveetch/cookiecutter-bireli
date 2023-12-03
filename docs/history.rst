@@ -20,6 +20,8 @@ Version 0.3.10 - Unreleased
 * Improved post generation hook;
 * Added new option ``init_git_repository`` to initialize created project as a GIT
   repository with an initial commit to include project files;
+* Added Python script ``docs/makefile_parser.py`` to automatize Makefile help
+  texts documentation;
 
 
 Version 0.3.9 - 2023/08/18

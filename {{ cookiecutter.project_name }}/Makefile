@@ -39,7 +39,7 @@ help:
 	@echo "  clean-backend-install         -- to clean backend installation"
 	@echo "  clean-frontend-install        -- to clean frontend installation"
 	@echo "  clean-frontend-build          -- to clean frontend built files"
-	@echo "  clean-pycache                 -- to remove all __pycache__, this is recursive from current directory"
+	@echo "  clean-pycache                 -- to recursively remove all Python cache"
 	@echo
 	@echo "  check                         -- to run all check tasks"
 	@echo "  check-apps                    -- to discover elligible Django application modules from directory: $(DJANGOAPPS_DIR)"
