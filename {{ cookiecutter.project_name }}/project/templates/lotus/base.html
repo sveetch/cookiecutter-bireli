@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% load view_breadcrumbs %}
+{% block header-resource-extra %}
+    {{ block.super }}
+    <link rel="canonical" href="{{ request.scheme }}://{{ request.site.domain }}{{ request.path }}">
+{% endblock header-resource-extra %}
 {% block body-content %}
     {% block breadcrumbs %}
         {% render_breadcrumbs "view_breadcrumbs/bootstrap5.html" %}

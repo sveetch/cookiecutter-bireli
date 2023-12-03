@@ -10,6 +10,9 @@ Version 0.3.10 - Unreleased
 * Added sample image crafter utilities for tests in ``project_utils.imaging``;
 * Pinned django-recaptcha to ``<4.0.0`` since 4.x version has incompatible changes but
   Fobi is not ready yet;
+* Upgraded to ``lotus==0.8.1``;
+* Added new application ``project_sitemaps`` to configure and publish Sitemap XML for
+  CMS pages and Lotus articles;
 
 
 Version 0.3.9 - 2023/08/18

@@ -12,7 +12,7 @@ class LotusUrls(EnabledApplicationMarker):
         """
         Mount application urls
 
-        Todo:
+        TODO:
 
         Lotus currently require to be mounted in 'i18n_patterns' since it require
         language code and stands on LocaleMiddleware only.

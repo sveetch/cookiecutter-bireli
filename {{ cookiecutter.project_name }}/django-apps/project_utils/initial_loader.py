@@ -8,15 +8,15 @@ Expected data structure
         "default_template": "pages/single_column.html",
         "site": {
             "name": "Demo",
-            "domain": "127.0.0.8001",
+            "domain": "127.0.0.8001"
         },
         "users": {
             "emencia": {
                 "first_name": "Anne",
                 "last_name": "Nonymous",
                 "email": "my@email.com",
-                "password": "ok",
-            },
+                "password": "ok"
+            }
         },
         "pages": {
             "key": "homepage",
@@ -27,9 +27,9 @@ Expected data structure
                     "key": "foo",
                     "name": "Foo",
                     "children": []
-                },
-            ],
-        },
+                }
+            ]
+        }
     }
 
 
