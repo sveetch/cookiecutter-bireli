@@ -16,6 +16,10 @@ Version 0.3.10 - Unreleased
 * Added a Tox configuration to automatically check for project creation, installation
   and quality with options variants;
 * Added cookiecutter prompts for options;
+* Upgraded to cookiecutter>=2.3.0;
+* Improved post generation hook;
+* Added new option ``init_git_repository`` to initialize created project as a GIT
+  repository with an initial commit to include project files;
 
 
 Version 0.3.9 - 2023/08/18

@@ -5,6 +5,7 @@
     "versioning": ["natural", "bumpver"],
     "language": ["de", "en", "es", "fr", "it", "ja", "zh"],
     "multiple_languages": true,
+    "init_git_repository": false,
 
     "__prompts__": {
         "project_title": "Input your full project name",
@@ -12,12 +13,13 @@
         "project_short_description": "Give a short description for this project",
         "versioning": "What kind of versionning will you use",
         "language": "Default project language",
+        "init_git_repository": "Do you want to init a GIT repository with an initial commit?",
         "multiple_languages": "Enable internationalization with I18N"
     },
 
     "__version": "{% if cookiecutter.versioning == 'natural' %}0.1.0{% else %}{% now 'local', '%y.%W.0' %}{% endif %}",
 
-    "_bireli_version": "0.3.10-pre.5",
+    "_bireli_version": "0.3.10-pre.6",
     "_bireli_newapp_version": "0.1.1",
     "_python_version": ">=3.10",
     "_django_version": ">=4.0,<4.1",
