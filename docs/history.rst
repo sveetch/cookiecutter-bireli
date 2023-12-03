@@ -15,6 +15,7 @@ Version 0.3.10 - Unreleased
   CMS pages and Lotus articles;
 * Added a Tox configuration to automatically check for project creation, installation
   and quality with options variants;
+* Added cookiecutter prompts for options;
 
 
 Version 0.3.9 - 2023/08/18
