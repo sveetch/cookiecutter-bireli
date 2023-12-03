@@ -41,14 +41,14 @@ If you are a **developer which wants to use a project** made with Bireli see
 **Project usage** since Bireli itself is not involved anymore in project life.
 
 .. toctree::
-   :caption: Project creation
+   :caption: Create a project with Bireli
    :maxdepth: 2
 
    project-creation/get-bireli.rst
    project-creation/bireli-options.rst
 
 .. toctree::
-   :caption: Project usage
+   :caption: Use a Bireli project
    :maxdepth: 3
 
    project-usage/install.rst

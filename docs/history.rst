@@ -13,6 +13,8 @@ Version 0.3.10 - Unreleased
 * Upgraded to ``lotus==0.8.1``;
 * Added new application ``project_sitemaps`` to configure and publish Sitemap XML for
   CMS pages and Lotus articles;
+* Added a Tox configuration to automatically check for project creation, installation
+  and quality with options variants;
 
 
 Version 0.3.9 - 2023/08/18

@@ -7,6 +7,7 @@ COOKIECUTTER_BIN=$(VENV_PATH)/bin/cookiecutter
 PYTEST_BIN=$(VENV_PATH)/bin/pytest
 FLAKE_BIN=$(VENV_PATH)/bin/flake8
 SPHINX_RELOAD_BIN=$(PYTHON_BIN) docs/sphinx_reload.py
+TOX=$(VENV_PATH)/bin/tox
 
 # Formatting variables, FORMATRESET is always to be used last to close formatting
 FORMATBLUE:=$(shell tput setab 4)
@@ -34,6 +35,7 @@ help:
 	@echo "  template-flake8               -- to check codestyle from project template (it is expected to fail because of Jinja syntax in some files)"
 	@echo "  freeze                        -- to write a frozen.txt file with installed requirement versions"
 	@echo "  quality                       -- to launch Flake8, tests, documentation building to check quality then freeze requirements"
+	@echo "  tox                           -- to use Tox to create, install and test the cookiecutter with different options"
 	@echo
 
 clean-pycache:
@@ -137,6 +139,13 @@ freeze:
 	@echo ""
 	$(PIP_BIN) freeze --local --exclude packaging > frozen.txt
 .PHONY: freeze
+
+tox:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Create, install and test project with Tox environments <---$(FORMATRESET)\n"
+	@echo ""
+	$(TOX) run
+.PHONY: tox
 
 quality: flake8 tests docs freeze
 .PHONY: quality
