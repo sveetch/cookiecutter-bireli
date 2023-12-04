@@ -6,12 +6,11 @@
 .. _project-composer: https://github.com/sveetch/project-composer
 .. _Webpack: https://webpack.js.org/
 .. _django-configurations: https://django-configurations.readthedocs.io/
+.. _Bireli: https://cookiecutter-bireli.readthedocs.io/en/{{ cookiecutter._bireli_version }}/
 
 {{ '=' * cookiecutter.project_title|length }}
 {{ cookiecutter.project_title }}
 {{ '=' * cookiecutter.project_title|length }}
-
-*Generated from cookiecutter-bireli=={{ cookiecutter._bireli_version }}*
 
 {{ cookiecutter.project_short_description|wordwrap(80) }}
 
@@ -27,30 +26,45 @@ Main stack components
 * `NPM`_ {{ cookiecutter._npm_version }};
 * `Bootstrap`_ {{ cookiecutter._bootstrap_version }};
 
+First steps
+***********
 
-Install
-*******
+This is project has been generated from
+``cookiecutter-bireli=={{ cookiecutter._bireli_version }}``, you may learn more about
+your project usage on `Bireli`_ documentation.
 
-First ::
 
-    make install
+Quick install
+*************
 
-Then: ::
+Install backend and frontend, then build frontend and finally add some dummy initial
+datas: ::
 
-    make frontend
+    make install frontend initial-data
 
-Finally you will need a super user to login into admin: ::
+Once finished, you may ensure everything is working as expected with: ::
 
-    make superuser
+    make quality
 
-Usage
-*****
 
-::
+Quick usage
+***********
+
+* Just run the development server: ::
 
     make run
+
+* Open your browser on ``http://localhost:8001/``;
+* With initial data, a superuser has been created with username ``admin`` and
+  password ``ok``;
+
+
+Further
+*******
 
 There is a lot of useful Makefile commands to manage your project, read the Makefile
 help: ::
 
     make help
+
+Or see `Bireli`_ documentation about project usage to know more.
