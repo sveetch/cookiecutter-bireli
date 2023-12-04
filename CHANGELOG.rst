@@ -23,6 +23,8 @@ Version 0.3.10 - Unreleased
 * Added Python script ``docs/makefile_parser.py`` to automatize Makefile help
   texts documentation;
 * Moved changelog to ``CHANGELOG.rst`` and made an alias to it in documentation;
+* Refactored third part factories from ``project_utils`` and added factories for Tag
+  and CMS extension;
 
 
 Version 0.3.9 - 2023/08/18
