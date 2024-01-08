@@ -119,7 +119,7 @@ clean-frontend-build:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Cleaning frontend built files <---$(FORMATRESET)\n"
 	@echo ""
-	rm -Rf $(STATICFILES_DIR)/webpack-stats.json
+	rm -Rf var/webpack-stats.json
 	rm -Rf $(STATICFILES_DIR)/css
 	rm -Rf $(STATICFILES_DIR)/js
 .PHONY: clean-frontend-build
