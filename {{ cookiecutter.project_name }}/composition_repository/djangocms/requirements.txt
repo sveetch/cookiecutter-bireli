@@ -1,4 +1,5 @@
 django-cms>=3.11.0,<4.0.0
-djangocms-picture>=4.0.0
-djangocms-text-ckeditor>=5.0.1
-djangocms-snippet>=3.1.0
+djangocms-picture==4.1.1
+djangocms-text-ckeditor==5.1.5
+djangocms-snippet==3.1.1
+djangocms-admin-style==3.2.6

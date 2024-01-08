@@ -4,6 +4,28 @@
 History
 =======
 
+Version 0.3.11 - Unreleased
+---------------------------
+
+Project template changes
+    * Added new available CMS applications in composer repository:
+
+      * djangocms-audio
+      * djangocms-file
+      * djangocms-video
+
+    * Pinned django-ckeditor and DjangoCMS requirements to more recent stable versions;
+    * Improved DjangoCMS and Lotus sitemaps with custom sitemap classes which include
+      more flexible item priority. This involves some new settings;
+    * Added new template ``admin/base.html`` to patch django-admin-styles stylesheet
+      to resolve issue with CKEditor plugins modals that were unable to positionnate
+      correctly. The modal position is not optimal yet but is a real improvement;
+    * Added new stylesheet
+      ``django-apps/project_utils/static/css/django-ckeditor-patch.css``  that can be
+      included in custom application admin (or form) to fix CKEditor width (obviously
+      only needed if CKEditor is used);
+
+
 Version 0.3.10 - 2023/12/04
 ---------------------------
 

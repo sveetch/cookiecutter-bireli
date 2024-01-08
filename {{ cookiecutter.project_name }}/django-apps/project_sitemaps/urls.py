@@ -1,8 +1,7 @@
 from django.contrib.sitemaps import views as sitemap_views
 from django.urls import path
 
-from cms.sitemaps import CMSSitemap
-from lotus.sitemaps import ArticleSitemap
+from .sitemaps import CustomizedArticleSitemap, CustomizedCMSSitemap
 
 
 app_name = "project_sitemaps"
@@ -10,8 +9,8 @@ app_name = "project_sitemaps"
 
 # Enabled sitemap classes with their section name
 sitemap_classes = {
-    "cms": CMSSitemap,
-    "lotus-article": ArticleSitemap,
+    "cms": CustomizedCMSSitemap,
+    "lotus-article": CustomizedArticleSitemap,
 }
 
 

@@ -1,0 +1,13 @@
+{% extends 'admin/base.html' %}
+
+{% comment %}
+Patch admin-style stylesheet to resolve issue with CKEditor plugins modals that are
+unable to positionnate correctly.
+{% endcomment %}
+{% block extrastyle %}{{ block.super }}
+<style>
+body {
+    position: relative;
+}
+</style>
+{% endblock %}

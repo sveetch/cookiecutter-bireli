@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-# Coming from "hooks/"
+# Come from "hooks/" that is added in sys.path from pytest conftest
 import post_gen_project
 
 

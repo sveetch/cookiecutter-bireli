@@ -7,12 +7,9 @@ def test_create_project(tmp_path, settings):
     """
     With default option, cookiecutter should generate a project without errors.
     """
-    print("🎨 tmp_path:", tmp_path)
-    print()
-
     # Expected project directory name computed from slugified 'project_title'
     project_destination = tmp_path / "a-project-sample"
-    # Built and saved project config
+    # Expected built config
     baked_config = project_destination / "cookiebaked.json"
 
     # Minimal context, let config default value to be used

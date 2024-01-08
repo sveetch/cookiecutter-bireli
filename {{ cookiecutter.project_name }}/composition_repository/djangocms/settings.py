@@ -25,6 +25,11 @@ class CmsBaseSettings(EnabledApplicationMarker):
         "test-basic": "tests/pages/basic.html",
     }
 
+    # Values to use for custom CMS sitemap options
+    CMS_SITEMAP_DEFAULT_PRIORITY = 0.80
+    CMS_SITEMAP_HOMEPAGE_PRIORITY = 1.0
+    CMS_SITEMAP_CHANGEFREQ = "monthly"
+
     @classmethod
     def setup(cls):
         super(CmsBaseSettings, cls).setup()
@@ -89,35 +94,49 @@ class CmsCkeditorSettings(EnabledApplicationMarker):
 
         # This is were you"ll put configuration for djangocms-text-ckeditor only
         cls.CKEDITOR_SETTINGS.update({
+            "extraPlugins": "youtube,vimeo,codemirror",
+            "removePlugins": "exportpdf,image,flash,stylesheetparser",
             "toolbar": "CMS",
+            # The config for TextPlugin only
             "toolbar_CMS": [
                 ["Undo", "Redo"],
-                # ["cmsplugins", "-", "ShowBlocks"],
+                [
+                    # "cmsplugins", "-",
+                    "ShowBlocks"
+                ],
+                ["Format", "Styles"],
+                ["RemoveFormat"],
+                ["Maximize"],
+                "/",
+                ["Bold", "Italic", "Underline", "-", "Subscript", "Superscript"],
+                ["JustifyLeft", "JustifyCenter", "JustifyRight"],
+                ["Link", "Unlink"],
+                [
+                    "Youtube", "Vimeo", "-", "NumberedList", "BulletedList",
+                    "-", "Table", "-", "CreateDiv", "HorizontalRule",
+                ],
+                # ["Iframe"],
+                # ["Templates"],
+                ["Source"],
+            ],
+            # The config for plugins which use the editor widget from
+            # djangocms-text-ckeditor
+            "toolbar_HTMLField": [
+                ["Undo", "Redo"],
                 ["ShowBlocks"],
                 ["Format", "Styles"],
                 ["RemoveFormat"],
                 ["Maximize"],
                 "/",
-                [
-                    "Bold", "Italic", "Underline", "-",
-                    "Subscript", "Superscript"
-                ],
+                ["Bold", "Italic", "Underline", "-", "Subscript", "Superscript"],
                 ["JustifyLeft", "JustifyCenter", "JustifyRight"],
                 ["Link", "Unlink"],
                 [
-                    'Image', 'Youtube', 'Vimeo', '-',
-                    'NumberedList', 'BulletedList', "-",
-                    "Table", "-",
-                    "CreateDiv", "HorizontalRule",
+                    "Youtube", "Vimeo", "-", "NumberedList", "BulletedList",
+                    "-", "Table", "-", "CreateDiv", "HorizontalRule",
                 ],
                 # ["Iframe"],
                 # ["Templates"],
                 ["Source"],
             ],
         })
-
-        # Share the same config for djangocms_text_ckeditor field and derived
-        # CKEditor widgets/fields from plugins
-        cls.CKEDITOR_SETTINGS["toolbar_HTMLField"] = (
-            cls.CKEDITOR_SETTINGS["toolbar_CMS"]
-        )
