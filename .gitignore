@@ -5,6 +5,7 @@
 build
 dist
 *.egg-info
+requirements/base.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

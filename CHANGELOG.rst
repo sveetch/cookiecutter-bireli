@@ -4,8 +4,11 @@
 History
 =======
 
-Version 0.3.11 - Unreleased
+Version 0.3.11 - 2024/01/09
 ---------------------------
+
+Internal Bireli changes
+    * Added some minor improvements about localization and install documentations;
 
 Project template changes
     * Added new available CMS applications in composer repository:
@@ -24,6 +27,10 @@ Project template changes
       ``django-apps/project_utils/static/css/django-ckeditor-patch.css``  that can be
       included in custom application admin (or form) to fix CKEditor width (obviously
       only needed if CKEditor is used);
+    * Changed webpack configuration so its file ``webpack-stats.json`` is now built in
+      ``var/`` instead of previously ``project/static-sources`` so it can not be
+      reached as a static file anymore;
+    * Updated included default site favicon with the new Bireli logo;
 
 
 Version 0.3.10 - 2023/12/04
