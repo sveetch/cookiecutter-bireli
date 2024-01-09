@@ -224,7 +224,7 @@ not use everything and so does not install everything.
 
 ``base.txt``
     This is the base project requirements. Don't write anything in it since it
-    generated from composer, all you changes will be lost definitively.
+    is generated from composer, all you changes will be lost definitively.
 
     It is required by every environment.
 
@@ -250,11 +250,14 @@ not use everything and so does not install everything.
     debugging.
 
     It is not required by any environment. However it is installed in local
-    environment.
+    environment. You are not allowed to edit it without discussion with developer team
+    since they will inherit from your changes. Commonly the best is just to manually
+    install them with "pip" from the project virtual environment.
 
-.. Note::
-   Project does not include extra requirements configurations. You will need to enable
-   and configure them through your :ref:`project_backend_local_settings`.
+    .. Note::
+        Project does not include configurations for these extra requirements. You will
+        need to enable and configure them through a
+        :ref:`project_backend_local_settings`.
 
 
 .. _project_backend_i18n:
@@ -262,8 +265,8 @@ not use everything and so does not install everything.
 Internationalization and localization
 *************************************
 
-This is mostly driven by settings and URLs. Bireli as already set everything (following
-option choices when creating project), this means:
+This is mostly driven by settings and URLs. Bireli has already set everything
+(following option choices when creating project). Here is a resume of important parts.
 
 Default language
     The default language used to write contents (templates, text in code and content
@@ -272,9 +275,9 @@ Default language
     It is used even in single language site but does not really have consequences,
     except for text translation from PO catalog files (at least used in Django admin).
 
-    Be aware that application contents store the language it has been written with, so
-    if you change default language on a single language site, you may not see your
-    content anymore (but they should not be lost).
+    Be aware that application contents commonly store the language they have been
+    written with so if you change default language on a single language site you may
+    not see your content anymore (but they should not be lost).
 
     Default language value is defined in ``settings.LANGUAGE_CODE`` from
     ``django_builtins`` module in composition repository.
@@ -302,8 +305,9 @@ Timezone
     in composition repository.
 
 Usage of i18n URLs
-    This determines if your application urls will be prefixed with language like ``/en/``
-    or not.
+    This is used to mount your views under a
+    `language prefix in URL patterns <https://docs.djangoproject.com/en/stable/topics/i18n/translation/#language-prefix-in-url-patterns>`_
+    like ``/en/``.
 
     Commonly if you have a single language site, you don't need it and it is disabled
     and a multiple language site enables it.
@@ -318,5 +322,27 @@ Usage of i18n URLs
     however you have to enable middleware ``LocaleMiddleware`` yourself. Obviously this
     behavior is only suitable with applications that implement i18n.
 
-Finally, knowing these parts, you should be able to easily switch project configuration
-to turn it to a single language site or a multiple language site.
+Translation catalog files
+    These are files in gettext syntax to store translated string and their
+    translations. Translation string are only used in code or templates, they are used
+    for "interface translations" not for content translations.
+
+    `PO files <https://docs.djangoproject.com/en/stable/topics/i18n/translation/#message-files>`_
+    (named ``*.po``) are the sources you can edit to fill in translations.
+
+    `MO files <https://docs.djangoproject.com/en/stable/topics/i18n/translation/#compiling-message-files>`_
+    (named ``*.mo``) files are compiled sources that are used by Django to
+    search and get translation for translated strings. You build them from the PO
+    files.
+
+    .. Warning::
+        A fresh new created project does not include any catalog files. To start you
+        will need first to create ``project/locale/`` directory then create catalog
+        structure for each language to translate (as defined from your settings).
+
+        For exemple with french language you would do: ::
+
+            .venv/bin/python manage.py makemessages --locale fr
+
+        Then it should create ``project/locale/fr/`` directory with an initial PO
+        file.

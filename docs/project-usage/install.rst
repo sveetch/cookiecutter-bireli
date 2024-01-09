@@ -96,6 +96,18 @@ Now you need to build the frontend assets: ::
 
     make frontend
 
+If your project include application with translated URL patterns, you will need to
+build compiled translation file ``*.mo``: ::
+
+    make mo
+
+.. Note::
+    Compiled translation files are commonly not blocking when missing but not for URL
+    patterns that can lead to unexpected and troubling Http404 responses.
+
+    This is not a common usecase so you may avoid it if you are confident enough, at
+    least this note is here so you'll know.
+
 When finished your project is ready to run.
 
 
@@ -121,11 +133,11 @@ Quickstart
 Once you already installed a Bireli project, you should have all needed requirements
 and you may just quickly do everything in a single command: ::
 
-    make install frontend initial-data
+    make install mo frontend initial-data
 
 Or: ::
 
-    make install frontend superuser
+    make install mo frontend superuser
 
 
 Upgrades
