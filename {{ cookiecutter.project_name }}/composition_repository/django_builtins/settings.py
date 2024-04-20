@@ -130,14 +130,6 @@ class DjangoBase(EnabledApplicationMarker):
         environ_name="SILENCED_SYSTEM_CHECKS"
     )
 
-    DEFAULT_FROM_EMAIL = values.Value(
-        "no-reply@emencia.com",
-        environ_name="DEFAULT_FROM_EMAIL",
-    )
-    DEFAULT_TO_EMAIL = values.Value(
-        "contact@emencia.com",
-        environ_name="DEFAULT_TO_EMAIL",
-    )
 
     # SMTP configuration
     EMAIL_BACKEND = values.Value("django.core.mail.backends.smtp.EmailBackend",
@@ -145,9 +137,17 @@ class DjangoBase(EnabledApplicationMarker):
     EMAIL_HOST = values.Value(None, environ_name="EMAIL_HOST")
     EMAIL_PORT = values.PositiveIntegerValue(None, environ_name="EMAIL_PORT")
 
-    # Email sender for various applications
-    DEFAULT_FROM_EMAIL = values.Value("webmaster@localhost",
-                                      environ_name="DEFAULT_FROM_EMAIL")
+    # Default email sender for various applications
+    DEFAULT_FROM_EMAIL = values.Value(
+        "no-reply@emencia.com",
+        environ_name="DEFAULT_FROM_EMAIL",
+    )
+
+    # Default email recipient for applications that need it
+    DEFAULT_TO_EMAIL = values.Value(
+        "contact@emencia.com",
+        environ_name="DEFAULT_TO_EMAIL",
+    )
 
     @property
     def ENVIRONMENT(self):

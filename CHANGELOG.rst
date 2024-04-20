@@ -12,6 +12,8 @@ Project template changes
     * Changed again the webpack configuration to build file ``webpack-stats.json`` into
       ``parts/`` instead of ``var/`` since the latter is not ensured to exist in
       deployed backend;
+    * Fixed duplicate definition of setting ``DEFAULT_FROM_EMAIL`` in ``DjangoBase``
+      class;
 
 
 Version 0.3.11 - 2024/01/09
