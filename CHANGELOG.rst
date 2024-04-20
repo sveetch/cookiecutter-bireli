@@ -4,6 +4,16 @@
 History
 =======
 
+Version 0.3.12 - Unreleased
+---------------------------
+
+Project template changes
+    * Introduced new setting ``PARTS_PATH`` for the path of ``parts/`` directory;
+    * Changed again the webpack configuration to build file ``webpack-stats.json`` into
+      ``parts/`` instead of ``var/`` since the latter is not ensured to exist in
+      deployed backend;
+
+
 Version 0.3.11 - 2024/01/09
 ---------------------------
 

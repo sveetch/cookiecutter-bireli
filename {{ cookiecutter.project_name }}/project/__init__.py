@@ -25,7 +25,7 @@ __version__ = _extract_version()
 __generator__ = "cookiecutter-bireli=={{ cookiecutter._bireli_version }}"
 
 
-# Initialize composer with the manifest and the message processor
+# Initialize composer with the manifest and processors needed for Django
 print("🚀 Initialize composer")
 _composer = Composer(
     Path("./pyproject.toml").resolve(),

@@ -35,6 +35,10 @@ class DjangoPaths(EnabledApplicationMarker):
     # deployed environments
     VAR_PATH = BASE_DIR / "var"
 
+    # Directory dedicated to hold various generated content from tools, opposed to the
+    # var directory this one should be ensured to exists in deployed backend
+    PARTS_PATH = BASE_DIR / "parts"
+
     # Set the Dotenv file path only if it exists
     _dotenv_path = BASE_DIR / ".env"
     if _dotenv_path.exists():

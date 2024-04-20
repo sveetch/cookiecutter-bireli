@@ -46,7 +46,7 @@ module.exports = {
     plugins: [
         new BundleTracker({
             path: __dirname,
-            filename: '../var/webpack-stats.json'
+            filename: '../parts/webpack-stats.json'
         }),
     ],
 };
