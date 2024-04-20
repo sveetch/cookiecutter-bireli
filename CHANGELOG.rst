@@ -14,6 +14,10 @@ Project template changes
       deployed backend;
     * Fixed duplicate definition of setting ``DEFAULT_FROM_EMAIL`` in ``DjangoBase``
       class;
+    * Introduced a new setting ``SITE_INDEX_METAS`` and changed skeleton to use it to
+      switch meta "robots" value. Concretely on default the page only include directives
+      to not index the site and only production environment expose directives to enable
+      indexation;
 
 
 Version 0.3.11 - 2024/01/09

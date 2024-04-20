@@ -11,6 +11,9 @@ class ProjectUtilsSettings(EnabledApplicationMarker):
     """
     Project utilities
     """
+    # Internal mark to know if site expose meta elements for real indexation. This is
+    # should commonly be enabled only for production environment.
+    SITE_INDEX_METAS = False
 
     @classmethod
     def setup(cls):

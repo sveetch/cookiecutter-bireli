@@ -10,7 +10,7 @@
         {# djlint:off #}<title>{% block header-title %}{{ SITE.name }}{% endblock header-title %}</title>{# djlint:on #}
         {% block metas %}
             {% block metas-robot %}
-                <meta name="robots" content="index, follow, all">
+                <meta name="robots" content="{% if PROJECT.index_metas %}index, follow, all{% else %}noindex, nofollow{% endif %}">
             {% endblock metas-robot %}
             {% block metas-generic %}
                 <meta name="description"

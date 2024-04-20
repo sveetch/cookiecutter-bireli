@@ -14,7 +14,6 @@
 .. _Cookiecutter: https://cookiecutter.readthedocs.io/en/stable/
 
 
-======
 Bireli
 ======
 

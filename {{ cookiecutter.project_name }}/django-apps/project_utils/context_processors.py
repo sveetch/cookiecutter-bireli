@@ -32,7 +32,11 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False,
     PROJECT.release_base64
         Current project release version encoded in base64.
     PROJECT.enable_i18n_urls
-        Determine if project enable i18n urls or not.
+        Determine if project enable i18n urls or not. Value depends from
+        ``settings.ENABLE_I18N_URLS``.
+    PROJECT.index_metas
+        Determine if project enable meta element for site indexation. Value depends
+        from ``settings.SITE_INDEX_METAS``.
 
     Optionally it can have also ``STATIC_URL`` and ``MEDIA_URL`` variable if enabled
     from arguments.
@@ -69,6 +73,7 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False,
                 __version__.encode("utf-8")
             ).decode("utf-8"),
             "enable_i18n_urls": getattr(settings, "ENABLE_I18N_URLS", False),
+            "index_metas": getattr(settings, "SITE_INDEX_METAS", False),
         },
     }
 

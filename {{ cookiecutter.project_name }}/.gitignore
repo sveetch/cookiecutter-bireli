@@ -39,6 +39,8 @@ coverage.xml
 
 # Build files
 /var/
+/parts/webpack-stats.json
+/requirements/base.txt
 project/static-sources/css/
 project/static-sources/js/
 project/static-sources/webpack-stats.json
