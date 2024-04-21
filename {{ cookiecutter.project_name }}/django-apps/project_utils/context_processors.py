@@ -41,6 +41,11 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False,
     Optionally it can have also ``STATIC_URL`` and ``MEDIA_URL`` variable if enabled
     from arguments.
 
+    .. Warning:
+        Don't add any secret variable here since it is widely exposed and may even
+        be displayed from view ``ExposedSiteMetasView``. This would be a major security
+        breach.
+
     Keyword Arguments:
         with_static (boolean): If True adds ``STATIC_URL`` to returned dict. Default
             is False.

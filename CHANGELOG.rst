@@ -18,6 +18,9 @@ Project template changes
       switch meta "robots" value. Concretely on default the page only include directives
       to not index the site and only production environment expose directives to enable
       indexation;
+    * Added new view at ``/utils/site-metas/`` to display currently available variables
+      from ``site_metas`` context processor. This view is only available for staff
+      users;
 
 
 Version 0.3.11 - 2024/01/09
