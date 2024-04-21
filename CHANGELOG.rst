@@ -23,6 +23,7 @@ Project template changes
       users;
     * Added `Diskette <https://diskette.readthedocs.io/>`_ with configurations for all
       available applications and Makefile tasks;
+    * Removed project-composer initialization notification;
 
 
 Version 0.3.11 - 2024/01/09

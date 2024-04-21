@@ -26,7 +26,6 @@ __generator__ = "cookiecutter-bireli=={{ cookiecutter._bireli_version }}"
 
 
 # Initialize composer with the manifest and processors needed for Django
-print("🚀 Initialize composer")
 _composer = Composer(
     Path("./pyproject.toml").resolve(),
     processors=[
