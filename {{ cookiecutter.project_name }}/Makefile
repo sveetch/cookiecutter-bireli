@@ -32,6 +32,10 @@ help:
 	@echo "  install-frontend              -- to install frontend requirements with Npm"
 	@echo "  install                       -- to install backend and frontend"
 	@echo
+	@echo "  update-backend                -- to update backend after requirement changes"
+	@echo "  update-frontend               -- to update frontend after requirement changes"
+	@echo "  update                        -- to update backend and frontend after requirement changes"
+	@echo
 	@echo "  freeze-dependencies           -- to write a frozen.txt file with installed dependencies versions"
 	@echo
 	@echo "  clean                         -- to clean EVERYTHING (WARNING: you cannot recovery from this)"
@@ -188,8 +192,17 @@ install-frontend:
 	${MAKE} icon-font
 .PHONY: install-frontend
 
-install: venv create-var-dirs requirements install-backend migrate install-frontend
+install: venv create-var-dirs requirements install-backend migrate disk-init install-frontend
 .PHONY: install
+
+update-backend: requirements install-backend migrate disk-init
+.PHONY: update-backend
+
+update-frontend: install-frontend frontend
+.PHONY: update-frontend
+
+update: update-backend update-frontend
+.PHONY: update
 
 check-apps:
 	@echo ""

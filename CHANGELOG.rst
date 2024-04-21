@@ -24,6 +24,10 @@ Project template changes
     * Added `Diskette <https://diskette.readthedocs.io/>`_ with configurations for all
       available applications and Makefile tasks;
     * Removed project-composer initialization notification;
+    * Added missing task ``disk-init`` in meta task ``install`` to create needed
+      Diskette definitions;
+    * Added new Makefile tasks ``update-backend``, ``update-frontend`` and ``update``
+      to ease update with new project releases;
 
 
 Version 0.3.11 - 2024/01/09
