@@ -21,6 +21,8 @@ Project template changes
     * Added new view at ``/utils/site-metas/`` to display currently available variables
       from ``site_metas`` context processor. This view is only available for staff
       users;
+    * Added `Diskette <https://diskette.readthedocs.io/>`_ with configurations for all
+      available applications and Makefile tasks;
 
 
 Version 0.3.11 - 2024/01/09

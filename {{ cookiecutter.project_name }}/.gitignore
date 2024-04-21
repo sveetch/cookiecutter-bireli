@@ -1,7 +1,13 @@
-# Environment related
+# Virtual environments
 .venv
 /.env
+
+# Local development
 /localsettings.py
+/requirements/base.txt
+
+# Pyenv
+.python-version
 
 # Packaging
 build
@@ -38,7 +44,9 @@ coverage.xml
 *.log
 
 # Build files
-/var/
+!var/
+var/*
+!var/maintenance/
 /parts/webpack-stats.json
 /requirements/base.txt
 project/static-sources/css/

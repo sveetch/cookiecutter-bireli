@@ -1,5 +1,7 @@
 import logging
 
+from diskette.contrib.composer.processors import DisketteDefinitionsProcessor
+
 from project_composer.logger import init_logger
 from project_composer.helpers import check_project
 from project_composer.processors import TextContentProcessor
@@ -18,6 +20,7 @@ if __name__ == "__main__":
             DjangoSettingsProcessor,
             DjangoUrlsProcessor,
             TextContentProcessor,
+            DisketteDefinitionsProcessor,
         ],
         lazy=False
     )

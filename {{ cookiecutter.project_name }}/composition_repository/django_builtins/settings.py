@@ -130,7 +130,6 @@ class DjangoBase(EnabledApplicationMarker):
         environ_name="SILENCED_SYSTEM_CHECKS"
     )
 
-
     # SMTP configuration
     EMAIL_BACKEND = values.Value("django.core.mail.backends.smtp.EmailBackend",
                                  environ_name="EMAIL_BACKEND")

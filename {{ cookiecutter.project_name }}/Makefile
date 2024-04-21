@@ -46,6 +46,7 @@ help:
 	@echo "  check-composer                -- to run Composer checking"
 	@echo "  check-django                  -- to run Django System check framework"
 	@echo "  check-migrations              -- to check for pending application migrations (do not write anything)"
+	@echo "  check-disk                    -- to check Diskette configuration for dump operation"
 	@echo
 	@echo "  run                           -- to run Django development server"
 	@echo "  migrations                    -- to create all pending application migrations files"
@@ -67,6 +68,10 @@ help:
 	@echo
 	@echo "  po                            -- to update every PO files from composition apps, django apps and project code and templates for enabled languages"
 	@echo "  mo                            -- to build MO files from existing project PO files"
+	@echo
+	@echo "  disk-init                     -- to build Diskette definitions for enabled applications from composition manifest"
+	@echo "  disk-dump                     -- to create a Diskette archive with data and storages"
+	@echo "  disk-load                     -- to load a Diskette archive, your current database and storages will be overwritten"
 	@echo
 	@echo "  flake                         -- to launch Flake8 checking"
 	@echo "  black-check                   -- to launch Black checking"
@@ -214,7 +219,14 @@ check-migrations: check-apps
 	$(DJANGO_MANAGE) makemigrations --check --dry-run -v 3 `$(PROJECT_APPS)`
 .PHONY: check-migrations
 
-check: check-composer check-django check-migrations
+check-disk:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Checking Diskette dump configuration <---$(FORMATRESET)\n"
+	@echo ""
+	$(DJANGO_MANAGE) diskette_dump -v 2 --check
+.PHONY: check-disk
+
+check: check-composer check-django check-migrations check-disk
 .PHONY: check
 
 migrations: check-apps
@@ -320,6 +332,33 @@ mo:
 	@echo ""
 	$(DJANGO_MANAGE) compilemessages --verbosity 3 --ignore='.venv' --ignore='frontend/node_modules' --ignore='tests' --ignore='var' --ignore='.git' --ignore='.pytest_cache' --ignore='chart' --ignore='requirements'
 .PHONY: mo
+
+disk-init:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Build Diskette definitions file <---$(FORMATRESET)\n"
+	@echo ""
+	$(PYTHON_BIN) ./django-apps/project_utils/diskette_definitions.py
+.PHONY: disk-init
+
+disk-dump:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Creating a Diskette archive <---$(FORMATRESET)\n"
+	@echo ""
+	$(DJANGO_MANAGE) diskette_dump -v 2
+.PHONY: disk-dump
+
+disk-load:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Loading local Diskette archive <---$(FORMATRESET)\n"
+	@echo ""
+	rm -Rf var/backup_db
+	rm -Rf var/backup_media
+	mv var/db var/backup_db
+	mv var/media var/backup_media
+	$(MAKE) create-var-dirs
+	$(MAKE) migrate
+	$(DJANGO_MANAGE) diskette_load -v 2 --storages-basepath . diskette_data_storages.tar.gz
+.PHONY: disk-load
 
 flake:
 	@echo ""

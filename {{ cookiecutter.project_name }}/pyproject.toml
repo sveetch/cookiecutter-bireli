@@ -52,6 +52,7 @@ collection = [
     "djangocms",
     "cmsplugin_blocks",
     "project_sitemaps",
+    "diskette",
 ]
 repository = "composition_repository"
 syspaths = [
