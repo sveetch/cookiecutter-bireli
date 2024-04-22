@@ -1,9 +1,3 @@
-"""
-==========================
-Project utilities settings
-==========================
-
-"""
 from project_composer.marker import EnabledApplicationMarker
 
 
@@ -12,8 +6,13 @@ class ProjectUtilsSettings(EnabledApplicationMarker):
     Project utilities
     """
     # Internal mark to know if site expose meta elements for real indexation. This is
-    # should commonly be enabled only for production environment.
+    # should commonly be enabled only for production environment. This is not related
+    # to context processor "site_metas".
     SITE_INDEX_METAS = False
+
+    # To include extra data in context processor "site_metas". Content will be
+    # available in 'EXTRA' context variable.
+    EXTRA_SITE_METAS = None
 
     @classmethod
     def setup(cls):

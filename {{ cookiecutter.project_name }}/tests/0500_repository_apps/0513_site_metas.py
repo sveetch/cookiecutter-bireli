@@ -1,6 +1,7 @@
 from django.urls import reverse
 
 from project_utils.tests import html_pyquery
+from project_utils.context_processors import site_metas
 
 
 def test_site_metas_non_staff(db, client):
@@ -45,3 +46,23 @@ def test_site_metas_content(db, admin_client):
         )
     ]
     assert len(names) > 2
+
+
+def test_site_metas_extra(db, rf, settings):
+    """
+    Context processor should include extra data if set from settings.
+    """
+    dummy_request = rf.get("/")
+
+    data = site_metas(dummy_request)
+    assert "EXTRA" not in data
+
+    settings.EXTRA_SITE_METAS = "foo"
+    data = site_metas(dummy_request)
+    assert "EXTRA" in data
+    assert data["EXTRA"] == "foo"
+
+    settings.EXTRA_SITE_METAS = [1, 2, 3]
+    data = site_metas(dummy_request)
+    assert "EXTRA" in data
+    assert data["EXTRA"] == [1, 2, 3]

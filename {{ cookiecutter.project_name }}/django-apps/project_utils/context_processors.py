@@ -6,8 +6,7 @@ from django.contrib.sites.models import Site
 from project import __version__
 
 
-def get_site_metas(with_static=False, with_media=False, is_secure=False,
-                   extra={}):
+def get_site_metas(with_static=False, with_media=False, is_secure=False, extra={}):
     """
     Return meta informations from project and the current Site object.
 
@@ -38,8 +37,11 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False,
         Determine if project enable meta element for site indexation. Value depends
         from ``settings.SITE_INDEX_METAS``.
 
-    Optionally it can have also ``STATIC_URL`` and ``MEDIA_URL`` variable if enabled
-    from arguments.
+    It can have also ``STATIC_URL`` and ``MEDIA_URL`` variable if enabled from
+    arguments.
+
+    And optionally there can be extra variables from setting ``EXTRA_SITE_METAS``, its
+    content will be available in 'EXTRA' context variable.
 
     .. Warning:
         Don't add any secret variable here since it is widely exposed and may even
@@ -53,7 +55,10 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False,
             is False.
         is_secure (boolean): If True the site url will be in ``https``. Default
             is False.
-        extra (dict): Additional variables to add.
+        extra (dict): Additional variables to add. This update the whole main data
+            dictionnary so you should not use ``SITE``, ``PROJECT`` item names else it
+            would lost their original content. This is another possibility to add extra
+            data in addition to the ``EXTRA`` part.
 
     Returns:
         dict: Meta informations.
@@ -88,7 +93,11 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False,
     if with_static:
         metas["STATIC_URL"] = getattr(settings, "STATIC_URL", "")
 
+    if getattr(settings, "EXTRA_SITE_METAS", None):
+        metas["EXTRA"] = getattr(settings, "EXTRA_SITE_METAS")
+
     metas.update(extra)
+
     return metas
 
 

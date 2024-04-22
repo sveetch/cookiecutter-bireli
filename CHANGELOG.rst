@@ -28,6 +28,8 @@ Project template changes
       Diskette definitions;
     * Added new Makefile tasks ``update-backend``, ``update-frontend`` and ``update``
       to ease update with new project releases;
+    * Introduced a new setting ``EXTRA_SITE_METAS`` to add extra data in context
+      processor ``site_metas`` below the item name ``EXTRA``;
 
 
 Version 0.3.11 - 2024/01/09
