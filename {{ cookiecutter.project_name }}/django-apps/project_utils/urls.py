@@ -1,11 +1,15 @@
 from django.urls import path
 
-from .views import ExposedSiteMetasView
+from .views import ExposedProjectGlobalsView
 
 
 app_name = "project_utils"
 
 
 urlpatterns = [
-    path("site-metas/", ExposedSiteMetasView.as_view(), name="site-metas"),
+    path(
+        "project-globals/",
+        ExposedProjectGlobalsView.as_view(),
+        name="project-globals"
+    ),
 ]

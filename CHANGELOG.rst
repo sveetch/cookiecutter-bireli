@@ -18,9 +18,6 @@ Project template changes
       switch meta "robots" value. Concretely on default the page only include directives
       to not index the site and only production environment expose directives to enable
       indexation;
-    * Added new view at ``/utils/site-metas/`` to display currently available variables
-      from ``site_metas`` context processor. This view is only available for staff
-      users;
     * Added `Diskette <https://diskette.readthedocs.io/>`_ with configurations for all
       available applications and Makefile tasks;
     * Removed project-composer initialization notification;
@@ -28,8 +25,16 @@ Project template changes
       Diskette definitions;
     * Added new Makefile tasks ``update-backend``, ``update-frontend`` and ``update``
       to ease update with new project releases;
-    * Introduced a new setting ``EXTRA_SITE_METAS`` to add extra data in context
-      processor ``site_metas`` below the item name ``EXTRA``;
+    * Renamed context processor ``site_metas`` to ``project_globals``, since the first
+      was an old name that leaded to confusion with meta elements. This involve
+      renaming for the occurences in various forms (``site metas``, ``site-metas``,
+      etc..) in template and backend code. And especially the setting
+      ``EXTRA_SITE_METAS`` which becomes ``EXTRA_PROJECT_GLOBALS``;
+    * Added new view at ``/utils/project-globals/`` to display available variables
+      from ``project_globals`` context processor. This view is only available for staff
+      users. It's link is available from the CMS toolbar item ``Applications``;
+    * Introduced a new setting ``EXTRA_PROJECT_GLOBALS`` to add extra data in context
+      processor ``project_globals`` below the item name ``EXTRA``;
 
 
 Version 0.3.11 - 2024/01/09

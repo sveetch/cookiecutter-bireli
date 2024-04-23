@@ -6,6 +6,12 @@ install-frontend
     To install frontend requirements with Npm
 install
     To install backend and frontend
+update-backend
+    To update backend after requirement changes
+update-frontend
+    To update frontend after requirement changes
+update
+    To update backend and frontend after requirement changes
 freeze-dependencies
     To write a frozen.txt file with installed dependencies versions
 clean
@@ -30,6 +36,8 @@ check-django
     To run Django System check framework
 check-migrations
     To check for pending application migrations (do not write anything)
+check-disk
+    To check Diskette configuration for dump operation
 run
     To run Django development server
 migrations
@@ -62,6 +70,12 @@ po
     To update every PO files from composition apps, django apps and project code and templates for enabled languages
 mo
     To build MO files from existing project PO files
+disk-init
+    To build Diskette definitions for enabled applications from composition manifest
+disk-dump
+    To create a Diskette archive with data and storages
+disk-load
+    To load a Diskette archive, your current database and storages will be overwritten
 flake
     To launch Flake8 checking
 black-check

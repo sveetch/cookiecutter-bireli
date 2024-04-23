@@ -1,14 +1,14 @@
-{% extends "base.html" %}
-{# djlint:off #}{% block header-title %}Site metas - {{ block.super }}{% endblock header-title %}{# djlint:on #}
-{% block body-content %}
+{% extends "skeleton.html" %}
+{# djlint:off #}{% block header-title %}Project globals - {{ block.super }}{% endblock header-title %}{# djlint:on #}
+{% block body-container %}
     <div class="block">
         <div class="container-xl">
-            <h2 class="mb-4">Site metas</h2>
+            <h2 class="mb-4">Project globals</h2>
 
             <div class="mb-4">
                 <p class="lead">You can use these template variables anywhere in your templates.</p>
 
-                <table class="table table-striped" id="site-metas-variables">
+                <table class="table table-striped" id="project-globals-variables">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -17,7 +17,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for k, v in site_variables %}
+                        {% for k, v in project_globals_variables %}
                             <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td><kbd class="user-select-all">{% templatetag openvariable %}&nbsp;{{ k }}&nbsp;{% templatetag closevariable %}</kbd></td>
@@ -32,10 +32,10 @@
                 <p class="lead">Here you can see the full payload available in template context.</p>
 
                 <div class="text-bg-light border border-dark-subtle rounded p-2">
-                    <pre class="m-0"><code id="site-metas-payload">{{ site_metas|safe }}</code></pre>
+                    <pre class="m-0"><code id="project-globals-payload">{{ project_globals_json|safe }}</code></pre>
                 </div>
             </div>
 
         </div>
     </div>
-{% endblock body-content %}
+{% endblock body-container %}

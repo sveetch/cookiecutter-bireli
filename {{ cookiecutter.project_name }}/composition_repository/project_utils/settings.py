@@ -7,12 +7,12 @@ class ProjectUtilsSettings(EnabledApplicationMarker):
     """
     # Internal mark to know if site expose meta elements for real indexation. This is
     # should commonly be enabled only for production environment. This is not related
-    # to context processor "site_metas".
+    # to context processor "project_globals".
     SITE_INDEX_METAS = False
 
-    # To include extra data in context processor "site_metas". Content will be
+    # To include extra data in context processor "project_globals". Content will be
     # available in 'EXTRA' context variable.
-    EXTRA_SITE_METAS = None
+    EXTRA_PROJECT_GLOBALS = None
 
     @classmethod
     def setup(cls):
@@ -22,7 +22,7 @@ class ProjectUtilsSettings(EnabledApplicationMarker):
             "project_utils",
         ])
 
-        # Basic processor to insert some common global variables
+        # Processor to add some common global variables in template context
         cls.TEMPLATES[0]["OPTIONS"]["context_processors"].extend([
-            "project_utils.context_processors.site_metas",
+            "project_utils.context_processors.project_globals",
         ])

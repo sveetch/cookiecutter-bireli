@@ -1,6 +1,6 @@
-from .site_metas import ExposedSiteMetasView
+from .project_globals import ExposedProjectGlobalsView
 
 
 __all__ = [
-    "ExposedSiteMetasView",
+    "ExposedProjectGlobalsView",
 ]

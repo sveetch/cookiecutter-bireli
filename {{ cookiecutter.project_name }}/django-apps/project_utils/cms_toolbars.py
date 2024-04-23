@@ -48,6 +48,12 @@ class EmenciaToolbar(CMSToolbar):
                 url=reverse("admin:djangocms_snippet_snippet_changelist"),
             )
 
+        if "project_utils" in settings.INSTALLED_APPS:
+            menu.add_link_item(
+                name="Project globals for templates",
+                url=reverse("project_utils:project-globals"),
+            )
+
 
 if "cms" in settings.INSTALLED_APPS:
     toolbar_pool.register(EmenciaToolbar)

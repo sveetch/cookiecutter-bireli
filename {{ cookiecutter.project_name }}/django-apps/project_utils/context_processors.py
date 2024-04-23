@@ -6,14 +6,14 @@ from django.contrib.sites.models import Site
 from project import __version__
 
 
-def get_site_metas(with_static=False, with_media=False, is_secure=False, extra={}):
+def get_project_globals(with_static=False, with_media=False, is_secure=False, extra={}):
     """
-    Return meta informations from project and the current Site object.
+    Return global informations from project and the current Site object.
 
     This can be used in code out of a Django requests (like in management
     commands) or in a context processor to get the Site url.
 
-    Return informations (typed as they would be used from a template):
+    Return globals (typed as they would be used from a template):
 
     SITE.name
         Current *Site* entry name.
@@ -40,8 +40,8 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False, extra={
     It can have also ``STATIC_URL`` and ``MEDIA_URL`` variable if enabled from
     arguments.
 
-    And optionally there can be extra variables from setting ``EXTRA_SITE_METAS``, its
-    content will be available in 'EXTRA' context variable.
+    And optionally there can be extra variables from setting ``EXTRA_PROJECT_GLOBALS``,
+    its content will be available in 'EXTRA' context variable.
 
     .. Warning:
         Don't add any secret variable here since it is widely exposed and may even
@@ -70,7 +70,7 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False, extra={
     else:
         scheme = "http"
 
-    metas = {
+    data = {
         "SITE": {
             "name": site_current.name,
             "domain": site_current.domain,
@@ -88,27 +88,27 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False, extra={
     }
 
     if with_media:
-        metas["MEDIA_URL"] = getattr(settings, "MEDIA_URL", "")
+        data["MEDIA_URL"] = getattr(settings, "MEDIA_URL", "")
 
     if with_static:
-        metas["STATIC_URL"] = getattr(settings, "STATIC_URL", "")
+        data["STATIC_URL"] = getattr(settings, "STATIC_URL", "")
 
-    if getattr(settings, "EXTRA_SITE_METAS", None):
-        metas["EXTRA"] = getattr(settings, "EXTRA_SITE_METAS")
+    if getattr(settings, "EXTRA_PROJECT_GLOBALS", None):
+        data["EXTRA"] = getattr(settings, "EXTRA_PROJECT_GLOBALS")
 
-    metas.update(extra)
+    data.update(extra)
 
-    return metas
+    return data
 
 
-def site_metas(request):
+def project_globals(request):
     """
-    Context processor to add the current Site metas to the context.
+    Context processor to add the current project globals to the context.
 
     Args:
-        request (object): A Django Request object.
+        request (object): A Django Request object to use its method ``is_secure``.
 
     Returns:
-        dict: Meta informations to add to template context.
+        dict: Global item to add to template context.
     """
-    return get_site_metas(is_secure=request.is_secure())
+    return get_project_globals(is_secure=request.is_secure())
