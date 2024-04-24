@@ -4,8 +4,11 @@
 History
 =======
 
-Version 0.3.12 - Unreleased
+Version 0.3.12 - 2024/04/24
 ---------------------------
+
+Internal Bireli changes
+    None.
 
 Project template changes
     * Introduced new setting ``PARTS_PATH`` for the path of ``parts/`` directory;
