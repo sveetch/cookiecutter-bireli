@@ -13,6 +13,12 @@ Internal Bireli changes
 Project template changes
     * Changed Pytest configuration and command option to adopt the right modest
       verbose options;
+    * Pinned sorl-thumbnail to ``>=12.9.0,<12.11.0`` since its last version is
+      incompatible with Django<5.0. We will remove this once we moved to Django 5.0,
+      close #55;
+    * Pinned django-ckeditor to ``==6.7.1`` to remove annoying warning message from
+      CKEditor, close #52;
+    * Fixed docstring typo in reCAPTCHA settings class, close #51;
 
 
 Version 0.3.12 - 2024/04/24

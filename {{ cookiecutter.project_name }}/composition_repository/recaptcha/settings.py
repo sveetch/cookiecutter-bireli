@@ -1,9 +1,3 @@
-"""
-=========================
-Django reCAPTCHA settings
-=========================
-
-"""
 from configurations import values
 
 from project_composer.marker import EnabledApplicationMarker
@@ -11,7 +5,7 @@ from project_composer.marker import EnabledApplicationMarker
 
 class RecaptchaSettings(EnabledApplicationMarker):
     """
-    Site layout styleguide
+    Django reCAPTCHA settings
     """
     # These are API keys for localhost usage only, you must fill them right in
     # integration and production settings

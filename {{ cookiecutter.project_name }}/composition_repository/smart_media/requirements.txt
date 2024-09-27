@@ -1,2 +1,2 @@
-sorl-thumbnail>=12.9.0
+sorl-thumbnail>=12.9.0,<12.11.0
 django-smart-media
