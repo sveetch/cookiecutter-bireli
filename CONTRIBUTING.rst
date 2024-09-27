@@ -83,7 +83,7 @@ Make Changes
 ------------
 
 Proposed changes have to be done in a dedicated branch, based on last
-“master” branch version. Then your branch have to be proposed through a
+“development” branch version. Then your branch have to be proposed through a
 Pull Request on Github.
 
 Your work have to fill all quality requirements.

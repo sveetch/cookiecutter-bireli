@@ -4,6 +4,17 @@
 History
 =======
 
+Version 0.3.13 - Unreleased
+---------------------------
+
+Internal Bireli changes
+    * Changed Pytest command option to adopt the right modest verbose options;
+
+Project template changes
+    * Changed Pytest configuration and command option to adopt the right modest
+      verbose options;
+
+
 Version 0.3.12 - 2024/04/24
 ---------------------------
 

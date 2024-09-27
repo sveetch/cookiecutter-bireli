@@ -118,7 +118,7 @@ tests:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Testing template internals <---$(FORMATRESET)\n"
 	@echo ""
-	$(PYTEST_BIN) -vv tests/
+	$(PYTEST_BIN) -v --tb=long tests/
 .PHONY: tests
 
 flake8:
