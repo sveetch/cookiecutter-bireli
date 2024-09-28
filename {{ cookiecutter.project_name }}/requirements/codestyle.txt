@@ -1,5 +1,5 @@
 # A set of quality tools to use in local development only
-black
-autopep8
-djlint
-isort
+flake8>=6.0.0
+autopep8>=2.3.0
+djlint>=1.35.0
+isort>=5.13.0

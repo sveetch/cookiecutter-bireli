@@ -1,5 +1,5 @@
 # A set of common tools to use in local development only
 cookiecutter>=2.0,<3.0
-pipdeptree
-django-extensions
-django-debug-toolbar
+pipdeptree>=2.23.4
+django-extensions>=3.2.3
+django-debug-toolbar>=4.2.0,<4.3.0

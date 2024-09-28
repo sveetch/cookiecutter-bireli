@@ -9,6 +9,8 @@ Version 0.3.13 - Unreleased
 
 Internal Bireli changes
     * Changed Pytest command option to adopt the right modest verbose options;
+    * Added a minimal version to all requirements to help Pip to resolve packages
+      quicker;
 
 Project template changes
     * Changed Pytest configuration and command option to adopt the right modest
@@ -19,6 +21,10 @@ Project template changes
     * Pinned django-ckeditor to ``==6.7.1`` to remove annoying warning message from
       CKEditor, close #52;
     * Fixed docstring typo in reCAPTCHA settings class, close #51;
+    * Added a minimal version to every base and environments requirements to help Pip
+      to resolve packages quicker;
+    * django-debug-toolbar has been capped to 4.3.0 until we move to Django>=4.2;
+    * django-configurations has been capped to 2.5.0 until we move to Django>=4.2;
 
 
 Version 0.3.12 - 2024/04/24

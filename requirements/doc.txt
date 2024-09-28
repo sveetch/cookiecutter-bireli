@@ -1,4 +1,4 @@
-sphinx>=4.3.0
-livereload
+sphinx>=8.0.2
+livereload>=2.7.0
 
 -r doc-theme.txt
