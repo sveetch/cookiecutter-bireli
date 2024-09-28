@@ -4,7 +4,7 @@
 History
 =======
 
-Version 0.3.13 - Unreleased
+Version 0.3.13 - 2024/09/28
 ---------------------------
 
 Internal Bireli changes
