@@ -7,7 +7,9 @@ History
 Development
 -----------
 
-On going.
+* On going: Upgrading requirements to compatible version for Django>=5.0 (but start
+  with 5.0 for now).
+* Todo: Upgrade frontend for dart-sass-embedded and Bootstrap;
 
 .. Todo::
 
@@ -20,9 +22,7 @@ On going.
     * [ ] We may override Lotus custom style for category tree to fit into
       'djangocms-admin-style';
 
-
-    Upgrading requirements to compatible version for Django>=5.0 (but start with 5.0
-    for now):
+    Stage 1:
 
     * [✅] Django>=5.0,<5.1
     * [✅] django-configurations>=2.5.1,<2.6.0
@@ -31,25 +31,8 @@ On going.
     * [✅] django-smart-media>=0.4.0,<0.5.0
     * [✅] django-crispy-forms>=2.3
     * [✅] crispy-bootstrap5>=2024.10
-    * [🙈] Definitively disable Fobi in composer;
-
-      * [ ] Remove Fobi disk config in djangocms for its plugin;
-      * [ ] Remove Fobi test;
-
-    * [🚧] cmsplugin-blocks>=1.5.0,<1.6.0
-
-      * [ ] Current last version won't make it with DjangoCMS>=4.0;
-      * [ ] 'BLOCKS_ALLOWED_IMAGE_EXTENSIONS' in profit of 'django-smart-media'
-        setting 'SMARTIMAGE_ALLOWED_IMAGE_EXTENSIONS';
-      * [ ] 'Features' feature to take care in settings (and templates?);
-
     * [➖] django-ckeditor>=6.7.1,<6.8.0
     * [✅] django-autocomplete-light>=3.11.0
-    * [🚧] diskette>=0.4.0,<0.5.0
-
-      * [ ] 'DISKETTE_DUMP_PATH' and 'DISKETTE_LOAD_STORAGES_PATH' settings have to be
-        fixed (squad as fix reference);
-      * [ ] Sendfile is involved (should be loaded before Diskette);
 
     * [✅] django-sendfile2>=0.7.0;
 
@@ -62,8 +45,33 @@ On going.
     * [✅] emencia-django-staticpages>=0.6.1,<0.7.0
     * [💚] py-css-styleguide>=1.0.0
 
-      * [ ] py-css-styleguide backend is ok but Sass manifest is not compatible, it
-        need to be migrated;
+    * [✅] django-recaptcha>=4.0.0
+
+
+    Stage 2:
+
+    * [🙈] Definitively disable Fobi in composer;
+
+      * [ ] Remove Fobi disk config in djangocms for its plugin;
+      * [ ] Remove Fobi test;
+
+    * [🚧] cmsplugin-blocks>=1.5.0,<1.6.0
+
+      * [ ] Current last version won't make it with DjangoCMS>=4.0;
+      * [ ] 'BLOCKS_ALLOWED_IMAGE_EXTENSIONS' in profit of 'django-smart-media'
+        setting 'SMARTIMAGE_ALLOWED_IMAGE_EXTENSIONS';
+      * [ ] 'Features' feature to take care in settings (and templates?);
+
+    * [🚧] diskette>=0.4.0,<0.5.0
+
+      * [ ] 'DISKETTE_DUMP_PATH' and 'DISKETTE_LOAD_STORAGES_PATH' settings have to be
+        fixed (squad as fix reference);
+      * [ ] Sendfile is involved (should be loaded before Diskette);
+
+    * [ ] py-css-styleguide backend is ok but Sass manifest is not compatible, it
+      need to be migrated;
+    * django-recaptcha need some migration since module name has changed and there
+      are some deprecations;
 
 
 Version 0.3.13 - 2024/09/28

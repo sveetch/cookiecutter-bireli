@@ -1,2 +1,2 @@
-django-crispy-forms>=2.0
-crispy-bootstrap5>=0.7
+django-crispy-forms>=2.3
+crispy-bootstrap5>=2024.10

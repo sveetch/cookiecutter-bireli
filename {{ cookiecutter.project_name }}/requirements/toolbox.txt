@@ -2,4 +2,4 @@
 cookiecutter>=2.0,<3.0
 pipdeptree>=2.23.4
 django-extensions>=3.2.3
-django-debug-toolbar>=4.2.0,<4.3.0
+django-debug-toolbar>=4.4.0

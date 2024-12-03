@@ -43,8 +43,6 @@ collection = [
     "webpack",
     "project_utils",
     "recaptcha",
-    "icomoon",
-    "fobi",
     "staticpages",
     "styleguide",
     "taggit",
