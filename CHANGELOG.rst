@@ -4,6 +4,68 @@
 History
 =======
 
+Development
+-----------
+
+On going.
+
+.. Todo::
+
+    Concerns :
+
+    * [✅] 'Lotus' is not ready for django>=5.0;
+    * [ ] Still using 'djangocms-text-ckeditor' for now but aims for 'djangocms-text'
+      instead;
+    * [ ] Update included lotus template for last changes;
+    * [ ] We may override Lotus custom style for category tree to fit into
+      'djangocms-admin-style';
+
+
+    Upgrading requirements to compatible version for Django>=5.0 (but start with 5.0
+    for now):
+
+    * [✅] Django>=5.0,<5.1
+    * [✅] django-configurations>=2.5.1,<2.6.0
+    * [✅] django-blog-lotus[breadcrumbs]>=0.9.0,<1.0.0
+    * [✅] sorl-thumbnail>=12.11.0
+    * [✅] django-smart-media>=0.4.0,<0.5.0
+    * [✅] django-crispy-forms>=2.3
+    * [✅] crispy-bootstrap5>=2024.10
+    * [🙈] Definitively disable Fobi in composer;
+
+      * [ ] Remove Fobi disk config in djangocms for its plugin;
+      * [ ] Remove Fobi test;
+
+    * [🚧] cmsplugin-blocks>=1.5.0,<1.6.0
+
+      * [ ] Current last version won't make it with DjangoCMS>=4.0;
+      * [ ] 'BLOCKS_ALLOWED_IMAGE_EXTENSIONS' in profit of 'django-smart-media'
+        setting 'SMARTIMAGE_ALLOWED_IMAGE_EXTENSIONS';
+      * [ ] 'Features' feature to take care in settings (and templates?);
+
+    * [➖] django-ckeditor>=6.7.1,<6.8.0
+    * [✅] django-autocomplete-light>=3.11.0
+    * [🚧] diskette>=0.4.0,<0.5.0
+
+      * [ ] 'DISKETTE_DUMP_PATH' and 'DISKETTE_LOAD_STORAGES_PATH' settings have to be
+        fixed (squad as fix reference);
+      * [ ] Sendfile is involved (should be loaded before Diskette);
+
+    * [✅] django-sendfile2>=0.7.0;
+
+      * [✅] Fix path settings that are in 'values.Value()' that cause issues in
+        Sendfile, they must be just straight 'Path()' (squad as fix reference);
+
+    * [✅] django-filer>=3.2.2,<4.0.0
+    * [✅] django-webpack-loader>=3.1.1,<4.0.0
+    * [✅] Definitively disable icomoon;
+    * [✅] emencia-django-staticpages>=0.6.1,<0.7.0
+    * [💚] py-css-styleguide>=1.0.0
+
+      * [ ] py-css-styleguide backend is ok but Sass manifest is not compatible, it
+        need to be migrated;
+
+
 Version 0.3.13 - 2024/09/28
 ---------------------------
 
