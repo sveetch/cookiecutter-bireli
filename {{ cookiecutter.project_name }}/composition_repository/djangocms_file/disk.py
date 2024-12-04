@@ -9,10 +9,7 @@ class DjangoCmsFileDefinitions(EnabledApplicationMarker):
                 {
                     "comments": "Djangocms_File",
                     "natural_foreign": True,
-                    "models": [
-                        "djangocms_file.File",
-                        "djangocms_file.Folder"
-                    ]
+                    "models": "djangocms_file",
                 }
             ],
         ]

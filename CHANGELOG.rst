@@ -13,17 +13,9 @@ Development
 
 .. Todo::
 
-    Concerns :
-
-    * [✅] 'Lotus' is not ready for django>=5.0;
-    * [ ] Still using 'djangocms-text-ckeditor' for now but aims for 'djangocms-text'
-      instead;
-    * [ ] Update included lotus template for last changes;
-    * [ ] We may override Lotus custom style for category tree to fit into
-      'djangocms-admin-style';
-
     Stage 1:
 
+    * [✅] 'Lotus' is not ready for django>=5.0;
     * [✅] Django>=5.0,<5.1
     * [✅] django-configurations>=2.5.1,<2.6.0
     * [✅] django-blog-lotus[breadcrumbs]>=0.9.0,<1.0.0
@@ -50,10 +42,23 @@ Development
 
     Stage 2:
 
-    * [🙈] Definitively disable Fobi in composer;
+    * [✅] diskette>=0.4.0,<0.5.0
 
-      * [ ] Remove Fobi disk config in djangocms for its plugin;
-      * [ ] Remove Fobi test;
+      * [✅] 'DISKETTE_DUMP_PATH' and 'DISKETTE_LOAD_STORAGES_PATH' settings have to be
+        fixed (squad as fix reference);
+      * [✅] Sendfile is involved (should be loaded before Diskette);
+      * [✅] Some settings change for the proper integration with a CI;
+      * [✅] Simplification of disk modules for model definitions have to be backported;
+
+
+    * [✅] django-recaptcha need some migration since module name has changed;
+
+    Stage 2:
+
+    * [✅] Definitively disable Fobi in composer;
+
+      * [✅] Disable Fobi disk config in djangocms for its plugin;
+      * [✅] Conditional Fobi test;
 
     * [🚧] cmsplugin-blocks>=1.5.0,<1.6.0
 
@@ -62,16 +67,19 @@ Development
         setting 'SMARTIMAGE_ALLOWED_IMAGE_EXTENSIONS';
       * [ ] 'Features' feature to take care in settings (and templates?);
 
-    * [🚧] diskette>=0.4.0,<0.5.0
+    Concerns :
 
-      * [ ] 'DISKETTE_DUMP_PATH' and 'DISKETTE_LOAD_STORAGES_PATH' settings have to be
-        fixed (squad as fix reference);
-      * [ ] Sendfile is involved (should be loaded before Diskette);
-
+    * [ ] django-recaptcha custom template are currently ignored because they still in
+      "captcha" directory but it should be "django_recaptcha". However i dont have time
+      yet to test a form with recaptcha in situ and our custom form are probably not
+      fully compatible yet with 4.0.0;
+    * [ ] Still using 'djangocms-text-ckeditor' for now but aims for 'djangocms-text'
+      instead;
+    * [ ] Update included lotus template for last changes;
+    * [ ] We may override Lotus custom style for category tree to fit into
+      'djangocms-admin-style';
     * [ ] py-css-styleguide backend is ok but Sass manifest is not compatible, it
       need to be migrated;
-    * django-recaptcha need some migration since module name has changed and there
-      are some deprecations;
 
 
 Version 0.3.13 - 2024/09/28

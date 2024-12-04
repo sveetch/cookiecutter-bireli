@@ -9,11 +9,7 @@ class DjangoCmsVideoDefinitions(EnabledApplicationMarker):
                 {
                     "comments": "Djangocms_Video",
                     "natural_foreign": True,
-                    "models": [
-                        "djangocms_video.VideoPlayer",
-                        "djangocms_video.VideoSource",
-                        "djangocms_video.VideoTrack"
-                    ]
+                    "models": "djangocms_video",
                 }
             ],
         ]

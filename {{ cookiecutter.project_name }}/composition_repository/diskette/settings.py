@@ -25,7 +25,9 @@ class DisketteSettings(DisketteDefaultSettings, EnabledApplicationMarker):
         ])
 
         # Application definition to dump data loaded from built JSON
-        diskette_conf = cls.VAR_PATH / "diskette.json"
+        # NOTE: We use a JSON file to avoid performing collecting disk module on each
+        # runtime
+        diskette_conf = cls.PARTS_PATH / "diskette" / "diskette.json"
         cls.DISKETTE_APPS = (
             json.loads(diskette_conf.read_text())
             if diskette_conf.exists() else []
@@ -35,7 +37,7 @@ class DisketteSettings(DisketteDefaultSettings, EnabledApplicationMarker):
         cls.DISKETTE_STORAGES = [cls.MEDIA_ROOT]
 
         # For where are stored created dump
-        cls.DISKETTE_DUMP_PATH = cls.VAR_PATH
+        cls.DISKETTE_DUMP_PATH = cls.SENDFILE_ROOT / "dumps"
 
         # For where to extract archive storages contents
         cls.DISKETTE_LOAD_STORAGES_PATH = cls.BASE_DIR

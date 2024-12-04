@@ -9,12 +9,7 @@ class DjangoCmsAudioDefinitions(EnabledApplicationMarker):
                 {
                     "comments": "Djangocms_Audio",
                     "natural_foreign": True,
-                    "models": [
-                        "djangocms_audio.AudioPlayer",
-                        "djangocms_audio.AudioFile",
-                        "djangocms_audio.AudioFolder",
-                        "djangocms_audio.AudioTrack"
-                    ]
+                    "models": "djangocms_audio",
                 }
             ],
         ]

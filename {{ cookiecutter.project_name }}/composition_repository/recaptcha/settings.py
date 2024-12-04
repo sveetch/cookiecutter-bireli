@@ -23,5 +23,5 @@ class RecaptchaSettings(EnabledApplicationMarker):
         super(RecaptchaSettings, cls).setup()
 
         cls.INSTALLED_APPS.extend([
-            "captcha",
+            "django_recaptcha",
         ])

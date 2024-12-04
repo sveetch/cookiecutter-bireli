@@ -9,15 +9,7 @@ class CmsPluginBlocksDefinitions(EnabledApplicationMarker):
                 {
                     "comments": "CMS Blocks",
                     "natural_foreign": True,
-                    "models": [
-                        "cmsplugin_blocks.Album",
-                        "cmsplugin_blocks.AlbumItem",
-                        "cmsplugin_blocks.Card",
-                        "cmsplugin_blocks.Container",
-                        "cmsplugin_blocks.Hero",
-                        "cmsplugin_blocks.Slider",
-                        "cmsplugin_blocks.SlideItem"
-                    ]
+                    "models": "cmsplugin_blocks",
                 }
             ],
         ]

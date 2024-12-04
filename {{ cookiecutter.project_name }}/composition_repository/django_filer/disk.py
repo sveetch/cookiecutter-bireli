@@ -10,11 +10,7 @@ class DjangoFilerDefinitions(EnabledApplicationMarker):
                 {
                     "comments": "Easy_Thumbnails",
                     "natural_foreign": True,
-                    "models": [
-                        "easy_thumbnails.Source",
-                        "easy_thumbnails.Thumbnail",
-                        "easy_thumbnails.ThumbnailDimensions"
-                    ]
+                    "models": "easy_thumbnails",
                 }
             ],
             [
@@ -23,15 +19,7 @@ class DjangoFilerDefinitions(EnabledApplicationMarker):
                     "comments": "Filer",
                     "natural_foreign": True,
                     "dump_command": "polymorphic_dumpdata",
-                    "models": [
-                        "filer.Folder",
-                        "filer.FolderPermission",
-                        "filer.File",
-                        "filer.Clipboard",
-                        "filer.ClipboardItem",
-                        "filer.Image",
-                        "filer.ThumbnailOption"
-                    ]
+                    "models": "filer",
                 }
             ],
         ]

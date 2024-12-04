@@ -8,13 +8,8 @@ class TaggitDefinitions(EnabledApplicationMarker):
                 "taggit",
                 {
                     "comments": "Taggit",
-                    # Taggit clearly don't support natural key, see
-                    # django-taggit/issues/708
-                    "natural_foreign": False,
-                    "models": [
-                        "taggit.Tag",
-                        "taggit.TaggedItem"
-                    ]
+                    "natural_foreign": True,
+                    "models": "taggit",
                 }
             ],
         ]

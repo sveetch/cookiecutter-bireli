@@ -36,7 +36,11 @@ if __name__ == "__main__":
     # Collect all definitions in the right order
     definitions = DisketteDefinitions()
 
-    destination = Path("./var/diskette.json")
+    # Get the registry destination path
+    destination = Path("./parts/diskette/diskette.json")
+    if not destination.parent.exists():
+        destination.parent.mkdir(parents=True)
+
     # And finally output all collected definitions
     destination.write_text(
         json.dumps(definitions.get_definitions(), indent=4)

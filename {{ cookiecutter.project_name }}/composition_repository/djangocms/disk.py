@@ -9,25 +9,7 @@ class CmsDefinitions(EnabledApplicationMarker):
                 {
                     "comments": "django CMS",
                     "natural_foreign": True,
-                    "models": [
-                        "cms.UserSettings",
-                        "cms.TreeNode",
-                        "cms.Page_placeholders",
-                        "cms.Page",
-                        "cms.PageType",
-                        "cms.GlobalPagePermission_sites",
-                        "cms.GlobalPagePermission",
-                        "cms.PagePermission",
-                        "cms.PageUser",
-                        "cms.PageUserGroup",
-                        "cms.Placeholder",
-                        "cms.CMSPlugin",
-                        "cms.Title",
-                        "cms.PlaceholderReference",
-                        "cms.StaticPlaceholder",
-                        "cms.AliasPluginModel",
-                        "cms.UrlconfRevision"
-                    ]
+                    "models": "cms",
                 }
             ],
             [
@@ -35,9 +17,7 @@ class CmsDefinitions(EnabledApplicationMarker):
                 {
                     "comments": "django CMS menus system",
                     "natural_foreign": True,
-                    "models": [
-                        "menus.CacheKey"
-                    ]
+                    "models": "menus",
                 }
             ],
             [
@@ -45,9 +25,7 @@ class CmsDefinitions(EnabledApplicationMarker):
                 {
                     "comments": "Djangocms_Picture",
                     "natural_foreign": True,
-                    "models": [
-                        "djangocms_picture.Picture"
-                    ]
+                    "models": "djangocms_picture",
                 }
             ],
             [
@@ -55,10 +33,7 @@ class CmsDefinitions(EnabledApplicationMarker):
                 {
                     "comments": "Snippets",
                     "natural_foreign": True,
-                    "models": [
-                        "djangocms_snippet.Snippet",
-                        "djangocms_snippet.SnippetPtr"
-                    ]
+                    "models": "djangocms_snippet",
                 }
             ],
             [
@@ -66,21 +41,20 @@ class CmsDefinitions(EnabledApplicationMarker):
                 {
                     "comments": "django CMS Text CKEditor",
                     "natural_foreign": True,
-                    "models": [
-                        "djangocms_text_ckeditor.Text"
-                    ]
+                    "models": "djangocms_text_ckeditor",
                 }
             ],
             # All CMS plugin configs must comes after DjangoCMS else the dump will be
-            # broken for loading
-            [
-                "fobi.contrib.apps.djangocms_integration",
-                {
-                    "comments": "Fobi_Contrib_Apps_Djangocms_Integration",
-                    "natural_foreign": True,
-                    "models": [
-                        "fobi_contrib_apps_djangocms_integration.FobiFormWidget"
-                    ]
-                }
-            ],
+            # broken for loading.
+            # Fobi is deprecated as well as its plugin
+            # [
+            #     "fobi.contrib.apps.djangocms_integration",
+            #     {
+            #         "comments": "Fobi_Contrib_Apps_Djangocms_Integration",
+            #         "natural_foreign": True,
+            #         "models": [
+            #             "fobi_contrib_apps_djangocms_integration.FobiFormWidget"
+            #         ]
+            #     }
+            # ],
         ]
