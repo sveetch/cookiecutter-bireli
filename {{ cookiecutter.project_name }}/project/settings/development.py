@@ -34,5 +34,6 @@ class Development(ComposedProjectSettings):
         )
 
         # Force disabling error about Recaptcha API development keys
-        if "captcha.recaptcha_test_key_error" not in cls.SILENCED_SYSTEM_CHECKS:
-            cls.SILENCED_SYSTEM_CHECKS.append("captcha.recaptcha_test_key_error")
+        flag_name = "django_recaptcha.recaptcha_test_key_error"
+        if flag_name not in cls.SILENCED_SYSTEM_CHECKS:
+            cls.SILENCED_SYSTEM_CHECKS.append(flag_name)

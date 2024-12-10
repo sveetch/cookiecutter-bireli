@@ -23,8 +23,7 @@ pythonpath = [
     "django-apps",
 ]
 filterwarnings = [
-    "ignore::django.utils.deprecation.RemovedInDjango41Warning",
-    "ignore::django.utils.deprecation.RemovedInDjango50Warning",
+    #"ignore::django.utils.deprecation.RemovedInDjango51Warning",
     #"ignore::DeprecationWarning",
 ]
 
@@ -42,7 +41,6 @@ collection = [
     "crispy",
     "webpack",
     "project_utils",
-    "recaptcha",
     "staticpages",
     "styleguide",
     "taggit",
