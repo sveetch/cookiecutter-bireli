@@ -7,6 +7,9 @@ class CmsBaseSettings(EnabledApplicationMarker):
     """
     DjangoCMS core and simple base plugins
     """
+    # Mandatory
+    CMS_CONFIRM_VERSION4 = True
+
     # Available page templates
     CMS_TEMPLATES = [
         ("pages/free.html", "Free HTML"),
@@ -30,6 +33,13 @@ class CmsBaseSettings(EnabledApplicationMarker):
     CMS_SITEMAP_HOMEPAGE_PRIORITY = 1.0
     CMS_SITEMAP_CHANGEFREQ = "monthly"
 
+    # Enable inline editing with djangocms-text
+    # https://github.com/django-cms/djangocms-text#inline-editing-feature
+    TEXT_INLINE_EDITING = True
+
+    # Allow deletion of version objects
+    DJANGOCMS_VERSIONING_ALLOW_DELETING_VERSIONS = True
+
     @classmethod
     def setup(cls):
         super(CmsBaseSettings, cls).setup()
@@ -40,12 +50,14 @@ class CmsBaseSettings(EnabledApplicationMarker):
 
         # Then we push the common cms stack
         cls.INSTALLED_APPS.extend([
+            "treebeard",
             "cms",
             "menus",
-            "treebeard",
             "sekizai",
-            "djangocms_picture",
-            "djangocms_snippet",
+            "djangocms_alias",
+            "djangocms_versioning",
+            # "djangocms_picture",
+            # "djangocms_snippet",
         ])
 
         # Add CMS machinary
@@ -66,9 +78,6 @@ class CmsBaseSettings(EnabledApplicationMarker):
 class CmsCkeditorSettings(EnabledApplicationMarker):
     """
     CMS CKEditor plugin
-
-    Although it has its own classes the CMS cannot work properly without it, so it's
-    not an optional plugin.
     """
     @classmethod
     def setup(cls):
@@ -76,8 +85,11 @@ class CmsCkeditorSettings(EnabledApplicationMarker):
 
         # Then we push the common cms stack
         cls.INSTALLED_APPS.extend([
-            "djangocms_text_ckeditor",
+            "djangocms_text",
+            "djangocms_text.contrib.text_ckeditor4",
         ])
+
+        cls.TEXT_EDITOR = "djangocms_text.contrib.text_ckeditor4.ckeditor4"
 
         # html5lib sanitizer parameters to allow some unsafe elements
         cls.TEXT_ADDITIONAL_TAGS = (
