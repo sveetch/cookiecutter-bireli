@@ -9,16 +9,16 @@ from cms.utils import get_current_site
 from .auth import UserFactory
 
 
-class TitleFactory(factory.django.DjangoModelFactory):
+class PageContentFactory(factory.django.DjangoModelFactory):
     """
-    Create a proper Title object for a CMS page.
+    Create a proper PageContent object for a CMS page.
     """
 
     page = None
     title = factory.Faker("catch_phrase")
 
     class Meta:
-        model = cms_models.Title
+        model = cms_models.PageContent
         skip_postgeneration_save = True
 
     @factory.lazy_attribute
@@ -61,10 +61,10 @@ class TitleFactory(factory.django.DjangoModelFactory):
 
 class PageFactory(factory.django.DjangoModelFactory):
     """
-    TODO: Create a proper CMS page with possible Title translations.
+    TODO: Create a proper CMS page with possible PageContent translations.
     """
 
-    title = factory.RelatedFactory(TitleFactory, "page")
+    title = factory.RelatedFactory(PageContentFactory, "page")
     in_navigation = True
     login_required = False
 
@@ -177,7 +177,7 @@ class PageFactory(factory.django.DjangoModelFactory):
     @factory.post_generation
     def add_translations(obj, create, extracted, **kwargs):
         """
-        Create Title translations for this page.
+        Create PageContent translations for this page.
         """
         # Assert that the languages passed are declared in settings
         enabled_languages = [code for code, name in settings.LANGUAGES]
@@ -199,7 +199,7 @@ class PageFactory(factory.django.DjangoModelFactory):
                     )
                     raise ValueError(msg.format(language))
 
-                TitleFactory(
+                PageContentFactory(
                     language=language,
                     title=title,
                     slug=slugify(title),
@@ -254,16 +254,16 @@ class CMSExtensionAbstractFactory(factory.django.DjangoModelFactory):
     https://docs.django-cms.org/en/latest/how_to/extending_page_title.html
 
     .. Note::
-        Since an extension factory won't be able to know if it creates a Page or Title
-        factory, we need more concrete abstraction which implement a proper
+        Since an extension factory won't be able to know if it creates a Page or
+        PageContent factory, we need more concrete abstraction which implement a proper
         ``extended_object`` lazy attribute method to return the right object (Page or
-        Title).
+        PageContent).
 
         So this abstract only implement methods that can be compatible to both objects
         but is not ready to make a proper factory.
 
         Commonly you will prefer to inherit directly from either
-        ``PageExtensionAbstractFactory`` or ``TitleExtensionAbstractFactory`` from
+        ``PageExtensionAbstractFactory`` or ``PageContentExtensionAbstractFactory`` from
         your extension factory.
     """
     class Meta:
@@ -282,7 +282,7 @@ class CMSExtensionAbstractFactory(factory.django.DjangoModelFactory):
         """
         if results.get("should_publish", False):
             # Get the page object to trigger publication
-            # Either we extend Title object so we need to get it from attribute
+            # Either we extend PageContent object so we need to get it from attribute
             if hasattr(instance.extended_object, "page"):
                 page = instance.extended_object.page
             # Or this we just extend a Page object
@@ -341,9 +341,9 @@ class PageExtensionAbstractFactory(CMSExtensionAbstractFactory):
         return PageFactory(**page_payload)
 
 
-class TitleExtensionAbstractFactory(CMSExtensionAbstractFactory):
+class PageContentExtensionAbstractFactory(CMSExtensionAbstractFactory):
     """
-    Abstract factory to inherit from to create a CMS Title Extension.
+    Abstract factory to inherit from to create a CMS PageContent Extension.
 
     Described attributes are optional attributes to control Page creation, you need
     to exclude them from your concrete factory with ``Meta.exclude``. If you need more
@@ -367,7 +367,7 @@ class TitleExtensionAbstractFactory(CMSExtensionAbstractFactory):
         Automatically create a related Page object.
 
         Returns:
-            Title: Created random Title as expected from Page extension.
+            PageContent: Created random PageContent as expected from Page extension.
         """
         page_payload = get_extended_object_payload(self)
 

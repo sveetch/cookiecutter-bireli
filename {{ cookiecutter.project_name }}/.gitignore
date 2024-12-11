@@ -3,7 +3,7 @@
 /.env
 
 # Local development
-/localsettings.py
+/project/settings/localsettings.py
 /requirements/base.txt
 
 # Pyenv
@@ -48,6 +48,7 @@ coverage.xml
 var/*
 !var/maintenance/
 /parts/webpack-stats.json
+/parts/diskette/
 /requirements/base.txt
 project/static-sources/css/
 project/static-sources/js/

@@ -56,7 +56,7 @@ help:
 	@echo "  migrations                    -- to create all pending application migrations files"
 	@echo "  migrate                       -- to apply demo database migrations"
 	@echo "  superuser                     -- to create a superuser for Django admin"
-	@echo "  initial-data                  -- to load initial data"
+# 	@echo "  initial-data                  -- to load initial data"
 	@echo "  new-app                       -- to create a new project application"
 	@echo
 	@echo "  css                           -- to build CSS with default environnement"
@@ -263,12 +263,12 @@ superuser:
 	$(DJANGO_MANAGE) createsuperuser
 .PHONY: superuser
 
-initial-data:
-	@echo ""
-	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Loading initial data <---$(FORMATRESET)\n"
-	@echo ""
-	$(DJANGO_MANAGE) emencia_initial $(DJANGOAPPS_DIR)/project_utils/initial.json
-.PHONY: initial-data
+# initial-data:
+# 	@echo ""
+# 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Loading initial data <---$(FORMATRESET)\n"
+# 	@echo ""
+# 	$(DJANGO_MANAGE) emencia_initial $(DJANGOAPPS_DIR)/project_utils/initial.json
+# .PHONY: initial-data
 
 new-app:
 	@echo ""

@@ -89,8 +89,12 @@
 
     "_apply_symlink_to": [
         [
-            "project/static-sources/ckeditor",
-            "project/static-sources/djangocms_text_ckeditor"
+            "project/static-sources/ckeditor/ckeditor/plugins",
+            "project/static-sources/djangocms_text/vendor/ckeditor4/plugins",
+        ],
+        [
+            "project/static-sources/ckeditor/ckeditor/styles.js",
+            "project/static-sources/djangocms_text/vendor/ckeditor4/styles.js",
         ]
     ]
 }

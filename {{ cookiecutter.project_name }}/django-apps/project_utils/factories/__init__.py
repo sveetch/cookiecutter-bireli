@@ -1,7 +1,7 @@
 from .auth import UserFactory
 from .cms import (
-    PageFactory, TitleFactory, PageExtensionAbstractFactory,
-    TitleExtensionAbstractFactory
+    PageFactory, PageContentFactory, PageExtensionAbstractFactory,
+    PageContentExtensionAbstractFactory
 )
 from .taggit import TagFactory
 
@@ -10,7 +10,7 @@ __all__ = [
     "PageExtensionAbstractFactory",
     "PageFactory",
     "TagFactory",
-    "TitleExtensionAbstractFactory",
-    "TitleFactory",
+    "PageContentExtensionAbstractFactory",
+    "PageContentFactory",
     "UserFactory",
 ]
