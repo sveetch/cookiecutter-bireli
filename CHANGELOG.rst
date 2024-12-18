@@ -11,6 +11,14 @@ Development
   with 5.0 for now).
 * Todo: Upgrade frontend for dart-sass-embedded and Bootstrap;
 
+Internal Bireli changes
+    None.
+
+Project template changes
+    * Removed everything related to initial loader because it is not compatible anymore
+      with DjangoCMS 4. We will soon provide a new way to load initial data;
+    * Removed factories related to DjangoCMS because they can not be made compatible
+      with the new core API from DjangoCMS 4;
 
 Version 0.3.13 - 2024/09/28
 ---------------------------

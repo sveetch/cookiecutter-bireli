@@ -1,11 +1,3 @@
-"""
-========================
-Django Sendfile settings
-========================
-
-"""
-from configurations import values
-
 from project_composer.marker import EnabledApplicationMarker
 
 

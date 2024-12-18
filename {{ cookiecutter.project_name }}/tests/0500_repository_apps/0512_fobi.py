@@ -4,7 +4,7 @@ from django.urls import reverse
 
 
 try:
-    import fobi
+    import fobi  # noqa: F401,F403
 except ImportError:
     fobi_is_available = False
 else:

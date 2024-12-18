@@ -1,6 +1,59 @@
-from cms.api import add_plugin
+from django.conf import settings
+
+from cms.api import add_plugin, create_page
 from cms.models import Placeholder
 from cms.test_utils.testcases import CMSTestCase
+from djangocms_versioning.models import Version
+
+
+def cms_page_create_helper(title, template, author, language=None, reverse_id=None,
+                           is_home=False, publish=False):
+    """
+    Helper to quickly create a CMS page.
+
+    Since DjangoCMS 4 has hardly leveled up the way to programmatically create a page
+    and publish it, we need some helper around their programmatic API (sigh).
+
+    Arguments:
+        title (string): Page content title.
+        template (string): Page content template
+        author (User): User object for authoring page creation.
+
+    Keyword Arguments:
+        language (string): Language code.
+        reverse_id (string): Reverse id for page if given else Page would have none.
+        is_home (boolean): Define page as the new homepage.
+        publish (boolean): Define if page should be published else it will be a draft
+            to publish yourself using ``version.publish(author)``.
+
+    Returns:
+        tuple: To ease further manipulation, this method return a tuple containing
+        respectively the Page object, its PageContent page and then its last version
+        object.
+    """
+    language = language or settings.LANGUAGE_CODE
+
+    page = create_page(
+        title,
+        template,
+        language,
+        reverse_id=reverse_id,
+        created_by=author,
+    )
+
+    if is_home:
+        page.set_as_homepage()
+
+    page_content = page.pagecontent_set(
+        manager="admin_manager"
+    ).latest_content().last()
+
+    version = Version.objects.get(object_id=page_content.id)
+
+    if publish:
+        version.publish(author)
+
+    return page, page_content, version
 
 
 class CMSPluginTestCase(CMSTestCase):

@@ -42,7 +42,7 @@ class Test(ComposedProjectSettings):
         # Add page test templates if cms is enabled
         if hasattr(cls, "CMS_TEMPLATES"):
             cls.CMS_TEMPLATES += [
-                (k, v)
+                (v, k)
                 for k, v in cls.TEST_PAGE_TEMPLATES.items()
             ]
 

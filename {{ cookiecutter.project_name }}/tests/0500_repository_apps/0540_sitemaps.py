@@ -6,7 +6,8 @@ from django.urls import reverse
 from lotus.choices import STATUS_DRAFT
 from lotus.factories import ArticleFactory
 
-from project_utils.factories import PageFactory
+from project_utils.factories import UserFactory
+from project_utils.cms_tests import cms_page_create_helper
 
 
 def test_sitemap_index(db, settings, client):
@@ -18,10 +19,12 @@ def test_sitemap_index(db, settings, client):
     base_url = "http://{}".format(current_site.domain)
 
     # Just add a single CMS page but no Lotus object
-    PageFactory(
-        template=settings.TEST_PAGE_TEMPLATES["test-basic"],
-        title__title="Foo",
-        should_publish=True,
+    picsou = UserFactory(flag_is_admin=True)
+    page, content, version = cms_page_create_helper(
+        "Foo",
+        settings.TEST_PAGE_TEMPLATES["test-basic"],
+        picsou,
+        publish=True
     )
 
     url = reverse("project_sitemaps:sitemap-index")
@@ -54,19 +57,23 @@ def test_sitemap_cms(db, settings, client):
     current_site = Site.objects.get_current()
     base_url = "http://{}".format(current_site.domain)
 
-    foo = PageFactory(
-        template=settings.TEST_PAGE_TEMPLATES["test-basic"],
-        title__title="Foo",
-        should_publish=True,
+    picsou = UserFactory(flag_is_admin=True)
+    foo_page, foo_content, foo_version = cms_page_create_helper(
+        "Foo",
+        settings.TEST_PAGE_TEMPLATES["test-basic"],
+        picsou,
+        publish=True
     )
-    bar = PageFactory(
-        template=settings.TEST_PAGE_TEMPLATES["test-basic"],
-        title__title="Bar",
-        should_publish=True,
+    bar_page, bar_content, bar_version = cms_page_create_helper(
+        "Bar",
+        settings.TEST_PAGE_TEMPLATES["test-basic"],
+        picsou,
+        publish=True
     )
-    PageFactory(
-        template=settings.TEST_PAGE_TEMPLATES["test-basic"],
-        title__title="Nope",
+    cms_page_create_helper(
+        "Nope",
+        settings.TEST_PAGE_TEMPLATES["test-basic"],
+        picsou,
     )
 
     url = reverse("project_sitemaps:sitemap-section", kwargs={
@@ -85,8 +92,8 @@ def test_sitemap_cms(db, settings, client):
     ]
 
     assert found_urls == [
-        base_url + foo.get_absolute_url(settings.LANGUAGE_CODE),
-        base_url + bar.get_absolute_url(settings.LANGUAGE_CODE),
+        base_url + foo_page.get_absolute_url(settings.LANGUAGE_CODE),
+        base_url + bar_page.get_absolute_url(settings.LANGUAGE_CODE),
     ]
 
 
