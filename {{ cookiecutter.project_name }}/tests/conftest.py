@@ -12,8 +12,6 @@ from pathlib import Path
 
 import pytest
 
-from project_utils import initial_loader
-
 
 class FixturesSettingsTestMixin(object):
     """
@@ -83,15 +81,3 @@ def tests_settings():
                 print(tests_settings.format("Root: {ROOT}"))
     """
     return FixturesSettingsTestMixin()
-
-
-@pytest.fixture(scope="function")
-def load_initials(db):
-    """
-    Create objects from project initial structure data.
-    """
-    maker = initial_loader.InitialDataLoader()
-
-    return maker.load(
-        Path(initial_loader.__file__).parent / "initial.json"
-    )
