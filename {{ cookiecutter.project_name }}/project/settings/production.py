@@ -12,3 +12,15 @@ class Production(ComposedProjectSettings):
 
     # Mark environement as indexable
     SITE_INDEX_METAS = True
+
+    # Create media path on volume
+    @classmethod
+    def setup(cls):
+        super().setup()
+
+        # Session cookie is only working on HTTPS
+        cls.SESSION_COOKIE_SECURE = True
+        # Session is lost once browser is closed
+        cls.SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+        # CSRF cookie is only working on HTTPS
+        cls.CSRF_COOKIE_SECURE = True

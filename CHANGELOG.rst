@@ -11,7 +11,20 @@ Development
     * Django security;
     * Django two factor;
     * Django Axes;
-    * Upgrade frontend for dart-sass-embedded and Bootstrap;
+    * Upgrade frontend for dart-sass-embedded and last Bootstrap;
+
+    Concerns
+    ........
+
+    * [ ] django-recaptcha custom template are currently ignored because they still in
+      "captcha" directory but it should be "django_recaptcha". However i dont have time
+      yet to test a form with recaptcha in situ and our custom form are probably not
+      fully compatible yet with 4.0.0;
+    * [ ] Update included lotus template for last changes;
+    * [ ] We may override Lotus custom style for category tree to fit into
+      'djangocms-admin-style';
+    * [ ] py-css-styleguide backend is ok but Sass manifest is not compatible, it
+      need to be migrated;
 
 Internal Bireli changes
     None.
@@ -31,7 +44,10 @@ Project template changes
       really well now even it is know for some issues with loading dump from a
       production deployment. But loading locally downloaded dump should be a proper
       workaround for now;
-
+    * The following settings ``SESSION_COOKIE_SECURE``,
+      ``SESSION_EXPIRE_AT_BROWSER_CLOSE``, ``CSRF_COOKIE_SECURE`` have been turned on
+      in production settings;
+    * Setting ``AUTH_PASSWORD_VALIDATORS`` now uses the strongest builtin validators;
 
 Version 0.3.13 - 2024/09/28
 ---------------------------

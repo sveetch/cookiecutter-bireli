@@ -148,6 +148,30 @@ class DjangoBase(EnabledApplicationMarker):
         environ_name="DEFAULT_TO_EMAIL",
     )
 
+    # Enable strong password validation
+    AUTH_PASSWORD_VALIDATORS = [
+        {
+            "NAME": (
+                "django.contrib.auth.password_validation."
+                "UserAttributeSimilarityValidator"
+            ),
+        },
+        {
+            "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        },
+        {
+            "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        },
+        {
+            "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        },
+    ]
+
+    # A set of some settings that are turned on in production settings
+    SESSION_COOKIE_SECURE = False
+    SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+    CSRF_COOKIE_SECURE = False
+
     @property
     def ENVIRONMENT(self):
         """
