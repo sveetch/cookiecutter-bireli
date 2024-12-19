@@ -19,7 +19,7 @@
 
     "__version": "{% if cookiecutter.versioning == 'natural' %}0.1.0{% else %}{% now 'local', '%y.%W.0' %}{% endif %}",
 
-    "_bireli_version": "0.4.0-pre.3",
+    "_bireli_version": "0.4.0-pre.4",
     "_bireli_newapp_version": "0.1.1",
     "_python_version": ">=3.10",
     "_django_version": ">=5.0,<5.1",
@@ -90,11 +90,11 @@
     "_apply_symlink_to": [
         [
             "project/static-sources/ckeditor/ckeditor/plugins",
-            "project/static-sources/djangocms_text/vendor/ckeditor4/plugins",
+            "project/static-sources/djangocms_text/vendor/ckeditor4/plugins"
         ],
         [
             "project/static-sources/ckeditor/ckeditor/styles.js",
-            "project/static-sources/djangocms_text/vendor/ckeditor4/styles.js",
+            "project/static-sources/djangocms_text/vendor/ckeditor4/styles.js"
         ]
     ]
 }

@@ -2,6 +2,11 @@ from project_composer.marker import EnabledApplicationMarker
 
 
 class CmsDefinitions(EnabledApplicationMarker):
+    """
+    .. Warning::
+        All CMS plugin configs must comes after DjangoCMS else the dump will be
+        broken for loading.
+    """
     def define(self):
         return super().define() + [
             [
@@ -21,31 +26,31 @@ class CmsDefinitions(EnabledApplicationMarker):
                 }
             ],
             [
-                "djangocms_picture",
+                "djangocms_text",
                 {
-                    "comments": "Djangocms_Picture",
+                    "comments": "django CMS Text",
                     "natural_foreign": True,
-                    "models": "djangocms_picture",
+                    "models": "djangocms_text",
                 }
             ],
-            [
-                "djangocms_snippet",
-                {
-                    "comments": "Snippets",
-                    "natural_foreign": True,
-                    "models": "djangocms_snippet",
-                }
-            ],
-            [
-                "djangocms_text_ckeditor",
-                {
-                    "comments": "django CMS Text CKEditor",
-                    "natural_foreign": True,
-                    "models": "djangocms_text_ckeditor",
-                }
-            ],
-            # All CMS plugin configs must comes after DjangoCMS else the dump will be
-            # broken for loading.
+            # These plugins are currently disabled until official support for
+            # DjangoCMS 4
+            # [
+            #     "djangocms_picture",
+            #     {
+            #         "comments": "Djangocms_Picture",
+            #         "natural_foreign": True,
+            #         "models": "djangocms_picture",
+            #     }
+            # ],
+            # [
+            #     "djangocms_snippet",
+            #     {
+            #         "comments": "Snippets",
+            #         "natural_foreign": True,
+            #         "models": "djangocms_snippet",
+            #     }
+            # ],
             # Fobi is deprecated as well as its plugin
             # [
             #     "fobi.contrib.apps.djangocms_integration",

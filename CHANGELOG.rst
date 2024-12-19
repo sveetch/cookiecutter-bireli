@@ -7,18 +7,31 @@ History
 Development
 -----------
 
-* On going: Upgrading requirements to compatible version for Django>=5.0 (but start
-  with 5.0 for now).
-* Todo: Upgrade frontend for dart-sass-embedded and Bootstrap;
+.. Todo::
+    * Django security;
+    * Django two factor;
+    * Django Axes;
+    * Upgrade frontend for dart-sass-embedded and Bootstrap;
 
 Internal Bireli changes
     None.
 
 Project template changes
+    * **Major upgrade of all Python requirements** but especially we moved to Django 5.0
+      and DjangoCMS 4.1.0;
     * Removed everything related to initial loader because it is not compatible anymore
       with DjangoCMS 4. We will soon provide a new way to load initial data;
     * Removed factories related to DjangoCMS because they can not be made compatible
       with the new core API from DjangoCMS 4;
+    * Make Fobi test conditional to its installation. However Fobi is deprecated and
+      will be removed in further release;
+    * We now use ``djangocms-text`` with CKEditor4 (for now) instead of
+      ``djangocms-text-ckeditor`` that is ongoing to be deprecated;
+    * Diskette configuration has been fixed from beta usage feedback so it should work
+      really well now even it is know for some issues with loading dump from a
+      production deployment. But loading locally downloaded dump should be a proper
+      workaround for now;
+
 
 Version 0.3.13 - 2024/09/28
 ---------------------------
