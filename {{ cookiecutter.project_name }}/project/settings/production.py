@@ -13,6 +13,12 @@ class Production(ComposedProjectSettings):
     # Mark environement as indexable
     SITE_INDEX_METAS = True
 
+    # Enable Django Axes
+    AXES_ENABLED = True
+
+    # Set Django Axes lock on IP and username
+    AXES_LOCKOUT_PARAMETERS = values.ListValue(["ip_address", "username"])
+
     # Create media path on volume
     @classmethod
     def setup(cls):

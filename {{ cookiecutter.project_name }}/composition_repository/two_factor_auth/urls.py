@@ -1,4 +1,5 @@
 from django.urls import include, path
+
 from project_composer.marker import EnabledApplicationMarker
 
 

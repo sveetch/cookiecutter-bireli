@@ -5,10 +5,10 @@ class DjangoTwoFactorAuthSettings(EnabledApplicationMarker):
     """
     Django two factor authentication
     """
-
+    # All login are done through the Two factor form
     LOGIN_URL = "two_factor:login"
 
-    # this one is optional
+    # Override default Auth url redirects
     LOGIN_REDIRECT_URL = "two_factor:profile"
     LOGOUT_REDIRECT_URL = "two_factor:login"
 
@@ -27,4 +27,4 @@ class DjangoTwoFactorAuthSettings(EnabledApplicationMarker):
             ]
         )
 
-        cls.MIDDLEWARE.extend(["django_otp.middleware.OTPMiddleware"])
+        cls.MIDDLEWARE.append("django_otp.middleware.OTPMiddleware")

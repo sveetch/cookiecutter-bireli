@@ -1,0 +1,2 @@
+django-ipware>=7.0.1,<7.1.0
+django-axes[ipware]>=7.0.0,<7.1.0

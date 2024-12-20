@@ -8,8 +8,6 @@ Development
 -----------
 
 .. Todo::
-    * Django security;
-    * Django two factor;
     * Django Axes;
     * Upgrade frontend for dart-sass-embedded and last Bootstrap;
 
@@ -49,6 +47,7 @@ Project template changes
       in production settings;
     * Setting ``AUTH_PASSWORD_VALIDATORS`` now uses the strongest builtin validators;
     * Added ``django-two-factor-auth`` and enabled it on default;
+    * Added ``django-axes`` and enabled it on default;
 
 
 Version 0.3.13 - 2024/09/28
