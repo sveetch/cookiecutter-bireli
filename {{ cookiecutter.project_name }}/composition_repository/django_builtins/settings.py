@@ -116,6 +116,7 @@ class DjangoBase(EnabledApplicationMarker):
         "django.forms",
     ]
 
+    # This may be overrided from custom authentication system like "Two factor"
     LOGIN_REDIRECT_URL = "/"
     LOGOUT_REDIRECT_URL = "/"
 

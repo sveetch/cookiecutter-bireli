@@ -3,6 +3,13 @@ from cms.api import Page
 from project_utils.factories import UserFactory
 from project_utils.cms_tests import cms_page_create_helper
 
+try:
+    import two_factor  # noqa: F401,F403
+except ImportError:
+    IS_TWO_FACTOR_AVAILABLE = False
+else:
+    IS_TWO_FACTOR_AVAILABLE = True
+
 
 def test_cms_create_page_root(db, settings, client):
     """
@@ -35,10 +42,16 @@ def test_cms_create_page_root(db, settings, client):
         page.get_absolute_url(settings.LANGUAGE_CODE),
         follow=True
     )
-    assert response.redirect_chain == [
+
+    expected_redirects = [
         ("/admin/cms/pagecontent/", 302),
         ("/admin/login/?next=/admin/cms/pagecontent/", 302),
     ]
+    # Two factor append a third redirect to the front login
+    if IS_TWO_FACTOR_AVAILABLE:
+        expected_redirects.append(("/account/login/?next=/admin/cms/pagecontent/", 302))
+
+    assert response.redirect_chain == expected_redirects
     assert response.status_code == 200
 
     # Publishing page is done through its last draft version and with a valid user

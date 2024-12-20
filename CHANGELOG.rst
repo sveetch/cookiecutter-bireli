@@ -48,6 +48,8 @@ Project template changes
       ``SESSION_EXPIRE_AT_BROWSER_CLOSE``, ``CSRF_COOKIE_SECURE`` have been turned on
       in production settings;
     * Setting ``AUTH_PASSWORD_VALIDATORS`` now uses the strongest builtin validators;
+    * Added ``django-two-factor-auth`` and enabled it on default;
+
 
 Version 0.3.13 - 2024/09/28
 ---------------------------

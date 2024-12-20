@@ -25,9 +25,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url "admin:index" %}" target="_blank">{% trans "Admin" %}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url "admin:logout" %}">{% trans "Logout" %}</a>
-                            </li>
                         {% else %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url "admin:login" %}">{% trans "Login" %}</a>

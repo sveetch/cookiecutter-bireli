@@ -48,6 +48,7 @@ collection = [
     "djangocms",
     "cmsplugin_blocks",
     "project_sitemaps",
+    "two_factor_auth",
     "diskette",
 ]
 repository = "composition_repository"
