@@ -1,0 +1,24 @@
+///
+/// Color theme mode toggler for Bootstrap styles
+///
+
+.color-mode-switcher {
+    position: absolute !important;
+    right: var(--bs-navbar-padding-x) !important;
+    top: var(--bs-navbar-padding-y) !important;
+    margin-bottom: 1rem !important;
+    margin-right: 1rem !important;
+
+    &.bd-mode-toggle {
+        z-index: 1500;
+
+        .dropdown-menu .active .bi {
+            display: block !important;
+        }
+    }
+
+    .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+    }
+}

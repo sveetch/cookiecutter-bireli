@@ -2,8 +2,6 @@
 /// Page header container
 ///
 
-// It is recommended to avoid using the ID since it may overwrite basic navbar
-// #page-navbar {}
-
-// You should try to use the dedicated class instead
-// .header-navbar {}
+.header-navbar {
+    position: relative;
+}

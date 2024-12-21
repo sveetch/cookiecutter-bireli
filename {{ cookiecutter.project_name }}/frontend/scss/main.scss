@@ -2,7 +2,7 @@
 /// Main frontend layout styles
 ///
 /// - Sass sources adopt the ITCSS structure convention;
-/// - This includes Bootbutt library which is an addon around Bootstrap for some sugar;
+/// - Includes Buckle library, a Bootstrap addon for some sugar;
 /// - Bootstrap variables and utilities structure require pre/post settings way to avoid
 ///   overriding too many variables when you just want to set a top level variable;
 ///
@@ -10,43 +10,26 @@
 /// import
 ///
 
-@charset "utf-8";
-
-// Start with Bootbutt default variables and functions
-@import "./bootbutt/defaults";
-@import "./bootbutt/tools/functions";
-
-// Load site settings before Bootstrap so it can adopts cascaded variables but
-// after Bootbutt defaults and functions so we can use them in settings
-@import "./settings/site";
-
-// Bootstrap functions and mixins
+// Bootstrap and Buckle defaults and base functions
 @import "bootstrap/scss/functions";
+@import "./buckle/defaults";
+@import "./buckle/functions";
+
+// All project settings
+@import "./settings/site";
+@import "./settings/bootstrap";
+@import "./settings/buckle";
+
+// Bootstrap foundation
 @import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
-
-// Bootbutt functions and mixins
-@import "./bootbutt/tools/colors";
-@import "./bootbutt/tools/icons";
-@import "./bootbutt/tools/flexbox";
-@import "./bootbutt/tools/spacing";
-
-// Finish to build Bootstrap utilities and computed variables from site settings
-@import "./settings/bootstrap";
-
-// Icon map
-/* stylelint-disable */
-@import "bootstrap-icons/font/bootstrap-icons.scss";
-/* stylelint-enable */
-
-// Finish to build Bootbutt from site settings
-@import "./settings/bootbutt";
-
-// Bootstrap layout & components
 @import "bootstrap/scss/root";
+@import "bootstrap/scss/utilities";
 @import "bootstrap/scss/reboot";
+
+// Bootstrap components
 @import "bootstrap/scss/type";
 @import "bootstrap/scss/images";
 @import "bootstrap/scss/containers";
@@ -60,52 +43,54 @@
 @import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar";
 @import "bootstrap/scss/card";
-@import "bootstrap/scss/accordion";
 @import "bootstrap/scss/breadcrumb";
+// @import "bootstrap/scss/accordion";
 @import "bootstrap/scss/pagination";
 @import "bootstrap/scss/badge";
 @import "bootstrap/scss/alert";
-@import "bootstrap/scss/progress";
+// @import "bootstrap/scss/progress";
 @import "bootstrap/scss/list-group";
 @import "bootstrap/scss/close";
-@import "bootstrap/scss/toasts";
+// @import "bootstrap/scss/toasts";
 @import "bootstrap/scss/modal";
-@import "bootstrap/scss/tooltip";
-@import "bootstrap/scss/popover";
+// @import "bootstrap/scss/tooltip";
+// @import "bootstrap/scss/popover";
 @import "bootstrap/scss/carousel";
-@import "bootstrap/scss/spinners";
+// @import "bootstrap/scss/spinners";
 @import "bootstrap/scss/offcanvas";
 @import "bootstrap/scss/placeholders";
 
 // Bootstrap helpers
 @import "bootstrap/scss/helpers";
 
-// Bootstrap utilities
+// Bootstrap utility classes build
 @import "bootstrap/scss/utilities/api";
 
+// All Buckle parts
+@import "./buckle/tools/index";
+@import "./buckle/generic/index";
+@import "./buckle/elements/index";
+@import "./buckle/objects/index";
+
 // Generic rules
-@import "./bootbutt/generic/type";
+@import "./generic/html";
+@import "./generic/body";
 
-// @import "./generic/...";
-
-// Bare and unclassed HTML elements
-@import "./bootbutt/elements/image";
-
+// Elements rules
 // @import "./elements/...";
 
-// Layout objects
-@import "./bootbutt/objects/icons";
-@import "./bootbutt/objects/placeholders";
-@import "./bootbutt/objects/blocks";
-@import "./bootbutt/objects/cta";
-@import "./bootbutt/objects/spot";
+// Objects
+@import "./objects/callout";
+@import "./objects/color-mode";
+@import "./objects/theming";
 
-// @import "./objects/...";
-
-// Page components to be last
+// Components
 @import "./components/header";
 @import "./components/footer";
 @import "./components/content";
 
-// Trumps patchs would goes here
+// Variations for light/dark themes
+@import "./components/themes";
+
+// Trumps patchs
 // @import "./trumps/...";

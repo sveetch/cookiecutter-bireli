@@ -1,0 +1,7 @@
+body {
+    &.flex-column-layout {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,14 @@
+///
+/// Set global CSS attributes for color themes here
+///
+
+:root,
+[data-bs-theme="light"] {
+  --callout-link: #{to-rgb($blue-600)};
+  --callout-code-color: #{$pink-600};
+}
+
+@include color-mode(dark, true) {
+  --callout-link: #{to-rgb($blue-300)};
+  --callout-code-color: #{$pink-300};
+}

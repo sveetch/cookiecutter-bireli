@@ -1,0 +1,22 @@
+//
+// Helper and object related to themes
+//
+
+:root,
+[data-bs-theme="light"] {
+    .show-for-light-theme {
+        display: block !important;
+    }
+    .show-for-dark-theme {
+        display: none !important;
+    }
+}
+
+@include color-mode(dark, true) {
+    .show-for-light-theme {
+        display: none !important;
+    }
+    .show-for-dark-theme {
+        display: block !important;
+    }
+}

@@ -1,0 +1,40 @@
+//
+// Callouts
+//
+
+.callout {
+  --#{$prefix}link-color-rgb: var(--callout-link);
+  --#{$prefix}code-color: var(--callout-code-color);
+
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  color: var(--callout-color, inherit);
+  background-color: var(--callout-bg, var(--bs-gray-100));
+  border-left: .25rem solid var(--callout-border, var(--bs-gray-300));
+
+  h4 {
+    margin-bottom: .25rem;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  + .callout {
+    margin-top: -.25rem;
+  }
+
+  .highlight {
+    background-color: rgba($black, .05);
+  }
+}
+
+// Variations
+@each $variant in $callout-variants {
+  .callout-#{$variant} {
+    --callout-color: var(--bs-#{$variant}-text-emphasis);
+    --callout-bg: var(--bs-#{$variant}-bg-subtle);
+    --callout-border: var(--bs-#{$variant}-border-subtle);
+  }
+}

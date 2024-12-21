@@ -8,8 +8,11 @@ Development
 -----------
 
 .. Todo::
-    * Django Axes;
-    * Upgrade frontend for dart-sass-embedded and last Bootstrap;
+    * [x] Django security settings;
+    * [x] Django Two factor;
+    * [x] Django Axes;
+    * [x] Upgrade frontend for dart-sass-embedded and last Bootstrap;
+    * [ ] Add dependency comb to toolbox;
 
     Concerns
     ........
@@ -18,7 +21,7 @@ Development
       "captcha" directory but it should be "django_recaptcha". However i dont have time
       yet to test a form with recaptcha in situ and our custom form are probably not
       fully compatible yet with 4.0.0;
-    * [ ] Update included lotus template for last changes;
+    * [ ] Update included Lotus template for last changes;
     * [ ] We may override Lotus custom style for category tree to fit into
       'djangocms-admin-style';
     * [ ] py-css-styleguide backend is ok but Sass manifest is not compatible, it
@@ -28,8 +31,17 @@ Internal Bireli changes
     None.
 
 Project template changes
-    * **Major upgrade of all Python requirements** but especially we moved to Django 5.0
-      and DjangoCMS 4.1.0;
+    * **Major upgrade of all backend requirements** but especially:
+
+      * Django 5.0;
+      * DjangoCMS 4.1.0;
+
+    * **Major upgrade of frontend requirements** but especially:
+
+      * Bootstrap 5.3.3;
+      * sass-embdded 1.79.0;
+      * Webpack 5.91.0;
+
     * Removed everything related to initial loader because it is not compatible anymore
       with DjangoCMS 4. We will soon provide a new way to load initial data;
     * Removed factories related to DjangoCMS because they can not be made compatible
@@ -48,6 +60,11 @@ Project template changes
     * Setting ``AUTH_PASSWORD_VALIDATORS`` now uses the strongest builtin validators;
     * Added ``django-two-factor-auth`` and enabled it on default;
     * Added ``django-axes`` and enabled it on default;
+    * Added Bootstrap color toggler menu;
+    * Silented annoying warnings from Sass compiler against Bootstrap until it fixed
+      them;
+    * Renamed Bootbutt to Buckle and added part indexes;
+    * Restructured main Sass source;
 
 
 Version 0.3.13 - 2024/09/28

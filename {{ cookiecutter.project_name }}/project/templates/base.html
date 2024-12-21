@@ -2,7 +2,7 @@
 {% load static i18n menu_tags %}
 {% block body-container %}
     <div id="page-body" class="d-grid gap-3 p-3">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="header-navbar navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{% if PROJECT.enable_i18n_urls %}/{{ LANGUAGE_CODE }}/{% else %}/{% endif %}">{{ SITE.name }}</a>
                 <button class="navbar-toggler"
@@ -33,10 +33,12 @@
                     </ul>
                 </div>
             </div>
+
+            {% include "partials/color_mode_toggler.html" %}
         </nav>
         <div id="page-content" class="container-xxl">
             {% block body-content %}
-                Base
+                Base content goes here.
             {% endblock body-content %}
         </div>
     </div>

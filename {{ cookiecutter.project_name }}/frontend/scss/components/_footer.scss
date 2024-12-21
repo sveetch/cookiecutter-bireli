@@ -2,4 +2,9 @@
 /// Page footer container
 ///
 
-// #page-footer {}
+// .footer-content {}
+
+.footer-content {
+    @include bb-flex(0, 0, auto, $max: false);
+    padding: map-get($spacers, 2) map-get($spacers, 1);
+}

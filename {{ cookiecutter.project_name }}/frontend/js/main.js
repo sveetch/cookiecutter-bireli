@@ -44,3 +44,12 @@ import {
 //
 // var myModal = new Modal(document.getElementById("exampleModalDefault"));
 // myModal.show();
+
+import { BootstrapColorMode } from "./components/color-modes";
+
+///
+/// Initialize components after DOM is loaded
+///
+document.addEventListener("DOMContentLoaded", function () {
+    BootstrapColorMode();
+});
