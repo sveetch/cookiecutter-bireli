@@ -1,0 +1,307 @@
+/* Helper functions from py-css-styleguide==1.2.0 */
+@use "sass:list";
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+@use "sass:string";
+
+///
+/// Determine behavior to endorse at runtime.
+$pycssstyleguide-compiler-support: "dartsass";
+
+/// Replace every occurences of a character with a substition string.
+/// Useful to strip some characters.
+///
+/// @arg {String} $string [null]
+///     A string to parse, this must be a real string type.
+///
+/// @arg {String} $search [null]
+///     Character to replace.
+///
+/// @arg {String} $replace ['']
+///     String which will replace searched character.
+///
+/// @return {String} - Modified string following given arguments.
+///
+@function _strip-token($string, $search, $replace: '') {
+    $index: string.index($string, $search);
+
+    @if $index {
+        @return string.slice($string, 1, $index - 1) + $replace + _strip-token(string.slice($string, $index + string.length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+/// Enforce safe string against simple and double quote
+///
+/// @arg {String} $string [null]
+///     A string to parse, `#{}` is used on given value so it always enforce
+///     given value will be a real string type. (So you may give it a list or
+///     map or whatever).
+///
+/// @arg {Bool} $apply [true]
+///   If false, will return the given string unmodified.
+///
+/// @return {String} - Escaped string if $apply is enabled.
+///
+@function _safe-string($string, $apply: true) {
+    @if $apply {
+        $value: #{$string};
+        @return _strip-token(_strip-token($value, '"', $replace: '\\u0022'), "'", $replace: '\\u0027');
+    }
+
+    @return $string;
+}
+
+/// DEPRECATED
+/// Convert a list to a string
+/// Copied from https://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+///
+/// @arg {List} $list [null]
+///   A list.
+///
+/// @arg {String} $glue ['']
+///   A string used to join elements.
+///
+/// @arg {Bool} $is-nested [false]
+///   A pointer used when function does call itself.
+///
+@function to-string($list, $glue: '', $is-nested: false) {
+    $result: null;
+
+    @if list.length($list) > 0{
+        @for $index from 1 through list.length($list) {
+            $item: list.nth($list, $index);
+
+            @if meta.type-of($item) == list {
+                $result: $result#{to-string($item, $glue, true)};
+            } @else {
+                $result: if(
+                    $index != list.length($list) or $is-nested,
+                    $result#{$item}#{$glue},
+                    $result#{$item}
+                );
+            }
+        }
+    }
+
+    @return $result;
+}
+
+/// NOTE: Deprecate legacy 'to-string()'
+/// Convert a list to a string
+/// Copied from https://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+///
+/// @arg {List} $list [null]
+///   A list.
+///
+/// @arg {String} $glue ['']
+///   A string used to join elements.
+///
+/// @arg {Bool} $safe [false]
+///   Enable escaping of quotes on each item.
+///
+/// @return {String} - Unquoted string of list items.
+///
+@function list-to-string($list, $glue: "", $safe: false) {
+    $buffer: "";
+
+    @if list.length($list) > 0{
+        @for $index from 1 through list.length($list) {
+            $item: list.nth($list, $index);
+
+            @if $index != list.length($list) {
+                $buffer: string.insert($buffer, #{_safe-string($item, $apply: $safe)}+$glue, 500);
+            } @else {
+                $buffer: string.insert($buffer, #{_safe-string($item, $apply: $safe)}, 500);
+            }
+        }
+    }
+
+    @return $buffer;
+}
+
+///
+/// Get key names from a map to return a string of key names separated by
+/// an empty space.
+///
+/// @arg {Map} $map [null]
+///   A map.
+///
+/// @arg {String} $prefix ['']
+///   A string to preprend to each item.
+///
+/// @return {String} - Unquoted string of map keys.
+///
+@function old-get-names($map, $prefix: "") {
+    $values: ();
+    @each $name in map.keys($map) {
+        $values: list.append($values, $prefix+$name);
+    }
+    @return to-string($values, $glue: ' ');
+}
+@function get-names($map, $prefix: "") {
+    $values: ();
+    @each $name in map.keys($map) {
+        $values: list.append($values, $prefix+$name);
+    }
+    @return list-to-string($values, $glue: ' ', $safe: true);
+}
+
+///
+/// Get item values from a map to return a string of names separated by
+/// an empty space.
+///
+/// @arg {Map} $map [null]
+///   A map.
+///
+/// @arg {String} $prefix ['']
+///   A string to preprend to each item.
+///
+/// @return {String} - Unquoted string of map values.
+///
+@function old-get-values($map, $prefix: "") {
+    $values: ();
+    @each $name in map.values($map) {
+        $values: list.append($values, $prefix+$name);
+    }
+    @return to-string($values, $glue: ' ');
+}
+@function get-values($map, $prefix: "") {
+    $values: ();
+    @each $value in map.values($map) {
+        // NOTE: Not sure about this  yet
+        @if meta.type-of($value) == list {
+          $values: list.append($values, list-to-string($value, $glue: ' ', $safe: true));
+        } @else {
+          $values: list.append($values, $prefix+$value);
+        }
+    }
+    @return list-to-string($values, $glue: ' ', $safe: true);
+}
+
+///
+/// Get property values from a map to return a string of values separated by
+/// an empty space.
+///
+/// @arg {Map} $map [null]
+///   A map.
+///
+/// @arg {String} $property [null]
+///   Property name to get.
+///
+/// @arg {String} $prefix ['']
+///   A string to preprend to each item.
+///
+@function get-props($map, $property, $prefix: "") {
+    $values: ();
+    @each $name, $scheme in $map {
+        $values: list.append($values, $prefix+map.get($scheme, $property));
+    }
+    @return list-to-string($values, $glue: ' ');
+}
+
+///
+/// Convert a list to a JSON list depending the enabled compiler support.
+///
+/// Dart sass enforce double quotes around a string so we can't produce valid JSON, we
+/// have to quote with double quotes the value which contains JSON. So in this
+/// pseudo JSON we need to quote strings with simple quote to not break compiled CSS.
+///
+/// @arg {List} $list [null]
+///   A list.
+///
+@function list-to-json($list) {
+    $glue: "', '";
+    $result: list-to-string($list, $glue);
+
+    @return "['#{$result}']";
+}
+
+///
+/// Get key names from a map to return a JSON list of key names
+///
+/// @arg {Map} $map [null]
+///   A map.
+///
+/// @arg {String} $prefix ['']
+///   A string to preprend to each item.
+///
+@function get-names-to-json($map, $prefix: "") {
+    $values: ();
+    @each $name in map.keys($map) {
+        $values: list.append($values, $prefix+$name);
+    }
+    @return list-to-json($values);
+}
+
+///
+/// Get item values from a map to return a JSON list of names separated by
+/// an empty space.
+///
+/// @arg {Map} $map [null]
+///   A map.
+///
+/// @arg {String} $prefix ['']
+///   A string to preprend to each item.
+///
+/// @arg {Bool} $safe-string [true]
+///   If true, every item value are escaped from single and double quotes. This
+///   is often required to avoid invalid JSON with values which contain quotes.
+///
+@function get-values-to-json($map, $prefix: "", $safe-string: true) {
+    $values: ();
+    @each $name in map.values($map) {
+        $val: _safe-string($name, $apply: $safe-string);
+        $values: list.append($values, $prefix+$val);
+    }
+    @return list-to-json($values);
+}
+
+///
+/// Get property values from a map to return a JSON list of values.
+///
+/// @arg {Map} $map [null]
+///   A map.
+///
+/// @arg {String} $property [null]
+///   Property name to get.
+///
+/// @arg {String} $prefix ['']
+///   A string to preprend to each item.
+///
+/// @arg {Bool} $safe-string [true]
+///   If true, every item value are escaped from single and double quotes. This
+///   is often required to avoid invalid JSON with values which contain quotes.
+///
+@function get-props-to-json($map, $property, $prefix: "", $safe-string: true) {
+    $values: ();
+    @each $name, $scheme in $map {
+        $val: _safe-string(map.get($scheme, $property), $apply: $safe-string);
+        $values: list.append($values, $prefix+$val);
+    }
+    @return list-to-json($values);
+}
+
+///
+/// Get numbers from a list to return a string of floor number separated by an
+/// empty space.
+///
+/// Floor number can so be used as valid class names, since decimals are not
+/// valid selector.
+///
+/// @arg {List} $list [null]
+///   A list of number.
+///
+/// @arg {String} $prefix ['']
+///   A string to preprend to each item.
+///
+@function floor-number-items($list, $prefix: "") {
+    $values: ();
+    @each $number in $list {
+        $number: math.floor($number);
+        $values: list.append($values, $prefix+$number);
+    }
+    @return list-to-string($values, $glue: ' ');
+}

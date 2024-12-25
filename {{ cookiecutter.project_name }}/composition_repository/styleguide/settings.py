@@ -1,9 +1,3 @@
-"""
-========================
-PyCssStyleguide settings
-========================
-
-"""
 from pathlib import Path
 
 from configurations import values
@@ -30,7 +24,9 @@ class StyleguideSettings(EnabledApplicationMarker):
         ])
 
         # Built CSS manifest relative path to static directory
-        cls.STYLEGUIDE_MANIFEST_PATH = Path("css") / "styleguide" / "manifest.css"
+        cls.STYLEGUIDE_MANIFEST_PATH = (
+            Path("css") / "components" / "styleguide" / "manifest.css"
+        )
 
         # JSON manifest dump destination as an absolute path
         cls.STYLEGUIDE_DUMP_PATH = (

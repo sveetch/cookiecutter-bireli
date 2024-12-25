@@ -188,7 +188,7 @@ install-frontend:
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Installing frontend requirements <---$(FORMATRESET)\n"
 	@echo ""
 	cd $(FRONTEND_DIR) && npm install
-	${MAKE} icon-font
+	#${MAKE} icon-font
 .PHONY: install-frontend
 
 install: venv create-var-dirs requirements install-backend migrate disk-init install-frontend

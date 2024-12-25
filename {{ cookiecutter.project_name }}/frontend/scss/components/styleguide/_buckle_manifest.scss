@@ -1,0 +1,103 @@
+///
+/// Styleguide manifest references for Buckle
+///
+
+// Start with Buckle default variables and functions
+@import "../../buckle/functions";
+@import "../../buckle/defaults";
+
+// Load site settings before Bootstrap so it can adopts cascaded variables but after
+// after Buckle defaults and functions so we can use it in settings
+@import "../../settings/site";
+
+// Import Bootstrap base before site settings
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/utilities";
+
+// Finish to build Bootstrap utilities and computed variables from site settings
+@import "../../settings/bootstrap";
+
+// Icon map
+/* stylelint-disable */
+//@import "bootstrap-icons/font/bootstrap-icons.scss";
+/* stylelint-enable */
+// Finish to build Buckle from site settings
+@import "../../settings/buckle";
+
+// py-css-styleguide mixin library
+@import "../../tools/styleguide_helpers";
+
+
+// Typography
+// ----------
+
+// Buckle: Enabled font families
+.styleguide-reference-bb_fonts {
+    --structure: "list";
+    --items: "#{get-names($bb-fonts)}";
+}
+
+// Bootstrap: Small font sizes
+.styleguide-reference-bt_small_sizes {
+    --structure: "flat";
+    --keys: "#{get-names($bb-small-sizes)}";
+    --values: "#{get-values($bb-small-sizes)}";
+}
+
+
+// Schemes
+// -------
+
+// Buckle: Color schemes
+.styleguide-reference-bb_schemes {
+    --structure: "list";
+    --items: "#{get-names($bb-schemes)}";
+}
+.styleguide-reference-bb_schemes_default {
+    --structure: "string";
+    --value: "#{$bb-schemes-default}";
+}
+.styleguide-reference-bb_schemes_neutral {
+    --structure: "string";
+    --value: "#{$bb-schemes-neutral}";
+}
+
+
+// Spacing
+// -------
+
+// Bootstrap: Space names
+.styleguide-reference-bt_spaces {
+    --structure: "list";
+    --items: "#{get-names($bb-spaces)}";
+}
+
+// Bootstrap: Base space name
+.styleguide-reference-bt_base_space {
+    --structure: "string";
+    --value: "#{$bb-spaces-base-name}";
+}
+
+
+// Buttons
+// -------
+
+// Bootstrap: Button sizes
+// NOTE: Hardcoded size names since Bootstrap does not generate them from a map
+.styleguide-reference-bt_button_sizes {
+    --structure: "list";
+    --items: "sm lg";
+}
+
+
+// Icons
+// -----
+
+// Buckle: List of available glyph size modifiers
+.styleguide-reference-bb_icon_sizes {
+    --structure: "flat";
+    --keys: "#{get-names($bb-icon-sizes)}";
+    --values: "#{get-values($bb-icon-sizes)}";
+}

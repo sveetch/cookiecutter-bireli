@@ -1,0 +1,23 @@
+///
+/// Styleguide manifest
+///
+/// This will build the CSS manifest used by Styleguide application to collect
+/// variables from Bootstrap, Buckle and site.
+///
+
+// py-css-styleguide mixin library
+@import "../../tools/styleguide_helpers";
+
+// Expose endorsed compiler (as defined within mixin library)
+.styleguide-metas-compiler {
+    --support: "#{$pycssstyleguide-compiler-support}";
+}
+
+// Enable every available reference
+.styleguide-metas-references {
+    --auto: "true";
+}
+
+// Load respective manifests
+@import "./bootstrap_manifest";
+@import "./buckle_manifest";

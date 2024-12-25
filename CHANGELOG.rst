@@ -12,11 +12,12 @@ Development
     * [x] Django Two factor;
     * [x] Django Axes;
     * [x] Upgrade frontend for dart-sass-embedded and last Bootstrap;
+    * [x] Upgrade styleguide;
+
+      * [x] Ported internal rem functions to math.div;
+      * [x] Divide Buckle styleguide manifest from the Bootstrap one;
+
     * [ ] Add dependency comb to toolbox;
-
-    Concerns
-    ........
-
     * [ ] django-recaptcha custom template are currently ignored because they still in
       "captcha" directory but it should be "django_recaptcha". However i dont have time
       yet to test a form with recaptcha in situ and our custom form are probably not
@@ -24,8 +25,11 @@ Development
     * [ ] Update included Lotus template for last changes;
     * [ ] We may override Lotus custom style for category tree to fit into
       'djangocms-admin-style';
-    * [ ] py-css-styleguide backend is ok but Sass manifest is not compatible, it
-      need to be migrated;
+    * [ ] Port Sass sources to usage of "@use" and builtin Sass functions;
+    * [ ] Port Dartsass mixin library to PyCssStyleguide new release (with Bootstrap
+    manifest?);
+    * [ ] Is Buckle safe for "@use" ?
+    * [ ] Add DRF composition app ?
 
 Internal Bireli changes
     None.
@@ -63,8 +67,11 @@ Project template changes
     * Added Bootstrap color toggler menu;
     * Silented annoying warnings from Sass compiler against Bootstrap until it fixed
       them;
-    * Renamed Bootbutt to Buckle and added part indexes;
+    * Renamed Bootbutt to Buckle and added source part indexes modules;
     * Restructured main Sass source;
+    * Upgraded to PyCssStyleguide v1.2.0 and updated its Sass mixin library;
+    * Updated Styleguide manifest to fit to the new Sass mixin library and
+      Bootstrap 5.3.3;
 
 
 Version 0.3.13 - 2024/09/28

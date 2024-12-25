@@ -1,0 +1,464 @@
+///
+/// Styleguide page layout
+///
+/// We aim to avoid relating too much on Bootstrap variables so the layout may be more
+/// stable from a site to another.
+///
+
+// Start with Bootbutt default variables and functions
+@import "../../buckle/functions";
+@import "../../buckle/defaults";
+
+// Load site settings before Bootstrap so it can adopts in cascaded variables
+@import "../../settings/site";
+
+// Import Bootstrap base before site settings
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+// Internal addons
+@import "../../buckle/tools/flexbox";
+
+// Finish to build Bootstrap utilities and computed variables from site settings
+@import "../../settings/bootstrap";
+
+// Icon map
+/* stylelint-disable */
+//@import "bootstrap-icons/font/bootstrap-icons.scss";
+/* stylelint-enable */
+
+// Finish to build Bootbutt from site settings
+@import "../../settings/buckle";
+
+// Bootstrap breakpoint mixins
+@import "bootstrap/scss/mixins/breakpoints";
+
+// Styleguide menu sidebar width
+$sg-menu: rem-calc(280px) !default;
+
+// Styleguide has its own palette
+// (currently possibly merged with the site and bootstrap ones)
+/* stylelint-disable color-no-hex */
+$sg-black: #000000;
+$sg-grey69: #b0b0b0;
+$sg-white: #ffffff;
+$sg-dodgerblue1: #0d6efd;
+$sg-grey14: #212529;
+$sg-darkslategrey: #495057;
+$sg-grey50: #808080;
+$sg-honeydew2: #e5ebe0;
+$sg-azure2: #e9ecef;
+$sg-ghostwhite: #f8f9fa;
+/* stylelint-enable color-no-hex */
+
+/// Mixin to draw a background grid
+@mixin draw-grid($line-color: null, $border-color: null) {
+    @if $line-color {
+        background:
+            linear-gradient(-90deg, $line-color $onepixel, transparent $onepixel),
+            linear-gradient($line-color $onepixel, transparent $onepixel),
+            linear-gradient(-90deg, $line-color $onepixel, transparent $onepixel),
+            linear-gradient($line-color $onepixel, transparent $onepixel),
+            linear-gradient(
+                transparent 0.1875rem,
+                transparent 0.1875rem,
+                transparent 4.875rem,
+                transparent 4.875rem
+            ),
+            linear-gradient(-90deg, transparent $onepixel, transparent $onepixel),
+            linear-gradient(
+                -90deg,
+                transparent 0.1875rem,
+                transparent 0.1875rem,
+                transparent 4.875rem,
+                transparent 4.875rem
+            ),
+            linear-gradient(transparent $onepixel, transparent $onepixel),
+            transparent;
+    }
+
+    background-size:
+        0.625rem 0.625rem,
+        0.625rem 0.625rem,
+        0.625rem 0.625rem,
+        0.625rem 0.625rem,
+        0.625rem 0.625rem,
+        0.625rem 0.625rem,
+        0.625rem 0.625rem,
+        0.625rem 0.625rem;
+
+    @if $border-color {
+        border: $onepixel solid $border-color;
+    }
+}
+
+/// Patch the whole page document
+#sg-document {
+    // Disable vertical scroll which conflict with styleguide layout overflow
+    overflow-y: hidden;
+
+    // Remove reserved offcanvas space
+    body {
+        background: $white;
+
+        // Reserve space for fixed navbar
+        padding-top: 0;
+    }
+
+    // Remove reserved CMS toolbar space
+    #page-content {
+        padding-top: 0;
+    }
+}
+
+/// Main container for all styleguide layout parts
+#sg-layout {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100vh;
+    height: fill-available;
+    max-height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    // Aside menu part
+    #sg-menu {
+        display: none;
+
+        h1 {
+            font-family: $font-family-sans-serif;
+        }
+
+        // Menu only display on large breakpoint and further
+        @include media-breakpoint-up(lg) {
+            @include bb-flex(0, 0, #{$sg-menu});
+
+            display: flex;
+            padding: 1rem;
+            flex-direction: column;
+            color: $sg-white;
+            background-color: $sg-grey14;
+            overflow-y: auto;
+
+            // Main title
+            .brand {
+                @include bb-flex(0, 0);
+
+                display: flex;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                font-weight: bold;
+                text-decoration: none;
+                text-transform: uppercase;
+                color: $sg-white;
+                border-bottom: $onepixel solid $sg-grey69;
+            }
+
+            .sg-menu {
+                @include bb-flex(1, 0);
+
+                display: flex;
+                margin-bottom: auto;
+                padding-left: 0;
+                flex-wrap: wrap;
+                list-style: none;
+                flex-direction: column;
+
+                // Link item
+                .menu-item {
+                    display: block;
+                    padding: 0.3rem 1rem 0.3rem 0.8rem;
+                    color: $sg-white;
+                    text-decoration: none;
+                    font-size: 0.9rem;
+                    font-weight: bold;
+                    border-left: 0.2rem solid transparent;
+
+                    &:hover {
+                        border-left-color: $sg-dodgerblue1;
+                    }
+                }
+
+                // Submenu
+                .sg-menu {
+                    padding: 0.4rem 1rem;
+
+                    .menu-item {
+                        font-weight: normal;
+                    }
+                }
+            }
+        }
+    }
+
+    // Content part
+    #sg-content {
+        @include bb-flex(1, 0, 100%);
+
+        display: flex;
+        height: 100vh;
+        height: fill-available;
+        max-height: 100vh;
+        flex-direction: column;
+        overflow-x: auto;
+        overflow-y: auto;
+        background: $sg-white;
+
+        @include media-breakpoint-up(lg) {
+            @include bb-flex(1, 0, calc(100% - #{$sg-menu}));
+        }
+    }
+}
+
+/// Content render of component and object demonstrations
+#sg-render {
+    // Modifier to avoid default ending margin
+    .demo-content {
+        & > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    // Apply a background grid
+    .demo-grid {
+        @include draw-grid(
+            $line-color: lighten($sg-honeydew2, 5%),
+            $border-color: $sg-honeydew2,
+        );
+    }
+
+    // Enforce the sans-serif enabled from site settings over the Bootstrap fonts,
+    // mostly to avoid using the serif font from header titles
+    .sg-neutral-font {
+        font-family: $font-family-sans-serif !important;
+    }
+
+    // Horizontal rule for section part dividing
+    hr.part-divider {
+        height: 2px;
+    }
+
+    // Section heading title
+    .section-title {
+        @include font-size(#{map-get($display-font-sizes, 3)});
+
+        position: relative;
+        padding: 0.5rem 0;
+        font-family: $font-family-sans-serif;
+        font-weight: $font-weight-bold;
+        color: $sg-white;
+        background-color: $sg-grey14;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: rem-calc(-200px);
+            width: rem-calc(200px);
+            background-color: $sg-grey14;
+        }
+    }
+
+    // Section part heading title
+    .part-title {
+        @include font-size(#{map-get($display-font-sizes, 4)});
+
+        font-family: $font-family-sans-serif;
+        font-weight: $font-weight-bold;
+        color: $sg-grey14;
+    }
+
+    // Horizontal tab with content for element specifications
+    .sg-spec-item {
+        .sg-spec-tabs {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+
+            @include media-breakpoint-up(md) {
+                flex-direction: row;
+            }
+        }
+
+        .sg-spec-tab {
+            position: relative;
+            bottom: -1px;
+            flex: 0 0 auto;
+            width: auto;
+            padding: rem-calc(3px) rem-calc(5px);
+            font-size: rem-calc(11px);
+            font-family: monospace;
+            font-weight: bold;
+            color: $sg-darkslategrey;
+            background: $sg-azure2;
+            border: 1px solid $sg-azure2;
+            border-bottom: 0;
+            border-top-left-radius: rem-calc(4px);
+            border-top-right-radius: rem-calc(4px);
+            user-select: all;
+
+            &.tag {
+                &::before {
+                    content: "Tag: ";
+                }
+            }
+
+            &.classes {
+                &::before {
+                    content: "Class: ";
+                }
+            }
+
+            &.sass {
+                &::before {
+                    content: "Sass: ";
+                }
+            }
+
+            & + .sg-spec-tab {
+                margin-top: rem-calc(5px);
+
+                @include media-breakpoint-up(md) {
+                    margin-top: 0;
+                    margin-left: rem-calc(10px);
+                }
+
+                @include media-breakpoint-up(lg) {
+                    margin-left: rem-calc(20px);
+                }
+            }
+        }
+
+        .sg-spec-content {
+            & > * {
+                margin: 0;
+
+                @include draw-grid(
+                    $line-color: lighten($sg-honeydew2, 5%),
+                    $border-color: $sg-honeydew2,
+                );
+            }
+
+            &.neutral {
+                & > * {
+                    padding: 0.5rem;
+                }
+            }
+
+            &:not(.neutral) {
+                & > * {
+                    text-transform: capitalize;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
+        }
+
+        & + .sg-spec-item {
+            margin-top: 20px;
+        }
+    }
+
+    // Colors demo
+    .colors-sample {
+        .class-name {
+            user-select: all;
+        }
+
+        // Color palette
+        .palette {
+            .card-body {
+                padding: 0.5rem;
+
+                .card-title {
+                    margin: 0;
+                    font-family: monospace;
+                    font-size: rem-calc(12px);
+                    line-height: 1;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
+
+            .palette-color {
+                position: relative;
+                width: 100%;
+                height: rem-calc(100px);
+
+                span {
+                    position: absolute;
+                    display: block;
+                    top: 0;
+                    left: 0;
+                    padding: 0.3rem 0.4rem;
+                    font-family: monospace;
+                    font-size: rem-calc(12px);
+                    color: $sg-black;
+                    background: rgba($sg-grey50, 0.7);
+                    border-top-left-radius: $card-inner-border-radius;
+                    border-bottom-right-radius: $card-inner-border-radius;
+                    user-select: all;
+                }
+            }
+        }
+    }
+
+    // Icon glyph palette
+    .glyph-palette {
+        .visual {
+            padding: 1rem;
+            text-align: center;
+            background: $sg-ghostwhite;
+
+            &.big {
+                font-size: 3rem;
+            }
+        }
+
+        .card-body {
+            font-size: rem-calc(12px);
+
+            p {
+                user-select: all;
+            }
+        }
+    }
+
+    // Buttons demo
+    .buttons-sample {
+        button,
+        .btn {
+            user-select: all;
+        }
+    }
+
+    // Grid demo
+    .grid-sample {
+        .cell-class {
+            user-select: all;
+        }
+    }
+
+    // Special blocks container since they need full width
+    #sg-blocks {
+        .h1 {
+            user-select: all;
+        }
+
+        // Add a single line as divider
+        hr {
+            margin: 0;
+            background-color: $sg-black;
+            opacity: 1;
+        }
+    }
+}

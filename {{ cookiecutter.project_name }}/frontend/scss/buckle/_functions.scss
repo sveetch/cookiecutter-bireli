@@ -7,12 +7,15 @@
 ///
 /// No dependancies.
 ///
+@use "sass:list";
+@use "sass:math";
+@use "sass:map";
 
 ///
 /// Strip unit from a number
 ///
 @function strip-unit($num) {
-    @return $num / ($num * 0 + 1);
+    @return math.div($num, ($num * 0 + 1));
 }
 
 ///
@@ -23,7 +26,10 @@
         $base-value: $bb-rem-base-size;
     }
 
-    $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+    $value: math.div(
+      strip-unit($value),
+      strip-unit($base-value)
+    ) * 1rem;
 
     // Enforce zero as unitless value
     @if $value == 0 {
@@ -52,14 +58,22 @@
         $base-value: $bb-rem-base-size;
     }
 
-    $max: length($values);
+    $max: list.length($values);
 
-    @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+    @if $max == 1 {
+      @return convert-to-rem(list.nth($values, 1), $base-value);
+    }
 
     $rem-values: ();
 
     @for $i from 1 through $max {
-        $rem-values: append($rem-values, convert-to-rem(nth($values, $i), $base-value));
+        $rem-values: list.append(
+          $rem-values,
+          convert-to-rem(
+            list.nth($values, $i),
+            $base-value
+          )
+        );
     }
 
     @return $rem-values;
@@ -102,11 +116,11 @@
 ///
 ///
 @function bb-scheme($name) {
-    @if map-get($bb-schemes, $name) == null {
+    @if map.get($bb-schemes, $name) == null {
         @error "Given scheme name '#{$name}' is not registered from '$bb-schemes'.";
     }
 
-    @return map-get($bb-schemes, $name);
+    @return map.get($bb-schemes, $name);
 }
 
 ///
@@ -123,9 +137,9 @@
 ///
 ///
 @function bb-scheme-color-default($name) {
-    @if map-get($bb-scheme-color-defaults, $name) == null {
+    @if map.get($bb-scheme-color-defaults, $name) == null {
         @error "Given scheme color option name '#{$name}' is not registered from '$bb-scheme-color-defaults'.";
     }
 
-    @return map-get($bb-scheme-color-defaults, $name);
+    @return map.get($bb-scheme-color-defaults, $name);
 }
