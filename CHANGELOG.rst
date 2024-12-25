@@ -17,7 +17,9 @@ Development
       * [x] Ported internal rem functions to math.div;
       * [x] Divide Buckle styleguide manifest from the Bootstrap one;
 
-    * [ ] Add dependency comb to toolbox;
+    * [x] Add "Dependency comb" to toolbox with Makefile task ``check-comb`` but not
+      part of any meta task because it would perform request to the API each time;
+    * [ ] Divide per section in Makefile;
     * [ ] django-recaptcha custom template are currently ignored because they still in
       "captcha" directory but it should be "django_recaptcha". However i dont have time
       yet to test a form with recaptcha in situ and our custom form are probably not
@@ -30,6 +32,7 @@ Development
     manifest?);
     * [ ] Is Buckle safe for "@use" ?
     * [ ] Add DRF composition app ?
+    * [ ] Update Bireli sample with 0.4.0
 
 Internal Bireli changes
     None.
@@ -72,6 +75,8 @@ Project template changes
     * Upgraded to PyCssStyleguide v1.2.0 and updated its Sass mixin library;
     * Updated Styleguide manifest to fit to the new Sass mixin library and
       Bootstrap 5.3.3;
+    * Renamed Makefile task ``black-check`` to ``check-black``;
+    * Added "Dependency comb" to toolbox and add its Makefile task ``check-comb``;
 
 
 Version 0.3.13 - 2024/09/28

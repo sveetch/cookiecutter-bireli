@@ -47,10 +47,13 @@ help:
 	@echo
 	@echo "  check                         -- to run all check tasks"
 	@echo "  check-apps                    -- to discover elligible Django application modules from directory: $(DJANGOAPPS_DIR)"
+	@echo "  check-black                   -- to launch Black checking"
+	@echo "  check-comb                    -- to check for requirement packages lateness"
 	@echo "  check-composer                -- to run Composer checking"
+	@echo "  check-disk                    -- to check Diskette configuration for dump operation"
 	@echo "  check-django                  -- to run Django System check framework"
 	@echo "  check-migrations              -- to check for pending application migrations (do not write anything)"
-	@echo "  check-disk                    -- to check Diskette configuration for dump operation"
+	@echo "  check-templates               -- to check djLint reformatting before to fix it"
 	@echo
 	@echo "  run                           -- to run Django development server"
 	@echo "  migrations                    -- to create all pending application migrations files"
@@ -77,7 +80,6 @@ help:
 	@echo "  disk-load                     -- to load a Diskette archive, your current database and storages will be overwritten"
 	@echo
 	@echo "  flake                         -- to launch Flake8 checking"
-	@echo "  black-check                   -- to launch Black checking"
 	@echo "  black-write                   -- to apply Black reformating"
 	@echo "  lint-templates                -- to run djLint on templates sources"
 	@echo "  lint-scss                     -- to run Stylelint on Sass sources"
@@ -85,7 +87,6 @@ help:
 	@echo "  test                          -- to launch base test suite using Pytest"
 	@echo "  test-initial                  -- to launch tests with pytest and re-initialized database (for after new application or model changes)"
 	@echo
-	@echo "  check-templates               -- to check djLint reformatting before to fix it"
 	@echo "  fix-templates                 -- to automatically reformat templates with djLint"
 	@echo "  fix-scss                      -- to automatically reformat Sass sources with Stylelint"
 	@echo "  fix-frontend                  -- to launch all frontend reformatting tasks"
@@ -101,13 +102,6 @@ clean-pycache:
 	find . -type d -name "__pycache__"|xargs rm -Rf
 	find . -name "*\.pyc"|xargs rm -f
 .PHONY: clean-pycache
-
-apps:
-	@echo ""
-	@printf "$(FORMATBLUE)$(FORMATBOLD)---> apps <---$(FORMATRESET)\n"
-	@echo ""
-	echo `$(PROJECT_APPS)`;
-.PHONY: apps
 
 clean-var:
 	@echo ""
@@ -237,6 +231,27 @@ check-disk:
 	@echo ""
 	$(DJANGO_MANAGE) diskette_dump -v 2 --check
 .PHONY: check-disk
+
+check-comb:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Making Dependency comb report <---$(FORMATRESET)\n"
+	@echo ""
+	$(COMB) -v 5 report --failures --format=rich requirements/base.txt
+.PHONY: check-comb
+
+check-black:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Running Black checking <---$(FORMATRESET)\n"
+	@echo ""
+	$(BLACK) --check $(DJANGOPROJECT_DIR) $(DJANGOAPPS_DIR) tests composition_repository
+.PHONY: check-black
+
+check-templates:
+	@echo ""
+	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Checking djLint formatting on templates sources <---$(FORMATRESET)\n"
+	@echo ""
+	$(DJLINT) --check project/templates/
+.PHONY: check-templates
 
 check: check-composer check-django check-migrations check-disk
 .PHONY: check
@@ -372,13 +387,6 @@ flake:
 	$(FLAKE) --statistics --show-source $(DJANGOPROJECT_DIR) $(DJANGOAPPS_DIR) tests composition_repository
 .PHONY: flake
 
-black-check:
-	@echo ""
-	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Running Black checking <---$(FORMATRESET)\n"
-	@echo ""
-	$(BLACK) --check $(DJANGOPROJECT_DIR) $(DJANGOAPPS_DIR) tests composition_repository
-.PHONY: black-check
-
 black-write:
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Apply Black reformating <---$(FORMATRESET)\n"
@@ -392,13 +400,6 @@ lint-templates:
 	@echo ""
 	$(DJLINT) project/templates/
 .PHONY: lint-templates
-
-check-templates:
-	@echo ""
-	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Checking djLint formatting on templates sources <---$(FORMATRESET)\n"
-	@echo ""
-	$(DJLINT) --check project/templates/
-.PHONY: check-templates
 
 lint-scss:
 	@echo ""
