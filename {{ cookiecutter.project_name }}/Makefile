@@ -26,26 +26,60 @@ FORMATRESET:=$(shell tput sgr0)
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo
-	@echo "  requirements                  -- to build base requirements file for enabled applications from composition manifest"
+	@echo "  Installation"
+	@echo "  ============"
 	@echo
+	@echo "  install                       -- to install backend and frontend"
 	@echo "  install-backend               -- to install backend requirements with Virtualenv and Pip"
 	@echo "  install-frontend              -- to install frontend requirements with Npm"
-	@echo "  install                       -- to install backend and frontend"
-	@echo
+	@echo "  requirements                  -- to build base requirements file for enabled applications from composition manifest"
+	@echo "  update                        -- to update backend and frontend after requirement changes"
 	@echo "  update-backend                -- to update backend after requirement changes"
 	@echo "  update-frontend               -- to update frontend after requirement changes"
-	@echo "  update                        -- to update backend and frontend after requirement changes"
 	@echo
-	@echo "  freeze-dependencies           -- to write a frozen.txt file with installed dependencies versions"
+	@echo "  Cleaning"
+	@echo "  ========"
 	@echo
-	@echo "  clean                         -- to clean EVERYTHING (WARNING: you cannot recovery from this)"
-	@echo "  clean-var                     -- to clean data (uploaded medias, database, etc..)"
+	@echo "  clean                         -- to clean EVERYTHING (WARNING)"
 	@echo "  clean-backend-install         -- to clean backend installation"
-	@echo "  clean-frontend-install        -- to clean frontend installation"
 	@echo "  clean-frontend-build          -- to clean frontend built files"
+	@echo "  clean-frontend-install        -- to clean frontend installation"
 	@echo "  clean-pycache                 -- to recursively remove all Python cache"
+	@echo "  clean-var                     -- to clean data (uploaded medias, database, etc..)"
 	@echo
-	@echo "  check                         -- to run all check tasks"
+	@echo "  Django"
+	@echo "  ======"
+	@echo
+	@echo "  migrate                       -- to apply demo database migrations"
+	@echo "  migrations                    -- to create all pending application migrations files"
+	@echo "  mo                            -- to build MO files from existing project PO files"
+	@echo "  new-app                       -- to create a new project application"
+	@echo "  po                            -- to update every PO files from composition apps, django apps and project code and templates for enabled languages"
+	@echo "  run                           -- to run Django development server"
+	@echo "  superuser                     -- to create a superuser for Django admin"
+	@echo
+	@echo "  Frontend"
+	@echo "  ========"
+	@echo
+	@echo "  css                           -- to build CSS with default environnement"
+	@echo "  css-prod                      -- to build CSS with production environnement"
+	@echo "  js                            -- to build distributed Javascript with default environnement"
+	@echo "  js-prod                       -- to build distributed Javascript with production environnement"
+	@echo "  frontend                      -- to build frontend assets from sources (CSS and JS) with default environnement"
+	@echo "  frontend-prod                 -- to build frontend assets from sources (CSS and JS) with production environnement"
+	@echo "  watch-css                     -- to launch watcher CSS with default environnement"
+	@echo "  watch-js                      -- to launch watcher for Javascript sources with default environnement"
+	@echo
+	@echo "  Diskette"
+	@echo "  ========"
+	@echo
+	@echo "  disk-dump                     -- to create a Diskette archive with data and storages"
+	@echo "  disk-init                     -- to build Diskette definitions for enabled applications from composition manifest"
+	@echo "  disk-load                     -- to load a Diskette archive, your current database and storages will be overwritten"
+	@echo
+	@echo "  Project checks"
+	@echo "  =============="
+	@echo
 	@echo "  check-apps                    -- to discover elligible Django application modules from directory: $(DJANGOAPPS_DIR)"
 	@echo "  check-black                   -- to launch Black checking"
 	@echo "  check-comb                    -- to check for requirement packages lateness"
@@ -54,44 +88,27 @@ help:
 	@echo "  check-django                  -- to run Django System check framework"
 	@echo "  check-migrations              -- to check for pending application migrations (do not write anything)"
 	@echo "  check-templates               -- to check djLint reformatting before to fix it"
+	@echo "  check                         -- to run all check tasks"
 	@echo
-	@echo "  run                           -- to run Django development server"
-	@echo "  migrations                    -- to create all pending application migrations files"
-	@echo "  migrate                       -- to apply demo database migrations"
-	@echo "  superuser                     -- to create a superuser for Django admin"
-	@echo "  new-app                       -- to create a new project application"
+	@echo "  Linters"
+	@echo "  ======="
 	@echo
-	@echo "  css                           -- to build CSS with default environnement"
-	@echo "  watch-css                     -- to launch watcher CSS with default environnement"
-	@echo "  css-prod                      -- to build CSS with production environnement"
-	@echo
-	@echo "  js                            -- to build distributed Javascript with default environnement"
-	@echo "  watch-js                      -- to launch watcher for Javascript sources with default environnement"
-	@echo "  js-prod                       -- to build distributed Javascript with production environnement"
-	@echo
-	@echo "  frontend                      -- to build frontend assets from sources (CSS and JS) with default environnement"
-	@echo "  frontend-prod                 -- to build frontend assets from sources (CSS and JS) with production environnement"
-	@echo
-	@echo "  po                            -- to update every PO files from composition apps, django apps and project code and templates for enabled languages"
-	@echo "  mo                            -- to build MO files from existing project PO files"
-	@echo
-	@echo "  disk-init                     -- to build Diskette definitions for enabled applications from composition manifest"
-	@echo "  disk-dump                     -- to create a Diskette archive with data and storages"
-	@echo "  disk-load                     -- to load a Diskette archive, your current database and storages will be overwritten"
-	@echo
-	@echo "  flake                         -- to launch Flake8 checking"
 	@echo "  black-write                   -- to apply Black reformating"
-	@echo "  lint-templates                -- to run djLint on templates sources"
-	@echo "  lint-scss                     -- to run Stylelint on Sass sources"
-	@echo "  lint-frontend                 -- to run all linters on frontend sources"
-	@echo "  test                          -- to launch base test suite using Pytest"
-	@echo "  test-initial                  -- to launch tests with pytest and re-initialized database (for after new application or model changes)"
-	@echo
 	@echo "  fix-templates                 -- to automatically reformat templates with djLint"
 	@echo "  fix-scss                      -- to automatically reformat Sass sources with Stylelint"
 	@echo "  fix-frontend                  -- to launch all frontend reformatting tasks"
+	@echo "  flake                         -- to launch Flake8 checking"
+	@echo "  lint-frontend                 -- to run all linters on frontend sources"
+	@echo "  lint-scss                     -- to run Stylelint on Sass sources"
+	@echo "  lint-templates                -- to run djLint on templates sources"
 	@echo
-	@echo "  quality                       -- to launch Flake8 checking and every tests suites"
+	@echo "  Quality"
+	@echo "  ======="
+	@echo
+	@echo "  freeze-dependencies           -- to write a frozen.txt file with installed dependencies versions"
+	@echo "  test                          -- to launch base test suite using Pytest"
+	@echo "  test-initial                  -- to launch tests with pytest and re-initialized database (for after new application or model changes)"
+	@echo "  quality                       -- to run tests, migration check and Flake linter"
 	@echo
 
 clean-pycache:

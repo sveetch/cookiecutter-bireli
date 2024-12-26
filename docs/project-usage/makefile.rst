@@ -21,8 +21,4 @@ Tasks
 
 Here is the help texts for all available Makefile tasks.
 
-.. Note::
-    Despite it is listed here, the Makefile task ``initial-data`` is currently disabled
-    because of incompatibility with DjangoCMS 4. We hope to enable it again soon.
-
 .. include:: ../_static/makefile_help.rst

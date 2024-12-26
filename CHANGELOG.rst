@@ -19,7 +19,7 @@ Development
 
     * [x] Add "Dependency comb" to toolbox with Makefile task ``check-comb`` but not
       part of any meta task because it would perform request to the API each time;
-    * [ ] Divide per section in Makefile;
+    * [x] Divide per section in Makefile;
     * [ ] django-recaptcha custom template are currently ignored because they still in
       "captcha" directory but it should be "django_recaptcha". However i dont have time
       yet to test a form with recaptcha in situ and our custom form are probably not
@@ -29,13 +29,14 @@ Development
       'djangocms-admin-style';
     * [ ] Port Sass sources to usage of "@use" and builtin Sass functions;
     * [ ] Port Dartsass mixin library to PyCssStyleguide new release (with Bootstrap
-    manifest?);
+      manifest?);
     * [ ] Is Buckle safe for "@use" ?
     * [ ] Add DRF composition app ?
     * [ ] Update Bireli sample with 0.4.0
+    * [ ] Stylelint report is failing since upgrade to 14.0.0 which broken many things;
 
 Internal Bireli changes
-    None.
+    * Updated Makefile parser to implement sections;
 
 Project template changes
     * **Major upgrade of all backend requirements** but especially:
@@ -77,6 +78,7 @@ Project template changes
       Bootstrap 5.3.3;
     * Renamed Makefile task ``black-check`` to ``check-black``;
     * Added "Dependency comb" to toolbox and add its Makefile task ``check-comb``;
+    * Restructured Makefile help to organize task per section;
 
 
 Version 0.3.13 - 2024/09/28
