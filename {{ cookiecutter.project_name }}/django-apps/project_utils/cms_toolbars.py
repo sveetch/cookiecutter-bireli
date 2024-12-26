@@ -54,6 +54,12 @@ class EmenciaToolbar(CMSToolbar):
                 url=reverse("project_utils:project-globals"),
             )
 
+        if "styleguide" in settings.INSTALLED_APPS:
+            menu.add_link_item(
+                name="Styleguide",
+                url=reverse("styleguide:index"),
+            )
+
 
 if "cms" in settings.INSTALLED_APPS:
     toolbar_pool.register(EmenciaToolbar)

@@ -8,33 +8,19 @@ Development
 -----------
 
 .. Todo::
-    * [x] Django security settings;
-    * [x] Django Two factor;
-    * [x] Django Axes;
-    * [x] Upgrade frontend for dart-sass-embedded and last Bootstrap;
-    * [x] Upgrade styleguide;
-
-      * [x] Ported internal rem functions to math.div;
-      * [x] Divide Buckle styleguide manifest from the Bootstrap one;
-
-    * [x] Add "Dependency comb" to toolbox with Makefile task ``check-comb`` but not
-      part of any meta task because it would perform request to the API each time;
-    * [x] Divide per section in Makefile;
     * [ ] django-recaptcha custom template are currently ignored because they still in
       "captcha" directory but it should be "django_recaptcha". However i dont have time
       yet to test a form with recaptcha in situ and our custom form are probably not
       fully compatible yet with 4.0.0;
-    * [ ] Add styleguide to toolbar;
-    * [x] No included Lotus front template to update;
-    * [x] We may override Lotus custom style for category tree to fit into
-      'djangocms-admin-style';
     * [ ] Port Sass sources to usage of "@use" and builtin Sass functions;
-    * [ ] Port Dartsass mixin library to PyCssStyleguide new release (with Bootstrap
-      manifest?);
     * [ ] Is Buckle safe for "@use" ?
     * [ ] Add DRF composition app ?
-    * [ ] Update Bireli sample with 0.4.0
     * [ ] Stylelint report is failing since upgrade to 14.0.0 which broken many things;
+    * [ ] Port Dartsass mixin library to PyCssStyleguide new release (with Bootstrap
+      manifest?);
+    * [ ] Update Bireli sample with 0.4.0
+    * [ ] Fix doc "Webdesign integration" about Dart Sass embdded instead of node-sass;
+    * [ ] Finally removed everything about Fobi;
 
 Internal Bireli changes
     * Updated Makefile parser to implement sections;
@@ -77,6 +63,7 @@ Project template changes
     * Upgraded to PyCssStyleguide v1.2.0 and updated its Sass mixin library;
     * Updated Styleguide manifest to fit to the new Sass mixin library and
       Bootstrap 5.3.3;
+    * Added Styleguide link to CMS toolbar;
     * Renamed Makefile task ``black-check`` to ``check-black``;
     * Added "Dependency comb" to toolbox and add its Makefile task ``check-comb``;
     * Restructured Makefile help to organize task per section;
