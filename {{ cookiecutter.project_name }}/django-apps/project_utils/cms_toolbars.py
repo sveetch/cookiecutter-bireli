@@ -20,12 +20,6 @@ class EmenciaToolbar(CMSToolbar):
             "Applications"
         )
 
-        if "fobi" in settings.INSTALLED_APPS:
-            menu.add_sideframe_item(
-                name="Fobi forms management",
-                url=reverse("fobi.dashboard"),
-            )
-
         if "lotus" in settings.INSTALLED_APPS:
             menu.add_sideframe_item(
                 name="Lotus articles",

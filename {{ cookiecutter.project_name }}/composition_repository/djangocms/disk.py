@@ -51,15 +51,4 @@ class CmsDefinitions(EnabledApplicationMarker):
             #         "models": "djangocms_snippet",
             #     }
             # ],
-            # Fobi is deprecated as well as its plugin
-            # [
-            #     "fobi.contrib.apps.djangocms_integration",
-            #     {
-            #         "comments": "Fobi_Contrib_Apps_Djangocms_Integration",
-            #         "natural_foreign": True,
-            #         "models": [
-            #             "fobi_contrib_apps_djangocms_integration.FobiFormWidget"
-            #         ]
-            #     }
-            # ],
         ]

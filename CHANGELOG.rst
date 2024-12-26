@@ -20,7 +20,6 @@ Development
       manifest?);
     * [ ] Update Bireli sample with 0.4.0
     * [ ] Fix doc "Webdesign integration" about Dart Sass embdded instead of node-sass;
-    * [ ] Finally removed everything about Fobi;
 
 Internal Bireli changes
     * Updated Makefile parser to implement sections;
@@ -41,8 +40,7 @@ Project template changes
       with DjangoCMS 4. We will soon provide a new way to load initial data;
     * Removed factories related to DjangoCMS because they can not be made compatible
       with the new core API from DjangoCMS 4;
-    * Make Fobi test conditional to its installation. However Fobi is deprecated and
-      will be removed in further release;
+    * Removed everything about Fobi that is incompatible and unmaintained;
     * We now use ``djangocms-text`` with CKEditor4 (for now) instead of
       ``djangocms-text-ckeditor`` that is ongoing to be deprecated;
     * Diskette configuration has been fixed from beta usage feedback so it should work
