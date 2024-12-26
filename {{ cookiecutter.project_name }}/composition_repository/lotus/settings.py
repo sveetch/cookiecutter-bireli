@@ -15,6 +15,18 @@ class LotusSettings(LotusDefaultSettings, EnabledApplicationMarker):
         "pinned_priority": 0.80,
         "featured_priority": 0.64,
     }
+    LOTUS_ADMIN_ARTICLE_ASSETS = {
+        "css": {"all": ("css/components/lotus/admin.css",)},
+        "js": None,
+    }
+    LOTUS_ADMIN_CATEGORY_ASSETS = {
+        "css": {"all": ("css/components/lotus/admin.css",)},
+        "js": None,
+    }
+    LOTUS_ADMIN_ALBUM_ASSETS = {
+        "css": {"all": ("css/components/lotus/admin.css",)},
+        "js": None,
+    }
 
     @classmethod
     def setup(cls):

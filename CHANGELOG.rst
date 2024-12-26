@@ -24,8 +24,9 @@ Development
       "captcha" directory but it should be "django_recaptcha". However i dont have time
       yet to test a form with recaptcha in situ and our custom form are probably not
       fully compatible yet with 4.0.0;
-    * [ ] Update included Lotus template for last changes;
-    * [ ] We may override Lotus custom style for category tree to fit into
+    * [ ] Add styleguide to toolbar;
+    * [x] No included Lotus front template to update;
+    * [x] We may override Lotus custom style for category tree to fit into
       'djangocms-admin-style';
     * [ ] Port Sass sources to usage of "@use" and builtin Sass functions;
     * [ ] Port Dartsass mixin library to PyCssStyleguide new release (with Bootstrap
@@ -79,6 +80,8 @@ Project template changes
     * Renamed Makefile task ``black-check`` to ``check-black``;
     * Added "Dependency comb" to toolbox and add its Makefile task ``check-comb``;
     * Restructured Makefile help to organize task per section;
+    * Added custom "Lotus" admin stylesheet to fix compatibility issues with
+      "djangocms-admin-style";
 
 
 Version 0.3.13 - 2024/09/28
