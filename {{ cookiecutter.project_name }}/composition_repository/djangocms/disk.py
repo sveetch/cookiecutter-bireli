@@ -33,6 +33,15 @@ class CmsDefinitions(EnabledApplicationMarker):
                     "models": "djangocms_text",
                 }
             ],
+            # NOTE: Uncomment this block if you enabled Request form from composer
+            # [
+            #     "request_form",
+            #     {
+            #         "comments": "Request form app",
+            #         "natural_foreign": True,
+            #         "models": "request_form",
+            #     }
+            # ],
             # These plugins are currently disabled until official support for
             # DjangoCMS 4
             # [

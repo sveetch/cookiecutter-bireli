@@ -31,12 +31,37 @@ a class. There is no more monolithic settings files.
 There is two settings files kinds:
 
 Application settings
-    Each application can have a settings file located in application module in composer
-    repository. This is where you will configure all application settings.
+    Each application can have a settings file located in its own application module
+    directory in the composer repository (``composition_repository/``).
+
+    This is where you will configure all application settings.
+
+    .. Note::
+        Sometime, an application module from composer repository can gather multiple
+        third party applications when they not meant to be shared with other
+        applications.
 
 Environment settings
-    They are located in ``project/settings/`` and their goal is to override some
+    They are located in ``project/settings/`` and their unique goal is to override some
     application settings to fit some special environment requirements.
+
+    .. Warning::
+        Environment settings must only include some settings override dedicated to the
+        environment needing. It is not the place where you will configure an
+        application.
+
+    We currently have the following environment:
+
+    * ``base`` that is the base settings shared to other environment. This environment
+      is not meant to be used directly. Some of these settings are configured to aim
+      production environment for some security reasons;
+    * ``development`` that is the environment you will use when running Django locally.
+      This is the most commonly used one.
+    * ``test`` that is the environment used when running test suite;
+    * ``production`` that is the environment to be used with a deployed project.
+
+    And then the optional local environment, see :ref:`project_backend_local_settings`
+    for details.
 
 
 .. _project_backend_local_settings:

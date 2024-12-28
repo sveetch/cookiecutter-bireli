@@ -28,7 +28,7 @@ Features
 
 * Development in a Python virtual environment with `virtualenv`_ and `pip`_;
 * Project include a ``pyproject.toml`` to store (almost) all backend tools
-  configurations;
+  configurations and project versioning;
 * Promote Test Driven Development with `Pytest`_;
 * Latest stable stack support;
 * Frontend assets built with Node.js and managed with Webpack;

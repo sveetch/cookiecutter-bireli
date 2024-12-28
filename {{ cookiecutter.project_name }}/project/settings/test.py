@@ -21,6 +21,18 @@ class Test(ComposedProjectSettings):
 
         cls.MEDIA_ROOT = cls.VAR_PATH / "media-tests"
 
+        # Specifically defines this here because we can not override it inside
+        # tests
+        cls.REQUEST_SUBJECTS = {
+            "ENTREPRISE": {
+                "label": "Entreprise",
+                "recipients": ["Entreprise@localhost"],
+            },
+            "NOPE": {
+                "label": "Nope",
+            },
+        }
+
     @classmethod
     def post_setup(cls):
         super(Test, cls).post_setup()

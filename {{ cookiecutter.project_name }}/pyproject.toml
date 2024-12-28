@@ -34,6 +34,7 @@ app_template = "https://github.com/sveetch/cookiecutter-bireli-newapp.git#{{ coo
 collection = [
     "dal",
     "django_builtins",
+    "recaptcha",
     "smart_media",
     "sendfile",
     "django_filer",
@@ -45,6 +46,7 @@ collection = [
     "styleguide",
     "taggit",
     "lotus",
+    "request_form",
     "djangocms",
     "cmsplugin_blocks",
     "project_sitemaps",

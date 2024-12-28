@@ -1,0 +1,11 @@
+{% load i18n %}{% translate "You have a new request from your site:" %}
+
+{% translate "Object:" %} {{ subject }}
+{% translate "First name:" %} {{ first_name }}
+{% translate "Last name:" %} {{ last_name }}
+{% translate "E-mail:" %} {{ email }}{% if phone %}
+{% translate "Phone:" %} {{ phone }}{% endif %}{% if profession %}
+{% translate "Profession:" %} {{ profession }}{% endif %}
+
+{% translate "Message:" %}
+{{ message }}

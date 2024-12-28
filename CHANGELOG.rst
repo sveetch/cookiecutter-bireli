@@ -10,7 +10,7 @@ Development
 .. Todo::
     * [ ] django-recaptcha custom template are currently ignored because they still in
       "captcha" directory but it should be "django_recaptcha". However i dont have time
-      yet to test a form with recaptcha in situ and our custom form are probably not
+      yet to test a form with recaptcha in situ and our custom form is probably not
       fully compatible yet with 4.0.0;
     * [ ] Port Sass sources to usage of "@use" and builtin Sass functions;
     * [ ] Is Buckle safe for "@use" ?
@@ -19,10 +19,10 @@ Development
     * [ ] Port Dartsass mixin library to PyCssStyleguide new release (with Bootstrap
       manifest?);
     * [ ] Update Bireli sample with 0.4.0
-    * [ ] Fix doc "Webdesign integration" about Dart Sass embdded instead of node-sass;
+    * [x] Fix doc "Webdesign integration" about Dart Sass embdded instead of node-sass;
 
 Internal Bireli changes
-    * Updated Makefile parser to implement sections;
+    None
 
 Project template changes
     * **Major upgrade of all backend requirements** but especially:
@@ -67,6 +67,12 @@ Project template changes
     * Restructured Makefile help to organize task per section;
     * Added custom "Lotus" admin stylesheet to fix compatibility issues with
       "djangocms-admin-style";
+    * Updated Makefile parser to implement sections;
+    * Added a new internal application ``request_form`` to implement a basic request
+      form to cover the basic need of a contact form since Fobi has been removed.
+      Because this application model may differ from a site to another, the application
+      is not enabled on default so you could adapt the model to the site needings,
+      update its initial migration before enable application in your project;
 
 
 Version 0.3.13 - 2024/09/28

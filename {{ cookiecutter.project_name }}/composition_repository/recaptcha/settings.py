@@ -12,9 +12,6 @@ class RecaptchaSettings(EnabledApplicationMarker):
     RECAPTCHA_PUBLIC_KEY = values.Value("6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI")
     RECAPTCHA_PRIVATE_KEY = values.Value("6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe")
 
-    # Use new system 'NoCaptcha ReCaptcha'
-    NOCAPTCHA = True
-
     # For secure site, all captcha request will be in https
     # RECAPTCHA_USE_SSL = True
 

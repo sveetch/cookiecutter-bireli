@@ -211,6 +211,29 @@ def compact_form_errors(form):
     return errors
 
 
+def flatten_form_errors(form):
+    """
+    Build a dict of list for field errors messages.
+
+    This is a helper for errors to quickly get all field errors.
+
+    Arguments:
+        form (django.forms.Form): A bounded form.
+
+    Returns:
+        dict: A dict of invalid fields, each item is indexed by field name and
+        value is a list of error messages.
+    """
+    errors = {}
+
+    for name, validationerror in form.errors.as_data().items():
+        errors[name] = []
+        for item in validationerror:
+            errors[name].extend(item.messages)
+
+    return errors
+
+
 def sum_file_object(fileobj):
     """
     Return a hash checksum for given file object using "Black2b" algorithm.

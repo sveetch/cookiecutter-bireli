@@ -35,10 +35,11 @@ Summary
 *******
 
 If you are a **developer which wants to create new projects** with Bireli see
-**Project creation**.
+the part **Create a project with Bireli**.
 
 If you are a **developer which wants to use a project** made with Bireli see
-**Project usage** since Bireli itself is not involved anymore in project life.
+the part **Use a Bireli project** because Bireli itself is not involved anymore in
+project life.
 
 .. toctree::
    :caption: Create a project with Bireli
