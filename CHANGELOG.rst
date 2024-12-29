@@ -8,6 +8,7 @@ Development
 -----------
 
 .. Todo::
+    * [ ] CKEditor 5;
     * [ ] Port Sass sources to usage of "@use" and builtin Sass functions;
     * [ ] Is Buckle safe for "@use" ?
     * [ ] Add DRF composition app ?
@@ -29,7 +30,7 @@ Project template changes
     * **Major upgrade of frontend requirements**:
 
       * Bootstrap 5.3.3;
-      * sass-embdded 1.79.0;
+      * sass-embedded 1.79.0;
       * Webpack 5.91.0;
 
     * Removed everything related to initial loader because it is not compatible anymore
