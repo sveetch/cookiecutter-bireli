@@ -1,0 +1,23 @@
+//
+// Recaptcha adjustments
+//
+
+// This has been done for the reCAPTCHA V2 widget in invisible mode
+// Since this widget does not have any checkbox, we neutralize everything on its
+// container because it should not take space like a "real field" container
+#div_id_captcha {
+    margin: 0 !important;
+
+    label {
+        display: none;
+    }
+
+    .recaptchav2invisible {
+        // Disable Bootstrap styles automatically added from Crispy forms
+        &.form-control {
+            padding: 0;
+            background-color: none;
+            border: 0;
+        }
+    }
+}

@@ -8,10 +8,6 @@ Development
 -----------
 
 .. Todo::
-    * [ ] django-recaptcha custom template are currently ignored because they still in
-      "captcha" directory but it should be "django_recaptcha". However i dont have time
-      yet to test a form with recaptcha in situ and our custom form is probably not
-      fully compatible yet with 4.0.0;
     * [ ] Port Sass sources to usage of "@use" and builtin Sass functions;
     * [ ] Is Buckle safe for "@use" ?
     * [ ] Add DRF composition app ?
@@ -19,18 +15,18 @@ Development
     * [ ] Port Dartsass mixin library to PyCssStyleguide new release (with Bootstrap
       manifest?);
     * [ ] Update Bireli sample with 0.4.0
-    * [x] Fix doc "Webdesign integration" about Dart Sass embdded instead of node-sass;
 
 Internal Bireli changes
     None
 
 Project template changes
-    * **Major upgrade of all backend requirements** but especially:
+    * **Major upgrade of all backend requirements**:
 
       * Django 5.0;
       * DjangoCMS 4.1.0;
+      * And all other dependencies to their latest compatible version;
 
-    * **Major upgrade of frontend requirements** but especially:
+    * **Major upgrade of frontend requirements**:
 
       * Bootstrap 5.3.3;
       * sass-embdded 1.79.0;
@@ -73,6 +69,12 @@ Project template changes
       Because this application model may differ from a site to another, the application
       is not enabled on default so you could adapt the model to the site needings,
       update its initial migration before enable application in your project;
+    * Restored django-recaptcha (actually only used from Request form) in last version
+      and using its invisible mode widget therefore there is no checkbox to check,
+      only a widget mark (in fixed position) about the form securized by Recaptcha;
+    * Removed old useless custom django-recaptcha templates;
+    * Added a Sass object to fix layout recaptcha v2 in invisible mode in request form
+      (and possibly elsewhere);
 
 
 Version 0.3.13 - 2024/09/28

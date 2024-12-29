@@ -80,9 +80,10 @@
 // @import "./elements/...";
 
 // Objects
-@import "./objects/callout";
 @import "./objects/color-mode";
 @import "./objects/theming";
+@import "./objects/callout";
+@import "./objects/recaptcha";
 
 // Components
 @import "./components/header";
