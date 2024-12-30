@@ -29,9 +29,8 @@ Main stack components
 First steps
 ***********
 
-This is project has been generated from
-``cookiecutter-bireli=={{ cookiecutter._bireli_version }}``, you may learn more about
-your project usage on `Bireli`_ documentation.
+This project has been generated from ``cookiecutter-bireli=={{ cookiecutter._bireli_version }}``.
+You may learn more about your project usage on `Bireli`_ documentation.
 
 
 Quick install
@@ -40,7 +39,11 @@ Quick install
 Install backend and frontend, then build frontend and finally add some dummy initial
 datas: ::
 
-    make install frontend initial-data
+    make install frontend
+
+You will need an admin user, create it with: ::
+
+    make superuser
 
 Once finished, you may ensure everything is working as expected with: ::
 
@@ -50,21 +53,19 @@ Once finished, you may ensure everything is working as expected with: ::
 Quick usage
 ***********
 
-* Just run the development server: ::
+Just run the development server: ::
 
     make run
 
-* Open your browser on ``http://localhost:8001/``;
-* With initial data, a superuser has been created with username ``admin`` and
-  password ``ok``;
+And open your browser on ``http://localhost:8001/``.
 
 
 Further
 *******
 
-There is a lot of useful Makefile commands to manage your project, read the Makefile
+There is a lot of useful Makefile tasks to manage your project, read the Makefile
 help: ::
 
     make help
 
-Or see `Bireli`_ documentation about project usage to know more.
+And see `Bireli`_ documentation about project usage to know more.

@@ -75,13 +75,17 @@ class CmsBaseSettings(EnabledApplicationMarker):
         ])
 
 
-class CmsCkeditorSettings(EnabledApplicationMarker):
+class CmsCkeditor4Settings(EnabledApplicationMarker):
     """
-    CMS CKEditor plugin
+    CMS CKEditor4 plugin
+
+    .. NOTE::
+        CKEditor v4 is the legacy version we use everywhere but is unmaintained with
+        security flaws. We plan to move to v5 as soon as possible.
     """
     @classmethod
     def setup(cls):
-        super(CmsCkeditorSettings, cls).setup()
+        super().setup()
 
         # Then we push the common cms stack
         cls.INSTALLED_APPS.extend([
@@ -152,3 +156,25 @@ class CmsCkeditorSettings(EnabledApplicationMarker):
                 ["Source"],
             ],
         })
+
+
+class CmsCkeditor5Settings:
+    """
+    CMS CKEditor5 plugin
+
+    .. NOTE::
+        Working but currently not enabled until we are ready to migrate from v4 to v5.
+
+        Disable the v4 settings class if you want to test this.
+    """
+    @classmethod
+    def setup(cls):
+        super().setup()
+
+        # Then we push the common cms stack
+        cls.INSTALLED_APPS.extend([
+            "djangocms_text",
+            "djangocms_text_ckeditor5",
+        ])
+
+        cls.TEXT_EDITOR = "djangocms_text_ckeditor5.ckeditor5"

@@ -8,7 +8,7 @@ Development
 -----------
 
 .. Todo::
-    * [ ] CKEditor 5;
+    * [x] CKEditor 5, seems ready but it needs to be checked from users;
     * [ ] Port Sass sources to usage of "@use" and builtin Sass functions;
     * [ ] Is Buckle safe for "@use" ?
     * [ ] Add DRF composition app ?
@@ -16,6 +16,7 @@ Development
     * [ ] Port Dartsass mixin library to PyCssStyleguide new release (with Bootstrap
       manifest?);
     * [ ] Update Bireli sample with 0.4.0
+    * [ ] We may move to Python 3.11 if possible from infrastructure;
 
 Internal Bireli changes
     None
@@ -40,6 +41,8 @@ Project template changes
     * Removed everything about Fobi that is incompatible and unmaintained;
     * We now use ``djangocms-text`` with CKEditor4 (for now) instead of
       ``djangocms-text-ckeditor`` that is ongoing to be deprecated;
+    * Added disabled requirements and settings class to enable CKEditor 5 in CMS so it
+      can easily be tested, this to prepare the future migration;
     * Diskette configuration has been fixed from beta usage feedback so it should work
       really well now even it is know for some issues with loading dump from a
       production deployment. But loading locally downloaded dump should be a proper
