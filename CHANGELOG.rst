@@ -18,67 +18,93 @@ Development
     * [ ] Update Bireli sample with 0.4.0
     * [ ] We may move to Python 3.11 if possible from infrastructure;
 
-Internal Bireli changes
-    None
+Upgraded backend requirements
+.............................
 
-Project template changes
-    * **Major upgrade of all backend requirements**:
+* Upgraded to Django 5.0, DjangoCMS 4.1.0 and all other dependencies to their
+  latest compatible version;
+* Removed everything related to initial loader because it is not compatible anymore
+  with DjangoCMS 4. We will soon provide a new way to load initial data but for
+  now a new installed project will be blank;
+* Removed factories related to DjangoCMS because they can not be made compatible
+  with the new core API from DjangoCMS 4;
+* We now use ``djangocms-text`` with CKEditor4 (for now) instead of
+  ``djangocms-text-ckeditor`` that is ongoing to be deprecated;
+* Added disabled requirements and settings class to enable CKEditor 5 in CMS so it
+  can easily be tested, this to prepare the future migration;
 
-      * Django 5.0;
-      * DjangoCMS 4.1.0;
-      * And all other dependencies to their latest compatible version;
+Diskette fixes
+..............
 
-    * **Major upgrade of frontend requirements**:
+* Diskette configuration has been fixed from beta usage feedback so it should work
+  really well now even it is know for some issues with loading dump from a
+  production deployment. But loading locally a downloaded dump should be a proper
+  workaround for now;
 
-      * Bootstrap 5.3.3;
-      * sass-embedded 1.79.0;
-      * Webpack 5.91.0;
+Improved project security
+.........................
 
-    * Removed everything related to initial loader because it is not compatible anymore
-      with DjangoCMS 4. We will soon provide a new way to load initial data;
-    * Removed factories related to DjangoCMS because they can not be made compatible
-      with the new core API from DjangoCMS 4;
-    * Removed everything about Fobi that is incompatible and unmaintained;
-    * We now use ``djangocms-text`` with CKEditor4 (for now) instead of
-      ``djangocms-text-ckeditor`` that is ongoing to be deprecated;
-    * Added disabled requirements and settings class to enable CKEditor 5 in CMS so it
-      can easily be tested, this to prepare the future migration;
-    * Diskette configuration has been fixed from beta usage feedback so it should work
-      really well now even it is know for some issues with loading dump from a
-      production deployment. But loading locally downloaded dump should be a proper
-      workaround for now;
-    * The following settings ``SESSION_COOKIE_SECURE``,
-      ``SESSION_EXPIRE_AT_BROWSER_CLOSE``, ``CSRF_COOKIE_SECURE`` have been turned on
-      in production settings;
-    * Setting ``AUTH_PASSWORD_VALIDATORS`` now uses the strongest builtin validators;
-    * Added ``django-two-factor-auth`` and enabled it on default;
-    * Added ``django-axes`` and enabled it on default;
-    * Added Bootstrap color toggler menu;
-    * Silented annoying warnings from Sass compiler against Bootstrap until it fixed
-      them;
-    * Renamed Bootbutt to Buckle and added source part indexes modules;
-    * Restructured main Sass source;
-    * Upgraded to PyCssStyleguide v1.2.0 and updated its Sass mixin library;
-    * Updated Styleguide manifest to fit to the new Sass mixin library and
-      Bootstrap 5.3.3;
-    * Added Styleguide link to CMS toolbar;
-    * Renamed Makefile task ``black-check`` to ``check-black``;
-    * Added "Dependency comb" to toolbox and add its Makefile task ``check-comb``;
-    * Restructured Makefile help to organize task per section;
-    * Added custom "Lotus" admin stylesheet to fix compatibility issues with
-      "djangocms-admin-style";
-    * Updated Makefile parser to implement sections;
-    * Added a new internal application ``request_form`` to implement a basic request
-      form to cover the basic need of a contact form since Fobi has been removed.
-      Because this application model may differ from a site to another, the application
-      is not enabled on default so you could adapt the model to the site needings,
-      update its initial migration before enable application in your project;
-    * Restored django-recaptcha (actually only used from Request form) in last version
-      and using its invisible mode widget therefore there is no checkbox to check,
-      only a widget mark (in fixed position) about the form securized by Recaptcha;
-    * Removed old useless custom django-recaptcha templates;
-    * Added a Sass object to fix layout recaptcha v2 in invisible mode in request form
-      (and possibly elsewhere);
+* The following settings ``SESSION_COOKIE_SECURE``,
+  ``SESSION_EXPIRE_AT_BROWSER_CLOSE``, ``CSRF_COOKIE_SECURE`` have been turned on
+  in production settings;
+* Setting ``AUTH_PASSWORD_VALIDATORS`` now uses the strongest builtin validators;
+* Added ``django-two-factor-auth`` and enabled it on default;
+* Added ``django-axes`` and enabled it on default;
+
+Fobi removal and Request form as a workaround
+.............................................
+
+* Removed everything about Fobi that is incompatible and unmaintained;
+* Added a new internal application ``request_form`` to implement a basic request
+  form to cover the basic need of a contact form since Fobi has been removed.
+  Because this application model may differ from a site to another, the application
+  is not enabled on default so you could adapt the model to the site needings,
+  update its initial migration before enable application in your project;
+
+Django Recaptcha enabled again
+..............................
+
+* Restored django-recaptcha (actually only used from Request form) in last version
+  and using its invisible mode widget therefore there is no checkbox to check,
+  only a widget mark (in fixed position) about the form securized by Recaptcha;
+* Added a Sass object to fix layout recaptcha v2 in invisible mode in request form
+  (and possibly elsewhere);
+
+Upgraded frontend requirements
+..............................
+
+* Upgraded to Bootstrap 5.3.3 and Webpack 5.91.0;
+* Moved from 'node-sass' compiler to 'sass-embedded' 1.79.0. The first is
+  deprecated since 3 years and the latter implements last Sass features (and
+  faster that the simple 'sass' compiler);
+
+Update Sass sources for last Bootstrap and Sass
+...............................................
+
+* Added Bootstrap color toggler menu;
+* Silented annoying warnings from Sass compiler against Bootstrap until it fixed
+  them;
+* Renamed Bootbutt to Buckle and added source part indexes modules;
+* Restructured main Sass source;
+* Upgraded to PyCssStyleguide v1.2.0 and updated its Sass mixin library;
+* Updated Styleguide manifest to fit to the new Sass mixin library and
+  Bootstrap 5.3.3;
+
+Makefile improvement
+....................
+
+* Added "Dependency comb" to toolbox and add its Makefile task ``check-comb``;
+* Renamed Makefile task ``black-check`` to ``check-black``;
+* Restructured Makefile help to organize task per section;
+* Updated Makefile parser to implement sections;
+
+Various
+.......
+
+* Added custom "Lotus" admin stylesheet to fix compatibility issues with
+  "djangocms-admin-style";
+* Added Styleguide link to CMS toolbar;
+* Removed old useless custom django-recaptcha templates;
 
 
 Version 0.3.13 - 2024/09/28
