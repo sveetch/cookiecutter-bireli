@@ -9,29 +9,37 @@ Architecture
 ============
 
 
+.. _project_architecture_composition:
+
 Composition
 ***********
 
-Bireli strongly stands on `Project composer`_ to structure its main parts (settings,
-urls and requirements). You will need to properly understand `Project composer`_ before
-to properly work on a project.
+Basically a Bireli project is not *monolithic*, meaning it don't store settings, URLs
+and requirements in single files. Instead it stands on `Project composer`_ to structure
+its main parts (settings, URLs and requirements) gathered from a *collection*.
 
-The *Workflow* document from `Project composer`_  documentation contains a diagram
-exemple of resumed workflow for a Django project.
+.. Hint::
+    You will need to understand the concept of `Project composer`_ before to be really
+    effective for developing on a project.
 
-Details
--------
+    The `Project composer workflow documentation <https://project-composer.readthedocs.io/en/latest/workflow.html>`_
+    contains a diagram example of resumed workflow for a Django project.
 
-The **composer configuration lives in the** ``pyproject.toml`` file in sections named
-``tool.project_composer[.**]``. Commonly you will only have to care about the option
-``collection`` where is enabled all compose applications.
+Overview
+--------
+
+The composer configuration lives in the ``pyproject.toml`` file in the sections named
+like ``tool.project_composer[.**]``.
+
+Commonly you will only have to care about the option ``collection`` where is enabled
+all compose applications.
 
 .. Note::
 
-    Sections ``tool.project_composer[.**]`` assemble many options which assemble the
-    composer configuration and that is called the *Manifest*.
+    The sections named ``tool.project_composer[.**]`` combine many options that shape
+    the composer configuration into a *Manifest*.
 
-The **collection is a list of module directory names from** ``composition_repository/``.
+The collection is a list of module directory names from ``composition_repository/``.
 
 **You rarely have to edit the environment settings from** ``project/settings`` because
 their purpose is only to override base settings for very specific environment needs.
@@ -40,13 +48,13 @@ All the **Django builtins settings are located in the compose application**
 ``django_builtins``. And in the same idea, **each project application settings will be
 in their compose application**.
 
+.. _project_architecture_structure:
+
 Structure
 *********
 
-Here below we will explain the default project structure, there is many more files and
-directories but for a better explanation we will only focus on important parts.
-
-::
+Here below we will explain the default project structure, there are many more files
+and directories but for a better explanation we will only focus on important parts: ::
 
     .
     ├── composition_repository/
@@ -72,11 +80,11 @@ directories but for a better explanation we will only focus on important parts.
 
 composition_repository/
     This is the directory which holds the applications configurations that will compose
-    the project. These applications are enabled or not from the ``collection`` list
-    from ``pyproject.toml``.
+    the project. These applications are enabled in the ``collection`` list from
+    ``pyproject.toml``.
 
 django-apps/
-    This is the directory which hold the applications code (models, view urls, views,
+    This is the directory which holds the applications code (models, urls, views,
     etc..).
 
 frontend/
@@ -91,14 +99,14 @@ project/
     This holds the Django project configuration and built assets.
 
     * ``settings/`` store all the environment settings;
-    * ``static-sources`` will contains all built static to serve. It is not to mistake
-      with ``static`` that is virtual directory that is only used in production so
+    * ``static-sources/`` will contains all built static to serve. It is not to mistake
+      with ``static/`` that is virtual directory that is only used in production so
       don't put anything there.
     * ``templates/`` store all the project and applications templates;
     * ``urls.py`` mount all the applications urls modules;
 
 requirements/
-    This holds all :ref:`project_backend_env_requirements`.
+    This holds all :ref:`intro_backend_requirements`.
 
 tests/
     This is where to write all backend tests including project tests and all

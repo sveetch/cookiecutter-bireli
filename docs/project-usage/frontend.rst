@@ -31,8 +31,8 @@ So these CSS files are just loaded as simple static files without the Django Web
 layer.
 
 
-Webdesign integration
----------------------
+CSS are built from Sass
+-----------------------
 
 Layout stylesheets (CSS) are built from `Sass language`_ sources.
 
@@ -51,6 +51,10 @@ that the Dart binary.
 
     So we have moved to the "Dartsass" engine that is the new legacy.
 
+
+Webdesign integration
+---------------------
+
 Default project frontend use `Bootstrap`_ framework and all templates are made with its
 components.
 
@@ -66,6 +70,7 @@ Javascript interface
 
 Default Javascript sources shipped in a project are basic and just load the Bootstrap
 components. Code sources are to be done for ES6 and jQuery is still available.
+
 
 Logo and favicon
 ----------------

@@ -3,9 +3,9 @@
 
 .. _intro_project_install:
 
-===============
-Project install
-===============
+=======
+Install
+=======
 
 .. Note::
    This document is about default procedure for a freshly created project. Some
@@ -26,8 +26,8 @@ Lists below are the required basic development system packages and some other op
 ones.
 
 
-Basic requirements
-------------------
+Basic system requirements
+-------------------------
 
 .. Warning::
    Package names may differ depending your system.
@@ -64,8 +64,8 @@ On Windows
     works on your own.
 
 
-Optional requirements
----------------------
+Optional system requirements
+----------------------------
 
 These ones are common extra requirements that some projects may use. You don't need
 to take care of them for now.
@@ -114,15 +114,12 @@ When finished your project is ready to run.
 Initial data
 ************
 
-A new installed project is empty from any content, however a task exists to create some
-initial data for main components: ::
+.. Note::
+    Sorry there was previously a task to create some initial data but is was
+    incompatible with the latest backend changes. We are working on a new solution but
+    actually a new created project is basically blank.
 
-    make initial-data
-
-This will creates a user with username ``admin`` and password ``ok``.
-
-If you don't want any initial data, you will need at least a super user to reach
-the admin: ::
+At least you will need a super user: ::
 
     make superuser
 
@@ -133,31 +130,30 @@ Quickstart
 Once you already installed a Bireli project, you should have all needed requirements
 and you may just quickly do everything in a single command: ::
 
-    make install mo frontend initial-data
-
-Or: ::
-
     make install mo frontend superuser
 
 
-Upgrades
-********
+Update
+******
 
-Later if a project introduces a new package or newer packages versions, you may use
-the following commands to upgrade your local install.
+Later if you (or a new commit) introduced a new package or package version changes, you
+may use the following command to fully upgrade your local install (both backend
+and frontend): ::
 
-To upgrade backend install: ::
+    make update
 
-    make install-backend
+Or you can just update backend: ::
 
-To upgrade frontend install: ::
+    make update-backend
 
-    make install-frontend
+Or you can just update frontend: ::
+
+    make update-frontend
 
 .. Warning::
-   Don't use the task ``install`` to upgrade your install, it has been made for a fresh
+   Don't use the task ``install`` to update your install, it has been made for a fresh
    new install and include some other tasks that are longer to run and that could also
-   lost some of your changes.
+   lost some of your changes and data.
 
 
 Cleaning
@@ -167,8 +163,9 @@ If you need to reset your local install you may use the following command: ::
 
     make clean
 
-However this will remove everything even your local data. If you just need to clean
-some parts of your install, see Makefile help for all the specific cleaning tasks.
+However this will remove everything even your local data and you will need to install
+everything again. If you just need to clean some parts of your install you may see the
+Makefile :ref:`makefile_tasks` for all the specific cleaning tasks.
 
 
 Production deployment

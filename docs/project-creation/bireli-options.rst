@@ -46,7 +46,7 @@ or ``True`` will disable any other langue and i18n urls (application urls starti
 language prefix like ``/en/``).
 
 Project configuration can be easily switched to be a multiple language site or a single
-language site further from settings, see :ref:`project_backend_i18n`.
+language site further from settings, see :ref:`intro_backend_i18n`.
 
 
 Result

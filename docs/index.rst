@@ -19,17 +19,15 @@
 .. include:: ../README.rst
 
 
-
 Dependencies
 ************
 
-All involved dependencies
+The main dependencies are:
 
 .. bireli-full-stack::
 
 .. Note::
-    ``bireli`` and ``bireli-newapp`` are not involved anymore in a project once it has
-    been created.
+    ``bireli`` is not involved anymore in a project once it has been created.
 
 Summary
 *******
@@ -53,9 +51,12 @@ project life.
    :maxdepth: 3
 
    project-usage/install.rst
-   project-usage/makefile.rst
    project-usage/architecture.rst
+   project-usage/makefile.rst
    project-usage/backend.rst
+   project-usage/backend_requirements.rst
+   project-usage/settings.rst
+   project-usage/i18n.rst
    project-usage/frontend.rst
 
 .. toctree::

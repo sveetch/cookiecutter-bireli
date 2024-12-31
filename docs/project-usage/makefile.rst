@@ -16,6 +16,8 @@ Use its help to know about every available task: ::
     Windows system will either have to install a compatibility layer or launch
     every commands itself, reading the Makefile can help.
 
+.. _makefile_tasks:
+
 Tasks
 *****
 

@@ -9,6 +9,9 @@ Development
 
 .. Todo::
     * [x] CKEditor 5, seems ready but it needs to be checked from users;
+    * [ ] CKEditor 5 miss the "Styles" menu plugin and there are lots of warning in
+      browser inspector about missing plugins that was declared, this probably need some
+      debug to report issue to 'djangocms-text';
     * [ ] Port Sass sources to usage of "@use" and builtin Sass functions;
     * [ ] Is Buckle safe for "@use" ?
     * [ ] Add DRF composition app ?
@@ -17,6 +20,8 @@ Development
       manifest?);
     * [ ] Update Bireli sample with 0.4.0
     * [ ] We may move to Python 3.11 if possible from infrastructure;
+    * [ ] We could implement a basic two level (non recursive) menu with Bootstrap
+      dropdown alike here https://github.com/django-cms/django-cms-quickstart/blob/main/backend/templates/menu/menu.html;
 
 Upgraded backend requirements
 .............................
@@ -54,12 +59,12 @@ Improved project security
 Fobi removal and Request form as a workaround
 .............................................
 
-* Removed everything about Fobi that is incompatible and unmaintained;
 * Added a new internal application ``request_form`` to implement a basic request
   form to cover the basic need of a contact form since Fobi has been removed.
   Because this application model may differ from a site to another, the application
   is not enabled on default so you could adapt the model to the site needings,
   update its initial migration before enable application in your project;
+* Removed everything about Fobi that is incompatible and unmaintained;
 
 Django Recaptcha enabled again
 ..............................
@@ -69,6 +74,7 @@ Django Recaptcha enabled again
   only a widget mark (in fixed position) about the form securized by Recaptcha;
 * Added a Sass object to fix layout recaptcha v2 in invisible mode in request form
   (and possibly elsewhere);
+* Removed old useless custom django-recaptcha templates;
 
 Upgraded frontend requirements
 ..............................
@@ -104,7 +110,7 @@ Various
 * Added custom "Lotus" admin stylesheet to fix compatibility issues with
   "djangocms-admin-style";
 * Added Styleguide link to CMS toolbar;
-* Removed old useless custom django-recaptcha templates;
+* Improved documentation;
 
 
 Version 0.3.13 - 2024/09/28

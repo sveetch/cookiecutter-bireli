@@ -1,0 +1,99 @@
+.. _intro_backend_i18n:
+
+=====================================
+Internationalization and localization
+=====================================
+
+This is mostly driven by settings and URLs. Bireli has already set everything
+(following option choices when creating project). Here is a resume of important parts.
+
+Default language
+****************
+
+The default language used to write contents (templates, text in code and content
+in applications that implement it).
+
+It is used even in single language site but does not really have consequences,
+except for text translation from PO catalog files (at least used in Django admin).
+
+Be aware that application contents commonly store the language they have been
+written with so if you change default language on a single language site you may
+not see your content anymore (but they should not be lost).
+
+Default language value is defined in ``settings.LANGUAGE_CODE`` from
+``django_builtins`` module in composition repository.
+
+Available languages
+*******************
+All other languages that are available for translation and application contents. At
+least it must contains the default language, this will leads to a single language
+site.
+
+If you enable more language it turns project to a multiple language site,
+this is only about translations and application contents then you will need to
+enable i18n urls also (see next parts).
+
+Available languages are defined in ``settings.LANGUAGES`` from
+``django_builtins`` module in composition repository.
+
+Timezone
+********
+
+The default assumed timezone that will be used to determine date and time formatting
+in default language and also used to write date and time in content applications.
+
+It has already been set by Bireli according to the default language option but you
+may change it further to a more accurate one if needed.
+
+Timezone value is defined in ``settings.TIME_ZONE`` from ``django_builtins`` module
+in composition repository.
+
+Usage of i18n URLs
+******************
+
+This is used to mount your views under a
+`language prefix in URL patterns <https://docs.djangoproject.com/en/stable/topics/i18n/translation/#language-prefix-in-url-patterns>`_
+like ``/en/``.
+
+Commonly if you have a single language site, you don't need it and it is disabled.
+Opposed to a multiple language site which enables it.
+
+For Django it is just materialized with usage of ``i18n_patterns()`` and
+middleware ``django.middleware.locale.LocaleMiddleware`` enabled. If they are both
+unused the project is assumed as a single language site.
+
+Note that application from composition repository should implement a switch to use
+i18n urls or not, depending from an internal setting ``settings.ENABLE_I18N_URLS``
+from ``django_builtins`` so you should only have to set this setting to True,
+however you have to enable middleware ``LocaleMiddleware`` yourself. Obviously this
+behavior is only suitable with applications that implement i18n.
+
+Translation catalog files
+*************************
+
+These are files in gettext syntax to store translated string and their
+translations. Translation string are only used in code or templates, they are used
+for "interface translations" not for content translations.
+
+`PO files <https://docs.djangoproject.com/en/stable/topics/i18n/translation/#message-files>`_
+(named ``*.po``) are the sources you can edit to fill in translations.
+
+`MO files <https://docs.djangoproject.com/en/stable/topics/i18n/translation/#compiling-message-files>`_
+(named ``*.mo``) files are compiled sources that are used by Django to
+search and get translation for translated strings. You build them from the PO
+files.
+
+.. Warning::
+    A fresh new created project does not include any catalog files. To start you
+    will need first to create ``project/locale/`` directory then create catalog
+    structure for each language to translate (as defined from your settings).
+
+    For exemple with french language you would do: ::
+
+        mkdir -p project/locale
+        .venv/bin/python manage.py makemessages --locale fr
+
+    Then it should create ``project/locale/fr/`` directory with an initial PO
+    file.
+
+Makefile :ref:`makefile_tasks` contains some tasks to update your PO and MO files .
