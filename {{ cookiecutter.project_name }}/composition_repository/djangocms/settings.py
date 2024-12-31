@@ -35,7 +35,7 @@ class CmsBaseSettings(EnabledApplicationMarker):
 
     # Enable inline editing with djangocms-text
     # https://github.com/django-cms/djangocms-text#inline-editing-feature
-    TEXT_INLINE_EDITING = True
+    TEXT_INLINE_EDITING = False
 
     # Allow deletion of version objects
     DJANGOCMS_VERSIONING_ALLOW_DELETING_VERSIONS = True
@@ -80,7 +80,7 @@ class CmsCkeditor4Settings(EnabledApplicationMarker):
     CMS CKEditor4 plugin
 
     .. NOTE::
-        CKEditor v4 is the legacy version we use everywhere but is unmaintained with
+        CKEditor v4 is the legacy version we used everywhere but is unmaintained with
         security flaws. We plan to move to v5 as soon as possible.
     """
     @classmethod
@@ -165,7 +165,8 @@ class CmsCkeditor5Settings:
     .. NOTE::
         Working but currently not enabled until we are ready to migrate from v4 to v5.
 
-        Disable the v4 settings class if you want to test this.
+        Disable the ``CmsCkeditor4Settings`` settings class if you want are going this
+        v5 settings class.
     """
     @classmethod
     def setup(cls):
