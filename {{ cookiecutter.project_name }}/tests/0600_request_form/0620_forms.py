@@ -36,8 +36,6 @@ def test_empty(db, settings):
     """
     Empty form should not be valid because of required fields.
     """
-    settings.LANGUAGE_CODE = "en"
-
     f = RequestForm({})
 
     validation = f.is_valid()
@@ -57,8 +55,6 @@ def test_invalid(db, settings):
     """
     Invalid field values should raises specific errors.
     """
-    settings.LANGUAGE_CODE = "en"
-
     f = RequestForm({
         "subject": "",
         "first_name": "Vladimir",
@@ -90,7 +86,6 @@ def test_valid(client, db, mailoutbox, settings):
     """
     Form should save request object and send email if enabled.
     """
-    settings.LANGUAGE_CODE = "fr"
     settings.REQUEST_FROM_EMAIL = "donald@localhost"
     settings.REQUEST_MAIL_DEFAULT_RECIPIENTS = ("default@localhost",)
     settings.REQUEST_EMAIL_SUBJECT = "Entreprise"
@@ -162,7 +157,6 @@ def test_valid_no_db_save(client, db, mailoutbox, settings):
     """
     Form should not save request object but still send email if enabled.
     """
-    settings.LANGUAGE_CODE = "fr"
     settings.REQUEST_FROM_EMAIL = "donald@localhost"
     settings.REQUEST_MAIL_DEFAULT_RECIPIENTS = ("default@localhost",)
     settings.REQUEST_EMAIL_SUBJECT = "Entreprise"

@@ -17,8 +17,6 @@ def test_initial_form_view(client, db, settings):
     """
     View should respond with success and contain the form.
     """
-    settings.LANGUAGE_CODE = "en"
-
     url = reverse("request_form:request-form")
 
     response = client.get(url, follow=True)
@@ -35,8 +33,6 @@ def test_initial_success_view(client, db, settings):
     """
     Just ensure the static view is responding with success.
     """
-    settings.LANGUAGE_CODE = "en"
-
     url = reverse("request_form:request-success")
 
     response = client.get(url, follow=True)
@@ -50,8 +46,6 @@ def test_post_valid(client, db, mailoutbox, settings):
 
     Also check the ip_address field is correctly filled.
     """
-    settings.LANGUAGE_CODE = "en"
-
     request_form = {
         "subject": "ENTREPRISE",
         "first_name": "Edward",
@@ -88,8 +82,6 @@ def test_post_invalid(client, db, settings):
     View should respond to POST request and raise field errors when form request is
     invalid.
     """
-    settings.LANGUAGE_CODE = "en"
-
     response = client.post(reverse("request_form:request-form"), {}, follow=True)
     assert response.redirect_chain == []
     assert response.status_code == 200
@@ -105,7 +97,6 @@ def test_post_valid_no_db_save(client, db, mailoutbox, settings):
     View should respond to POST request, ignore object save form but still sending
     email.
     """
-    settings.LANGUAGE_CODE = "en"
     settings.REQUEST_SAVE_TO_DB = False
 
     request_form = {

@@ -33,6 +33,12 @@ class Test(ComposedProjectSettings):
             },
         }
 
+        # All test are written for english language
+        cls.LANGUAGE_CODE = "en"
+        # Ensure english language is available
+        if "en" not in [k for k, v in cls.LANGUAGES]:
+            cls.LANGUAGES = cls.LANGUAGES + (("en", "English"),)
+
     @classmethod
     def post_setup(cls):
         super(Test, cls).post_setup()

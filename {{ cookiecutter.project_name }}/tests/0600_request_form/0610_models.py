@@ -72,8 +72,6 @@ def test_model_required_fields(db, settings):
     """
     Basic model validation with missing required fields should fail.
     """
-    settings.LANGUAGE_CODE = "en"
-
     request = RequestModel()
 
     with pytest.raises(ValidationError) as excinfo:
@@ -105,8 +103,6 @@ def test_model_phone_validation(db, settings):
     """
     Allowed phone number format can be defined from settings.
     """
-    settings.LANGUAGE_CODE = "en"
-
     # Valid payload data to use everytime
     base_payload = {
         "subject": "ENTREPRISE",

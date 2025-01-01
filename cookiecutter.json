@@ -21,7 +21,7 @@
 
     "_bireli_version": "0.4.0-pre.21",
     "_bireli_newapp_version": "0.1.1",
-    "_python_version": ">=3.10",
+    "_python_version": ">=3.11",
     "_django_version": ">=5.0,<5.1",
     "_project_composer_version": ">=0.7.0,<0.8.0",
     "_django_configurations_version": ">=2.5.1,<2.6.0",

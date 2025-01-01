@@ -22,8 +22,6 @@ def test_form_view_add(db, client, settings):
     Plugin creation form should return a success status code and every
     expected field should be present in HTML.
     """
-    settings.LANGUAGE_CODE = "fr"
-
     # Request to plugin form must be authenticated with a staff
     client.force_login(UserFactory(flag_is_superuser=True))
 
@@ -57,8 +55,6 @@ def test_render_in_page(db, client, settings):
     """
     Plugin should be properly rendered in a Page.
     """
-    settings.LANGUAGE_CODE = "en"
-
     picsou = UserFactory(flag_is_superuser=True)
     client.force_login(picsou)
 

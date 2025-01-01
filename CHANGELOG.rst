@@ -7,27 +7,11 @@ History
 Development
 -----------
 
-.. Todo::
-    * [x] CKEditor 5, seems ready but it needs to be checked from users;
-    * [ ] CKEditor 5 miss the "Styles" menu plugin and there are lots of warning in
-      browser inspector about missing plugins that was declared, this probably need some
-      debug to report issue to 'djangocms-text';
-    * [ ] Port Sass sources to usage of "@use" and builtin Sass functions;
-    * [ ] Is Buckle safe for "@use" ?
-    * [ ] Add DRF composition app ?
-    * [ ] Stylelint report is failing since upgrade to 14.0.0 which broken many things;
-    * [ ] Port Dartsass mixin library to PyCssStyleguide new release (with Bootstrap
-      manifest?);
-    * [ ] Update Bireli sample with 0.4.0
-    * [ ] We may move to Python 3.11 if possible from infrastructure;
-    * [ ] We could implement a basic two level (non recursive) menu with Bootstrap
-      dropdown alike here https://github.com/django-cms/django-cms-quickstart/blob/main/backend/templates/menu/menu.html;
-
 Upgraded backend requirements
 .............................
 
-* Upgraded to Django 5.0, DjangoCMS 4.1.0 and all other dependencies to their
-  latest compatible version;
+* Upgraded to Python 3.11, Django 5.0, DjangoCMS 4.1.0 and all other dependencies to
+  their latest compatible version;
 * Removed everything related to initial loader because it is not compatible anymore
   with DjangoCMS 4. We will soon provide a new way to load initial data but for
   now a new installed project will be blank;
