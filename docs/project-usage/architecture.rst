@@ -25,6 +25,8 @@ its main parts (settings, URLs and requirements) gathered from a *collection*.
     The `Project composer workflow documentation <https://project-composer.readthedocs.io/en/latest/workflow.html>`_
     contains a diagram example of resumed workflow for a Django project.
 
+.. _project_architecture_composition_overview:
+
 Overview
 --------
 

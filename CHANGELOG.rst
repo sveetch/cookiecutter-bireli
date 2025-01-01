@@ -4,11 +4,11 @@
 History
 =======
 
-Development
------------
+Version 0.4.0 - 2025/01/01
+**************************
 
 Upgraded backend requirements
-.............................
+-----------------------------
 
 * Upgraded to Python 3.11, Django 5.0, DjangoCMS 4.1.0 and all other dependencies to
   their latest compatible version;
@@ -21,27 +21,10 @@ Upgraded backend requirements
   ``djangocms-text-ckeditor`` that is ongoing to be deprecated;
 * Added disabled requirements and settings class to enable CKEditor 5 in CMS so it
   can easily be tested, this to prepare the future migration;
-
-Diskette fixes
-..............
-
-* Diskette configuration has been fixed from beta usage feedback so it should work
-  really well now even it is know for some issues with loading dump from a
-  production deployment. But loading locally a downloaded dump should be a proper
-  workaround for now;
-
-Improved project security
-.........................
-
-* The following settings ``SESSION_COOKIE_SECURE``,
-  ``SESSION_EXPIRE_AT_BROWSER_CLOSE``, ``CSRF_COOKIE_SECURE`` have been turned on
-  in production settings;
-* Setting ``AUTH_PASSWORD_VALIDATORS`` now uses the strongest builtin validators;
-* Added ``django-two-factor-auth`` and enabled it on default;
-* Added ``django-axes`` and enabled it on default;
+* 'Django Icomoon' because it is incompatible and seems useless now;
 
 Fobi removal and Request form as a workaround
-.............................................
+---------------------------------------------
 
 * Added a new internal application ``request_form`` to implement a basic request
   form to cover the basic need of a contact form since Fobi has been removed.
@@ -50,8 +33,26 @@ Fobi removal and Request form as a workaround
   update its initial migration before enable application in your project;
 * Removed everything about Fobi that is incompatible and unmaintained;
 
+Diskette fixes
+--------------
+
+* Diskette configuration has been fixed from beta usage feedback so it should work
+  really well now even it is know for some issues with loading dump from a
+  production deployment. But loading locally a downloaded dump should be a proper
+  workaround for now;
+
+Improved project security
+-------------------------
+
+* The following settings ``SESSION_COOKIE_SECURE``,
+  ``SESSION_EXPIRE_AT_BROWSER_CLOSE``, ``CSRF_COOKIE_SECURE`` have been turned on
+  in production settings;
+* Setting ``AUTH_PASSWORD_VALIDATORS`` now uses the strongest builtin validators;
+* Added ``django-two-factor-auth`` and enabled it on default;
+* Added ``django-axes`` and enabled it on default;
+
 Django Recaptcha enabled again
-..............................
+------------------------------
 
 * Restored django-recaptcha (actually only used from Request form) in last version
   and using its invisible mode widget therefore there is no checkbox to check,
@@ -61,7 +62,7 @@ Django Recaptcha enabled again
 * Removed old useless custom django-recaptcha templates;
 
 Upgraded frontend requirements
-..............................
+------------------------------
 
 * Upgraded to Bootstrap 5.3.3 and Webpack 5.91.0;
 * Moved from 'node-sass' compiler to 'sass-embedded' 1.79.0. The first is
@@ -69,7 +70,7 @@ Upgraded frontend requirements
   faster that the simple 'sass' compiler);
 
 Update Sass sources for last Bootstrap and Sass
-...............................................
+-----------------------------------------------
 
 * Added Bootstrap color toggler menu;
 * Silented annoying warnings from Sass compiler against Bootstrap until it fixed
@@ -81,7 +82,7 @@ Update Sass sources for last Bootstrap and Sass
   Bootstrap 5.3.3;
 
 Makefile improvement
-....................
+--------------------
 
 * Added "Dependency comb" to toolbox and add its Makefile task ``check-comb``;
 * Renamed Makefile task ``black-check`` to ``check-black``;
@@ -89,7 +90,7 @@ Makefile improvement
 * Updated Makefile parser to implement sections;
 
 Various
-.......
+-------
 
 * Added custom "Lotus" admin stylesheet to fix compatibility issues with
   "djangocms-admin-style";
@@ -98,7 +99,7 @@ Various
 
 
 Version 0.3.13 - 2024/09/28
----------------------------
+***************************
 
 Internal Bireli changes
     * Changed Pytest command option to adopt the right modest verbose options;
@@ -121,7 +122,7 @@ Project template changes
 
 
 Version 0.3.12 - 2024/04/24
----------------------------
+***************************
 
 Internal Bireli changes
     None.
@@ -157,7 +158,7 @@ Project template changes
 
 
 Version 0.3.11 - 2024/01/09
----------------------------
+***************************
 
 Internal Bireli changes
     * Added some minor improvements about localization and install documentations;
@@ -186,7 +187,7 @@ Project template changes
 
 
 Version 0.3.10 - 2023/12/04
----------------------------
+***************************
 
 Internal Bireli changes
     * Upgraded to cookiecutter>=2.3.0;
@@ -215,7 +216,7 @@ Project template changes
 
 
 Version 0.3.9 - 2023/08/18
---------------------------
+**************************
 
 Internal Bireli changes
     * Updated ``.readthedocs.yml`` file to follow service deprecations changes;
@@ -225,7 +226,7 @@ Project template changes
 
 
 Version 0.3.8 - 2023/08/01
---------------------------
+**************************
 
 Internal Bireli changes
     * Improved documentation:
@@ -252,7 +253,7 @@ Project template changes
 
 
 Version 0.3.7 - 2023/06/06
---------------------------
+**************************
 
 Internal Bireli changes
     * Added two new options to ``cookiecutter.json`` to ask for default language and if
@@ -277,7 +278,7 @@ Project template changes
 
 
 Version 0.3.6 - 2023/05/22
---------------------------
+**************************
 
 Internal Bireli changes
     * Added *Basic requirements* new line about ``libcairo2`` in install documentation
@@ -303,7 +304,7 @@ Project template changes
 
 
 Version 0.3.5 - 2023/04/28
---------------------------
+**************************
 
 Internal Bireli changes
     None
@@ -324,7 +325,7 @@ Project template changes
 
 
 Version 0.3.4 - 2023/03/28
---------------------------
+**************************
 
 Internal Bireli changes
     * Continued to improve documentation;
@@ -353,7 +354,7 @@ Project template changes
 
 
 Version 0.3.3 - 2023/02/06
---------------------------
+**************************
 
 Internal Bireli changes
     None
@@ -380,7 +381,7 @@ Project template changes
 
 
 Version 0.3.2 - 2023/01/30
---------------------------
+**************************
 
 * Started this history changelog;
 * Started documentation;
