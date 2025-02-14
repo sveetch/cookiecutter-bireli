@@ -127,7 +127,7 @@ clean-var:
 	rm -Rf var
 .PHONY: clean-var
 
-clean-backend-install:
+clean-backend-install: clean-pycache
 	@echo ""
 	@printf "$(FORMATBLUE)$(FORMATBOLD)---> Cleaning backend install <---$(FORMATRESET)\n"
 	@echo ""

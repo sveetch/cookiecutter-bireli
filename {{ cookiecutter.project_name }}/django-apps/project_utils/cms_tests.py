@@ -14,6 +14,19 @@ def cms_page_create_helper(title, template, author, language=None, reverse_id=No
     Since DjangoCMS 4 has hardly leveled up the way to programmatically create a page
     and publish it, we need some helper around their programmatic API (sigh).
 
+    .. Note::
+        Currently i don't know how to publish page when "djangocms_versioning" is not
+        installed, it may even be automatically published since there is no version.
+        It seems a very possible behavior because from tests the plugin render is
+        working without versionning.
+
+    .. Todo::
+        It seems very possible to include also the content insertion with plugins. It
+        would be a dict for placeholder slot containing a list of dict where each item
+        describe a plugin content to insert. Or we can add this in another function
+        that would use this one to create page and then implement the plugin insertion
+        per slot features.
+
     Arguments:
         title (string): Page content title.
         template (string): Page content template

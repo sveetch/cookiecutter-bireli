@@ -15,6 +15,7 @@ class CmsDefinitions(EnabledApplicationMarker):
                     "comments": "django CMS",
                     "natural_foreign": True,
                     "models": "cms",
+                    "use_base_manager": True,
                 }
             ],
             [
