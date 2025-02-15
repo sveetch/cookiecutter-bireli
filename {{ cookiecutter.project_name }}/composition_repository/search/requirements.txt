@@ -1,0 +1,2 @@
+whoosh-reloaded>=2.7.5
+django-haystack>=3.3.0
