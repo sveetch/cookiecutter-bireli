@@ -4,6 +4,19 @@
 History
 =======
 
+Development
+***********
+
+* Upgraded Diskette to version 0.5.0;
+* Update diskette configuration for DjangoCMS to fix issue with DjangoCMS4 default
+  manager that drops unpublished content that will to be loaded;
+* Added djangocms-lotus requirement to enable the CMS plugin for Lotus;
+* Enabled again djangocms-snippet since its version 5.0.0 is compatible again;
+* Changed ``package.json`` from frontend to have a fully slugified package name;
+* Added datetime on default Diskette dump filename for admin but forced it to
+  ``diskette_data_storages.tar.gz``` in Makefile tasks so they are compatible;
+
+
 Version 0.4.0 - 2025/01/01
 **************************
 

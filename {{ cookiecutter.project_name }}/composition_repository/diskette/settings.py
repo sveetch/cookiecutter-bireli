@@ -14,7 +14,7 @@ class DisketteSettings(DisketteDefaultSettings, EnabledApplicationMarker):
     DISKETTE_STORAGES_EXCLUDES = ["cache/*"]
 
     # Filename for dump tarball file.
-    DISKETTE_DUMP_FILENAME = "diskette{features}.tar.gz"
+    DISKETTE_DUMP_FILENAME = "diskette{features}_{date}.tar.gz"
 
     @classmethod
     def setup(cls):

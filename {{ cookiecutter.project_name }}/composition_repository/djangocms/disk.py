@@ -34,6 +34,30 @@ class CmsDefinitions(EnabledApplicationMarker):
                     "models": "djangocms_text",
                 }
             ],
+            [
+                "djangocms_versioning",
+                {
+                    "comments": "DjangoCMS versionning",
+                    "natural_foreign": True,
+                    "models": "djangocms_versioning",
+                }
+            ],
+            [
+                "djangocms_alias",
+                {
+                    "comments": "DjangoCMS aliases",
+                    "natural_foreign": True,
+                    "models": "djangocms_alias",
+                }
+            ],
+            [
+                "djangocms_snippet",
+                {
+                    "comments": "Snippets",
+                    "natural_foreign": True,
+                    "models": "djangocms_snippet",
+                }
+            ],
             # NOTE: Uncomment this block if you enabled Request form from composer
             # [
             #     "request_form",
@@ -51,14 +75,6 @@ class CmsDefinitions(EnabledApplicationMarker):
             #         "comments": "Djangocms_Picture",
             #         "natural_foreign": True,
             #         "models": "djangocms_picture",
-            #     }
-            # ],
-            # [
-            #     "djangocms_snippet",
-            #     {
-            #         "comments": "Snippets",
-            #         "natural_foreign": True,
-            #         "models": "djangocms_snippet",
             #     }
             # ],
         ]

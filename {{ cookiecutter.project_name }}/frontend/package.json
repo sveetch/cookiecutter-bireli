@@ -1,5 +1,5 @@
 {
-    "name": "{{ cookiecutter.project_name }} frontend",
+    "name": "{{ cookiecutter.project_name }}_frontend",
     "version": "{{ cookiecutter.__version }}",
     "description": "The project frontend stack.",
     "author": "David THENON <sveetch@gmail.com>",

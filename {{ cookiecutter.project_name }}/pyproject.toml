@@ -49,6 +49,7 @@ collection = [
     "request_form",
     "djangocms",
     "cmsplugin_blocks",
+    "djangocms_lotus",
     "project_sitemaps",
     "axes",
     "two_factor_auth",

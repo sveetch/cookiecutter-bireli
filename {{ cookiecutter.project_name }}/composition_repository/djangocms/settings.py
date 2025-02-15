@@ -56,8 +56,7 @@ class CmsBaseSettings(EnabledApplicationMarker):
             "sekizai",
             "djangocms_alias",
             "djangocms_versioning",
-            # "djangocms_picture",
-            # "djangocms_snippet",
+            "djangocms_snippet",
         ])
 
         # Add CMS machinary
