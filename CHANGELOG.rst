@@ -7,15 +7,11 @@ History
 Development
 ***********
 
-* Upgraded Diskette to version 0.5.0;
-* Update diskette configuration for DjangoCMS to fix issue with DjangoCMS4 default
-  manager that drops unpublished content that will to be loaded;
+Backend requirement changes
+---------------------------
+
 * Added 'djangocms-lotus' requirement to enable the CMS plugin for Lotus;
 * Enabled again 'djangocms-snippet' since its version 5.0.0 is compatible again;
-* Changed ``package.json`` from frontend to have a fully slugified package name;
-* Added datetime on default Diskette dump filename for admin but forced it to
-  ``diskette_data_storages.tar.gz``` in Makefile tasks so they are compatible;
-* Moved Webpack manifest path into ``parts/webpack/``;
 * Added composition application ``search`` which configures django-haystack with
   'Whoosh' backend ready to implement a search engine. However the indexes, form and
   view are still to be implemented;
@@ -23,6 +19,21 @@ Development
   'django-import-export'. However there is actually no shipped ressources for any
   applications, those ones which already package them will be available but you will
   have to make ressource modules for the other applications;
+* Upgraded Diskette to version 0.5.0;
+
+Diskette fixes
+--------------
+
+* Update diskette configuration for DjangoCMS to fix issue with DjangoCMS4 default
+  manager that drops unpublished content in dump;
+* Added datetime on default Diskette dump filename for admin but forced it to
+  ``diskette_data_storages.tar.gz``` in Makefile tasks so they are compatible;
+
+Minor frontend changes
+----------------------
+
+* Changed ``package.json`` from frontend to have a fully slugified package name;
+* Moved Webpack manifest path into ``parts/webpack/``;
 
 
 Version 0.4.0 - 2025/01/01

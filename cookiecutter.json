@@ -19,7 +19,7 @@
 
     "__version": "{% if cookiecutter.versioning == 'natural' %}0.1.0{% else %}{% now 'local', '%y.%W.0' %}{% endif %}",
 
-    "_bireli_version": "0.4.1-pre.5",
+    "_bireli_version": "0.5.0-pre.6",
     "_bireli_newapp_version": "0.1.1",
     "_python_version": ">=3.11",
     "_django_version": ">=5.0,<5.1",
