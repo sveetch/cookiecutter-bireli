@@ -16,9 +16,13 @@ Development
 * Added datetime on default Diskette dump filename for admin but forced it to
   ``diskette_data_storages.tar.gz``` in Makefile tasks so they are compatible;
 * Moved Webpack manifest path into ``parts/webpack/``;
-* Added composition application ``search`` that configure django-haystack with Whoosh
-  backend ready to implement a search engine. However the indexes, form and view are
-  still to be implemented;
+* Added composition application ``search`` which configures django-haystack with
+  'Whoosh' backend ready to implement a search engine. However the indexes, form and
+  view are still to be implemented;
+* Added composition application ``import_export`` which configures
+  'django-import-export'. However there is actually no shipped ressources for any
+  applications, those ones which already package them will be available but you will
+  have to make ressource modules for the other applications;
 
 
 Version 0.4.0 - 2025/01/01
