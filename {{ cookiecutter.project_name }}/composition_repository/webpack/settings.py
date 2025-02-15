@@ -33,7 +33,7 @@ class WebpackSettings(EnabledApplicationMarker):
                     environ_name="WEBPACK_CACHE",
                 ),
                 "STATS_FILE": (
-                    cls.PARTS_PATH / "webpack-stats.json"
+                    cls.PARTS_PATH / "webpack" / "webpack-stats.json"
                 ),
                 "POLL_INTERVAL": 0.1,
                 "IGNORE": [r".+\.hot-update.js", r".+\.map"],

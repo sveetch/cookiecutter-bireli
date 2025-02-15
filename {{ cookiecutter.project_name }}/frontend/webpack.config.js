@@ -45,7 +45,7 @@ module.exports = {
     // Enabled webpack plugins with their config
     plugins: [
         new BundleTracker({
-            path: Path.join(__dirname, '../parts'),
+            path: Path.join(__dirname, '../parts/webpack'),
             filename: 'webpack-stats.json'
         })
     ],

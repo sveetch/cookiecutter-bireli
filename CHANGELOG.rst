@@ -15,7 +15,7 @@ Development
 * Changed ``package.json`` from frontend to have a fully slugified package name;
 * Added datetime on default Diskette dump filename for admin but forced it to
   ``diskette_data_storages.tar.gz``` in Makefile tasks so they are compatible;
-
+* Moved Webpack manifest path into ``parts/webpack/``;
 
 Version 0.4.0 - 2025/01/01
 **************************
