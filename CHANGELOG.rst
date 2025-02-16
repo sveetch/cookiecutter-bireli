@@ -12,13 +12,16 @@ Backend requirement changes
 
 * Added 'djangocms-lotus' requirement to enable the CMS plugin for Lotus;
 * Enabled again 'djangocms-snippet' since its version 5.0.0 is compatible again;
-* Added composition application ``search`` which configures django-haystack with
+* Added composition application ``search`` which configures 'django-haystack' with
   'Whoosh' backend ready to implement a search engine. However the indexes, form and
   view are still to be implemented;
 * Added composition application ``import_export`` which configures
   'django-import-export'. However there is actually no shipped ressources for any
   applications, those ones which already package them will be available but you will
   have to make ressource modules for the other applications;
+* Added composition application ``api`` which configures 'djangorestframework' with
+  'drf-spectacular' (to improve the API browser). Currently there is only endpoints
+  from Lotus since other applications does not have any;
 * Upgraded Diskette to version 0.5.0;
 
 Diskette fixes

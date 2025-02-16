@@ -3,9 +3,9 @@ from django.urls import include, path
 from project_composer.marker import EnabledApplicationMarker
 
 
-class LotusUrls(EnabledApplicationMarker):
+class ApiUrls(EnabledApplicationMarker):
     """
-    Lotus urls
+    API urls
     """
 
     def load_urlpatterns(self, urlpatterns):
@@ -14,6 +14,6 @@ class LotusUrls(EnabledApplicationMarker):
         """
         urlpatterns = super().load_urlpatterns(urlpatterns)
 
-        return i18n_patterns(
-            path("blog/", include("lotus.urls")),
+        return path(
+            path("api/", include("project_api.urls")),
         ) + urlpatterns
