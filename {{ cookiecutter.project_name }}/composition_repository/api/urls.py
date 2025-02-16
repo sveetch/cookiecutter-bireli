@@ -1,5 +1,5 @@
-from django.conf.urls.i18n import i18n_patterns
 from django.urls import include, path
+
 from project_composer.marker import EnabledApplicationMarker
 
 
@@ -14,6 +14,6 @@ class ApiUrls(EnabledApplicationMarker):
         """
         urlpatterns = super().load_urlpatterns(urlpatterns)
 
-        return path(
+        return [
             path("api/", include("project_api.urls")),
-        ) + urlpatterns
+        ] + urlpatterns

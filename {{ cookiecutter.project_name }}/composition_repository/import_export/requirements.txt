@@ -1,1 +1,1 @@
-django-import-export[cli,json,xlsx]>=3.4.0,<4.0.0
+django-import-export[cli,xlsx]>=4.3.0,<4.4.0

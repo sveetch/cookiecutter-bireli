@@ -1,7 +1,7 @@
 from project_composer.marker import EnabledApplicationMarker
 
 
-class DisketteSettings(EnabledApplicationMarker):
+class SearchSettings(EnabledApplicationMarker):
     """
     Django Haystack settings
     """
@@ -22,4 +22,3 @@ class DisketteSettings(EnabledApplicationMarker):
         cls.INSTALLED_APPS.extend([
             "haystack",
         ])
-

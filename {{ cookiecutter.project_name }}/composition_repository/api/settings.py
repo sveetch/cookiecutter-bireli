@@ -1,11 +1,9 @@
 from project_composer.marker import EnabledApplicationMarker
 
-from import_export.formats.base_formats import CSV, JSON, XLSX
 
-
-class DisketteSettings(EnabledApplicationMarker):
+class ApiSettings(EnabledApplicationMarker):
     """
-    Django import export settings
+    Project API settings
     """
 
     REST_FRAMEWORK = {
@@ -18,7 +16,8 @@ class DisketteSettings(EnabledApplicationMarker):
             # "rest_framework.permissions.DjangoModelPermissions",
         ],
         "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
-        "PAGE_SIZE": 20
+        "PAGE_SIZE": 20,
+        "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     }
 
     SPECTACULAR_SETTINGS = {
@@ -39,4 +38,5 @@ class DisketteSettings(EnabledApplicationMarker):
             "rest_framework",
             "drf_spectacular",
             "drf_spectacular_sidecar",
+            "project_api",
         ])
