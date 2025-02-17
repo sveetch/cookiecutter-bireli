@@ -23,4 +23,10 @@ Tasks
 
 Here is the help texts for all available Makefile tasks.
 
+.. Note::
+    Some tasks are *meta task* meaning they are gathering some other tasks like
+    ``install`` gathers  everything to boot project install then install backend and
+    frontend or ``clean`` gathers everything cleaning methods to fully reset (even data)
+    a project.
+
 .. include:: ../_static/makefile_help.rst

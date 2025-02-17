@@ -31,14 +31,15 @@ base.txt
 ********
 
 It contains the base project requirements. Don't write anything in it since it
-is generated from composer, all your changes will be lost definitively.
+is automatically generated and updated from ``requirements.txt`` files in applications
+from composer repository, see :ref:`project_architecture_composition` for more details.
 
 It is required by every context.
 
 development.txt
 ***************
 
-It contains for requirements used to run test and other quality check.
+It contains requirements used to run test and other quality check.
 
 It is required by environments that need to run tests and quality check.
 

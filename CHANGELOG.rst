@@ -7,22 +7,24 @@ History
 Development
 ***********
 
+A new release to bring new useful applications and some fixes.
+
 Backend requirement changes
 ---------------------------
 
-* Added 'djangocms-lotus' requirement to enable the CMS plugin for Lotus;
+* Added **djangocms-lotus** requirement to enable the CMS plugin for Lotus;
 * Enabled again 'djangocms-snippet' since its version 5.0.0 is compatible again;
-* Added composition application ``search`` which configures 'django-haystack' with
-  'Whoosh' backend ready to implement a search engine. However the indexes, form and
+* Added composition application ``search`` which configures **django-haystack** with
+  **Whoosh** backend ready to implement a search engine. However the indexes, form and
   view are still to be implemented;
 * Added composition application ``import_export`` which configures
-  'django-import-export'. However there is actually no shipped ressources for any
+  **django-import-export**. However there is actually no shipped ressources for any
   applications, those ones which already package them will be available but you will
   have to make ressource modules for the other applications;
-* Added composition application ``api`` which configures 'djangorestframework' with
-  'drf-spectacular' (to improve the API browser). Currently there is only endpoints
+* Added composition application ``api`` which configures **Django REST Framework** with
+  **drf-spectacular** (to improve the API browser). Currently there is only endpoints
   from Lotus since other applications does not have any;
-* Upgraded Diskette to version 0.5.0;
+* Upgraded **Diskette** to version 0.5.0;
 
 Diskette fixes
 --------------
@@ -32,15 +34,20 @@ Diskette fixes
 * Added datetime on default Diskette dump filename for admin but forced it to
   ``diskette_data_storages.tar.gz``` in Makefile tasks so they are compatible;
 
-Minor frontend changes
-----------------------
+Internal Bireli changes
+-----------------------
 
-* Changed ``package.json`` from frontend to have a fully slugified package name;
-* Moved Webpack manifest path into ``parts/webpack/``;
+* Improved *Backend* documentation;
+* Added a new docutils extension to get requirements from composer repository
+  applications;
+
 
 
 Version 0.4.0 - 2025/01/01
 **************************
+
+The main purpose of this new release is to upgrade to Django 5, DjangoCMS 4,
+Bootstrap 5.3.3 and Dart Sass embedded.
 
 Upgraded backend requirements
 -----------------------------

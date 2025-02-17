@@ -44,6 +44,7 @@ Links
 
 * Read the documentation on `Read the docs <https://cookiecutter-bireli.readthedocs.io/>`_;
 * Clone it on its `Github repository <https://github.com/sveetch/cookiecutter-bireli>`_;
+* Demonstration generated with all options on `Sample repository <https://github.com/sveetch/bireli-sample>`_;
 
 
 Credits

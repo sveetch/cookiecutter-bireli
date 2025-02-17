@@ -10,10 +10,13 @@ Settings
 ========
 
 Project settings are defined using the `django-configurations`_ way, it means within
-a class. There is no monolithic file which would hold every settings.
+classes. There is no monolithic file which holds every settings.
 
-There is two setting file kinds:
+.. Hint::
+    It is best to read :ref:`intro_project_architecture` before to better
+    understand involved paths.
 
+There are three kind of setting files.
 
 .. _project_backend_app_settings:
 

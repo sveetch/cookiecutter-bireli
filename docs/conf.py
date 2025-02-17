@@ -50,6 +50,7 @@ release = version
 # ones.
 extensions = [
     "stack",
+    "composed",
     "sphinx.ext.autodoc",
     "sphinx.ext.viewcode",
     "sphinx.ext.napoleon",
