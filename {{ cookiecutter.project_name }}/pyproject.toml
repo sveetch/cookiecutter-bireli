@@ -53,7 +53,8 @@ collection = [
     "project_sitemaps",
     "axes",
     "two_factor_auth",
-    "diskette",
+    "diskette",{% if cookiecutter.api_enabled %}
+    "api",{% endif %}
 ]
 repository = "composition_repository"
 syspaths = [

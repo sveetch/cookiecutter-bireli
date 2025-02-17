@@ -1,3 +1,15 @@
+"""
+A script to perform a health checking about Project composer configuration.
+
+It will try to collect every processor from every enabled application, search for
+possible misconfiguration and output some debug informations.
+
+This should only involves Project composer since commonly processors should not include
+any import of Django or related Django applications.
+
+There is no available argument to launch this script, it only stands on configuration
+from ``pyproject.toml``.
+"""
 import logging
 
 from diskette.contrib.composer.processors import DisketteDefinitionsProcessor

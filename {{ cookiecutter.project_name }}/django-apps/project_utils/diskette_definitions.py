@@ -1,3 +1,13 @@
+"""
+A script to load every Diskette definitions file ``disk.py`` from enabled application
+in composer repository.
+
+This does not involves Django, only Project composer and Diskette except if a
+diskette definition directly includes usage of Django (which it should not).
+
+There is no available argument to launch this script, it only stands on configuration
+from ``pyproject.toml``.
+"""
 import logging
 import json
 from pathlib import Path

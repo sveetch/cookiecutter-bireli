@@ -40,6 +40,8 @@ Internal Bireli changes
 * Improved *Backend* documentation;
 * Added a new docutils extension to get requirements from composer repository
   applications;
+* Added new builder option ``api_enabled`` to enable or not the shipped API stuff. On
+  default the API is disabled;
 
 
 

@@ -6,6 +6,7 @@
     "language": ["de", "en", "es", "fr", "it", "ja", "zh"],
     "multiple_languages": true,
     "init_git_repository": false,
+    "api_enabled": false,
 
     "__prompts__": {
         "project_title": "Input your full project name",
@@ -14,12 +15,13 @@
         "versioning": "What kind of versionning will you use",
         "language": "Default project language",
         "init_git_repository": "Do you want to init a GIT repository with an initial commit?",
-        "multiple_languages": "Enable internationalization with I18N"
+        "multiple_languages": "Enable internationalization with I18N",
+        "api_enabled": "Do you need an API with Django REST Framework?"
     },
 
     "__version": "{% if cookiecutter.versioning == 'natural' %}0.1.0{% else %}{% now 'local', '%y.%W.0' %}{% endif %}",
 
-    "_bireli_version": "0.5.0-pre.9",
+    "_bireli_version": "0.5.0-pre.10",
     "_bireli_newapp_version": "0.1.1",
     "_python_version": ">=3.11",
     "_django_version": ">=5.0,<5.1",

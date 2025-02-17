@@ -1,12 +1,17 @@
 """
-This script just return a list of elligible directories as Django application modules.
+This script returns a list of elligible Python module directories.
 
-Basically it is to reproduce behavior of: ::
+Basically it is to reproduce behavior of ``ls``: ::
 
     ls -I '__pycache__' -I '*.py' django-apps
 
+It is mostly used to feed application list to check with Django migration (to avoid
+checking external application libraries).
+
 This is because some 'ls' arguments are not compatible on all systems like BSD or
 MacOS.
+
+This is pure Python without any library usage.
 """
 
 

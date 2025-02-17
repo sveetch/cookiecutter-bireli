@@ -172,6 +172,10 @@ class PostGenerationHookManager:
         won't block process. Developer should maintain properly given path list and
         avoid to forget unexisting files.
 
+        .. Note::
+            Given path must be relative to currently building project directory,
+            meaning inside ``{{ cookiecutter.project_name }}``.
+
         Arguments:
             title (string): A title to announce task.
             items (list): List of path string for all files and directories to remove.
@@ -207,6 +211,15 @@ if __name__ == "__main__":
 
     # Apply possible symbolic links
     manager.symlink_sources(context["_apply_symlink_to"])
+
+    # Remove files related to API, the composer app is still keeped
+    if not context["api_enabled"]:
+        manager.cleaning_files(
+            "Removing API files",
+            [
+                "django-apps/project_api/",
+            ]
+        )
 
     # Initialize GIT repository, usually the last task to use
     if context["init_git_repository"]:
