@@ -4,8 +4,8 @@
 History
 =======
 
-Development
-***********
+Version 0.5.0 - 2025/02/18
+**************************
 
 A new release to bring new useful applications and some fixes.
 
