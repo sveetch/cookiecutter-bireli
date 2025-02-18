@@ -42,7 +42,7 @@ Internal Bireli changes
   applications;
 * Added new builder option ``api_enabled`` to enable or not the shipped API stuff. On
   default the API is disabled;
-
+* Improved Tox configuration to be more DRY with environment variables for options;
 
 
 Version 0.4.0 - 2025/01/01
