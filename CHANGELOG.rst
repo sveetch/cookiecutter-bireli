@@ -4,6 +4,25 @@
 History
 =======
 
+Development
+***********
+
+Minor release for upgrades.
+
+Upgraded backend requirements
+-----------------------------
+
+* django-axes to 7.1.x
+* djangorestframework to 3.16.x and relaxed drf-spectacular
+* django-phonenumber-field to 8.1.x
+
+
+Upgraded frontend requirements
+------------------------------
+
+* Bootstrap to 5.3.5
+
+
 Version 0.5.0 - 2025/02/18
 **************************
 
