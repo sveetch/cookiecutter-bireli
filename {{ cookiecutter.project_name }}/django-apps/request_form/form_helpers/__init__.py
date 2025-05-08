@@ -7,15 +7,21 @@ from crispy_forms.layout import Submit
 
 class RequestDefaultFormHelper(FormHelper):
     """
-    A crispy form class helper used as default form layout helper.
+    Default Crispy form layout.
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        self.attrs = {"novalidate": ""}
         self.form_action = reverse("request_form:request-form")
-        self.form_tag = True
+        self.form_class = "needs-validation"
         self.form_id = "request-form"
+        self.form_tag = True
 
         self.add_input(
-            Submit("save", _("Envoyer"), css_id="request-form-submit"),
+            Submit(
+                "request-form-submit",
+                _("Submit"),
+                css_id="id_request-form-submit"
+            )
         )

@@ -8,6 +8,7 @@
 .. _django-crispy-forms: https://django-crispy-forms.readthedocs.io/
 .. _Diskette: https://diskette.readthedocs.io/
 .. _django-import-export: https://django-import-export.readthedocs.io/
+.. _reCAPTCHA: https://developers.google.com/recaptcha
 .. _django-recaptcha: https://github.com/django-recaptcha/django-recaptcha
 .. _Django Haystack: https://django-haystack.readthedocs.io/
 .. _sitemap.xml: https://www.sitemaps.org/protocol.html
@@ -60,6 +61,8 @@ Here below is a resume about the main applications.
     from these applications. The effective installed versions can vary depending
     specifiers.
 
+.. _project_backend_api:
+
 API
 ---
 
@@ -67,11 +70,13 @@ If you enabled the composed application ``api``, you will have a project API wit
 `Django REST Framework`_ that you can browse on ``/api/`` or ``/api/search/redoc/``
 or ``/api/schema/swagger-ui/``.
 
-Currently it only includes API endpoints from Lotus but you can gathers applications
-from other applications.
+Currently it only includes API endpoints from :ref:`project_backend_blog` but you can
+gather endpoints from other applications.
 
 .. composer-app-requirements:: api
    :title: Requirements
+
+.. _project_backend_blog:
 
 Blog
 ----
@@ -107,9 +112,9 @@ from various other applications. It is enabled with its Bootstrap5 plugin.
 Backup and restore
 ------------------
 
-`Diskette`_ is the data and media manager that can dump data using the native
-`Django fixtures <https://docs.djangoproject.com/en/stable/topics/db/fixtures/>`_
-feature.
+`Diskette`_ is the data and media manager that can dump and load data using
+`Django fixtures <https://docs.djangoproject.com/en/stable/topics/db/fixtures/>`_ which
+is a native Django feature.
 
 .. composer-app-requirements:: diskette
    :title: Requirements
@@ -128,11 +133,63 @@ but you can add some for your applications.
 .. composer-app-requirements:: import_export
    :title: Requirements
 
+.. _project_backend_recaptcha:
+
+ReCaptcha
+---------
+
+`reCAPTCHA`_ is the included captcha solution for the project applications. It is
+implemented with `django-recaptcha`_ so you commonly only have to use its Django field
+or Django widget in your forms.
+
+The recommended version of `reCAPTCHA`_ is the "V3" which needs a valid API key even in
+local environment, opposed to the "V2" that supported generic development key.
+
+.. Warning::
+    You must correctly defines valid API key in
+    ``composition_repository/recaptcha/settings.py`` before to be able to use a form
+    with a captcha.
+
+Your API key need to be allowed for each host it will be runned on, see the following
+link for explanations:
+
+https://developers.google.com/recaptcha/docs/domain_validation
+
+Commonly you will allow ``localhost``, the production host domain and development
+host domain.
+
+.. Hint::
+    Instead you can create a generic API key for you own usages which only allow for
+    ``localhost`` (and possible other specific developement hostnames) so you can share
+    it with your projects and then another API key dedicated to the production for
+    each project.
+
+    The generic key should be defined in the :ref:`project_backend_local_settings` and
+    once a project is ready to be deployed on internet you will defines the production
+    key in the settings from ``recaptcha`` in composition repository.
+
+.. Note::
+    API key are created for a specific recaptcha version so trying to use a key created
+    for V2 with v3 or vice versa will probably not work.
+
+.. composer-app-requirements:: recaptcha
+   :title: Requirements
+
 Request form
 ------------
 
 A basic request form as an internal application that you can adapt to your needs.
-It use `django-recaptcha`_ to include a Captcha field and include a RGPD check.
+It uses :ref:`project_backend_recaptcha` to include a captcha field and it also includes
+a RGPD checkbox.
+
+In addition to the common request form behaviors there is some minor features:
+
+* Submitted email adresses are checked and can lead to an error if they match a pattern
+  to reject, on default an email from well known russian providers are rejected;
+* There is a subject field that can lead to different recipients depending the selected
+  subject. On default there is no subject and the field is hidden. It will start to
+  show the field once there is at least two different subjects. Subjects can be
+  defined in app settings;
 
 .. composer-app-requirements:: request_form
    :title: Requirements

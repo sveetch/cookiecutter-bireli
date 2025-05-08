@@ -20,11 +20,10 @@ class RequestFormSettings(EnabledApplicationMarker):
     # If false, request form data are not saved in database when form succeed.
     REQUEST_SAVE_TO_DB = True
 
-    # Crispy form layout class
-    REQUEST_FORM_HELPER = "request_form.form_helpers.layouts.RequestFormDefaultLayout"
+    # Custom crispy form layout class
+    REQUEST_FORM_HELPER = None
 
-    # All emails that end with these extensions
-    #  are not allowed to submit forms by email
+    # All emails that end with these TLDs are considered as errors.
     REQUEST_FORM_BANNED_TLD = values.Value(
         (".ru", "qq.com"),
         environ_name="REQUEST_FORM_BANNED_TLD",
@@ -37,13 +36,16 @@ class RequestFormSettings(EnabledApplicationMarker):
 
     # Default email recipient when a subject choice is not matched from
     # 'REQUEST_SUBJECTS'. If this setting is setted to an empty value
-    # no email will be sent even if it could have matched one from
-    # ``REQUEST_SUBJECTS``
+    # no email will be sent even if there is elligible email from ``REQUEST_SUBJECTS``
     REQUEST_MAIL_DEFAULT_RECIPIENTS = values.ListValue(
-        ["contact+default@emencia.com"],
+        ["contact+default@yourhost"],
         separator=",",
         environ_name="REQUEST_MAIL_DEFAULT_RECIPIENTS"
     )
+
+    # If true the captcha field won't be included in form, this is mostly for usage
+    # in tests and only useful with Recaptcha V3 that does not support development keys
+    REQUEST_FORM_DISABLE_CAPTCHA = False
 
     @classmethod
     def setup(cls):
@@ -64,6 +66,6 @@ class RequestFormSettings(EnabledApplicationMarker):
         cls.REQUEST_SUBJECTS = {
             # "ENTREPRISE": {
             #     "label": "Entreprise",
-            #     "recipients": ["contact+entreprise@emencia.com"],
+            #     "recipients": ["contact+entreprise@yourhost"],
             # },
         }

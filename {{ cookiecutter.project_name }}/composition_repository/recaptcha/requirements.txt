@@ -1,1 +1,1 @@
-django-recaptcha>=4.0.0,<4.1.0
+django-recaptcha>=4.1.0,<4.2.0

@@ -15,12 +15,31 @@ Upgraded backend requirements
 * django-axes to 7.1.x
 * djangorestframework to 3.16.x and relaxed drf-spectacular
 * django-phonenumber-field to 8.1.x
+* django-recaptcha to 4.1.x
 
 
 Upgraded frontend requirements
 ------------------------------
 
 * Bootstrap to 5.3.5
+
+
+Moved to reCaptcha V3 in Request form
+-------------------------------------
+
+We have moved usage of reCaptcha from V2 to V3 in request form because V3 is now the
+recommended version and it fixes a bug that prevented to have multiple forms using
+reCAPTCHA in the same page.
+
+You may still be able to use V2 in your forms (and request form by the way) since it is
+just a matter of using the right form widget (``ReCaptchaV2`` or ``ReCaptchaV3``). Note
+that the widget argument ``action`` is not supported in V2.
+
+Be aware that V3 does not support the generic development keys from Google so you now
+will need to get valid keys before using any form with reCaptcha V3 (so at least the
+request form).
+
+See Bireli documentation for details about reCaptcha.
 
 
 Version 0.5.0 - 2025/02/18

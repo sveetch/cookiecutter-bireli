@@ -46,7 +46,6 @@ def test_empty(db, settings):
         "email": ["This field is required."],
         "message": ["This field is required."],
         "data_confidentiality_policy": ["You must accept data confidentiality policy."],
-        "captcha": ["This field is required."],
     }
     assert RequestModel.objects.count() == 0
 
@@ -63,8 +62,6 @@ def test_invalid(db, settings):
         "email": "plop@mail.ru",
         "message": "Lorem Самовольная ipsum",
         "data_confidentiality_policy": False,
-        "captcha_0": "foo",
-        "captcha_1": "bar",
     })
 
     validation = f.is_valid()
@@ -74,11 +71,14 @@ def test_invalid(db, settings):
     # print(json.dumps(flatten_form_errors(f), indent=4))
 
     assert flatten_form_errors(f) == {
-        "phone": ["The phone number entered is not valid."],
+        # "phone": ["The phone number entered is not valid."],
+        "phone": [(
+            "Enter a valid phone number (e.g. 01 23 45 67 89) or a number with an "
+            "international call prefix."
+        )],
         "email": ["This email address isn't allowed."],
         "message": ["Cyrillic characters are not allowed."],
         "data_confidentiality_policy": ["You must accept data confidentiality policy."],
-        "captcha": ["This field is required."],
     }
 
 
@@ -98,7 +98,6 @@ def test_valid(client, db, mailoutbox, settings):
         "email": "ed@snowden.com",
         "message": "Hello, world!",
         "data_confidentiality_policy": True,
-        "g-recaptcha-response": "PASSED",
     }, request_ip_address="127.0.0.1")
     validation = f.is_valid()
     assert validation is True
@@ -142,7 +141,6 @@ def test_valid_no_email_sending(client, db, mailoutbox, settings):
         "email": "ed@snowden.com",
         "message": "Hello, world!",
         "data_confidentiality_policy": True,
-        "g-recaptcha-response": "PASSED",
     }, request_ip_address="127.0.0.1")
     validation = f.is_valid()
     assert validation is True
@@ -170,7 +168,6 @@ def test_valid_no_db_save(client, db, mailoutbox, settings):
         "email": "ed@snowden.com",
         "message": "Hello, world!",
         "data_confidentiality_policy": True,
-        "g-recaptcha-response": "PASSED",
     }, request_ip_address="127.0.0.1")
     validation = f.is_valid()
     assert validation is True

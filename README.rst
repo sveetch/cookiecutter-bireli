@@ -32,12 +32,14 @@ Features
 * Promote Test Driven Development with `Pytest`_;
 * Latest stable stack support;
 * Frontend assets built with Node.js and managed with Webpack;
-* Default shipped layout with Bootstrap5;
+* Default shipped layout with latest Bootstrap5;
 * Backend application architecture is modular through `Project composer`_;
 * Settings are managed with `django-configurations`_;
 * Internationalization and localization enabled;
-* Include a set of main applications (CMS, blog, form builder, etc..) pre-configured;
+* Include a set of main applications (CMS, blog, basic request form, captcha,
+  etc..) pre-configured;
 * A Makefile with every useful commands.
+
 
 Links
 *****

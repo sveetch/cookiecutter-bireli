@@ -10,7 +10,7 @@ from django.utils.module_loading import import_string
 from django.utils.translation import gettext_lazy as _
 
 from django_recaptcha.fields import ReCaptchaField
-from django_recaptcha.widgets import ReCaptchaV2Invisible
+from django_recaptcha.widgets import ReCaptchaV3
 
 from ..choices import get_subject_choices
 from ..models import RequestModel
@@ -36,7 +36,11 @@ class RequestForm(ModelForm):
     IP address syntax else the save will fail because of non null constraint on model
     field ``ip_address``.
     """
-    captcha = ReCaptchaField(widget=ReCaptchaV2Invisible)
+    captcha = (
+        None
+        if settings.REQUEST_FORM_DISABLE_CAPTCHA
+        else ReCaptchaField(widget=ReCaptchaV3(action="requestform"))
+    )
     data_confidentiality_policy = forms.BooleanField(
         required=True,
         error_messages={"required": _("You must accept data confidentiality policy.")},

@@ -19,6 +19,8 @@ class Test(ComposedProjectSettings):
     def setup(cls):
         super().setup()
 
+        # Created media from tests are done in another directory so it can be flushed
+        # without removing media from local development
         cls.MEDIA_ROOT = cls.VAR_PATH / "media-tests"
 
         # Specifically defines this here because we can not override it inside
@@ -38,6 +40,10 @@ class Test(ComposedProjectSettings):
         # Ensure english language is available
         if "en" not in [k for k, v in cls.LANGUAGES]:
             cls.LANGUAGES = cls.LANGUAGES + (("en", "English"),)
+
+        # Disable Recaptcha because the V3 does not support development keys and would
+        # make the tests to fail
+        cls.REQUEST_FORM_DISABLE_CAPTCHA = True
 
     @classmethod
     def post_setup(cls):
@@ -65,5 +71,6 @@ class Test(ComposedProjectSettings):
             ]
 
         # Force disabling error about Recaptcha API development keys
-        if "captcha.recaptcha_test_key_error" not in cls.SILENCED_SYSTEM_CHECKS:
-            cls.SILENCED_SYSTEM_CHECKS.append("captcha.recaptcha_test_key_error")
+        flag_name = "django_recaptcha.recaptcha_test_key_error"
+        if flag_name not in cls.SILENCED_SYSTEM_CHECKS:
+            cls.SILENCED_SYSTEM_CHECKS.append(flag_name)

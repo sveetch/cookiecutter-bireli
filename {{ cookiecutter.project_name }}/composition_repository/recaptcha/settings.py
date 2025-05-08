@@ -7,13 +7,12 @@ class RecaptchaSettings(EnabledApplicationMarker):
     """
     Django reCAPTCHA settings
     """
-    # These are API keys for localhost usage only, you must fill them right in
-    # integration and production settings
-    RECAPTCHA_PUBLIC_KEY = values.Value("6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI")
-    RECAPTCHA_PRIVATE_KEY = values.Value("6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe")
+    RECAPTCHA_PUBLIC_KEY = values.Value("publickey")
+    RECAPTCHA_PRIVATE_KEY = values.Value("secretkey")
 
-    # For secure site, all captcha request will be in https
-    # RECAPTCHA_USE_SSL = True
+    # On default the Captcha requests are done with HTTPS but you may try to use HTTP
+    # instead (this is not recommended).
+    # RECAPTCHA_USE_SSL = False
 
     @classmethod
     def setup(cls):

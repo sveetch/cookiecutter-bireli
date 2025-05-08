@@ -54,7 +54,6 @@ def test_post_valid(client, db, mailoutbox, settings):
         "email": "ed@snowden.com",
         "message": "Hello, world!",
         "data_confidentiality_policy": True,
-        "g-recaptcha-response": "PASSED",
     }
 
     response = client.post(
@@ -107,7 +106,6 @@ def test_post_valid_no_db_save(client, db, mailoutbox, settings):
         "email": "ed@snowden.com",
         "message": "Hello, world!",
         "data_confidentiality_policy": True,
-        "g-recaptcha-response": "PASSED",
     }
 
     response = client.post(
