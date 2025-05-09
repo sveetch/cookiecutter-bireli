@@ -7,15 +7,17 @@ History
 Development
 ***********
 
-Minor release for upgrades.
+Release for minor updates and improvements.
 
-Upgraded backend requirements
------------------------------
+Updated backend requirements
+----------------------------
 
-* django-axes to 7.1.x
-* djangorestframework to 3.16.x and relaxed drf-spectacular
-* django-phonenumber-field to 8.1.x
-* django-recaptcha to 4.1.x
+* Updated 'django-axes' to 7.1.x;
+* Updated 'djangorestframework' to 3.16.x and relaxed 'drf-spectacular';
+* Updated 'django-phonenumber-field' to 8.1.x;
+* Updated 'django-recaptcha' to 4.1.x;
+* Restored 'djangocms_picture' in 4.1.1 since it has been validated to work with
+  DjangoCMS 4;
 
 
 Upgraded frontend requirements
@@ -40,6 +42,13 @@ will need to get valid keys before using any form with reCaptcha V3 (so at least
 request form).
 
 See Bireli documentation for details about reCaptcha.
+
+Minor CSS improvements
+----------------------
+
+* New Sass module in ``generic/_image.scss`` to include some rules to support enabled
+  alignments for images with 'djangocms-picture';
+* Restored Sass stylesheet ``ckeditor.scss`` to have a better CKEditor experience again;
 
 
 Version 0.5.0 - 2025/02/18

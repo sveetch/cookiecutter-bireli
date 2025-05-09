@@ -110,15 +110,13 @@ class CmsCkeditor4Settings(EnabledApplicationMarker):
         # This is were you"ll put configuration for djangocms-text-ckeditor only
         cls.CKEDITOR_SETTINGS.update({
             "extraPlugins": "youtube,vimeo,codemirror",
+            # "extraPlugins": "image2,youtube,vimeo,codemirror",
             "removePlugins": "exportpdf,image,flash,stylesheetparser",
             "toolbar": "CMS",
             # The config for TextPlugin only
             "toolbar_CMS": [
                 ["Undo", "Redo"],
-                [
-                    # "cmsplugins", "-",
-                    "ShowBlocks"
-                ],
+                ["CMSPlugins", "-", "ShowBlocks"],
                 ["Format", "Styles"],
                 ["RemoveFormat"],
                 ["Maximize"],
@@ -127,6 +125,7 @@ class CmsCkeditor4Settings(EnabledApplicationMarker):
                 ["JustifyLeft", "JustifyCenter", "JustifyRight"],
                 ["Link", "Unlink"],
                 [
+                    # "Image",
                     "Youtube", "Vimeo", "-", "NumberedList", "BulletedList",
                     "-", "Table", "-", "CreateDiv", "HorizontalRule",
                 ],
@@ -138,7 +137,7 @@ class CmsCkeditor4Settings(EnabledApplicationMarker):
             # djangocms-text-ckeditor
             "toolbar_HTMLField": [
                 ["Undo", "Redo"],
-                ["ShowBlocks"],
+                ["CMSPlugins", "-", "ShowBlocks"],
                 ["Format", "Styles"],
                 ["RemoveFormat"],
                 ["Maximize"],
@@ -147,6 +146,7 @@ class CmsCkeditor4Settings(EnabledApplicationMarker):
                 ["JustifyLeft", "JustifyCenter", "JustifyRight"],
                 ["Link", "Unlink"],
                 [
+                    # "Image",
                     "Youtube", "Vimeo", "-", "NumberedList", "BulletedList",
                     "-", "Table", "-", "CreateDiv", "HorizontalRule",
                 ],
@@ -164,8 +164,8 @@ class CmsCkeditor5Settings:
     .. NOTE::
         Working but currently not enabled until we are ready to migrate from v4 to v5.
 
-        Disable the ``CmsCkeditor4Settings`` settings class if you want are going this
-        v5 settings class.
+        Disable the ``CmsCkeditor4Settings`` settings class in profit of this one if
+        you want to use v5 instead of v4.
     """
     @classmethod
     def setup(cls):

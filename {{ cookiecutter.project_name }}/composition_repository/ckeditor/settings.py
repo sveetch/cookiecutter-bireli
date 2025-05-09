@@ -18,7 +18,7 @@ class CkeditorSettings(EnabledApplicationMarker):
         "language": "{% raw %}{{ language }}{% endraw %}",
         "skin": "moono-lisa",
         "toolbarCanCollapse": False,
-        # "contentsCss": "/static/css/ckeditor.css",
+        "contentsCss": "/static/css/ckeditor.css",
         # Enabled showblocks as default behavior
         "startupOutlineBlocks": True,
         # Enable some plugins

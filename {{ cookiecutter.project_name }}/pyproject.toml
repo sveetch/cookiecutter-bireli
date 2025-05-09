@@ -50,6 +50,7 @@ collection = [
     "djangocms",
     "cmsplugin_blocks",
     "djangocms_lotus",
+    "djangocms_picture",
     "project_sitemaps",
     "axes",
     "two_factor_auth",

@@ -1,0 +1,1 @@
+djangocms-picture==4.1.1
