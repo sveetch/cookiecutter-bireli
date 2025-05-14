@@ -1,0 +1,291 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-14 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: composition_repository/djangocms/settings.py:17
+msgid "HTML free"
+msgstr "Sans structure HTML"
+
+#: composition_repository/djangocms/settings.py:18
+msgid "Single column"
+msgstr "Colonne unique"
+
+#: composition_repository/djangocms_picture/settings.py:11
+msgid "Align left"
+msgstr "Aligner à gauche"
+
+#: composition_repository/djangocms_picture/settings.py:12
+msgid "Align center"
+msgstr "Centrer"
+
+#: composition_repository/djangocms_picture/settings.py:13
+msgid "Align right"
+msgstr "Aligner à droite"
+
+#: composition_repository/request_form/settings.py:34
+msgid "Website request form"
+msgstr "Formulaire de demande"
+
+#: django-apps/project_api/apps.py:7
+msgid "Project API"
+msgstr "API du projet"
+
+#: django-apps/project_sitemaps/apps.py:7
+msgid "Project sitemaps"
+msgstr "Sitemaps du projet"
+
+#: django-apps/request_form/apps.py:7
+#: django-apps/request_form/plugins/request.py:21
+#: project/templates/request_form/request/form.html:5
+msgid "Request form"
+msgstr "Formulaire de demande"
+
+#: django-apps/request_form/form_helpers/__init__.py:24
+msgid "Submit"
+msgstr "Soumettre"
+
+#: django-apps/request_form/forms/forms.py:22
+msgid "An error occurred while sending the email. Please try again later."
+msgstr ""
+"Une erreur est survenue lors de l'envoi du message. Merci de réessayer plus "
+"tard."
+
+#: django-apps/request_form/forms/forms.py:24
+msgid "Request form mail sending failed"
+msgstr "L'envoi de la demande a échoué"
+
+#: django-apps/request_form/forms/forms.py:46
+msgid "You must accept data confidentiality policy."
+msgstr "Vous devez accepter la clause de confidentialité des données."
+
+#: django-apps/request_form/forms/forms.py:85
+msgid "This email address isn't allowed."
+msgstr "Cette adresse n'est pas autorisée."
+
+#: django-apps/request_form/forms/forms.py:96
+msgid "Cyrillic characters are not allowed."
+msgstr "Les caractères cyrilliques sont interdits."
+
+#: django-apps/request_form/models/request.py:15
+msgid "First name"
+msgstr "Prénom"
+
+#: django-apps/request_form/models/request.py:18
+msgid "Last name"
+msgstr "Nom"
+
+#: django-apps/request_form/models/request.py:21
+msgid "Profession"
+msgstr ""
+
+#: django-apps/request_form/models/request.py:27
+msgid "Subject"
+msgstr "Sujet"
+
+#: django-apps/request_form/models/request.py:33
+msgid "Phone"
+msgstr "Téléphone"
+
+#: django-apps/request_form/models/request.py:34
+msgid "E-mail"
+msgstr ""
+
+#: django-apps/request_form/models/request.py:35
+msgid "Message"
+msgstr ""
+
+#: django-apps/request_form/models/request.py:37
+msgid "Data confidentiality policy"
+msgstr "Clause de confidentialité des données"
+
+#: django-apps/request_form/models/request.py:40
+msgid "Creation"
+msgstr "Création"
+
+#: django-apps/request_form/models/request.py:44
+msgid "request"
+msgstr "demande"
+
+#: django-apps/request_form/models/request.py:45
+msgid "requests"
+msgstr "demandes"
+
+#: django-apps/request_form/models/request.py:70
+msgid "Form include #{}"
+msgstr "Formulaire #{}"
+
+#: django-apps/request_form/plugins/request.py:20
+msgid "request-form"
+msgstr ""
+
+#: project/templates/403.html:3 project/templates/403.html:10
+msgid "Error 403"
+msgstr "Erreur 403"
+
+#: project/templates/403.html:11
+msgid "You are not allowed to access this page."
+msgstr "Vous n'êtes pas autorisé à accéder à cette page."
+
+#: project/templates/403.html:14 project/templates/404.html:14
+msgid "Back to homepage"
+msgstr "Revenir à la page d'accueil"
+
+#: project/templates/404.html:3 project/templates/404.html:10
+msgid "Error 404"
+msgstr "Erreur 404"
+
+#: project/templates/404.html:11
+msgid "The resource you tried to reach does not exist."
+msgstr "La ressource que vous essayez d'atteindre n'existe pas."
+
+#: project/templates/base.html:22
+msgid "Articles"
+msgstr ""
+
+#: project/templates/base.html:26
+msgid "Admin"
+msgstr ""
+
+#: project/templates/base.html:30
+#: project/templates/two_factor/core/login.html:9
+msgid "Login"
+msgstr "Se connecter"
+
+#: project/templates/ckeditor/browse.html:9
+#: project/templates/ckeditor/browse.html:27
+msgid "CKEditor file browser"
+msgstr "Navigateur de fichiers de CKEditor"
+
+#: project/templates/ckeditor/browse.html:29
+msgid "No images found"
+msgstr "Aucune image trouvée"
+
+#: project/templates/ckeditor/browse.html:71
+msgid "Embed Image"
+msgstr "Insérer l'image"
+
+#: project/templates/ckeditor/browse.html:136
+msgid "Play Slideshow"
+msgstr "Démarrer le diaporama"
+
+#: project/templates/ckeditor/browse.html:137
+msgid "Pause Slideshow"
+msgstr "Mettre en pause le diaporama"
+
+#: project/templates/ckeditor/browse.html:138
+msgid "&lsaquo; Previous Photo"
+msgstr "&lsaquo; Photo précédente"
+
+#: project/templates/ckeditor/browse.html:139
+msgid "Next Photo &rsaquo;"
+msgstr "Photo suivante &rsaquo;"
+
+#: project/templates/ckeditor/browse.html:140
+msgid "Next &rsaquo;"
+msgstr "Suivant &rsaquo;"
+
+#: project/templates/ckeditor/browse.html:141
+msgid "&lsaquo; Prev"
+msgstr "&lsaquo; Précédent"
+
+#: project/templates/pages/free.html:11
+msgid "HTML free template"
+msgstr "Modèle sans structure HTML"
+
+#: project/templates/pages/single_column.html:23
+msgid "Single column template"
+msgstr "Modèle à colonne unique"
+
+#: project/templates/pagination.html:4
+msgid "Pagination"
+msgstr ""
+
+#: project/templates/request_form/request/email.txt:1
+msgid "You have a new request from your site:"
+msgstr "Vous avez une nouvelle demande sur votre site:"
+
+#: project/templates/request_form/request/email.txt:3
+msgid "Object:"
+msgstr "Message :"
+
+#: project/templates/request_form/request/email.txt:4
+msgid "First name:"
+msgstr "Prénom :"
+
+#: project/templates/request_form/request/email.txt:5
+msgid "Last name:"
+msgstr "Nom :"
+
+#: project/templates/request_form/request/email.txt:6
+msgid "E-mail:"
+msgstr "E-mail :"
+
+#: project/templates/request_form/request/email.txt:7
+msgid "Phone:"
+msgstr "Téléphone :"
+
+#: project/templates/request_form/request/email.txt:8
+msgid "Profession:"
+msgstr "Profession :"
+
+#: project/templates/request_form/request/email.txt:10
+msgid "Message:"
+msgstr "Message :"
+
+#: project/templates/request_form/request/form_success.html:5
+msgid "The form has been sent!"
+msgstr "Le formulaire a été envoyé!"
+
+#: project/templates/two_factor/_wizard_actions.html:4
+msgid "Cancel"
+msgstr "Annuler"
+
+#: project/templates/two_factor/_wizard_actions.html:10
+msgid "Back"
+msgstr "Retour"
+
+#: project/templates/two_factor/_wizard_actions.html:14
+msgid "Next"
+msgstr "Suivant"
+
+#: project/templates/two_factor/core/login.html:12
+msgid "Enter your credentials."
+msgstr "Entrez vos identifiants."
+
+#: project/templates/two_factor/core/login.html:16
+msgid ""
+"Use this form for entering backup tokens for logging in. These tokens have "
+"been generated for you to print and keep safe. Please enter one of these "
+"backup tokens to login to your account."
+msgstr ""
+"Utilisez ce formulaire pour saisir vos jetons de récupération pour s'authentifier. "
+"Ces jetons ont été générés pour vous pour les enregistrer en sécurité. Merci "
+"de saisir un de ces jetons ici pour vous authentifier."
+
+#: project/templates/two_factor/core/login.html:33
+msgid "Or, alternatively, use one of your other authentication methods:"
+msgstr "Ou bien alternativement utiliser un de vos autres moyen d'authentification :"
+
+#: project/templates/two_factor/core/login.html:56
+msgid "As a last resort, you can use a backup token:"
+msgstr "En dernier ressort vous pouvez utiliser un jeton de récupération !"
+
+#: project/templates/two_factor/core/login.html:60
+msgid "Use Backup Token"
+msgstr "Utiliser un jeton de récupération"

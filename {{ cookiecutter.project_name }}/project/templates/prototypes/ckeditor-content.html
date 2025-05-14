@@ -1,0 +1,605 @@
+{% comment %}
+    This is a sample of a CKEditor editor instance to ease working on custom
+    'ckeditor.css'.
+
+    HTML has been copied from a snapshot of a CKEditor instance from 'djangocms_text' and
+    it uses stylesheets from 'djangocms_text'. No JavaScript is involved because we
+    don't want the editor behavior, just a simple page with stylesheets.
+
+    WARNING: Do not alter anything here because we try to be near from the real CKEditor
+    experience and any changes here can't be ported back to 'djangocms_text'.
+{% endcomment %}{% load static %}<!DOCTYPE html>
+{# djlint:off #}<html lang="{% if LANGUAGE_CODE %}{{ LANGUAGE_CODE }}{% else %}en{% endif %}">{# djlint:on #}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="{{ PROJECT.release }}">
+    <title>{{ page_options.extra.title }}</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    {% comment %}
+        CKEditor inject this from its code before loading main 'ckeditor.css', we
+        copied it to a stylesheet instead
+    {% endcomment %}
+    <link rel="stylesheet" href="/static/ckeditor/editor_js_preamble.css">
+
+    <link rel="stylesheet" href="/static/css/ckeditor.css">
+    <link type="text/css" rel="stylesheet" href="/static/djangocms_text/vendor/ckeditor4/plugins/copyformatting/styles/copyformatting.css">
+    <link type="text/css" rel="stylesheet" href="/static/djangocms_text/vendor/ckeditor4/plugins/tableselection/styles/tableselection.css">
+
+    {% comment %}
+        CKEditor inject this from its code after loaded main 'ckeditor.css', we copied
+        it to a stylesheet instead
+    {% endcomment %}
+    <link rel="stylesheet" href="/static/ckeditor/editor_js_post.css">
+</head>
+<body class="cke_editable cke_editable_themed cke_contents_ltr cke_show_blocks cke_show_borders">
+    <h3><strong>picture left align</strong></h3>
+    <p class="text-center">
+        <span
+            tabindex="-1"
+            contenteditable="false"
+            data-cke-widget-wrapper="1"
+            data-cke-filter="off"
+            class="cke_widget_wrapper cke_widget_inline cke_widget_cmswidget"
+            data-cke-display-name="cms-plugin"
+            data-cke-widget-id="11"
+            role="region"
+            aria-label="Élément cms-plugin"
+        >
+            <cms-plugin
+                data-cke-real-element-type="span"
+                render-plugin="true"
+                alt="Image - 6.jpg"
+                title="Image - 6.jpg"
+                id="144"
+                type="PicturePlugin"
+                data-cke-widget-data="%7B%22classes%22%3Anull%7D"
+                data-cke-widget-upcasted="1"
+                data-cke-widget-keep-attr="0"
+                data-widget="cmswidget"
+                data-cke-white-space-first="1"
+                data-cke-widget-white-space="1"
+                class="cke_widget_element"
+            >
+                <img
+                    data-cke-saved-src="{% static "images/sample/300x220.png" %}"
+                    src="{% static "images/sample/300x220.png" %}"
+                    alt=""
+                    class="align-picture-left"
+                />
+                &nbsp;
+            </cms-plugin>
+            <span
+                class="cke_reset cke_widget_drag_handler_container"
+                style="background: rgba(220, 220, 220, 0.5); background-image: url(/static/djangocms_text/vendor/ckeditor4/plugins/widget/images/handle.png); display: none;"
+            >
+                <img
+                    class="cke_reset cke_widget_drag_handler"
+                    data-cke-widget-drag-handler="1"
+                    src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="
+                    width="15"
+                    title="Cliquer et glisser pour déplacer"
+                    height="15"
+                    role="presentation"
+                    draggable="true"
+                />
+            </span>
+        </span>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor arcu libero, ac condimentum justo rutrum sit amet. Aliquam lobortis ante vitae tincidunt pellentesque. Aliquam eu orci laoreet, tincidunt tortor ac, mattis ex. Etiam
+        ac velit sit amet urna imperdiet auctor eu a turpis. Cras lobortis pharetra justo a pretium. Phasellus vel nunc suscipit, placerat nisi sit amet, maximus risus. Aenean at quam a risus laoreet ultrices. In tempor eros eu elit blandit,
+        vitae euismod metus porta. Praesent lobortis augue lectus, a sagittis nibh dignissim nec. In hac habitasse platea dictumst. Aenean eget ante id tellus semper dictum eget ut metus. Vivamus vel malesuada lorem. Nam finibus eget sem vel
+        maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+    <h3><strong>picture centered</strong></h3>
+    <p>
+        <span
+            tabindex="-1"
+            contenteditable="false"
+            data-cke-widget-wrapper="1"
+            data-cke-filter="off"
+            class="cke_widget_wrapper cke_widget_inline cke_widget_cmswidget"
+            data-cke-display-name="cms-plugin"
+            data-cke-widget-id="10"
+            role="region"
+            aria-label="Élément cms-plugin"
+        >
+            <cms-plugin
+                data-cke-real-element-type="span"
+                render-plugin="true"
+                alt="Image - 6.jpg"
+                title="Image - 6.jpg"
+                id="143"
+                type="PicturePlugin"
+                data-cke-widget-data="%7B%22classes%22%3Anull%7D"
+                data-cke-widget-upcasted="1"
+                data-cke-widget-keep-attr="0"
+                data-widget="cmswidget"
+                data-cke-white-space-first="1"
+                data-cke-widget-white-space="1"
+                class="cke_widget_element"
+            >
+                <img
+                    data-cke-saved-src="{% static "images/sample/300x220.png" %}"
+                    src="{% static "images/sample/300x220.png" %}"
+                    alt=""
+                    class="align-picture-center"
+                />
+                &nbsp;
+            </cms-plugin>
+            <span
+                class="cke_reset cke_widget_drag_handler_container"
+                style="background: rgba(220, 220, 220, 0.5); background-image: url(/static/djangocms_text/vendor/ckeditor4/plugins/widget/images/handle.png); display: none;"
+            >
+                <img
+                    class="cke_reset cke_widget_drag_handler"
+                    data-cke-widget-drag-handler="1"
+                    src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="
+                    width="15"
+                    title="Cliquer et glisser pour déplacer"
+                    height="15"
+                    role="presentation"
+                    draggable="true"
+                />
+            </span>
+        </span>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor arcu libero, ac condimentum justo rutrum sit amet. Aliquam lobortis ante vitae tincidunt pellentesque. Aliquam eu orci laoreet, tincidunt tortor ac, mattis ex. Etiam
+        ac velit sit amet urna imperdiet auctor eu a turpis. Cras lobortis pharetra justo a pretium. Phasellus vel nunc suscipit, placerat nisi sit amet, maximus risus. Aenean at quam a risus laoreet ultrices. In tempor eros eu elit blandit,
+        vitae euismod metus porta. Praesent lobortis augue lectus, a sagittis nibh dignissim nec. In hac habitasse platea dictumst. Aenean eget ante id tellus semper dictum eget ut metus. Vivamus vel malesuada lorem. Nam finibus eget sem vel
+        maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+    <h3><strong>picture right align</strong></h3>
+    <p>
+        <span
+            tabindex="-1"
+            contenteditable="false"
+            data-cke-widget-wrapper="1"
+            data-cke-filter="off"
+            class="cke_widget_wrapper cke_widget_inline cke_widget_cmswidget"
+            data-cke-display-name="cms-plugin"
+            data-cke-widget-id="9"
+            role="region"
+            aria-label="Élément cms-plugin"
+        >
+            <cms-plugin
+                data-cke-real-element-type="span"
+                render-plugin="true"
+                alt="Image - 6.jpg"
+                title="Image - 6.jpg"
+                id="141"
+                type="PicturePlugin"
+                data-cke-widget-data="%7B%22classes%22%3Anull%7D"
+                data-cke-widget-upcasted="1"
+                data-cke-widget-keep-attr="0"
+                data-widget="cmswidget"
+                data-cke-white-space-first="1"
+                data-cke-widget-white-space="1"
+                class="cke_widget_element"
+            >
+                <img
+                    data-cke-saved-src="{% static "images/sample/300x220.png" %}"
+                    src="{% static "images/sample/300x220.png" %}"
+                    alt=""
+                    class="align-picture-right"
+                />
+                &nbsp;
+            </cms-plugin>
+            <span
+                class="cke_reset cke_widget_drag_handler_container"
+                style="background: rgba(220, 220, 220, 0.5); background-image: url(/static/djangocms_text/vendor/ckeditor4/plugins/widget/images/handle.png); display: none;"
+            >
+                <img
+                    class="cke_reset cke_widget_drag_handler"
+                    data-cke-widget-drag-handler="1"
+                    src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="
+                    width="15"
+                    title="Cliquer et glisser pour déplacer"
+                    height="15"
+                    role="presentation"
+                    draggable="true"
+                />
+            </span>
+        </span>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor arcu libero, ac condimentum justo rutrum sit amet. Aliquam lobortis ante vitae tincidunt pellentesque. Aliquam eu orci laoreet, tincidunt tortor ac, mattis ex. Etiam
+        ac velit sit amet urna imperdiet auctor eu a turpis. Cras lobortis pharetra justo a pretium. Phasellus vel nunc suscipit, placerat nisi sit amet, maximus risus. Aenean at quam a risus laoreet ultrices. In tempor eros eu elit blandit,
+        vitae euismod metus porta. Praesent lobortis augue lectus, a sagittis nibh dignissim nec. In hac habitasse platea dictumst. Aenean eget ante id tellus semper dictum eget ut metus. Vivamus vel malesuada lorem. Nam finibus eget sem vel
+        maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+    <h3><strong>picture no align</strong></h3>
+    <p>
+        <span
+            tabindex="-1"
+            contenteditable="false"
+            data-cke-widget-wrapper="1"
+            data-cke-filter="off"
+            class="cke_widget_wrapper cke_widget_inline cke_widget_cmswidget"
+            data-cke-display-name="cms-plugin"
+            data-cke-widget-id="8"
+            role="region"
+            aria-label="Élément cms-plugin"
+        >
+            <cms-plugin
+                data-cke-real-element-type="span"
+                render-plugin="true"
+                alt="Image - 6.jpg"
+                title="Image - 6.jpg"
+                id="142"
+                type="PicturePlugin"
+                data-cke-widget-data="%7B%22classes%22%3Anull%7D"
+                data-cke-widget-upcasted="1"
+                data-cke-widget-keep-attr="0"
+                data-widget="cmswidget"
+                data-cke-white-space-first="1"
+                data-cke-widget-white-space="1"
+                class="cke_widget_element"
+            >
+                <img
+                    data-cke-saved-src="{% static "images/sample/300x220.png" %}"
+                    src="{% static "images/sample/300x220.png" %}"
+                    alt=""
+                />
+                &nbsp;
+            </cms-plugin>
+            <span
+                class="cke_reset cke_widget_drag_handler_container"
+                style="background: rgba(220, 220, 220, 0.5); background-image: url(/static/djangocms_text/vendor/ckeditor4/plugins/widget/images/handle.png); display: none;"
+            >
+                <img
+                    class="cke_reset cke_widget_drag_handler"
+                    data-cke-widget-drag-handler="1"
+                    src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="
+                    width="15"
+                    title="Cliquer et glisser pour déplacer"
+                    height="15"
+                    role="presentation"
+                    draggable="true"
+                />
+            </span>
+        </span>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor arcu libero, ac condimentum justo rutrum sit amet. Aliquam lobortis ante vitae tincidunt pellentesque. Aliquam eu orci laoreet, tincidunt tortor ac, mattis ex. Etiam
+        ac velit sit amet urna imperdiet auctor eu a turpis. Cras lobortis pharetra justo a pretium. Phasellus vel nunc suscipit, placerat nisi sit amet, maximus risus. Aenean at quam a risus laoreet ultrices. In tempor eros eu elit blandit,
+        vitae euismod metus porta. Praesent lobortis augue lectus, a sagittis nibh dignissim nec. In hac habitasse platea dictumst. Aenean eget ante id tellus semper dictum eget ut metus. Vivamus vel malesuada lorem. Nam finibus eget sem vel
+        maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+    <h3><strong>image2 left align</strong></h3>
+    <p>
+        <span
+            tabindex="-1"
+            contenteditable="false"
+            data-cke-widget-wrapper="1"
+            data-cke-filter="off"
+            class="cke_widget_wrapper cke_widget_inline cke_widget_image cke_image_nocaption align-picture-left"
+            data-cke-display-name="image"
+            data-cke-widget-id="7"
+            role="region"
+            aria-label="Élément  image"
+        >
+            <img
+                alt=""
+                class="cke_widget_element"
+                data-cke-saved-src="{% static "images/sample/300x220.png" %}"
+                src="{% static "images/sample/300x220.png" %}"
+                data-cke-widget-data="%7B%22hasCaption%22%3Afalse%2C%22src%22%3A%22%2Fmedia%2Fuploads%2F2025%2F05%2F09%2F6.jpg%22%2C%22alt%22%3A%22%22%2C%22width%22%3A%22%22%2C%22height%22%3A%22%22%2C%22lock%22%3Atrue%2C%22align%22%3A%22left%22%2C%22classes%22%3Anull%7D"
+                data-cke-widget-upcasted="1"
+                data-cke-widget-keep-attr="0"
+                data-widget="image"
+                data-cke-real-element-type="span"
+            />
+            <span
+                class="cke_reset cke_widget_drag_handler_container"
+                style="background: rgba(220, 220, 220, 0.5); background-image: url(/static/djangocms_text/vendor/ckeditor4/plugins/widget/images/handle.png); display: none;"
+            >
+                <img
+                    class="cke_reset cke_widget_drag_handler"
+                    data-cke-widget-drag-handler="1"
+                    src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="
+                    width="15"
+                    title="Cliquer et glisser pour déplacer"
+                    height="15"
+                    role="presentation"
+                    draggable="true"
+                />
+            </span>
+        </span>
+        Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet. Etiam felis lectus, sollicitudin pretium congue a, dictum et ligula. Donec in
+        condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui quis magna interdum feugiat. Proin commodo aliquam est quis elementum. Duis
+        pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet. Nullam finibus ac odio in porttitor. Quisque malesuada, nibh vitae suscipit
+        convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+    <h3><strong>image2 centered</strong></h3>
+    <div
+        tabindex="-1"
+        contenteditable="false"
+        data-cke-widget-wrapper="1"
+        data-cke-filter="off"
+        class="cke_widget_wrapper cke_widget_block cke_widget_image cke_image_nocaption"
+        data-cke-display-name="image"
+        data-cke-widget-id="6"
+        role="region"
+        aria-label="Élément  image"
+    >
+        <p
+            class="align-picture-center cke_widget_element"
+            data-cke-widget-data="%7B%22hasCaption%22%3Afalse%2C%22src%22%3A%22%2Fmedia%2Fuploads%2F2025%2F05%2F09%2F6.jpg%22%2C%22alt%22%3A%22%22%2C%22width%22%3A%22%22%2C%22height%22%3A%22%22%2C%22lock%22%3Atrue%2C%22align%22%3A%22center%22%2C%22classes%22%3Anull%7D"
+            data-cke-widget-upcasted="1"
+            data-cke-widget-keep-attr="0"
+            data-widget="image"
+        >
+            <img alt="" data-cke-saved-src="{% static "images/sample/300x220.png" %}" src="{% static "images/sample/300x220.png" %}" />
+        </p>
+        <span class="cke_reset cke_widget_drag_handler_container" style="background: rgba(220, 220, 220, 0.5) url('/static/djangocms_text/vendor/ckeditor4/plugins/widget/images/handle.png'); top: -15px; left: 0px;">
+            <img
+                class="cke_reset cke_widget_drag_handler"
+                data-cke-widget-drag-handler="1"
+                src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="
+                width="15"
+                title="Cliquer et glisser pour déplacer"
+                height="15"
+                role="presentation"
+            />
+        </span>
+    </div>
+    <p>
+        Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet. Etiam felis lectus, sollicitudin pretium congue a, dictum et ligula. Donec in
+        condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui quis magna interdum feugiat. Proin commodo aliquam est quis elementum. Duis
+        pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet. Nullam finibus ac odio in porttitor. Quisque malesuada, nibh vitae suscipit
+        convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+    <h3><strong>image2 right align</strong></h3>
+    <p>
+        <span
+            tabindex="-1"
+            contenteditable="false"
+            data-cke-widget-wrapper="1"
+            data-cke-filter="off"
+            class="cke_widget_wrapper cke_widget_inline cke_widget_image cke_image_nocaption align-picture-right"
+            data-cke-display-name="image"
+            data-cke-widget-id="5"
+            role="region"
+            aria-label="Élément  image"
+        >
+            <img
+                alt=""
+                class="cke_widget_element"
+                data-cke-saved-src="{% static "images/sample/300x220.png" %}"
+                src="{% static "images/sample/300x220.png" %}"
+                data-cke-widget-data="%7B%22hasCaption%22%3Afalse%2C%22src%22%3A%22%2Fmedia%2Fuploads%2F2025%2F05%2F09%2F6.jpg%22%2C%22alt%22%3A%22%22%2C%22width%22%3A%22%22%2C%22height%22%3A%22%22%2C%22lock%22%3Atrue%2C%22align%22%3A%22right%22%2C%22classes%22%3Anull%7D"
+                data-cke-widget-upcasted="1"
+                data-cke-widget-keep-attr="0"
+                data-widget="image"
+                data-cke-real-element-type="span"
+            />
+            <span
+                class="cke_reset cke_widget_drag_handler_container"
+                style="background: rgba(220, 220, 220, 0.5); background-image: url(/static/djangocms_text/vendor/ckeditor4/plugins/widget/images/handle.png); display: none;"
+            >
+                <img
+                    class="cke_reset cke_widget_drag_handler"
+                    data-cke-widget-drag-handler="1"
+                    src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="
+                    width="15"
+                    title="Cliquer et glisser pour déplacer"
+                    height="15"
+                    role="presentation"
+                    draggable="true"
+                />
+            </span>
+        </span>
+        Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet. Etiam felis lectus, sollicitudin pretium congue a, dictum et ligula. Donec in
+        condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui quis magna interdum feugiat. Proin commodo aliquam est quis elementum. Duis
+        pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet. Nullam finibus ac odio in porttitor. Quisque malesuada, nibh vitae suscipit
+        convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+    <h3><strong>image2 no align</strong></h3>
+    <p>
+        <span
+            tabindex="-1"
+            contenteditable="false"
+            data-cke-widget-wrapper="1"
+            data-cke-filter="off"
+            class="cke_widget_wrapper cke_widget_inline cke_widget_image cke_image_nocaption"
+            data-cke-display-name="image"
+            data-cke-widget-id="4"
+            role="region"
+            aria-label="Élément  image"
+        >
+            <img
+                alt=""
+                data-cke-saved-src="{% static "images/sample/300x220.png" %}"
+                src="{% static "images/sample/300x220.png" %}"
+                data-cke-widget-data="%7B%22hasCaption%22%3Afalse%2C%22src%22%3A%22%2Fmedia%2Fuploads%2F2025%2F05%2F09%2F6.jpg%22%2C%22alt%22%3A%22%22%2C%22width%22%3A%22%22%2C%22height%22%3A%22%22%2C%22lock%22%3Atrue%2C%22align%22%3A%22none%22%2C%22classes%22%3Anull%7D"
+                data-cke-widget-upcasted="1"
+                data-cke-widget-keep-attr="0"
+                data-widget="image"
+                data-cke-real-element-type="span"
+                class="cke_widget_element"
+            />
+            <span
+                class="cke_reset cke_widget_drag_handler_container"
+                style="background: rgba(220, 220, 220, 0.5); background-image: url(/static/djangocms_text/vendor/ckeditor4/plugins/widget/images/handle.png); display: none;"
+            >
+                <img
+                    class="cke_reset cke_widget_drag_handler"
+                    data-cke-widget-drag-handler="1"
+                    src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="
+                    width="15"
+                    title="Cliquer et glisser pour déplacer"
+                    height="15"
+                    role="presentation"
+                    draggable="true"
+                />
+            </span>
+        </span>
+        Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet. Etiam felis lectus, sollicitudin pretium congue a, dictum et ligula. Donec in
+        condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui quis magna interdum feugiat. Proin commodo aliquam est quis elementum. Duis
+        pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet. Nullam finibus ac odio in porttitor. Quisque malesuada, nibh vitae suscipit
+        convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+    <h3><strong>image2 figure left align</strong></h3>
+    <div
+        tabindex="-1"
+        contenteditable="false"
+        data-cke-widget-wrapper="1"
+        data-cke-filter="off"
+        class="cke_widget_wrapper cke_widget_block cke_widget_image align-picture-left"
+        data-cke-display-name="image"
+        data-cke-widget-id="3"
+        role="region"
+        aria-label="Élément  image"
+    >
+        <figure
+            class="image cke_widget_element"
+            data-cke-widget-data="%7B%22hasCaption%22%3Atrue%2C%22src%22%3A%22%2Fmedia%2Fuploads%2F2025%2F05%2F09%2F6.jpg%22%2C%22alt%22%3A%22%22%2C%22width%22%3A%22%22%2C%22height%22%3A%22%22%2C%22lock%22%3Atrue%2C%22align%22%3A%22left%22%2C%22classes%22%3A%7B%7D%7D"
+            data-cke-widget-upcasted="1"
+            data-cke-widget-keep-attr="0"
+            data-widget="image"
+        >
+            <img alt="" data-cke-saved-src="{% static "images/sample/300x220.png" %}" src="{% static "images/sample/300x220.png" %}" />
+            <figcaption contenteditable="true" data-cke-widget-editable="caption" data-cke-enter-mode="2" data-cke-filter="72" class="cke_widget_editable" data-cke-display-name="légende">Légende</figcaption>
+        </figure>
+        <span
+            class="cke_reset cke_widget_drag_handler_container"
+            style="background: rgba(220, 220, 220, 0.5); background-image: url(/static/djangocms_text/vendor/ckeditor4/plugins/widget/images/handle.png); display: none;"
+        >
+            <img
+                class="cke_reset cke_widget_drag_handler"
+                data-cke-widget-drag-handler="1"
+                src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="
+                width="15"
+                title="Cliquer et glisser pour déplacer"
+                height="15"
+                role="presentation"
+            />
+        </span>
+    </div>
+    <p>
+        Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet. Etiam felis lectus, sollicitudin pretium congue a, dictum et ligula. Donec in
+        condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui quis magna interdum feugiat. Proin commodo aliquam est quis elementum. Duis
+        pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet. Nullam finibus ac odio in porttitor. Quisque malesuada, nibh vitae suscipit
+        convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+    <h3><strong>image2 figure centered</strong></h3>
+    <div
+        tabindex="-1"
+        contenteditable="false"
+        data-cke-widget-wrapper="1"
+        data-cke-filter="off"
+        class="cke_widget_wrapper cke_widget_block cke_widget_image align-picture-center"
+        data-cke-display-name="image"
+        data-cke-widget-id="2"
+        role="region"
+        aria-label="Élément  image"
+    >
+        <figure
+            class="image cke_widget_element"
+            data-cke-widget-data="%7B%22hasCaption%22%3Atrue%2C%22src%22%3A%22%2Fmedia%2Fuploads%2F2025%2F05%2F09%2F6.jpg%22%2C%22alt%22%3A%22%22%2C%22width%22%3A%22%22%2C%22height%22%3A%22%22%2C%22lock%22%3Atrue%2C%22align%22%3A%22center%22%2C%22classes%22%3A%7B%7D%7D"
+            data-cke-widget-upcasted="1"
+            data-cke-widget-keep-attr="0"
+            data-widget="image"
+        >
+            <img alt="" data-cke-saved-src="{% static "images/sample/300x220.png" %}" src="{% static "images/sample/300x220.png" %}" />
+            <figcaption contenteditable="true" data-cke-widget-editable="caption" data-cke-enter-mode="2" data-cke-filter="72" class="cke_widget_editable" data-cke-display-name="légende">Légende</figcaption>
+        </figure>
+        <span class="cke_reset cke_widget_drag_handler_container" style="background: rgba(220, 220, 220, 0.5) url('/static/djangocms_text/vendor/ckeditor4/plugins/widget/images/handle.png'); top: -15px; left: 0px;">
+            <img
+                class="cke_reset cke_widget_drag_handler"
+                data-cke-widget-drag-handler="1"
+                src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="
+                width="15"
+                title="Cliquer et glisser pour déplacer"
+                height="15"
+                role="presentation"
+            />
+        </span>
+    </div>
+    <p>
+        Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet. Etiam felis lectus, sollicitudin pretium congue a, dictum et ligula. Donec in
+        condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui quis magna interdum feugiat. Proin commodo aliquam est quis elementum. Duis
+        pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet. Nullam finibus ac odio in porttitor. Quisque malesuada, nibh vitae suscipit
+        convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+    <h3><strong>image2 figure right align</strong></h3>
+    <div
+        tabindex="-1"
+        contenteditable="false"
+        data-cke-widget-wrapper="1"
+        data-cke-filter="off"
+        class="cke_widget_wrapper cke_widget_block cke_widget_image align-picture-right"
+        data-cke-display-name="image"
+        data-cke-widget-id="1"
+        role="region"
+        aria-label="Élément  image"
+    >
+        <figure
+            class="image cke_widget_element"
+            data-cke-widget-data="%7B%22hasCaption%22%3Atrue%2C%22src%22%3A%22%2Fmedia%2Fuploads%2F2025%2F05%2F09%2F6.jpg%22%2C%22alt%22%3A%22%22%2C%22width%22%3A%22%22%2C%22height%22%3A%22%22%2C%22lock%22%3Atrue%2C%22align%22%3A%22right%22%2C%22classes%22%3A%7B%7D%7D"
+            data-cke-widget-upcasted="1"
+            data-cke-widget-keep-attr="0"
+            data-widget="image"
+        >
+            <img alt="" data-cke-saved-src="{% static "images/sample/300x220.png" %}" src="{% static "images/sample/300x220.png" %}" />
+            <figcaption contenteditable="true" data-cke-widget-editable="caption" data-cke-enter-mode="2" data-cke-filter="72" class="cke_widget_editable" data-cke-display-name="légende">Légende</figcaption>
+        </figure>
+        <span
+            class="cke_reset cke_widget_drag_handler_container"
+            style="background: rgba(220, 220, 220, 0.5); background-image: url(/static/djangocms_text/vendor/ckeditor4/plugins/widget/images/handle.png); display: none;"
+        >
+            <img
+                class="cke_reset cke_widget_drag_handler"
+                data-cke-widget-drag-handler="1"
+                src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="
+                width="15"
+                title="Cliquer et glisser pour déplacer"
+                height="15"
+                role="presentation"
+            />
+        </span>
+    </div>
+    <p>
+        Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet. Etiam felis lectus, sollicitudin pretium congue a, dictum et ligula. Donec in
+        condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui quis magna interdum feugiat. Proin commodo aliquam est quis elementum. Duis
+        pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet. Nullam finibus ac odio in porttitor. Quisque malesuada, nibh vitae suscipit
+        convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+    <h3><strong>image2 figure no align</strong></h3>
+    <div
+        tabindex="-1"
+        contenteditable="false"
+        data-cke-widget-wrapper="1"
+        data-cke-filter="off"
+        class="cke_widget_wrapper cke_widget_block cke_widget_image"
+        data-cke-display-name="image"
+        data-cke-widget-id="0"
+        role="region"
+        aria-label="Élément  image"
+    >
+        <figure
+            class="image cke_widget_element"
+            data-cke-widget-data="%7B%22hasCaption%22%3Atrue%2C%22src%22%3A%22%2Fmedia%2Fuploads%2F2025%2F05%2F09%2F6.jpg%22%2C%22alt%22%3A%22%22%2C%22width%22%3A%22%22%2C%22height%22%3A%22%22%2C%22lock%22%3Atrue%2C%22align%22%3A%22none%22%2C%22classes%22%3A%7B%7D%7D"
+            data-cke-widget-upcasted="1"
+            data-cke-widget-keep-attr="0"
+            data-widget="image"
+        >
+            <img alt="" data-cke-saved-src="{% static "images/sample/300x220.png" %}" src="{% static "images/sample/300x220.png" %}" />
+            <figcaption contenteditable="true" data-cke-widget-editable="caption" data-cke-enter-mode="2" data-cke-filter="72" class="cke_widget_editable" data-cke-display-name="légende">Légende</figcaption>
+        </figure>
+        <span class="cke_reset cke_widget_drag_handler_container" style="background: rgba(220, 220, 220, 0.5) url('/static/djangocms_text/vendor/ckeditor4/plugins/widget/images/handle.png'); top: -15px; left: 40px;">
+            <img
+                class="cke_reset cke_widget_drag_handler"
+                data-cke-widget-drag-handler="1"
+                src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="
+                width="15"
+                title="Cliquer et glisser pour déplacer"
+                height="15"
+                role="presentation"
+            />
+        </span>
+    </div>
+    <p>
+        Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet. Etiam felis lectus, sollicitudin pretium congue a, dictum et ligula. Donec in
+        condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui quis magna interdum feugiat. Proin commodo aliquam est quis elementum. Duis
+        pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet. Nullam finibus ac odio in porttitor. Quisque malesuada, nibh vitae suscipit
+        convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+</body>
+</html>

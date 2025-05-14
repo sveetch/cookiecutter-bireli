@@ -36,7 +36,7 @@
 
             {% include "partials/color_mode_toggler.html" %}
         </nav>
-        <div id="page-content" class="container-xxl">
+        <div id="page-content" class="container-xxl{% block page-content-classes %}{% endblock page-content-classes %}">
             {% block body-content %}
                 Base content goes here.
             {% endblock body-content %}

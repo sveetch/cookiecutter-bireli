@@ -2,9 +2,23 @@
 /// Page main content container
 ///
 
-// .page-content {}
-
 .page-content {
     @include bb-flex(1, 0, auto, $max: false);
     padding: map-get($spacers, 3) map-get($spacers, 1);
+
+}
+
+/*
+ * Apply rich content improvements for all rich content (CMSplugin blocks, Lotus
+ * article, etc..)
+ */
+@if $include-bb-rich {
+    .accordion__item-content,
+    .card__content,
+    .container__content,
+    .hero__content,
+    .slider__item-content,
+    .article-detail .content {
+        @include apply-rich-rules;
+    }
 }

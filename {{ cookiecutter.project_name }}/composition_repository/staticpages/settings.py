@@ -28,6 +28,16 @@ class StaticpageSettings(EnabledApplicationMarker):
     # Enabled staticpages configuration
     STATICPAGES = [
         "index",
+        {
+            "template_path": "rich-content.html",
+            "name": "rich-content",
+            "extra": {"title": "Rich content render sample"},
+        },
+        {
+            "template_path": "ckeditor-content.html",
+            "name": "ckeditor-content",
+            "extra": {"title": "CKEditor4 editor sample"},
+        },
     ]
 
     @classmethod

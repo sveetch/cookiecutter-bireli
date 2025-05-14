@@ -173,6 +173,9 @@ class DjangoBase(EnabledApplicationMarker):
     SESSION_EXPIRE_AT_BROWSER_CLOSE = False
     CSRF_COOKIE_SECURE = False
 
+    # Required to enable iframes used by CMS admin modals
+    X_FRAME_OPTIONS = "SAMEORIGIN"
+
     @property
     def ENVIRONMENT(self):
         """

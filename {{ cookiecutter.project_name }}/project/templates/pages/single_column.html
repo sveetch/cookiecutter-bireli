@@ -1,41 +1,44 @@
 {% extends "pages/base.html" %}
-{% load static cms_tags menu_tags %}
+{% load i18n static cms_tags menu_tags %}
 {% comment %}
 NOTE:
-Page template with a single centered column.
+Page template with a single centered column and a breadcrumb.
 {% endcomment %}
 {% block body-content %}
-    <div class="container-xxl">
-        {% block body-content-breadcrumb %}
-            {% if current_page.node.get_depth > 1 %}
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        {% block breadcrumb %}
-                            {% show_breadcrumb 1 "menus/breadcrumbs/item.html" %}
-                        {% endblock breadcrumb %}
-                    </ol>
-                </nav>
-            {% endif %}
-        {% endblock body-content-breadcrumb %}
-        <div class="row">
-            <div class="col-12">
-                {% placeholder "content" or %}
-                <h1>Single column</h1>
+    {% block body-content-breadcrumb %}
+        {% if current_page.node.get_depth > 1 %}
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    {% block breadcrumb %}
+                        {% show_breadcrumb 1 "menus/breadcrumbs/item.html" %}
+                    {% endblock breadcrumb %}
+                </ol>
+            </nav>
+        {% endif %}
+    {% endblock body-content-breadcrumb %}
+
+    <div class="row">
+        <div class="col-12 rich-text-content">
+            {% placeholder "content" or %}
+                <h1>{% translate "Single column template" %}</h1>
                 <h2>{% page_attribute "page_title" %}</h2>
                 <p>
-                    Consectetur adipiscing elit. Duis euismod eros a ante convallis, ut sodales nibh rhoncus. Sed ut tellus nec nunc bibendum feugiat a at massa. Phasellus aliquet quam et maximus varius. Nulla maximus metus vitae odio iaculis, eu sollicitudin massa maximus. Aenean volutpat odio semper dolor viverra posuere. Fusce ac eros nulla. Nulla at metus lacus. Fusce dictum sapien eu ligula sollicitudin, ac consectetur magna interdum. Cras consectetur elementum faucibus. Praesent molestie rutrum mi, eget eleifend mauris tempus id. Maecenas ac cursus lorem. Proin laoreet posuere ultrices. Nullam dapibus viverra justo, eu gravida enim aliquet et. Maecenas molestie mauris eu nisi pellentesque placerat.
-                </p>
-                <p>
-                    <img src="{% static "images/sample/1400x450.png" %}" alt="">
+                    <img alt="" class="align-picture-left" src="{% static "images/sample/300x220.png" %}" />Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet.
+                    Etiam felis lectus, sollicitudin pretium congue a, dictum et ligula. Donec in condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui
+                    quis magna interdum feugiat. Proin commodo aliquam est quis elementum. Duis pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet.
+                    Nullam finibus ac odio in porttitor. Quisque malesuada, nibh vitae suscipit convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
                 <p>
                     Mauris ac pretium odio. Duis commodo odio odio. Suspendisse ut mi ante. Quisque dapibus metus accumsan diam iaculis, sed malesuada ex elementum. Ut ut justo elit. Nullam venenatis laoreet purus sit amet tempor. Nunc eros neque, tristique quis tempus ac, consequat a tortor. Sed vitae dapibus mauris, et suscipit erat. Proin congue odio quis porta convallis. Curabitur tristique porta nunc, in vulputate sapien commodo posuere.
                 </p>
+                <p class="align-picture-center"><img alt="" src="{% static "images/sample/1400x450.png" %}" /></p>
                 <p>
-                    Cras eget pretium lacus, sed tincidunt metus. Cras a blandit enim, quis blandit diam. Praesent a turpis sed ligula volutpat sodales nec sit amet diam. Curabitur aliquet gravida justo, vel scelerisque ipsum posuere in.
+                    Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet. Etiam felis lectus, sollicitudin pretium congue a, dictum et ligula. Donec in
+                    condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui quis magna interdum feugiat. Proin commodo aliquam est quis elementum. Duis
+                    pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet. Nullam finibus ac odio in porttitor. Quisque malesuada, nibh vitae suscipit
+                    convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
             {% endplaceholder %}
         </div>
     </div>
-</div>
 {% endblock body-content %}

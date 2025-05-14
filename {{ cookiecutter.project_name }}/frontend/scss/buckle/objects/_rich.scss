@@ -1,0 +1,17 @@
+///
+/// This includes generic Rich content classes utilities.
+///
+/// Depends on:
+///
+/// - ../tools/rich
+/// - ../defaults
+///
+
+@if $include-bb-rich {
+    // Rich content have to be in a wrapper element with classname 'rich-text-content'
+    // and this does not support nesting, all content elements have to be direct
+    // children of the wrapper element.
+    .rich-text-content {
+        @include apply-rich-rules;
+    }
+}

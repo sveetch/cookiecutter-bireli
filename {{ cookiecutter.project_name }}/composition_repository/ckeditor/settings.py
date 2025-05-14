@@ -8,8 +8,11 @@ class CkeditorSettings(EnabledApplicationMarker):
     CKEditor, WYSIWYG HTML editor integration for Django
     """
 
-    # Enable file upload with 'ckeditor_uploader'
-    # CKEDITOR_UPLOAD_PATH = "uploads/"
+    # Enable file upload with 'ckeditor_uploader' module
+    CKEDITOR_UPLOAD_PATH = "uploads/"
+
+    # Disallow uploading of non image files
+    CKEDITOR_ALLOW_NONIMAGE_FILES = False
 
     # Base configuration shared for django-ckeditor and djangocms-text-ckeditor
     # Avoid to change it unless you are aware of incompatibilities between ckeditor
@@ -23,12 +26,20 @@ class CkeditorSettings(EnabledApplicationMarker):
         "startupOutlineBlocks": True,
         # Enable some plugins
         "extraPlugins": "codemirror",
-        # Disable element filter to enable full HTML5, also this will let
+        # Disabled element filter to enable full HTML5 support This will let
         # append any code, even bad syntax and malicious code, so be careful
         "removePlugins": "exportpdf,flash,stylesheetparser",
         "allowedContent": True,
-        # Image plugin options
-        "image_prefillDimensions": False,
+        # Disabled auto CKEditor image clipboard that made conflict with plugin image2
+        "clipboard_handleImages": False,
+        # Image2 plugin options
+        "image2_disableResizer": True,
+        "image2_prefillDimensions": False,
+        "image2_alignClasses": [
+            "align-picture-left",
+            "align-picture-center",
+            "align-picture-right"
+        ],
         # Youtube plugin options
         "youtube_related": False,
         "youtube_responsive": True,
@@ -44,6 +55,9 @@ class CkeditorSettings(EnabledApplicationMarker):
             "text-center",
             "text-end",
         ],
+        # URL to reach CKEditor file browser screens
+        "filebrowserImageBrowseUrl": "/ckeditor/browse/",
+        "filebrowserImageUploadUrl": "/ckeditor/upload/",
         # Uncheck the checkbox that replace whole content with the selected
         # template (if any)
         "templates_replaceContent": False,
@@ -59,6 +73,7 @@ class CkeditorSettings(EnabledApplicationMarker):
 
         cls.INSTALLED_APPS.extend([
             "ckeditor",
+            "ckeditor_uploader",
         ])
 
         cls.CKEDITOR_CONFIGS = copy.deepcopy(cls.CKEDITOR_SHARED_CONF)

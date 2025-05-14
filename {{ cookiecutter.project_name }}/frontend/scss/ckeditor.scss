@@ -1,5 +1,8 @@
 /*
-CSS for CKEditor content
+* CSS for contents inside CKEditor editor
+*
+* We aim to provide a typography and styling close to the rendered frontend but without
+* not too much because edition needs some strong ergonomy.
 */
 @charset "UTF-8";
 
@@ -18,10 +21,11 @@ CSS for CKEditor content
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
 
-// Bootstrap helpers
-@import "bootstrap/scss/helpers";
+// You may want to include Bootstrap helper classnames
+// @import "bootstrap/scss/helpers";
 
-@import "./generic/image";
+// Mixins to enable adjustments for rich content
+@import "./buckle/tools/rich";
 
 body {
     /* Font */
@@ -62,14 +66,15 @@ a {
     color: #0782c1;
 }
 
-ol,ul,dl {
-    /* IE7: reset rtl list margin. (#7334) */
-    *margin-right: 0px;
-    /* preserved spaces for list items with text direction other than the list. (#6249,#8049) */
+ol, ul, dl {
+    /*
+     * Preserve spaces for list items with text direction other than the
+     * list. (#6249,#8049)
+     */
     padding: 0 40px;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
     line-height: 1.2em;
 }
@@ -83,26 +88,14 @@ img {
     max-width: 100%;
 }
 
-img.right {
-    border: 1px solid #cccccc;
-    float: right;
-    margin-left: 15px;
-    padding: 5px;
-}
-
-img.left {
-    border: 1px solid #cccccc;
-    float: left;
-    margin-right: 15px;
-    padding: 5px;
-}
-
 img:hover {
     opacity: 0.9;
     filter: alpha(opacity = 90);
 }
 
-/* Here comes styles addons and overwrites */
+/*
+ * Rules for inside the editor area itself
+ */
 .cke_editable {
     max-width: 100%;
     font-size: rem-calc(13px);
@@ -140,33 +133,21 @@ img:hover {
     h4 {
         font-size: 18px;
     }
-}
 
-// Copy the Bootstrap text alignment utilities classes
-.text-start{
-    text-align: left;
-}
+    // Copy the common Bootstrap text alignment utilities classes
+    .text-start {
+        text-align: left;
+    }
 
-.text-end{
-    text-align: right;
-}
+    .text-end {
+        text-align: right;
+    }
 
-.text-center{
-    text-align: center;
-}
+    .text-center {
+        text-align: center;
+    }
 
-// Fix the ratio element width
-.ratio {
-    padding-left: 0 !important;
-}
-
-
-
-//
-// Icomoon widget
-//
-.icomoon-widget {
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
-    background: #e8e8e8;
+    @if $include-bb-rich {
+        @include apply-ckeditor4-rules();
+    }
 }

@@ -4,11 +4,14 @@
     <div class="block">
         <div class="container-xl">
             <h1>Prototypes</h1>
-            <ul>
-                {% for url_pattern,template_name,url_name in page_map %}
-                    <li>
-                        <a href="{% url url_name %}">{{ template_name }}</a>
-                    </li>
+
+            <ul class="menu">
+                {% for item in staticpages %}
+                    {% if not item.is_index %}
+                        <li>
+                            <a href="{% url item.urlname %}">{{ item.name }}</a>
+                        </li>
+                    {% endif %}
                 {% endfor %}
             </ul>
         </div>

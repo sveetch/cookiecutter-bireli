@@ -7,7 +7,7 @@ History
 Development
 ***********
 
-Release for minor updates and improvements.
+Release for requirements updates and modest improvements.
 
 Updated backend requirements
 ----------------------------
@@ -17,7 +17,8 @@ Updated backend requirements
 * Updated 'django-phonenumber-field' to 8.1.x;
 * Updated 'django-recaptcha' to 4.1.x;
 * Restored 'djangocms_picture' in 4.1.1 since it has been validated to work with
-  DjangoCMS 4;
+  DjangoCMS 4. However it is not enabled on default since the CKEditor plugin
+  ``image2`` is more coherent and the recommended solution;
 
 
 Upgraded frontend requirements
@@ -43,12 +44,32 @@ request form).
 
 See Bireli documentation for details about reCaptcha.
 
-Minor CSS improvements
-----------------------
+Improved CKEditor experience with images
+----------------------------------------
 
-* New Sass module in ``generic/_image.scss`` to include some rules to support enabled
-  alignments for images with 'djangocms-picture';
-* Restored Sass stylesheet ``ckeditor.scss`` to have a better CKEditor experience again;
+* to include improvement for rich content;
+* Restored Sass stylesheet ``ckeditor.scss`` and updated Buckle Sass library with a new
+  object and mixins to improve rich editor content:
+
+  * Image alignments are fully supported on rendered contents;
+  * Image alignments from CKEditor plugin ``image2`` are fully supported in CKEditor;
+  * Image alignments from 'djangocms-picture' plugin are not supported in CKEditor
+    (editor surround plugin content with elements that does not include any alignment
+    classnames);
+
+* To benefit of these improvements in frontend the rich contents must be in an element
+  which have the CSS class name ``rich-text-content`` and it don't apply on nested
+  content, only direct children elements of a ``rich-text-content`` container;
+* Added new prototype pages on ``/prototypes/rich-content/`` and ``/prototypes/ckeditor4-content/``;
+
+Various
+-------
+
+* Added initial POT catalog and an PO catalog for french language;
+* Fixed prototype index pages which used wrong variable to list pages;
+* Added new prototypes for rich content and CKEditor sample;
+* Moved setting ``X_FRAME_OPTIONS`` from ``djangocms`` to ``django_builtins`` composed
+  application;
 
 
 Version 0.5.0 - 2025/02/18

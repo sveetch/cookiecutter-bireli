@@ -1,0 +1,103 @@
+/*
+Stylesheet to override and adjust some things with Django admin and CMS plugin admin
+*/
+@charset "UTF-8";
+
+// Patch admin-style stylesheet to resolve issue with CKEditor plugins modals that are
+// unable to positionnate correctly.
+body {
+    position: relative;
+}
+
+/*
+ * Here we adjust many CKEditor rules to fit to Admin style theme color
+ * (because a lot of rules were stuck with light mode colors mixed with some dark mode
+ * colors)
+ */
+// Editor main dialog
+//.cke_dialog {}
+.cke_dialog_container {}
+
+.cke_dialog_body {
+    background: var(--dca-white) !important;
+}
+
+// Base
+.cke_reset_all {
+    a {
+        color: inherit !important;
+    }
+
+    // Cancel inherit props from Django admin
+    tr:nth-child(2n+1) {
+        background: transparent !important;
+    }
+    tr:nth-child(2n) {
+        background: transparent !important;
+    }
+
+    textarea,
+    input[type="text"],
+    input[type="password"] {
+        color: var(--dca-black) !important;
+        background: transparent !important;
+    }
+}
+
+// Editor toolbar
+.cke_toolgroup {
+    box-sizing: initial !important;
+}
+
+// Main plugin widget title
+.cke_dialog_title {
+    color: var(--dca-black) !important;
+    background: var(--dca-gray-lightest) !important;
+}
+
+// Possible tabulations
+a.cke_dialog_tab {
+    color: var(--dca-gray-darkest) !important;
+    background: var(--dca-gray-lightest) !important;
+}
+
+a.cke_dialog_tab_selected {
+    color: var(--dca-black) !important;
+    background: var(--dca-white) !important;
+    border-bottom-color: var(--dca-white) !important;
+}
+
+// Content container and contents
+.cke_dialog_body {
+    color: var(--dca-black) !important;
+
+    label {
+        color: var(--dca-black) !important;
+    }
+}
+
+.cke_dialog_contents {
+    background: var(--dca-white) !important;
+}
+.cke_dialog_contents_body {
+    height: auto !important;
+}
+
+.cke_dialog_ui_html {
+    color: var(--dca-black) !important;
+}
+
+.cke_dialog_ui_labeled_required {
+    color: var(--error-fg) !important;
+}
+
+// Contents
+a.cke_dialog_ui_button:not(.cke_dialog_ui_button_ok) {
+    color: var(--dca-gray-darkest) !important;
+    background: var(--dca-gray-light) !important;
+}
+
+// Plugin footer
+.cke_dialog_footer {
+    background: var(--dca-gray-lightest) !important;
+}

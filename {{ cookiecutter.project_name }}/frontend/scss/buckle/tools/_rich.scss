@@ -1,0 +1,165 @@
+///
+/// Rich content utilities include some adjustments for content from a rich text editor
+///
+/// It has been mostly made for content from DjangoCMS and CKEditor.
+///
+/// Depends on:
+///
+/// - ../defaults
+/// - ./functions
+///
+
+///
+/// The improvement rules for rendered content on the Frontend side
+///
+@mixin apply-rich-rules() {
+    // Because of image float alignment we need to have clearing to avoid content
+    // swallowing. It stand on fact that images from a rich editor are commonly
+    // placed into a paragraph
+    & > * {
+        clear: both;
+    }
+
+    figure.image {
+        padding: $bb-rich-figure-padding;
+        border: $bb-rich-figure-border;
+
+        // Because figure is a block outside of a paragraph, its following content
+        // should not be a clearing to allow some float as expected
+        & + * {
+            clear: none;
+        }
+    }
+
+    figure.image,
+    img {
+        &.align-picture-left {
+            float: left;
+            margin: $bb-rich-image-margin $bb-rich-image-margin $bb-rich-image-margin 0;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+
+        &.align-picture-right {
+            float: right;
+            margin: $bb-rich-image-margin 0 $bb-rich-image-margin $bb-rich-image-margin;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+
+        &.align-picture-center {
+            display: block;
+            margin: $bb-rich-image-margin auto;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+
+    // Editor may place image or figure into its block element outside of a
+    // paragraph
+    p.align-picture-center,
+    div.align-picture-center {
+        display: flex;
+        margin: 0 0 $bb-rich-image-margin 0;
+        border: 0;
+        justify-content: center;
+
+        figure.image {
+            display: inline-block;
+            margin: $bb-rich-image-margin auto;
+            flex: 0 0 auto;
+        }
+
+        img {
+            display: inline-block;
+            flex: 0 0 auto;
+        }
+    }
+}
+
+
+///
+/// The improvement rules for edited content inside CKEditor
+///
+/// CKEditor involves a different HTML structure than the rendered content so it needs
+/// to have its own rules.
+///
+@mixin apply-ckeditor4-rules() {
+
+    // Apply float clearing on first child items to avoid swallowing contents alike
+    // with image float alignment
+    & > * {
+        clear: both;
+    }
+
+    // Base figure image (commonly from image2 plugin)
+    figure.image {
+        padding: $bb-rich-figure-padding;
+        border: $bb-rich-figure-border;
+    }
+
+    .cke_widget_wrapper {
+        &.align-picture-left {
+            float: left;
+            margin: $bb-rich-image-margin $bb-rich-image-margin $bb-rich-image-margin 0;
+
+            figure.image {
+                margin: 0;
+            }
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+
+        &.align-picture-right {
+            float: right;
+            margin: $bb-rich-image-margin 0 $bb-rich-image-margin $bb-rich-image-margin;
+
+            figure.image {
+                margin: 0;
+            }
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+
+        // Non figure has classname on <p> inside the wrapper, figure has classname on
+        // on the wrapper itself
+        .align-picture-center,
+        &.align-picture-center {
+            display: flex !important;
+            margin: 0 0 $bb-rich-image-margin 0;
+            border: 0;
+            justify-content: center;
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            figure.image {
+                display: inline-block;
+                margin: $bb-rich-image-margin auto;
+                flex: 0 0 auto;
+            }
+
+            img {
+                display: inline-block;
+                flex: 0 0 auto;
+            }
+
+        }
+
+        // Disable clearing inside wrapper
+        & + * {
+            clear: none;
+        }
+    }
+}

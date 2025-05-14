@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% load static %}
+
+{# djlint:off #}{% block header-title %}{{ page_options.extra.title }} - {{ block.super }}{% endblock header-title %}{# djlint:on #}
+{% comment %}
+    Content has been copied from a published page render without any modification except
+    for indentation.
+{% endcomment %}
+
+{% block page-content-classes %}{{ block.super }} rich-text-content{% endblock page-content-classes %}
+
+{% block body-content %}
+<h3><strong>picture left align</strong></h3>
+<p>
+    <img src="{% static "images/sample/300x220.png" %}" alt="" class="align-picture-left" />
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor arcu libero, ac condimentum justo rutrum sit amet. Aliquam lobortis ante vitae tincidunt pellentesque. Aliquam eu orci laoreet, tincidunt tortor ac, mattis ex. Etiam
+    ac velit sit amet urna imperdiet auctor eu a turpis. Cras lobortis pharetra justo a pretium. Phasellus vel nunc suscipit, placerat nisi sit amet, maximus risus. Aenean at quam a risus laoreet ultrices. In tempor eros eu elit blandit,
+    vitae euismod metus porta. Praesent lobortis augue lectus, a sagittis nibh dignissim nec. In hac habitasse platea dictumst. Aenean eget ante id tellus semper dictum eget ut metus. Vivamus vel malesuada lorem. Nam finibus eget sem vel
+    maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+<h3><strong>picture centered</strong></h3>
+<p>
+    <img src="{% static "images/sample/300x220.png" %}" alt="" class="align-picture-center" />
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor arcu libero, ac condimentum justo rutrum sit amet. Aliquam lobortis ante vitae tincidunt pellentesque. Aliquam eu orci laoreet, tincidunt tortor ac, mattis ex. Etiam
+    ac velit sit amet urna imperdiet auctor eu a turpis. Cras lobortis pharetra justo a pretium. Phasellus vel nunc suscipit, placerat nisi sit amet, maximus risus. Aenean at quam a risus laoreet ultrices. In tempor eros eu elit blandit,
+    vitae euismod metus porta. Praesent lobortis augue lectus, a sagittis nibh dignissim nec. In hac habitasse platea dictumst. Aenean eget ante id tellus semper dictum eget ut metus. Vivamus vel malesuada lorem. Nam finibus eget sem vel
+    maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+<h3><strong>picture right align</strong></h3>
+<p>
+    <img src="{% static "images/sample/300x220.png" %}" alt="" class="align-picture-right" />
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor arcu libero, ac condimentum justo rutrum sit amet. Aliquam lobortis ante vitae tincidunt pellentesque. Aliquam eu orci laoreet, tincidunt tortor ac, mattis ex. Etiam
+    ac velit sit amet urna imperdiet auctor eu a turpis. Cras lobortis pharetra justo a pretium. Phasellus vel nunc suscipit, placerat nisi sit amet, maximus risus. Aenean at quam a risus laoreet ultrices. In tempor eros eu elit blandit,
+    vitae euismod metus porta. Praesent lobortis augue lectus, a sagittis nibh dignissim nec. In hac habitasse platea dictumst. Aenean eget ante id tellus semper dictum eget ut metus. Vivamus vel malesuada lorem. Nam finibus eget sem vel
+    maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+<h3><strong>picture no align</strong></h3>
+<p>
+    <img src="{% static "images/sample/300x220.png" %}" alt="" />
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor arcu libero, ac condimentum justo rutrum sit amet. Aliquam lobortis ante vitae tincidunt pellentesque. Aliquam eu orci laoreet, tincidunt tortor ac, mattis ex. Etiam
+    ac velit sit amet urna imperdiet auctor eu a turpis. Cras lobortis pharetra justo a pretium. Phasellus vel nunc suscipit, placerat nisi sit amet, maximus risus. Aenean at quam a risus laoreet ultrices. In tempor eros eu elit blandit,
+    vitae euismod metus porta. Praesent lobortis augue lectus, a sagittis nibh dignissim nec. In hac habitasse platea dictumst. Aenean eget ante id tellus semper dictum eget ut metus. Vivamus vel malesuada lorem. Nam finibus eget sem vel
+    maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+<h3><strong>image2 left align</strong></h3>
+<p>
+    <img alt="" class="align-picture-left" src="{% static "images/sample/300x220.png" %}" />Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet.
+    Etiam felis lectus, sollicitudin pretium congue a, dictum et ligula. Donec in condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui
+    quis magna interdum feugiat. Proin commodo aliquam est quis elementum. Duis pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet.
+    Nullam finibus ac odio in porttitor. Quisque malesuada, nibh vitae suscipit convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+<h3><strong>image2 centered</strong></h3>
+<p class="align-picture-center"><img alt="" src="{% static "images/sample/300x220.png" %}" /></p>
+<p>
+    Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet. Etiam felis lectus, sollicitudin pretium congue a, dictum et ligula. Donec in
+    condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui quis magna interdum feugiat. Proin commodo aliquam est quis elementum. Duis
+    pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet. Nullam finibus ac odio in porttitor. Quisque malesuada, nibh vitae suscipit
+    convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+<h3><strong>image2 right align</strong></h3>
+<p>
+    <img alt="" class="align-picture-right" src="{% static "images/sample/300x220.png" %}" />Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet.
+    Etiam felis lectus, sollicitudin pretium congue a, dictum et ligula. Donec in condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui
+    quis magna interdum feugiat. Proin commodo aliquam est quis elementum. Duis pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet.
+    Nullam finibus ac odio in porttitor. Quisque malesuada, nibh vitae suscipit convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+<h3><strong>image2 no align</strong></h3>
+<p>
+    <img alt="" src="{% static "images/sample/300x220.png" %}" />Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet. Etiam felis lectus,
+    sollicitudin pretium congue a, dictum et ligula. Donec in condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui quis magna interdum
+    feugiat. Proin commodo aliquam est quis elementum. Duis pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet. Nullam finibus ac odio
+    in porttitor. Quisque malesuada, nibh vitae suscipit convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+<h3><strong>image2 figure left align</strong></h3>
+<figure class="image align-picture-left">
+    <img alt="" src="{% static "images/sample/300x220.png" %}" />
+    <figcaption>Légende</figcaption>
+</figure>
+<p>
+    Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet. Etiam felis lectus, sollicitudin pretium congue a, dictum et ligula. Donec in
+    condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui quis magna interdum feugiat. Proin commodo aliquam est quis elementum. Duis
+    pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet. Nullam finibus ac odio in porttitor. Quisque malesuada, nibh vitae suscipit
+    convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+<h3><strong>image2 figure centered</strong></h3>
+<div class="align-picture-center">
+    <figure class="image">
+        <img alt="" src="{% static "images/sample/300x220.png" %}" />
+        <figcaption>Légende</figcaption>
+    </figure>
+</div>
+<p>
+    Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet. Etiam felis lectus, sollicitudin pretium congue a, dictum et ligula. Donec in
+    condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui quis magna interdum feugiat. Proin commodo aliquam est quis elementum. Duis
+    pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet. Nullam finibus ac odio in porttitor. Quisque malesuada, nibh vitae suscipit
+    convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+<h3><strong>image2 figure right align</strong></h3>
+<figure class="image align-picture-right">
+    <img alt="" src="{% static "images/sample/300x220.png" %}" />
+    <figcaption>Légende</figcaption>
+</figure>
+<p>
+    Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet. Etiam felis lectus, sollicitudin pretium congue a, dictum et ligula. Donec in
+    condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui quis magna interdum feugiat. Proin commodo aliquam est quis elementum. Duis
+    pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet. Nullam finibus ac odio in porttitor. Quisque malesuada, nibh vitae suscipit
+    convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+<h3><strong>image2 figure no align</strong></h3>
+<figure class="image">
+    <img alt="" src="{% static "images/sample/300x220.png" %}" />
+    <figcaption>Légende</figcaption>
+</figure>
+<p>
+    Integer ut consectetur dolor, sed blandit eros. Nulla auctor rhoncus metus, at bibendum risus commodo quis. Mauris interdum purus sed volutpat imperdiet. Etiam felis lectus, sollicitudin pretium congue a, dictum et ligula. Donec in
+    condimentum elit. Vestibulum accumsan erat blandit metus congue tristique non a lectus. Sed sit amet facilisis nisl, a sagittis erat. Phasellus sit amet dui quis magna interdum feugiat. Proin commodo aliquam est quis elementum. Duis
+    pulvinar fermentum erat, vitae iaculis nisl sodales non. Vestibulum ac sem eleifend felis iaculis scelerisque. Suspendisse mollis ligula et placerat aliquet. Nullam finibus ac odio in porttitor. Quisque malesuada, nibh vitae suscipit
+    convallis, magna leo laoreet tortor, eu pellentesque magna ante sit amet libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+{% endblock body-content %}

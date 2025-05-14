@@ -15,6 +15,13 @@
 ///
 $include-bb-classes: true !default;
 
+/// Enable generic Rich content classes creation when `rich` module is imported.
+/// It needs to be defined here because it is shared among multiple modules.
+///
+/// @type Bool
+///
+$include-bb-rich: true !default;
+
 ///
 /// This documentate model for available properties in a color scheme.
 ///
@@ -287,7 +294,7 @@ $bb-small-sizes: () !default;
 ///
 $bb-fonts: () !default;
 
-/// CTA settings
+/// CTA defaults
 /// Commonly you will just make them using the equivalent Bootstrap Button variable
 /// like `$btn-font-family` for `$bb-cta-font-family`.
 ///
@@ -312,3 +319,21 @@ $bb-cta-padding-x-lg: null !default;
 $bb-cta-padding-y-lg: null !default;
 $bb-cta-font-size-lg: null !default;
 $bb-cta-border-radius-lg: null !default;
+
+/// Margin applied on image elements from rich contents
+///
+/// @type Number
+///
+$bb-rich-image-margin: 0.5rem !default;
+
+/// Padding applied inside image figure element from rich contents
+///
+/// @type Number
+///
+$bb-rich-figure-padding: 0.25rem !default;
+
+/// Border applied inside image figure element from rich contents
+///
+/// @type Number
+///
+$bb-rich-figure-border: 1px solid grey !default;
