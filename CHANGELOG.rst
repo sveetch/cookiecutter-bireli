@@ -9,22 +9,33 @@ Development
 
 Release for requirements updates and modest improvements.
 
-Updated backend requirements
+Backend requirement changes
+---------------------------
+
+* Upgraded 'django-cms' to 5.x.x;
+* Upgraded 'django-axes' to 7.1.x;
+* Upgraded 'djangorestframework' to 3.16.x and relaxed 'drf-spectacular';
+* Upgraded 'django-phonenumber-field' to 8.1.x;
+* Upgraded 'django-recaptcha' to 4.1.x;
+
+
+Frontend requirement changes
 ----------------------------
 
-* Updated 'django-axes' to 7.1.x;
-* Updated 'djangorestframework' to 3.16.x and relaxed 'drf-spectacular';
-* Updated 'django-phonenumber-field' to 8.1.x;
-* Updated 'django-recaptcha' to 4.1.x;
+Bootstrap has been upgraded to 5.3.6 but you probably have nothing to care about because
+the last releases are almost only about fixes, nothing has really changed.
+
+
+Review of DjangoCMS ecosystem
+-----------------------------
+
 * Restored 'djangocms_picture' in 4.1.1 since it has been validated to work with
   DjangoCMS 4. However it is not enabled on default since the CKEditor plugin
-  ``image2`` is more coherent and the recommended solution;
-
-
-Upgraded frontend requirements
-------------------------------
-
-* Bootstrap to 5.3.5
+  ``image2`` is more coherent and the recommended solution to insert images in
+  text content;
+* 'djangocms-snippet' is known to be compatible with DjangoCMS and already enabled;
+* 'djangocms-audio', 'djangocms-file' and 'djangocms-video' should be compatible even
+  they have no new release yet with an official support;
 
 
 Moved to reCaptcha V3 in Request form
@@ -38,38 +49,36 @@ You may still be able to use V2 in your forms (and request form by the way) sinc
 just a matter of using the right form widget (``ReCaptchaV2`` or ``ReCaptchaV3``). Note
 that the widget argument ``action`` is not supported in V2.
 
-Be aware that V3 does not support the generic development keys from Google so you now
-will need to get valid keys before using any form with reCaptcha V3 (so at least the
+Be aware that V3 does not support the generic development keys from Google so now you
+will need to set valid keys before using any form with reCaptcha V3 (so at least the
 request form).
 
 See Bireli documentation for details about reCaptcha.
 
+
 Improved CKEditor experience with images
 ----------------------------------------
 
-* to include improvement for rich content;
-* Restored Sass stylesheet ``ckeditor.scss`` and updated Buckle Sass library with a new
-  object and mixins to improve rich editor content:
+We restored Sass stylesheet named ``ckeditor.scss`` and updated Buckle Sass library
+with a new object and mixins to improve rich content editor and render:
 
-  * Image alignments are fully supported on rendered contents;
-  * Image alignments from CKEditor plugin ``image2`` are fully supported in CKEditor;
-  * Image alignments from 'djangocms-picture' plugin are not supported in CKEditor
-    (editor surround plugin content with elements that does not include any alignment
-    classnames);
+* Image alignments are fully supported on rendered contents;
+* Image alignments from CKEditor plugin ``image2`` are fully supported in CKEditor;
+* Image alignments from 'djangocms-picture' plugin are not supported in CKEditor
+  (editor surround plugin content with elements that does not include any alignment
+  classnames);
 
-* To benefit of these improvements in frontend the rich contents must be in an element
-  which have the CSS class name ``rich-text-content`` and it don't apply on nested
-  content, only direct children elements of a ``rich-text-content`` container;
-* Added new prototype pages on ``/prototypes/rich-content/`` and ``/prototypes/ckeditor4-content/``;
+See Bireli documentation for details about *Rich content*.
 
 Various
 -------
 
-* Added initial POT catalog and an PO catalog for french language;
-* Fixed prototype index pages which used wrong variable to list pages;
-* Added new prototypes for rich content and CKEditor sample;
 * Moved setting ``X_FRAME_OPTIONS`` from ``djangocms`` to ``django_builtins`` composed
   application;
+* Added initial POT catalog and an PO catalog for french language;
+* Added a rule in ``.gitignore`` to ignore compiled translation catalogs (the ``*.mo``
+  files);
+* Fixed prototype index pages which used wrong variable to list pages;
 
 
 Version 0.5.0 - 2025/02/18

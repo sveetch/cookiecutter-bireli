@@ -17,6 +17,7 @@ dist
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+*.mo
 
 # Unit test / coverage reports
 htmlcov/

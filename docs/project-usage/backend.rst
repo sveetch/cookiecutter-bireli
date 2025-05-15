@@ -86,10 +86,31 @@ Blog
 .. composer-app-requirements:: lotus
    :title: Requirements
 
-Rich Editor
------------
+Rich content editor
+-------------------
 
 CKEditor is the rich text editor used in applications like DjangoCMS, Lotus and others.
+
+On default there is no specific styling for rich content edited from CKEditor, this
+means image alignments are not applied and they would all look the same. However we
+included specific styles rules to implement them properly:
+
+* These rules are applied to direct children elements of any element with the generic classname ``rich-text-content``;
+* These rules are applied into elements with the generic classname
+  ``rich-text-content``;
+* These rules are defined from ``frontend/scss/buckle/objects/_rich.scss`` for the
+  generic classname and from ``frontend/scss/components/_content.scss`` for
+  'cmsplugin-blocks' and Lotus contents classnames;
+* These rules does not support nesting, it means you can not apply the generic
+  classname on a very top element and expecting it to work;
+* The CKEditor window itself has its own customized stylesheet which implement also
+  these rules so its content look almost the same than rendered content, its declaration
+  can be found in ``frontend/scss/ckeditor.scss``;
+
+Currently we are still using CKEditor V4, you may be able to switch to another one
+supported by 'djangocms-text' but it won't work with non cms applications that are using
+'django-ckeditor' like in :ref:`project_backend_blog`.
+
 
 Content Management System
 -------------------------
