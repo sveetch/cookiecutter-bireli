@@ -1,1 +1,1 @@
-cmsplugin-blocks>=1.6.0,<2.0.0
+cmsplugin-blocks>=1.7.0,<2.0.0

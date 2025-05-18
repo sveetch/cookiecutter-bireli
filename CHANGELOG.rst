@@ -7,11 +7,12 @@ History
 Development
 ***********
 
-Release for requirements updates and modest improvements.
+Release for requirements updates and some modest improvements.
 
 Backend requirement changes
 ---------------------------
 
+* Upgraded 'django' to 5.2.x;
 * Upgraded 'django-cms' to 5.x.x;
 * Upgraded 'django-axes' to 7.1.x;
 * Upgraded 'djangorestframework' to 3.16.x and relaxed 'drf-spectacular';
