@@ -4,8 +4,8 @@
 History
 =======
 
-Development
-***********
+Version 0.5.1 - 2025/05/18
+**************************
 
 Release for requirements updates and some modest improvements.
 
@@ -18,6 +18,14 @@ Backend requirement changes
 * Upgraded 'djangorestframework' to 3.16.x and relaxed 'drf-spectacular';
 * Upgraded 'django-phonenumber-field' to 8.1.x;
 * Upgraded 'django-recaptcha' to 4.1.x;
+* Upgraded the following requirements to their latest release for the Django 5.2
+  support:
+
+  * 'cmsplugin-blocks' to 1.7.0;
+  * 'djangocms-lotus' to 0.3.0;
+  * 'django-blog-lotus' to 0.9.3;
+  * 'django-smart-media' to 0.5.0;
+  * 'emencia-django-staticpages' to 0.6.2;
 
 
 Frontend requirement changes
@@ -32,7 +40,7 @@ Review of DjangoCMS ecosystem
 
 * Restored 'djangocms_picture' in 4.1.1 since it has been validated to work with
   DjangoCMS 4. However it is not enabled on default since the CKEditor plugin
-  ``image2`` is more coherent and the recommended solution to insert images in
+  ``image2`` is more coherent and is the recommended solution to insert images in
   text content;
 * 'djangocms-snippet' is known to be compatible with DjangoCMS and already enabled;
 * 'djangocms-audio', 'djangocms-file' and 'djangocms-video' should be compatible even
