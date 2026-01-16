@@ -58,7 +58,7 @@ def test_invalid(db, settings):
         "subject": "",
         "first_name": "Vladimir",
         "last_name": "Botchneko",
-        "phone": "+1 604-401-1234",
+        "phone": "123",
         "email": "plop@mail.ru",
         "message": "Lorem Самовольная ipsum",
         "data_confidentiality_policy": False,
@@ -71,7 +71,6 @@ def test_invalid(db, settings):
     # print(json.dumps(flatten_form_errors(f), indent=4))
 
     assert flatten_form_errors(f) == {
-        # "phone": ["The phone number entered is not valid."],
         "phone": [(
             "Enter a valid phone number (e.g. 01 23 45 67 89) or a number with an "
             "international call prefix."

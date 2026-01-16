@@ -149,10 +149,11 @@ def test_model_phone_validation(db, settings):
     request = RequestModel(phone="+33 1 12 34 56 78", **base_payload)
     request.full_clean()
 
-    # Non french number is not allowed, international or not
-    request = RequestModel(phone="+1 604-401-1234", **base_payload)
-    with pytest.raises(ValidationError):
-        request.full_clean()
+    # this was a bug not a feature. It was fixed in django-phonenumber-field 8.2
+    # # Non french number is not allowed, international or not
+    # request = RequestModel(phone="+1 604-401-1234", **base_payload)
+    # with pytest.raises(ValidationError):
+    #     request.full_clean()
 
     # Non french number is not allowed, national or not
     request = RequestModel(phone="6044011234", **base_payload)
