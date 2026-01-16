@@ -94,14 +94,12 @@ class CmsCkeditor4Settings(EnabledApplicationMarker):
         cls.TEXT_EDITOR = "djangocms_text.contrib.text_ckeditor4.ckeditor4"
 
         # html5lib sanitizer parameters to allow some unsafe elements
-        cls.TEXT_ADDITIONAL_TAGS = (
-            "iframe",
-        )
-
-        cls.TEXT_ADDITIONAL_ATTRIBUTES = (
-            # For internal awful hack to not have href links in html
-            "allowfullscreen",
-        )
+        # New format since djangocms-text 0.9: dictionary with tag entries and allowed
+        # attributes as a set. Use "*" for global attributes allowed on all tags.
+        cls.TEXT_ADDITIONAL_ATTRIBUTES = {
+            "iframe": set(),  # Allow iframe tag with no additional attributes
+            "*": {"allowfullscreen"},  # Allow allowfullscreen attribute on all tags
+        }
 
         # Copy shared basic ckeditor configuration
         cls.CKEDITOR_SETTINGS = copy.deepcopy(cls.CKEDITOR_SHARED_CONF)
