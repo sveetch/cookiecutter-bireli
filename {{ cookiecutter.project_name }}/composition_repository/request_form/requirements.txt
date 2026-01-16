@@ -1,1 +1,1 @@
-django-phonenumber-field[phonenumbers]>=8.1.0,<8.2.0
+django-phonenumber-field[phonenumbers]>=8.4.0,<8.5.0

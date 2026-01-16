@@ -1,1 +1,1 @@
-django-autocomplete-light>=3.11.0
+django-autocomplete-light>=3.12.0
