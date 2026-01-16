@@ -4,6 +4,37 @@
 History
 =======
 
+Version 0.5.2 - 2026/01/16
+**************************
+
+Release for Django 6.0 and Python 3.12 support with updated dependencies.
+
+Backend requirement changes
+---------------------------
+
+* Upgraded to Python 3.12+ and Django 6.0+;
+* Upgraded 'django-axes' to 8.0.x;
+* Upgraded 'django-ckeditor' to 6.7.3;
+* Upgraded 'django-crispy-forms' to 2.5 and 'crispy-bootstrap5' to 2025.4;
+* Upgraded 'django-autocomplete-light' to 3.12.x;
+* Upgraded 'django-filer' to 3.4.x;
+* Upgraded 'django-cms' to 5.0.5, 'djangocms-alias' to 3.0.0, 'djangocms-versioning'
+  to 2.5.0 and 'djangocms-text' to 0.9.0;
+* Upgraded 'drf-spectacular' to 0.29.x;
+* Upgraded 'django-blog-lotus' to 0.9.5;
+* Upgraded 'django-phonenumber-field' to 8.4.x;
+* Upgraded 'django-two-factor-auth' to 1.18.x;
+* Upgraded 'django-webpack-loader' to 3.2.x;
+
+Various
+-------
+
+* Adapted ``TEXT_ADDITIONAL_ATTRIBUTES`` setting for new djangocms-text 0.9 format
+  (dictionary with tag entries instead of separate tuples);
+* Fixed request_form tests for django-phonenumber-field 8.2+ behavior where
+  international phone numbers with valid format are now correctly accepted;
+
+
 Version 0.5.1 - 2025/05/18
 **************************
 
