@@ -4,6 +4,18 @@
 History
 =======
 
+Development
+***********
+
+* Upgraded to Python 3.13;
+* Upgraded 'diskette' to '0.6.x';
+* Upgraded 'django-axes' to '>=8.3.0,<9.0.0';
+* Upgraded 'django-smart-media' to '0.6.x';
+* Upgraded 'djangorestframework' to '>=3.17.0,<4.0.0';
+* Upgraded 'emencia-django-staticpages' to '0.7.x';
+* Upgraded 'project-composer' to '0.8.x';
+
+
 Version 0.5.2 - 2026/01/16
 **************************
 
