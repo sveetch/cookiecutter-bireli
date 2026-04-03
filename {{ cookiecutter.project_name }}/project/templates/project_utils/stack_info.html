@@ -1,0 +1,146 @@
+{% extends "skeleton.html" %}
+{% load i18n static %}
+{# djlint:off #}{% block header-title %}Stack informations - {{ block.super }}{% endblock header-title %}{# djlint:on #}
+{% block metas-robot %}
+    <meta name="robots" content="noindex, nofollow">
+{% endblock metas-robot %}
+{% block header-resource-extra %}
+    <link rel="stylesheet" href="{% static "css/components/project-utils/layout.css" %}">
+{% endblock header-resource-extra %}
+
+{% block body-container %}
+    <div class="project-utils">
+        <h1 class="pu-title">Stack informations</h1>
+
+        <div class="pu-grid">
+            <div class="pu-column">
+                <div class="pu-column-header">
+                    <h2 class="pu-title">Backend</h2>
+                </div>
+
+                <div class="pu-column-body">
+                    <div class="pu-nav">
+
+                        <div class="pu-nav-item pu-nav-item--third">
+                            <p>
+                                <strong>Python:</strong>
+                                <code>{{ python_version }}</code>
+                            </p>
+                        </div>
+
+                        {% if django_version %}
+                            <div class="pu-nav-item pu-nav-item--third">
+                                <p>
+                                    <strong>Django:</strong>
+                                    <code>{{ django_version }}</code>
+                                </p>
+                            </div>
+                        {% endif %}
+
+                        <div class="pu-nav-item pu-nav-item--third">
+                            <p>
+                                <strong>{{ python_packages|length }} packages</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pu-data">
+                        <div class="pu-data-scrollable">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>{% trans "Package" %}</th>
+                                        <th>{% trans "Version" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for pkg in python_packages %}
+                                        <tr class="pu-data-item">
+                                            <td>{{ pkg.name }}</td>
+                                            <td><code>{{ pkg.version }}</code></td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pu-column">
+                <div class="pu-column-header">
+                    <h2 class="pu-title">Frontend</h2>
+                </div>
+
+                <div class="pu-column-body">
+                    {% if node_info.from_cache %}
+                        <p class="pu-msg-info">{% trans "Info from build cache" %}</p>
+                    {% endif %}
+
+                    <div class="pu-nav">
+                        <div class="pu-nav-item pu-nav-item--third">
+                            <p>
+                                <strong>Node.js:</strong>
+                                {% if node_info.node_version %}
+                                    <code>{{ node_info.node_version }}</code>
+                                {% else %}
+                                    <span class="pu-txt-muted">{% trans "Not available" %}</span>
+                                {% endif %}
+                            </p>
+                        </div>
+
+                        <div class="pu-nav-item pu-nav-item--third">
+                            <p>
+                                <strong>NPM:</strong>
+                                {% if node_info.npm_version %}
+                                    <code>{{ node_info.npm_version }}</code>
+                                {% else %}
+                                    <span class="pu-txt-muted">{% trans "Not available" %}</span>
+                                {% endif %}
+                            </p>
+                        </div>
+
+                        <div class="pu-nav-item pu-nav-item--third">
+                            <p>
+                                <strong>{{ node_info.packages|length }} packages</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    {% if node_info.packages %}
+                        <div class="pu-data">
+                            <div class="pu-data-scrollable">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>{% trans "Package" %}</th>
+                                            <th>{% trans "Version" %}</th>
+                                            <th>{% trans "Type" %}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for pkg in node_info.packages %}
+                                            <tr class="pu-data-item pu-data-item--{% if pkg.dev %}dev{% else %}prod{% endif %}">
+                                                <td>{{ pkg.name }}</td>
+                                                <td><code>{{ pkg.version }}</code></td>
+                                                <td>
+                                                    {% if pkg.dev %}
+                                                        <span class="pu-pkg pu-pkg--dev">dev</span>
+                                                    {% else %}
+                                                        <span class="pu-pkg pu-pkg--prod">prod</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    {% else %}
+                        <p class="pu-msg-warning">{% trans "No package.json found or unable to read packages." %}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body-container %}

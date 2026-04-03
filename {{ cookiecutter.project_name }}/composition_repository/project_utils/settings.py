@@ -26,3 +26,12 @@ class ProjectUtilsSettings(EnabledApplicationMarker):
         cls.TEMPLATES[0]["OPTIONS"]["context_processors"].extend([
             "project_utils.context_processors.project_globals",
         ])
+
+        # Path to possible build of Node.js stack, this is the priority over
+        # 'FRONTEND_PACKAGES_MANIFEST' that will be used as a fallback. You could set it
+        # to None to disable it.
+        cls.FRONTEND_BUILT_MANIFEST = cls.PARTS_PATH / "node" / "node_stack.json"
+
+        # Path to frontend packages manifest, used if there is no build file from
+        # 'FRONTEND_BUILT_MANIFEST'
+        cls.FRONTEND_PACKAGES_MANIFEST = cls.BASE_DIR / "frontend" / "package.json"

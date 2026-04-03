@@ -1,31 +1,39 @@
 {% extends "skeleton.html" %}
+{% load i18n static %}
 {# djlint:off #}{% block header-title %}Project globals - {{ block.super }}{% endblock header-title %}{# djlint:on #}
+{% block metas-robot %}
+    <meta name="robots" content="noindex, nofollow">
+{% endblock metas-robot %}
+{% block header-resource-extra %}
+    <link rel="stylesheet" href="{% static "css/components/project-utils/layout.css" %}">
+{% endblock header-resource-extra %}
 {% block body-container %}
-    <div class="block">
-        <div class="container-xl">
-            <h2 class="mb-4">Project globals</h2>
+    <div class="project-utils">
+            <h1 class="pu-title">Project globals</h1>
 
             <div class="mb-4">
                 <p class="lead">You can use these template variables anywhere in your templates.</p>
 
-                <table class="table table-striped" id="project-globals-variables">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Variable name</th>
-                            <th scope="col">Value</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for k, v in project_globals_variables %}
+                <div class="pu-data">
+                    <table id="project-globals-variables">
+                        <thead>
                             <tr>
-                                <th scope="row">{{ forloop.counter }}</th>
-                                <td><kbd class="user-select-all">{% templatetag openvariable %}&nbsp;{{ k }}&nbsp;{% templatetag closevariable %}</kbd></td>
-                                <td><samp class="user-select-all">{{ v }}</samp></td>
+                                <th scope="col">#</th>
+                                <th scope="col">Variable name</th>
+                                <th scope="col">Value</th>
                             </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {% for k, v in project_globals_variables %}
+                                <tr class="pu-data-item">
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td><kbd class="user-select-all">{% templatetag openvariable %}&nbsp;{{ k }}&nbsp;{% templatetag closevariable %}</kbd></td>
+                                    <td><samp class="user-select-all">{{ v }}</samp></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <div class="mb-4">
@@ -36,6 +44,5 @@
                 </div>
             </div>
 
-        </div>
     </div>
 {% endblock body-container %}

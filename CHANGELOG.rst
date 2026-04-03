@@ -7,6 +7,9 @@ History
 Development
 ***********
 
+Backend requirement changes
+---------------------------
+
 * Upgraded to Python 3.13;
 * Upgraded 'diskette' to '0.6.x';
 * Upgraded 'django-axes' to '>=8.3.0,<9.0.0';
@@ -14,10 +17,24 @@ Development
 * Upgraded 'djangorestframework' to '>=3.17.0,<4.0.0';
 * Upgraded 'emencia-django-staticpages' to '0.7.x';
 * Upgraded 'project-composer' to '0.8.x';
-* Updated frontend to Bootstrap 5.3.8 and done minor updates on other packages;
+
+
+Backend changes
+---------------
+
 * Fixed Tox suite tests for boolean argument with Cookiecutter>=2.7.0;
 * Fixed Whoosh backend location, close #67;
 * Fixed global context processors with RequestFactory, close #68
+* Added new tool "Stack informations" which displays backend and frontend packages
+  versions;
+
+
+Minor frontend update
+---------------------
+
+* Updated frontend to Bootstrap 5.3.8 and done minor updates on other packages;
+* Updated silenced deprecation for 'sass-embedded' with Bootstrap;
+* Include script ``generate-stack-info.js`` to build frontend stack during deployment;
 
 
 Version 0.5.2 - 2026/01/16

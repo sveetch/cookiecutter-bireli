@@ -47,6 +47,10 @@ class EmenciaToolbar(CMSToolbar):
                 name="Project globals for templates",
                 url=reverse("project_utils:project-globals"),
             )
+            menu.add_link_item(
+                name="Stack informations",
+                url=reverse("project_utils:stack-info"),
+            )
 
         if "styleguide" in settings.INSTALLED_APPS:
             menu.add_link_item(

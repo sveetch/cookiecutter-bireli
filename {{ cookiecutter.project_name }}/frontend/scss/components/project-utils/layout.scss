@@ -1,0 +1,242 @@
+///
+/// Stack info stylesheet
+///
+/// We only rely on Bootstrap for its mixin 'breakpoint'. Implicitely we inherit also
+/// on its "CSS reboot".
+///
+@use "sass:map";
+
+// Load site settings before Bootstrap so it can adopts in cascaded variables
+@import "../../settings/site";
+
+// Import Bootstrap base before site settings
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+
+// Finish to build Bootstrap utilities and computed variables from site settings
+@import "../../settings/bootstrap";
+
+// Bootstrap breakpoint mixins
+@import "bootstrap/scss/mixins/breakpoints";
+
+/* stylelint-disable color-no-hex */
+$sg-black: #000000;
+$sg-white: #ffffff;
+$sg-grey69: #b0b0b0;
+$sg-ghostwhite: #f8f9fa;
+$sg-azure2: #e9ecef;
+$sg-dodgerblue1: #0d6efd;
+$sg-grey14: #212529;
+$sg-darkslategrey: #495057;
+$sg-grey50: #808080;
+$sg-honeydew2: #e5ebe0;
+/* stylelint-enable color-no-hex */
+
+// Common radius size
+$pu-radius: 0.5rem;
+
+$pu-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+                     "Noto Sans", "Liberation Sans", Arial, sans-serif,
+                     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+                     "Noto Color Emoji";
+$pu-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+                    "Courier New", monospace;
+
+$pu-size-small: 0.875rem;
+
+// Structure
+.project-utils {
+    margin: 0 auto;
+    font-family: $pu-font-sans-serif;
+
+    // Reset some default browser behavior
+    ul:last-child,
+    ol:last-child,
+    dl:last-child,
+    p:last-child {
+        margin-bottom: 0;
+    }
+
+    p {
+        margin-top: 0;
+    }
+
+    // Basic grid with single and two columns
+    .pu-grid {
+        display: grid;
+        column-gap: 1rem;
+        row-gap: 1rem;
+
+        @include media-breakpoint-up(lg) {
+            grid-template-columns: repeat(2, 1fr);
+
+            .pu-info-title {
+                grid-column-end: span 2;
+            }
+        }
+    }
+
+    // Basic horizontal flexbox nav
+    .pu-nav {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .pu-nav-item {
+            flex: 1 0 100%;
+            max-width: 100%;
+
+            &--half {
+                flex: 1 0 50%;
+                max-width: 50%;
+            }
+
+            &--third {
+                flex: 1 0 50%;
+                max-width: 50%;
+
+                @include media-breakpoint-up(md) {
+                    flex: 1 0 33.3333%;
+                    max-width: 33.3333%;
+                }
+            }
+        }
+    }
+
+    // Push data object into a vertically scrollable wrapper with a fixed height
+    .pu-data-scrollable {
+        height: 25rem;
+        overflow-y: auto;
+    }
+}
+
+
+// Decorations, spacing, etc..
+.project-utils {
+    width: 100%;
+    padding-right: 0.75;
+    padding-left: 0.75;
+    margin-right: auto;
+    margin-left: auto;
+
+    @include media-breakpoint-up(lg) {
+        max-width: 60rem;
+    }
+
+    .pu-title {
+        margin: 0;
+        line-height: 1.1;
+    }
+
+    & > .pu-title {
+        margin-bottom: 1rem;
+        padding: 0.5rem 0;
+    }
+
+    .pu-msg-info {
+        font-size: $pu-size-small;
+        font-style: italic;
+        color: $sg-darkslategrey;
+    }
+
+    .pu-msg-warning {
+        padding: 0.5rem;
+        font-size: $pu-size-small;
+        text-align: center;
+        background-color: $sg-ghostwhite;
+    }
+
+    .pu-grid {
+        .pu-column {
+            border-radius: $pu-radius;
+            box-shadow: 0 2px 4px $sg-grey69;
+
+            .pu-column-header {
+                padding: 1rem;
+                background: $sg-azure2;
+                border-top-left-radius: $pu-radius;
+                border-top-right-radius: $pu-radius;
+            }
+
+            .pu-column-body {
+                padding: 1rem;
+            }
+        }
+    }
+
+    .pu-nav {
+        margin-bottom: 1rem;
+
+        .pu-nav-item {
+            padding: 0.1rem 0.25rem;
+            text-align: center;
+            border: 0;
+            border-radius: 0;
+            font-size: $pu-size-small;
+            font-weight: 800;
+
+            strong {
+                margin-right: 0.5rem;
+            }
+
+            @include media-breakpoint-up(md) {
+                & + .pu-nav-item {
+                    border-left: 0.0625rem solid $sg-grey69;
+                }
+            }
+        }
+    }
+
+    .pu-data {
+        table {
+            width: 100%;
+            font-family: $pu-font-monospace;
+            font-size: $pu-size-small;
+            vertical-align: top;
+            border-color: $sg-grey69;
+
+            tr,
+            td,
+            th {
+                border-color: inherit;
+                border-style: solid;
+                border-width: 0;
+            }
+
+            thead {
+                vertical-align: bottom;
+
+                th {
+                    padding: 0.5rem 0.3rem;
+                }
+            }
+
+            tbody {
+                vertical-align: inherit;
+
+                th,
+                td {
+                    padding: 0.3rem 0.3rem;
+                    color: $sg-grey14;
+                    background-color: $sg-white;
+                    border-top-width: 0.0625rem;
+                }
+
+                .pu-data-item:nth-of-type(2n+1) > td {
+                    background-color: $sg-ghostwhite;
+                }
+
+                .pu-data-item--prod + .pu-data-item--dev > td {
+                    border-top-width: 0.15rem;
+                }
+            }
+        }
+    }
+
+    .pu-data-scrollable {
+        border-top: 0.0625rem solid $sg-grey69;
+        border-bottom: 0.0625rem solid $sg-grey69;
+    }
+}
