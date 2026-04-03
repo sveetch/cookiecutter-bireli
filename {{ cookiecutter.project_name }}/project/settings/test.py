@@ -45,6 +45,15 @@ class Test(ComposedProjectSettings):
         # make the tests to fail
         cls.REQUEST_FORM_DISABLE_CAPTCHA = True
 
+        # Different location for test search index so it does never overwrite the ones
+        # for instance (especially useful for local development)
+        cls.HAYSTACK_CONNECTIONS = {
+            "default": {
+                "ENGINE": "haystack.backends.whoosh_backend.WhooshEngine",
+                "PATH": cls.VAR_PATH / "whoosh_index_tests",
+            },
+        }
+
     @classmethod
     def post_setup(cls):
         super(Test, cls).post_setup()

@@ -16,6 +16,8 @@ Development
 * Upgraded 'project-composer' to '0.8.x';
 * Updated frontend to Bootstrap 5.3.8 and done minor updates on other packages;
 * Fixed Tox suite tests for boolean argument with Cookiecutter>=2.7.0;
+* Fixed Whoosh backend location, close #67;
+* Fixed global context processors with RequestFactory, close #68
 
 
 Version 0.5.2 - 2026/01/16

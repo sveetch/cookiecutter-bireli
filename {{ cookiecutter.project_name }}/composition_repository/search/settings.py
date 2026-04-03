@@ -15,7 +15,7 @@ class SearchSettings(EnabledApplicationMarker):
         cls.HAYSTACK_CONNECTIONS = {
             "default": {
                 "ENGINE": "haystack.backends.whoosh_backend.WhooshEngine",
-                "PATH": cls.PARTS_PATH / "whoosh" / "whoosh_index",
+                "PATH": cls.VAR_PATH / "whoosh" / "whoosh_index",
             },
         }
 
