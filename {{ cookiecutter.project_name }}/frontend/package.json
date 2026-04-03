@@ -5,7 +5,7 @@
     "author": "David THENON <sveetch@gmail.com>",
     "private": true,
     "scripts": {
-        "css": "sass --load-path=./node_modules --silence-deprecation=color-functions --silence-deprecation=global-builtin --silence-deprecation=import --silence-deprecation=mixed-decls ./scss/:../project/static-sources/css/",
+        "css": "sass --load-path=./node_modules --silence-deprecation=color-functions --silence-deprecation=global-builtin --silence-deprecation=import --silence-deprecation=if-function ./scss/:../project/static-sources/css/",
         "css-prod": "sass --style compressed --load-path=./node_modules ./scss/:../project/static-sources/css/",
         "watch-css": "nodemon --watch scss/ --ext scss --exec \"npm run-script css\"",
         "js": "webpack --mode development --progress",
