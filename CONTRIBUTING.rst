@@ -27,6 +27,10 @@ Github:
 *  `Collaborating with pull
    requests <https://docs.github.com/en/github/collaborating-with-pull-requests>`_
 
+.. Warning::
+    All 'pull request' must target the branch ``development`` because we are merging
+    all development there until release. The master branch is dedicated to receive final
+    release, all 'pull request' which target the master branch won't be merged.
 
 Getting started
 ***************
