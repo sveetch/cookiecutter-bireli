@@ -1,5 +1,6 @@
 ///
-/// Styleguide manifest references for Bootstrap 5.3.3
+/// Styleguide manifest references for Bootstrap 5.3.x compatible with
+/// sass-embedded 1.95.x
 ///
 @use "sass:map";
 
@@ -72,9 +73,8 @@
 // Bootstrap: Color palette
 .styleguide-reference-bt_palette{
     --structure: "flat";
-    --splitter: "object-list";
-    --keys: '#{get-names-to-json($colors)}';
-    --values: '#{get-values-to-json($colors)}';
+    --keys: "#{get-names($colors)}";
+    --values: "#{get-values($colors)}";
 }
 
 // Bootstrap: Theme colors

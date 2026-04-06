@@ -35,6 +35,8 @@ Minor frontend update
 * Updated frontend to Bootstrap 5.3.8 and done minor updates on other packages;
 * Updated silenced deprecation for 'sass-embedded' with Bootstrap;
 * Include script ``generate-stack-info.js`` to build frontend stack during deployment;
+* Fixed Styleguide manifest for Bootstrap because of some changes (string quotes) in
+  Sass 1.88.x;
 
 
 Version 0.5.2 - 2026/01/16
