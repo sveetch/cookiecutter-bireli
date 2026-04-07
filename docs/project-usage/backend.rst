@@ -247,6 +247,8 @@ Finally remember that you will need to manage (re)generation of your data indexe
    :title: Requirements
 
 
+.. _bireli-backend-styleguide:
+
 Styleguide
 ----------
 
@@ -254,8 +256,22 @@ A basic application that build a synthetic styleguide directly computed from the
 Sass sources. It is configured for the shipped layout with Bootstrap so you would
 need to adapt its manifest if you want it to work with another frontend toolkit.
 
+This is done with
+`PyCssStyleguide <https://pycssstyleguide.readthedocs.io>`_ that reads a CSS manifest
+which contains the settings and turn them into a Python object. This object is then
+exposed into the styleguide view that can be reached on : ::
+
+    /styleguide/
+
+The CSS manifest is built in frontend :ref:`bireli-frontend-styleguide`.
+
+The view os open to anyone and you may use the Django decorator ``login_required``
+around the view url to protect it if needed.
+
 .. composer-app-requirements:: styleguide
    :title: Requirements
+
+.. _bireli-backend-utilities:
 
 Utilities
 ---------
@@ -265,8 +281,19 @@ There is an internal application named ``project_utils`` that includes the
 architecture tasks (Makefile, project-composer, etc..) and some modules for useful
 code.
 
-Also you can find inside many utilities to help writing tests, some internal scripts and
+It provides many utilities to help writing tests, some internal scripts and
 management commands.
+
+And finally it publishes two useful views:
+
+* ``/project-globals/`` display a page to expose all available site variables
+  (like site domain, site name, media directory url, etc..) that you can use in
+  templates. All of these variables are built from an internatl context processor;
+* ``/stack-info/`` display a page to expose all package versions installed in both
+  backend and frontend;
+
+These views are restricted to the admin status of authenticated users.
+
 
 .. _project_backend_newapp:
 

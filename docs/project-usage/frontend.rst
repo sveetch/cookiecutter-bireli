@@ -18,6 +18,9 @@ Frontend base dependencies
 .. bireli-frontend-stack::
 
 
+Concepts and features
+*********************
+
 Asset management
 ----------------
 
@@ -59,10 +62,30 @@ Default project frontend use `Bootstrap`_ framework and all templates are made w
 components.
 
 .. Note::
-    Although the current last version of Bootstrap (v5.3.3) is fully working with
-    Dartsass engine, it did not have migrated yet to the last language changes and so
-    raise some warnings from compiler. Commandline script to build CSS has temporarily
-    muted these warnings until next Bootstrap version.
+    Although the current last version of Bootstrap (v5.3.x) is fully working with
+    Dartsass engine, it has not been migrated yet to the last Sass specifications and so
+    it raises some warnings from compiler. Commandline script to build CSS has
+    temporarily muted these warnings until next major Bootstrap version.
+
+
+.. _bireli-frontend-styleguide:
+
+
+Webdesign styleguide
+--------------------
+
+Default webdesign integration includes a styleguide automatically built from the
+Bootstrap settings.
+
+The concept is to use the settings variables to describe the webdesign. This implies
+that you use the settings to customize the layout around Bootstrap and if you need
+additional variables for the site layout, you will have to add them to the manifest
+builder which is a Sass stylesheet.
+
+The Sass stylesheet is included in the Sass sources so it is build aside your
+stylesheets in Sass sources.
+
+The styleguide document is published from the module :ref:`bireli-backend-styleguide`.
 
 
 Javascript interface
@@ -78,6 +101,25 @@ Logo and favicon
 A project is generated with a default logo and favicon that you should change to fit
 to your project brand design.
 
-Note than favicon is configured using a site manifest to cover multiple devices
-behaviors, you may build a new full site manifest from online tool like
+Note that the favicon is built using a site manifest to cover multiple
+devices behaviors, you may build a new full site manifest from an online tool like
 `Favicon Generator <https://realfavicongenerator.net/>`_ (recommended).
+
+Stack information
+-----------------
+
+Backend :ref:`bireli-backend-utilities` includes a view to display all package versions
+from frontend. During local development this is commonly build "on demand" but deployed
+environment (like in production) you may prefer to avoid this.
+
+For this case, we include a script ``frontend/generate-stack-info.js`` that you can
+run during your deployment to build a cache file to read instead of building
+information "on demand".
+
+This script is simple so it does not requires any argument or configuration, just run it
+with Node.js (from the frontend directory): ::
+
+    node generate-stack-info.js
+
+And it will write information into a file ``parts/node/node_stack.json`` (relatively to
+the project root).

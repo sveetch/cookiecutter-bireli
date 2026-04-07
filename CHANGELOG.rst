@@ -18,7 +18,6 @@ Backend requirement changes
 * Upgraded 'emencia-django-staticpages' to '0.7.x';
 * Upgraded 'project-composer' to '0.8.x';
 
-
 Backend changes
 ---------------
 
@@ -28,15 +27,20 @@ Backend changes
 * Added new tool "Stack informations" which displays backend and frontend packages
   versions;
 
-
 Minor frontend update
 ---------------------
 
 * Updated frontend to Bootstrap 5.3.8 and done minor updates on other packages;
 * Updated silenced deprecation for 'sass-embedded' with Bootstrap;
 * Include script ``generate-stack-info.js`` to build frontend stack during deployment;
-* Fixed Styleguide manifest for Bootstrap because of some changes (string quotes) in
-  Sass 1.88.x;
+* Fixed Styleguide manifest for Bootstrap because of some changes (string in double
+  quotes only) in Sass 1.88.x;
+
+Documentation
+-------------
+
+* Added information about frontend stack;
+* Improved styleguide information;
 
 
 Version 0.5.2 - 2026/01/16
