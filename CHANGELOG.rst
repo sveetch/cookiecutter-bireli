@@ -4,8 +4,8 @@
 History
 =======
 
-Development
-***********
+Version 0.5.3 - 2026/04/07
+**************************
 
 Backend requirement changes
 ---------------------------
