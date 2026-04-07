@@ -1,3 +1,12 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bireli-admin.css' %}" />
+{% endblock extrahead %}
+
+{% comment %}
 {% extends "admin/base.html" %}
 {% load i18n static admin_style_tags %}
 
@@ -25,3 +34,4 @@
 {% block userlinks %}{% include 'admin/inc/userlinks.html' %}{{ block.super }}{% endblock %}
 
 {% block nav-global %}{% endblock %}
+{% endcomment %}

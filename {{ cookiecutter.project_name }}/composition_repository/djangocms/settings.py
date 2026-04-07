@@ -45,7 +45,7 @@ class CmsBaseSettings(EnabledApplicationMarker):
 
         # Admin style needs to be before "django.contrib.admin" which we assume it's
         # always first in list
-        cls.INSTALLED_APPS.insert(0, "djangocms_admin_style")
+        # cls.INSTALLED_APPS.insert(0, "djangocms_admin_style")
 
         # Then we push the common cms stack
         cls.INSTALLED_APPS.extend([

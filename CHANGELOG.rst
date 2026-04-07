@@ -27,6 +27,28 @@ Backend changes
 * Added new tool "Stack informations" which displays backend and frontend packages
   versions;
 
+Django CMS Admin Style is deprecated
+------------------------------------
+
+This application from the DjangoCMS team is not maintained anymore and deprecated. The
+role of this application was to create a new layout on top to totally replace the
+Django admin look.
+
+Since it is not maintained anymore, there was some layout bugs that started to appear
+because of some Django admin changes so we can not support it anymore.
+
+The result is a Bireli project administration is going back to the barebone Django
+admin layout.
+
+For now, we still include configuration for "CMS Admin Style" if you want but it is
+likely to be removed in a next major Bireli release.
+
+.. Note::
+    DjangoCMS still includes a requirement to "CMS Admin Style" although it does not
+    need it to perfectly work, so its package is still installed. This is a knowed
+    issue and it should be removed in a next DjangoCMS release.
+
+
 Minor frontend update
 ---------------------
 
